@@ -1,5 +1,6 @@
 import { combineReducers } from "redux";
+import productListReducer from "./productListReducer";
 
 export default combineReducers({
-  replaceMe: () => "replace Me!",
+  productList: productListReducer,
 });
