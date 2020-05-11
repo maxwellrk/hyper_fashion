@@ -1,7 +1,7 @@
-import React from "react";
-import ReactDom from "react-dom";
-import { connect } from "react-redux";
-import { fetchProductList } from "../actions/index.js";
+import React from 'react';
+import ReactDom from 'react-dom';
+import { connect } from 'react-redux';
+import { fetchProductList } from '../actions/index.js';
 
 class App extends React.Component {
   constructor(props) {

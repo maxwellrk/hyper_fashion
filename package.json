@@ -4,7 +4,7 @@
   "description": "FEC Tyche",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "clean": "rm dist/bundle.js",
     "build-dev": "webpack -d --mode development --watch",
     "build-prod": "webpack -p --mode production",
@@ -48,6 +48,7 @@
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-react": "^7.19.0",
     "eslint-plugin-react-hooks": "^2.5.0",
+    "jest": "^26.0.1",
     "webpack": "^4.41.5",
     "webpack-cli": "^3.3.10"
   },
