@@ -1,0 +1,46 @@
+{
+  "name": "tyche",
+  "version": "1.0.0",
+  "description": "FEC Tyche",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "clean": "rm dist/bundle.js",
+    "build-dev": "webpack -d --mode development --watch",
+    "build-prod": "webpack -p --mode production",
+    "start": "nodemon server/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fec-tyche/tyche.git"
+  },
+  "author": "Austin Susy Ahsan Maxwell",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.19.2",
+    "bootstrap": "^4.4.1",
+    "express": "^4.17.1",
+    "live-server": "^1.2.1",
+    "lodash": "^4.17.15",
+    "nodemon": "^1.19.4",
+    "react": "^16.12.0",
+    "react-bootstrap": "^1.0.1",
+    "react-dom": "^16.12.0",
+    "react-redux": "^7.2.0",
+    "react-router": "^5.2.0",
+    "redux": "^4.0.5",
+    "redux-thunk": "^2.3.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.8.3",
+    "@babel/preset-env": "^7.8.3",
+    "@babel/preset-react": "^7.8.3",
+    "babel-loader": "^8.0.6",
+    "webpack": "^4.41.5",
+    "webpack-cli": "^3.3.10"
+  },
+  "bugs": {
+    "url": "https://github.com/fec-tyche/tyche/issues"
+  },
+  "homepage": "https://github.com/fec-tyche/tyche#readme"
+}
