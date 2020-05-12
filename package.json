@@ -4,7 +4,7 @@
   "description": "FEC Tyche",
   "main": "index.js",
   "scripts": {
-    "test": "jest --detectOpenHandles",
+    "test": "jest",
     "clean": "rm dist/bundle.js",
     "build-dev": "webpack -d --mode development --watch",
     "build-prod": "webpack -p --mode production",
@@ -16,8 +16,11 @@
       "quotes": "off"
     }
   },
-  "jestConfig": {
-    "preset": "jest-puppeteer"
+  "jest": {
+    "testMatch": [
+      "**/tests/**/*.[jt]s?(x)",
+      "**/?(*.)+(spec|test).[jt]s?(x)"
+    ]
   },
   "repository": {
     "type": "git",
