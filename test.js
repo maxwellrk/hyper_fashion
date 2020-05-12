@@ -25,9 +25,9 @@ describe('test end-end', () => {
     await page.goto('http://localhost:3000/');
   })
   //it would close within a second. want to set it close in 2 mins
-  // afterAll(()=> {
-  //   browser.close();
-  // });
+  afterAll(()=> {
+    browser.close();
+  });
 
   //end to end test
   test('end-end: should be titled "FEC - TYCHE"', async () => {
