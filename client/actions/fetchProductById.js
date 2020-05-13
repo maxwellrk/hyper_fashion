@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const fetchProductById = (id) => {
+const fetchProductById = (id = 1) => {
   return (dispatch) => {
     let url = `http://18.224.200.47/products/${id}`;
     return axios
