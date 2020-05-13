@@ -29,6 +29,8 @@
   "author": "Austin Susy Ahsan Maxwell",
   "license": "ISC",
   "dependencies": {
+    "@ant-design/icons": "^4.1.0",
+    "antd": "^4.2.2",
     "axios": "^0.19.2",
     "bootstrap": "^4.4.1",
     "dotenv": "^8.2.0",
