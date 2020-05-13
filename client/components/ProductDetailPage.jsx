@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import Overview from "./Overview/Overview";
+import Overview from "../containers/OverviewContainers/OverviewContainer";
 
 const ProductDetailPage = (props) => {
   useEffect(() => {
