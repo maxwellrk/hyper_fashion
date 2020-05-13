@@ -1,4 +1,5 @@
-import React, { useEffect } from 'react';
+import React, { useEffect } from "react";
+import Overview from "./Overview/Overview";
 
 const ProductDetailPage = (props) => {
   useEffect(() => {
@@ -8,13 +9,14 @@ const ProductDetailPage = (props) => {
 
   return (
     <div>
-      <h1>PRODUCT PAGE</h1>
+      {/* <h1>PRODUCT PAGE</h1>
       {Object.keys(props.productById).map((info) => (
         <div>
           {<h3>{info}</h3>}
-          {info !== 'features' && <p>{props.productById[info]}</p>}
+          {info !== "features" && <p>{props.productById[info]}</p>}
         </div>
-      ))}
+      ))} */}
+      <Overview />
     </div>
   );
 };
