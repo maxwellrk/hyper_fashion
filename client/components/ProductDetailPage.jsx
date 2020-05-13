@@ -3,7 +3,7 @@ import Overview from "./Overview/Overview";
 
 const ProductDetailPage = (props) => {
   useEffect(() => {
-    console.log(props.match.params.id);
+    console.log("product detail props", props);
     props.fetchProductById(props.match.params.id);
   }, [props.location]);
 

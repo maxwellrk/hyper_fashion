@@ -1,5 +1,5 @@
 import React from "react";
-import ProductDescription from "./ProductDescription";
+import ProductDescription from "../../containers/OverviewContainers/productDescriptionContainer";
 
 const Overview = () => {
   return (
