@@ -1,7 +1,11 @@
 import React, { useEffect } from 'react';
 import QnA from '../containers/QnAContainers/QnAContainer';
+import RelatedItemAndOutfit from './RelatedItemAndOutfit.jsx';
+
 const ProductDetailPage = (props) => {
   useEffect(() => {
+    // console.log('props in peductDetail', props);
+    // console.log('id from props paramas', props.match.params.id);
     props.fetchProductById(props.match.params.id);
   }, [props.location]);
 
@@ -21,6 +25,7 @@ const ProductDetailPage = (props) => {
         */}
       {/* <QnA url={props.location} id={props.match.params.id} /> */}
       <QnA />
+      <RelatedItemAndOutfit currentProduct={props.productById} />
     </div>
   );
 };
