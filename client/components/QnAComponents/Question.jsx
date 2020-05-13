@@ -9,20 +9,21 @@ const Question = ({
 }) => {
   return (
     <div>
-      <h3>Q:</h3>
-      <text>User: </text>
-      <text>{asker_Name}</text>
-      <br />
-      <text>Date: </text>
-      <text>{question_date}</text>
-      <br />
-      <text>Question: </text>
-      <text>{question_body}</text>
-      <br />
-      <text>Helpful: </text>
-      <text>Yes: {question_helpfulness}</text>
-      <br />
-      <text>ADD ANSWER</text>
+      <h3
+        style={{
+          display: 'inline',
+        }}
+      >
+        Q: {question_body}
+      </h3>
+      <p
+        style={{
+          display: 'inline',
+        }}
+      >
+        Helpful? Yes: {question_helpfulness} | Add Answer
+      </p>
+      <p>---------------------------------------------</p>
     </div>
   );
 };
