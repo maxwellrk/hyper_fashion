@@ -3,10 +3,10 @@ import axios from 'axios';
 const fetchProductList = () => {
   return (dispatch) => {
     let url = `http://18.224.200.47/products/list`;
-    axios
+    return axios
       .get(url)
       .then((results) => {
-        dispatch({
+        return dispatch({
           type: 'PRODUCT_LIST',
           payload: results.data,
         });
