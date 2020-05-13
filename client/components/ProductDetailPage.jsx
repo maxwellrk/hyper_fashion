@@ -25,7 +25,7 @@ const ProductDetailPage = (props) => {
         */}
       {/* <QnA url={props.location} id={props.match.params.id} /> */}
       <QnA />
-      <RelatedItemAndOutfit currentProduct={props.productById} />
+      {/* <RelatedItemAndOutfit currentProduct={props.productById} /> */}
     </div>
   );
 };
