@@ -1,8 +1,7 @@
 import React, { useEffect } from 'react';
-
+import QnA from '../containers/QnAContainers/QnAContainer';
 const ProductDetailPage = (props) => {
   useEffect(() => {
-    console.log(props.match.params.id);
     props.fetchProductById(props.match.params.id);
   }, [props.location]);
 
@@ -15,6 +14,7 @@ const ProductDetailPage = (props) => {
           {info !== 'features' && <p>{props.productById[info]}</p>}
         </div>
       ))}
+      <QnA />
     </div>
   );
 };
