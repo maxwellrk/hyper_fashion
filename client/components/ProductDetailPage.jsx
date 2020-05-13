@@ -14,7 +14,13 @@ const ProductDetailPage = (props) => {
           {info !== 'features' && <p>{props.productById[info]}</p>}
         </div>
       ))}
-      <QnA url={props.location} id={props.match.params.id} />
+      {/*
+      below is an option on how to set useEffect changes
+        if we end up doing it this way, it won't double render on refresh
+        full refresh but we will have to drill down this prop
+        */}
+      {/* <QnA url={props.location} id={props.match.params.id} /> */}
+      <QnA />
     </div>
   );
 };
