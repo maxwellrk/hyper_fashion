@@ -1,6 +1,7 @@
-import React, { useEffect } from "react";
-import Overview from "../containers/OverviewContainers/OverviewContainer";
-import RelatedItemAndOutfit from "./RelatedItemAndOutfit.jsx";
+import React, { useEffect } from 'react';
+import QnA from '../containers/QnAContainers/QnAContainer';
+import RelatedItemAndOutfit from './RelatedItemAndOutfit.jsx';
+import Overview from '../containers/OverviewContainers/OverviewContainer';
 
 const ProductDetailPage = (props) => {
   useEffect(() => {
@@ -13,6 +14,7 @@ const ProductDetailPage = (props) => {
     <div>
       <Overview />
       <RelatedItemAndOutfit currentProduct={props.productById} />
+      <QnA />
     </div>
   );
 };

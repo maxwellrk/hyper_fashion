@@ -1,13 +1,13 @@
 import axios from 'axios';
 
-const fetchProductById = (id) => {
+const fetchQuestionsById = (id) => {
   return (dispatch) => {
-    let url = `http://18.224.200.47/products/${id}`;
+    let url = `http://18.224.200.47/qa/${id}`;
     return axios
       .get(url)
       .then((results) => {
         return dispatch({
-          type: 'PRODUCT_BY_ID',
+          type: 'QUESTIONS_BY_ID',
           payload: results.data,
         });
       })
@@ -17,4 +17,4 @@ const fetchProductById = (id) => {
   };
 };
 
-export default fetchProductById;
+export default fetchQuestionsById;
