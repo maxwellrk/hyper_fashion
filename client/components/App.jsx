@@ -11,7 +11,9 @@ import ProductDetailPage from '../containers/productDetailPageContainer';
 
 const App = (props) => {
   useEffect(() => {
-    props.fetchProductList().then((resp) => console.log(resp.payload));
+    props.fetchProductList().catch((Err) => {
+      console.log('error getting product list:', Err);
+    });
   }, []);
 
   return (
