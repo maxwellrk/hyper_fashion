@@ -1,26 +1,11 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import fetchProductList from '../actions/index.js';
+import React, { useEffect } from 'react';
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-  }
+const App = (props) => {
+  useEffect(() => {
+    props.fetchProductList().then((resp) => console.log(resp.payload));
+  }, []);
 
-  componentDidMount() {
-    this.props.fetchProductList();
-  }
-
-  render() {
-    console.log(this.props.productList);
-    return <div>FEC - TYCHE </div>;
-  }
-}
-
-const mapStateToProps = (state) => {
-  return { productList: state.productList };
+  return <div>FEC - TYCHE </div>;
 };
 
-export default connect(mapStateToProps, {
-  fetchProductList,
-})(App);
+export default App;
