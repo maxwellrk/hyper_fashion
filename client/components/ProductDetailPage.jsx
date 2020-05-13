@@ -1,4 +1,5 @@
-import React, { useEffect } from 'react';
+import React, { useEffect } from "react";
+import RatingsandReviews from "./ReviewComponents/RatingsandReviews";
 
 const ProductDetailPage = (props) => {
   useEffect(() => {
@@ -12,9 +13,10 @@ const ProductDetailPage = (props) => {
       {Object.keys(props.productById).map((info) => (
         <div>
           {<h3>{info}</h3>}
-          {info !== 'features' && <p>{props.productById[info]}</p>}
+          {info !== "features" && <p>{props.productById[info]}</p>}
         </div>
       ))}
+      <RatingsandReviews page={props.match.params.id} />
     </div>
   );
 };
