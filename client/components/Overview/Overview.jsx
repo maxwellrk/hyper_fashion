@@ -2,6 +2,7 @@ import { Avatar } from "antd";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import ProductDescription from "../../containers/OverviewContainers/productDescriptionContainer";
+import Carousel from "../../containers/OverviewContainers/CarouselContainer";
 
 const Overview = ({ productById }) => {
   const [styles, setStyles] = useState([]);
@@ -29,7 +30,7 @@ const Overview = ({ productById }) => {
     <div>
       STYLE > {currentStyle.name}
       {styles.map((style) => {
-        console.log("all the styles", styles[0]);
+        // console.log("all the styles", styles[0]);
         const image = style.photos[0].thumbnail_url;
         return (
           <Avatar
@@ -39,6 +40,7 @@ const Overview = ({ productById }) => {
           />
         );
       })}
+      <Carousel currentStyle={currentStyle} />
       <ProductDescription />
     </div>
   );
