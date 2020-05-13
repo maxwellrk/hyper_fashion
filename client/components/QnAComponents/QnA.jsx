@@ -2,7 +2,10 @@ import React from 'react';
 import { useEffect } from 'react';
 
 const QnA = (props) => {
-  useEffect(() => {});
+  useEffect(() => {
+    props.fetchQuestionsById(props.id);
+  }, [props.url]);
+
   return <div>QnA</div>;
 };
 

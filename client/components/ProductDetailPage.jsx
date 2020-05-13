@@ -14,7 +14,7 @@ const ProductDetailPage = (props) => {
           {info !== 'features' && <p>{props.productById[info]}</p>}
         </div>
       ))}
-      <QnA />
+      <QnA url={props.location} id={props.match.params.id} />
     </div>
   );
 };
