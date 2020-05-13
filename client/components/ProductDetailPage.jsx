@@ -4,7 +4,7 @@ const ProductDetailPage = (props) => {
   useEffect(() => {
     console.log(props);
     props.fetchProductById(props.match.params.id);
-  }, []);
+  }, [props.location]);
   return (
     <div>
       <h1>PRODUCT PAGE</h1>
