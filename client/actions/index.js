@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export const fetchProductList = () => {
+const fetchProductList = () => {
   return (dispatch) => {
     let url = `http://18.224.200.47/products/list`;
     axios
@@ -16,3 +16,5 @@ export const fetchProductList = () => {
       });
   };
 };
+
+export default fetchProductList;
