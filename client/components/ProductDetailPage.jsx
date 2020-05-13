@@ -1,5 +1,6 @@
-import React, { useEffect } from 'react';
-import RelatedItemAndOutfit from './RelatedItemAndOutfit.jsx'
+import React, { useEffect } from "react";
+import Overview from "../containers/OverviewContainers/OverviewContainer";
+import RelatedItemAndOutfit from "./RelatedItemAndOutfit.jsx";
 
 const ProductDetailPage = (props) => {
   useEffect(() => {
@@ -10,8 +11,8 @@ const ProductDetailPage = (props) => {
 
   return (
     <div>
-      <h1>PRODUCT PAGE</h1>
-      <RelatedItemAndOutfit currentProduct={props.productById}/>
+      <Overview />
+      <RelatedItemAndOutfit currentProduct={props.productById} />
     </div>
   );
 };

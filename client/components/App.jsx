@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect } from "react";
 import {
   HashRouter as Router,
   Route,
@@ -6,12 +6,14 @@ import {
   Link,
   withRouter,
   Redirect,
-} from 'react-router-dom';
-import ProductDetailPage from '../containers/productDetailPageContainer';
+} from "react-router-dom";
+import ProductDetailPage from "../containers/productDetailPageContainer";
 
 const App = (props) => {
   useEffect(() => {
-    props.fetchProductList().then((resp) => console.log('productList in App', resp.payload));
+    props.fetchProductList().catch((Err) => {
+      console.log("error getting product list:", Err);
+    });
   }, []);
 
   return (
