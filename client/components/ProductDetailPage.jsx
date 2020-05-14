@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import RelatedItemAndOutfit from './RelatedItemAndOutfit.jsx'
+import RelatedItemsAndOutfit from './RelatedItemsAndOutfit/RelatedItemsAndOutfit';
 
 const ProductDetailPage = (props) => {
   useEffect(() => {
@@ -10,8 +10,7 @@ const ProductDetailPage = (props) => {
 
   return (
     <div>
-      <h1>PRODUCT PAGE</h1>
-      <RelatedItemAndOutfit currentProduct={props.productById}/>
+      <RelatedItemsAndOutfit id={props.match.params.id}/>
     </div>
   );
 };
