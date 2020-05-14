@@ -11,7 +11,6 @@ const Slide = ({ content }) => (
       background-size: cover;
       background-repeat: no-repeat;
       background-position: center;
-      background-color: blue; 
     `}
   />
 );

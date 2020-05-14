@@ -16,7 +16,7 @@ const ThumbNails = ({ index, thumbnails }) => {
     >
       {thumbnails.map((thumbnail) => {
         const image = thumbnail.thumbnail_url;
-        return <Avatar shape="square" size={60} src={image} />;
+        return <Avatar shape="square" size={50} src={image} />;
       })}
     </div>
   );
