@@ -6,6 +6,7 @@ const QnA = (props) => {
     props.fetchQuestionsById(props.productById.id);
   }, [props.productById]);
 
+  const [renderAmount, changeRenderAmount] = useState(2);
   return (
     <div
       style={{
@@ -14,19 +15,20 @@ const QnA = (props) => {
     >
       {Object.keys(props.questionsList).length ? (
         props.questionsList.results
-          .map((entry) => {
-            return <QnABlock entry={entry} />;
-          })
           .sort((a, b) => {
             //sort by descending helpfulness
-            return (
-              b.props.entry.question_helpfulness -
-              a.props.entry.question_helpfulness
-            );
+            return b.question_helpfulness - a.question_helpfulness;
+          })
+          .slice(0, renderAmount)
+          .map((entry) => {
+            return <QnABlock entry={entry} />;
           })
       ) : (
         <div></div>
       )}
+      <button onClick={() => changeRenderAmount(renderAmount + 2)}>
+        RENDER MORE
+      </button>
     </div>
   );
 };

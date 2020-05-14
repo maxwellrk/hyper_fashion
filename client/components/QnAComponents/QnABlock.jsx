@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Question from './Question';
 import Answer from './Answer';
 
@@ -39,7 +39,7 @@ const QnABlock = ({ entry }) => {
         reported={entry.reported}
       />
       {Object.keys(entry.answers).map((answerId) => {
-        entry.answers[answerId].date = dateFormatter(
+        entry.answers[answerId].newDate = dateFormatter(
           entry.answers[answerId].date
         );
 
