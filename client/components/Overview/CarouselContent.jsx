@@ -7,7 +7,7 @@ const CarouselContent = styled.div`
   height: 100%;
   width: ${(props) => props.width}px;
   display: flex;
-  background: red;
+  background: none;
 `;
 
 export default CarouselContent;

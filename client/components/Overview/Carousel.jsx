@@ -2,13 +2,9 @@ import React, { useState } from "react";
 import CarouselContent from "./CarouselContent";
 import Slide from "./Slide";
 import Arrow from "./Arrows";
+import ThumbNails from "./Thumbnails";
 
-/**
- * @function Slider
- */
 const Carousel = ({ currentStyle }) => {
-  //   const getWidth = () => window.innerWidth;
-
   const [state, setState] = useState({
     index: 0,
     translate: 0,
@@ -64,7 +60,7 @@ const Carousel = ({ currentStyle }) => {
           translate={translate}
           transition={transition}
           width={600 * currentStyle.photos.length}
-          height={600}
+          height="100%"
           overflow="hidden"
         >
           {currentStyle.photos
@@ -78,16 +74,13 @@ const Carousel = ({ currentStyle }) => {
       )}
       <Arrow direction="left" handleClick={prevSlide} />
       <Arrow direction="right" handleClick={nextSlide} />
+      {currentStyle.photos ? (
+        <ThumbNails thumbnails={currentStyle.photos} index={index} />
+      ) : (
+        ""
+      )}
     </div>
   );
 };
-
-// const CarouselCSS = css`
-//   position: relative;
-//   height: 400;
-//   width: 400;
-//   margin: 0 auto;
-//   overflow: hidden;
-// `;
 
 export default Carousel;
