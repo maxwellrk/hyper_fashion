@@ -3,16 +3,22 @@ import { useEffect, useState } from 'react';
 import QnABlock from './QnABlock';
 const QnA = (props) => {
   useEffect(() => {
-    props.fetchQuestionsById(props.productById.id);
+    props.fetchQuestionsById(props.productById.id).then(() => {
+      changeRenderAmount(4);
+    });
   }, [props.productById]);
 
-  const [renderAmount, changeRenderAmount] = useState(2);
+  const [renderAmount, changeRenderAmount] = useState(4);
   return (
     <div
       style={{
         border: '2px solid black',
       }}
     >
+      {/* should find a better way to do this, it's going to need to sort the list
+          everytime, this sort should be done after productById changes, and keep a local state
+          of the sorted array
+       */}
       {Object.keys(props.questionsList).length ? (
         props.questionsList.results
           .sort((a, b) => {
