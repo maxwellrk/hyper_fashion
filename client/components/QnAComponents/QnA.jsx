@@ -34,7 +34,7 @@ const QnA = ({ fetchQuestionsById, questionsList, productById }) => {
   if (
     questionsList.results === undefined ||
     !questionsList.results.length ||
-    questionsList.results.length <= renderAmount
+    questionsList.results.filter(filterQuestions).length <= renderAmount
   ) {
     button = <div />;
   } else {
