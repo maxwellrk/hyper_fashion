@@ -3,21 +3,16 @@ import RelatedItems from "./RelatedItems";
 import Outfit from "./Outfit";
 import axios from "axios";
 import Promise from "bluebird";
+import './RelatedItems.css';
 
-const RelatedItemsAndOutfit = ({currentProduct}) => {
-
-  const [relatedItems, setRelatedItems] = useState([]);
-  const [relatedItemsStyle, setRelatedItemsStyle] = useState([]);
-
-  // console.log('props id in related', props.id);
-  // console.log('props in related', props);
+const RelatedItemsAndOutfit = ({ currentProduct }) => {
+  const [relatedItemsAndStyle, setRelatedItemsAndStyle] = useState([]);
 
   useEffect(() => {
-    console.log('useEffect in related');
-    fetchRelatedItemsById(currentProduct.id);
+    fetchRelatedItemsAndStyleById(currentProduct.id);
   }, [currentProduct.id]);
 
-  const fetchRelatedItemsById = (id) => {
+  const fetchRelatedItemsAndStyleById = (id) => {
     const url = `http://18.224.200.47/products/${id}/related`;
     let productIdListPromise = axios
       .get(url)
@@ -28,44 +23,32 @@ const RelatedItemsAndOutfit = ({currentProduct}) => {
         console.log("error getting related itemsId by id:", err);
       });
 
-    // getting items list
     Promise.all(productIdListPromise)
       .then((idArr) => {
-        // console.log("related Id arr", idArr);
         return Promise.all(
           idArr.map((id) => {
-            const url1 = `http://18.224.200.47/products/${id}`;
-            return axios.get(url1).then((result) => {
-              return result.data;
-            });
+            const itemsUrl = `http://18.224.200.47/products/${id}`;
+            const styleUrl = `http://18.224.200.47/products/${id}/styles`;
+            const requestItem = axios.get(itemsUrl);
+            const requestStyle = axios.get(styleUrl);
+            return axios.all([requestItem, requestStyle]).then(
+              axios.spread((...responses) => {
+                const responseItem = responses[0].data;
+                const responseStyle = responses[1].data;
+                return [responseItem, responseStyle];
+              })
+            );
           })
         );
       })
-      .then((itemsArr) => {
-        setRelatedItems(itemsArr);
-      });
-
-    // getting style list for the item
-    Promise.all(productIdListPromise)
-      .then((idArr) => {
-        // console.log("related Id arr", idArr);
-        return Promise.all(
-          idArr.map((id) => {
-            const url2 = `http://18.224.200.47/products/${id}/styles`;
-            return axios.get(url2).then((result) => {
-              return result.data;
-            });
-          })
-        );
-      })
-      .then((stylesArr) => {
-        setRelatedItemsStyle(stylesArr);
+      .then((itemsAndStyleArr) => {
+        setRelatedItemsAndStyle(itemsAndStyleArr);
       });
   };
 
   return (
-    <div>
-      <RelatedItems relatedItems={relatedItems} relatedItemsStyle={relatedItemsStyle} />
+    <div className="itemsAndOutfit">
+      <RelatedItems relatedItemsAndStyle={relatedItemsAndStyle} />
       <Outfit />
     </div>
   );
