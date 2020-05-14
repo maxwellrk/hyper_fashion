@@ -1,6 +1,8 @@
 import React from "react";
+import { Avatar } from "antd";
 
 const ThumbNails = ({ index, thumbnails }) => {
+  console.log(thumbnails[0]);
   return (
     <div
       style={{
@@ -12,7 +14,10 @@ const ThumbNails = ({ index, thumbnails }) => {
         justifyContent: "center",
       }}
     >
-      Thumbnails
+      {thumbnails.map((thumbnail) => {
+        const image = thumbnail.thumbnail_url;
+        return <Avatar shape="square" size={60} src={image} />;
+      })}
     </div>
   );
 };
