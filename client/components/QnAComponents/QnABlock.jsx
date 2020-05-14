@@ -3,6 +3,7 @@ import Question from './Question';
 import Answer from './Answer';
 
 const QnABlock = ({ entry }) => {
+  const [answerDisplay, toggleAnswerDisplay] = useState(true);
   const months = [
     'January',
     'February',
@@ -18,8 +19,11 @@ const QnABlock = ({ entry }) => {
     'December',
   ];
 
+  useEffect(() => {
+    if (Object.keys(entry.answers).length <= 2) toggleAnswerDisplay(false);
+  }, [entry.answers]);
+
   const dateFormatter = (date) => {
-    date.toString().slice(0, 10);
     const datesArray = date.toString().slice(0, 10).split('-');
     datesArray[1] = months[Number(datesArray[1]) - 1];
     return `${datesArray[1]} ${datesArray[2]}, ${datesArray[0]}`;
@@ -38,13 +42,25 @@ const QnABlock = ({ entry }) => {
         question_helpfulness={entry.question_helpfulness}
         reported={entry.reported}
       />
-      {Object.keys(entry.answers).map((answerId) => {
-        entry.answers[answerId].newDate = dateFormatter(
-          entry.answers[answerId].date
-        );
+      {
+        Object.keys(entry.answers).map((answerId, index) => {
+          entry.answers[answerId].newDate = dateFormatter(
+            entry.answers[answerId].date
+          );
 
-        return <Answer info={entry.answers[answerId]} />;
-      })}
+          if (answerDisplay && index < 2) {
+            return <Answer info={entry.answers[answerId]} />;
+          } else if (!answerDisplay) {
+            return <Answer info={entry.answers[answerId]} />;
+          }
+        })
+        // .sort((a, b) => {})
+      }
+      {answerDisplay && (
+        <p onClick={() => toggleAnswerDisplay(!answerDisplay)}>
+          Load More Answers
+        </p>
+      )}
     </div>
   );
 };

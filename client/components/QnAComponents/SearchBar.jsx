@@ -12,7 +12,6 @@ const SearchBar = ({ searchInput, changeSearchInput }) => {
         value={searchInput}
         onChange={(e) => {
           changeSearchInput(e.target.value);
-          console.log(searchInput);
         }}
       />
     </form>
