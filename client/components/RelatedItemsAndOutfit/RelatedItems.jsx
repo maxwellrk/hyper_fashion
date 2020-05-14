@@ -22,6 +22,7 @@ const RelatedItems = ({ relatedItems, relatedItemsStyle }) => {
         {relatedItems.map((eachItem) => {
           return (
             <div key={eachItem.id} className="RelatedItemInfo">
+              <p>double check id: {eachItem.id}</p>
               <p>{eachItem.category}</p>
               <p>{eachItem.name}</p>
               <p>{eachItem.default_price}</p>
