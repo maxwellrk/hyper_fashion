@@ -1,27 +1,29 @@
-import React from 'react';
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import QnABlock from './QnABlock';
-const QnA = (props) => {
+import SearchBar from './QuestionBar';
+
+const QnA = ({ fetchQuestionsById, questionsList, productById }) => {
   const [renderAmount, changeRenderAmount] = useState(2);
+  const [searchInput, changeSearchInput] = useState('');
 
   useEffect(() => {
-    props.fetchQuestionsById(props.productById.id).then(() => {
+    fetchQuestionsById(productById.id).then(() => {
       return changeRenderAmount(2);
     });
-  }, [props.productById]);
+  }, [productById]);
 
   let button;
 
   if (
-    props.questionsList.results === undefined ||
-    !props.questionsList.results.length ||
-    props.questionsList.results.length <= renderAmount
+    questionsList.results === undefined ||
+    !questionsList.results.length ||
+    questionsList.results.length <= renderAmount
   ) {
     button = <div />;
   } else {
     button = (
       <button onClick={() => changeRenderAmount(renderAmount + 2)}>
-        SHOW MORE QUESTIONS
+        MORE ANSWERED QUESTIONS
       </button>
     );
   }
@@ -36,8 +38,8 @@ const QnA = (props) => {
           everytime, this sort should be done after productById changes, and keep a local state
           of the sorted array
        */}
-      {Object.keys(props.questionsList).length ? (
-        props.questionsList.results
+      {Object.keys(questionsList).length ? (
+        questionsList.results
           .sort((a, b) => {
             //sort by descending helpfulness
             return b.question_helpfulness - a.question_helpfulness;
