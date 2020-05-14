@@ -23,14 +23,15 @@ const Overview = ({ productById }) => {
   }
 
   useEffect(() => {
-    getStyles();
+    if (Object.keys(productById).length) {
+      getStyles();
+    }
   }, [productById]);
 
   return (
     <div>
       Style > {Object.values(currentStyle).length ? currentStyle.name : ""}
       {styles.map((style) => {
-        // console.log("all the styles", styles[0]);
         const image = style.photos[0].thumbnail_url;
         return (
           <Avatar

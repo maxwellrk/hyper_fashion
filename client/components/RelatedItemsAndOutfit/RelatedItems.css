@@ -1,0 +1,43 @@
+/*=================================================
+            related items and outfit Block
+=================================================*/  
+.itemsAndOutfit {
+    width: 80%;
+    border: 1px solid black;
+    margin: 5px auto;
+}
+
+/*=================================================
+            related items
+=================================================*/  
+
+
+.relatedItems {
+    border: 1px solid grey;
+    margin: 10px auto;
+}
+
+h3 {
+    font-weight: bold;
+    margin: 5px 0px;
+}
+
+.imgAndInfo {
+    border: 1px solid lightblue;
+}
+
+.eachItem {
+    /* height: 500px;
+    width: 230px; */
+    display: inline-block;
+    border: 1px solid grey;
+    margin: 0 3px;
+}
+
+img {
+    width: 200px;
+    height: auto;
+    line-height: 50px;
+    text-align: center;
+}
+/* under each item is img and div relatedItemInfo */
