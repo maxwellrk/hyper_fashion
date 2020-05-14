@@ -1,6 +1,7 @@
 /** @jsx jsx */
 import React from "react";
 import { css, jsx } from "@emotion/core";
+import { ArrowLeftOutlined, ArrowRightOutlined } from "@ant-design/icons";
 
 const Arrow = ({ direction, handleClick }) => (
   <div
@@ -8,12 +9,12 @@ const Arrow = ({ direction, handleClick }) => (
     css={css`
       display: flex;
       position: absolute;
-      top: 50%;
+      top: 45%;
       ${direction === "right" ? `right: 25px` : `left: 25px`};
       height: 50px;
       width: 50px;
       justify-content: center;
-      background: white;
+      background: none;
       border-radius: 50%;
       cursor: pointer;
       align-items: center;
@@ -29,7 +30,7 @@ const Arrow = ({ direction, handleClick }) => (
       }
     `}
   >
-    {direction === "right" ? "RIGHT" : "LEFT"}
+    {direction === "right" ? <ArrowRightOutlined /> : <ArrowLeftOutlined />}
   </div>
 );
 
