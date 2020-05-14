@@ -1,8 +1,8 @@
-import { Avatar } from "antd";
-import axios from "axios";
-import React, { useEffect, useState } from "react";
-import ProductDescription from "../../containers/OverviewContainers/productDescriptionContainer";
-import Carousel from "../../containers/OverviewContainers/CarouselContainer";
+import { Avatar } from 'antd';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+import ProductDescription from '../../containers/OverviewContainers/productDescriptionContainer';
+import Carousel from '../../containers/OverviewContainers/CarouselContainer';
 
 const Overview = ({ productById }) => {
   const [styles, setStyles] = useState([]);
@@ -18,7 +18,7 @@ const Overview = ({ productById }) => {
         setCurrentStyle(result.data.results[0]);
       })
       .catch((err) => {
-        console.log("error getting styles", err);
+        console.log('error getting styles', err);
       });
   }
 
@@ -28,7 +28,7 @@ const Overview = ({ productById }) => {
 
   return (
     <div>
-      STYLE > {currentStyle.name}
+      {/* STYLE > {currentStyle.name} */}
       {styles.map((style) => {
         // console.log("all the styles", styles[0]);
         const image = style.photos[0].thumbnail_url;

@@ -3,6 +3,28 @@ import Question from './Question';
 import Answer from './Answer';
 
 const QnABlock = ({ entry }) => {
+  const months = [
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December',
+  ];
+
+  const dateFormatter = (date) => {
+    date.toString().slice(0, 10);
+    const datesArray = date.toString().slice(0, 10).split('-');
+    datesArray[1] = months[Number(datesArray[1]) - 1];
+    return `${datesArray[1]} ${datesArray[2]}, ${datesArray[0]}`;
+  };
+
   return (
     <div
       style={{
@@ -17,6 +39,10 @@ const QnABlock = ({ entry }) => {
         reported={entry.reported}
       />
       {Object.keys(entry.answers).map((answerId) => {
+        entry.answers[answerId].date = dateFormatter(
+          entry.answers[answerId].date
+        );
+
         return <Answer info={entry.answers[answerId]} />;
       })}
     </div>

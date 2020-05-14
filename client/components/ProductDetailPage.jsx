@@ -12,8 +12,8 @@ const ProductDetailPage = (props) => {
 
   return (
     <div>
-      <Overview />
-      <RelatedItemAndOutfit currentProduct={props.productById} />
+      {/* <Overview />
+      <RelatedItemAndOutfit currentProduct={props.productById} /> */}
       <QnA />
     </div>
   );
