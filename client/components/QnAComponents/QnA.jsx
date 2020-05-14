@@ -2,13 +2,30 @@ import React from 'react';
 import { useEffect, useState } from 'react';
 import QnABlock from './QnABlock';
 const QnA = (props) => {
+  const [renderAmount, changeRenderAmount] = useState(2);
+
   useEffect(() => {
     props.fetchQuestionsById(props.productById.id).then(() => {
-      changeRenderAmount(4);
+      return changeRenderAmount(2);
     });
   }, [props.productById]);
 
-  const [renderAmount, changeRenderAmount] = useState(4);
+  let button;
+
+  if (
+    props.questionsList.results === undefined ||
+    !props.questionsList.results.length ||
+    props.questionsList.results.length <= renderAmount
+  ) {
+    button = <div />;
+  } else {
+    button = (
+      <button onClick={() => changeRenderAmount(renderAmount + 2)}>
+        SHOW MORE QUESTIONS
+      </button>
+    );
+  }
+
   return (
     <div
       style={{
@@ -30,11 +47,10 @@ const QnA = (props) => {
             return <QnABlock entry={entry} />;
           })
       ) : (
-        <div></div>
+        <div />
       )}
-      <button onClick={() => changeRenderAmount(renderAmount + 2)}>
-        RENDER MORE
-      </button>
+      <button>ADD QUESTION</button>
+      {button}
     </div>
   );
 };
