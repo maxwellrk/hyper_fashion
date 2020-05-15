@@ -7,9 +7,7 @@ import {
 } from "@ant-design/icons";
 
 const ProductDescription = ({ productById }) => {
-  useEffect(() => {
-    console.log("product description props", productById);
-  }, [productById]);
+  useEffect(() => {}, [productById]);
   return (
     <Space direction="horizontal">
       <Card title={productById.slogan} bordered={false}>

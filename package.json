@@ -30,6 +30,8 @@
   "license": "ISC",
   "dependencies": {
     "@ant-design/icons": "^4.1.0",
+    "@emotion/core": "^10.0.28",
+    "@emotion/styled": "^10.0.27",
     "antd": "^4.2.2",
     "axios": "^0.19.2",
     "bluebird": "^3.7.2",

@@ -32,6 +32,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 // };
 
 const RelatedItems = ({ relatedItemsAndStyle }) => {
+    console.log('relatedItemsAndStyle in child level', relatedItemsAndStyle);
   const createSlides = () => {
     let itemSlides = [];
     for (let i = 0; i < relatedItemsAndStyle.length; i = i + 3) {
@@ -41,7 +42,7 @@ const RelatedItems = ({ relatedItemsAndStyle }) => {
   };
 
   const itemSlides = createSlides();
-  console.log("slides", itemSlides);
+//   console.log("slides", itemSlides);
   return (
     <div className="relatedItems">
       <h3>Related Product</h3>
