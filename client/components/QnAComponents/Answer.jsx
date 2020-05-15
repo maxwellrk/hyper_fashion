@@ -1,14 +1,23 @@
-const React = require('react');
+import React, { useEffect } from 'react';
+
+import Helpful from './Helpful';
 
 const Answer = ({ info }) => {
+  useEffect(() => {
+    console.log(info);
+  });
   return (
     <div>
       <h3>A: </h3>
       <p>{info.body}</p>
 
       <p>
-        by {info.answerer_name}, {info.date} | Helpful? Yes ({info.helpfulness})
-        | Report
+        by{' '}
+        {info.answerer_name === 'Seller'
+          ? info.answerer_name + '(BOLD)'
+          : info.answerer_name}
+        , {info.newDate} |{' '}
+        <Helpful helpfulness={info.helpfulness} answerId={info.id} /> | Report
       </p>
     </div>
   );
