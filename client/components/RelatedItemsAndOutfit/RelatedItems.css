@@ -33,7 +33,10 @@ h3 {
     border: 1px solid grey;
     margin: 0 3px;
 }
-
+.itemImg {
+    height:auto;
+    width: 200px;
+}
 img {
     width: 200px;
     height: auto;
