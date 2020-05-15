@@ -1,5 +1,6 @@
 import axios from "axios";
 import getAverageReview from "./ActionHelpers/averageReviewHelper";
+import getTotalReview from "./ActionHelpers/totalReviewHelper";
 
 const fetchReviewMetaData = (id = 1) => {
   return (dispatch) => {
@@ -11,6 +12,7 @@ const fetchReviewMetaData = (id = 1) => {
           type: "META_BY_PRODUCT",
           payload: {
             averageRating: getAverageReview(results.data.ratings),
+            totalRating: getTotalReview(results.data.ratings),
             fulldata: results.data,
           },
         });
