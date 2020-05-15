@@ -30,7 +30,11 @@ const Arrow = ({ direction, handleClick }) => (
       }
     `}
   >
-    {direction === "right" ? <ArrowRightOutlined /> : <ArrowLeftOutlined />}
+    {direction === "right" ? (
+      <ArrowRightOutlined style={{ fontSize: "20px" }} />
+    ) : (
+      <ArrowLeftOutlined style={{ fontSize: "20px" }} />
+    )}
   </div>
 );
 
