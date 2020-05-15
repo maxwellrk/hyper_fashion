@@ -1,6 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+
+import Helpful from './Helpful';
 
 const Answer = ({ info }) => {
+  useEffect(() => {
+    console.log(info);
+  });
   return (
     <div>
       <h3>A: </h3>
@@ -11,7 +16,8 @@ const Answer = ({ info }) => {
         {info.answerer_name === 'Seller'
           ? info.answerer_name + '(BOLD)'
           : info.answerer_name}
-        , {info.newDate} | Helpful? Yes ({info.helpfulness}) | Report
+        , {info.newDate} |{' '}
+        <Helpful helpfulness={info.helpfulness} answerId={info.id} /> | Report
       </p>
     </div>
   );

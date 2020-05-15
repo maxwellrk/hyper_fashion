@@ -51,8 +51,8 @@ const QnABlock = ({ entry }) => {
         question_helpfulness={entry.question_helpfulness}
         reported={entry.reported}
       />
-      {
-        Object.keys(entry.answers).map((answerId, index) => {
+      {Object.keys(entry.answers)
+        .map((answerId, index) => {
           entry.answers[answerId].newDate = dateFormatter(
             entry.answers[answerId].date
           );
@@ -63,8 +63,9 @@ const QnABlock = ({ entry }) => {
             return <Answer info={entry.answers[answerId]} />;
           }
         })
-        // .sort((a, b) => {})
-      }
+        .sort((a, b) => {
+          return b.props.info.helpfulness - a.props.info.helpfulness;
+        })}
       {answerDisplay && (
         <p onClick={() => toggleAnswerDisplay(false)}>Load More Answers</p>
       )}
