@@ -1,6 +1,8 @@
+/* eslint-disable */
 import React, { useEffect, useState } from 'react';
 import QnABlock from './QnABlock';
 import SearchBar from './SearchBar';
+import QuestionModal from './QuestionModal';
 
 const QnA = ({ fetchQuestionsById, questionsList, productById }) => {
   const [questionRender, changeQuestionRender] = useState(2);
@@ -77,7 +79,7 @@ const QnA = ({ fetchQuestionsById, questionsList, productById }) => {
         changeSearchInput={changeSearchInput}
       />
       {listOfQnABlock}
-      <button>ADD QUESTION</button>
+      <QuestionModal />
       {moreQuestions}
     </div>
   );

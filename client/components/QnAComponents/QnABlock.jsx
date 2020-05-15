@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { useEffect, useState } from 'react';
 import Question from './Question';
 import Answer from './Answer';
@@ -20,11 +21,6 @@ const QnABlock = ({ entry }) => {
   ];
 
   useEffect(() => {
-    console.log(
-      Object.keys(entry.answers),
-      Object.keys(entry.answers).length,
-      entry.answers
-    );
     if (Object.keys(entry.answers).length > 2) {
       toggleAnswerDisplay(true);
     } else {
@@ -37,6 +33,20 @@ const QnABlock = ({ entry }) => {
     datesArray[1] = months[Number(datesArray[1]) - 1];
     return `${datesArray[1]} ${datesArray[2]}, ${datesArray[0]}`;
   };
+
+  let answersButton;
+
+  if (answerDisplay) {
+    answersButton = (
+      <p onClick={() => toggleAnswerDisplay(false)}>See More Answers</p>
+    );
+  } else if (!answerDisplay) {
+    answersButton = (
+      <p onClick={() => toggleAnswerDisplay(true)}>Collapse Answers</p>
+    );
+  } else {
+    return;
+  }
 
   return (
     <div
@@ -56,21 +66,28 @@ const QnABlock = ({ entry }) => {
           entry.answers[answerId].newDate = dateFormatter(
             entry.answers[answerId].date
           );
-
-          if (answerDisplay && index < 2) {
-            return <Answer info={entry.answers[answerId]} />;
-          } else if (!answerDisplay) {
-            return <Answer info={entry.answers[answerId]} />;
-          }
+          return <Answer info={entry.answers[answerId]} />;
         })
+        //  Need to bring seller answers to the top of the page
         .sort((a, b) => {
           return b.props.info.helpfulness - a.props.info.helpfulness;
+        })
+        .filter((ele, index) => {
+          if (answerDisplay && index < 2) {
+            return ele;
+          } else if (!answerDisplay) {
+            return ele;
+          }
         })}
-      {answerDisplay && (
-        <p onClick={() => toggleAnswerDisplay(false)}>Load More Answers</p>
-      )}
+      {Object.keys(entry.answers).length > 2 && answersButton}
     </div>
   );
 };
-
+//above still needs to cause a 
 export default QnABlock;
+
+// if (answerDisplay && index < 2) {
+//   return <Answer info={entry.answers[answerId]} />;
+// } else if (!answerDisplay) {
+//   return <Answer info={entry.answers[answerId]} />;
+// }
