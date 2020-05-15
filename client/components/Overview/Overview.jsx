@@ -28,7 +28,7 @@ const Overview = ({ productById }) => {
 
   return (
     <div>
-      STYLE > {currentStyle.name}
+      {/* STYLE > {currentStyle.name} */}
       {styles.map((style) => {
         // console.log("all the styles", styles[0]);
         const image = style.photos[0].thumbnail_url;

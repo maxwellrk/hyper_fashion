@@ -1,6 +1,6 @@
-import React from 'react';
-import { useEffect, useState } from 'react';
-import QnABlock from './QnABlock';
+import React from "react";
+import { useEffect, useState } from "react";
+import QnABlock from "./QnABlock";
 const QnA = (props) => {
   useEffect(() => {
     props.fetchQuestionsById(props.productById.id);
@@ -9,7 +9,7 @@ const QnA = (props) => {
   return (
     <div
       style={{
-        border: '2px solid black',
+        border: "2px solid black",
       }}
     >
       {Object.keys(props.questionsList).length ? (
