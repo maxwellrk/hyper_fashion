@@ -35,14 +35,19 @@ const RelatedItems = ({ relatedItemsAndStyle }) => {
     console.log('relatedItemsAndStyle in child level', relatedItemsAndStyle);
   const createSlides = () => {
     let itemSlides = [];
-    for (let i = 0; i < relatedItemsAndStyle.length; i = i + 3) {
-      itemSlides.push(relatedItemsAndStyle.slice(i, i + 3));
+    // for (let i = 0; i < relatedItemsAndStyle.length; i = i + 3) {
+    //   itemSlides.push(relatedItemsAndStyle.slice(i, i + 3));
+    // }
+    let start = 0;
+    for (let i = 0; i < relatedItemsAndStyle.length - 2; i++) {
+      itemSlides.push(relatedItemsAndStyle.slice(start, i + 3));
+      start += 1;
     }
     return itemSlides;
   };
 
   const itemSlides = createSlides();
-//   console.log("slides", itemSlides);
+  console.log("slides", itemSlides);
   return (
     <div className="relatedItems">
       <h3>Related Product</h3>
@@ -60,7 +65,8 @@ const RelatedItems = ({ relatedItemsAndStyle }) => {
                 {slide.map((eachItem, j) => {
                   return (
                     <Col key={j}>
-                      <Card className="best-deals__product-card text-center" onClick={()=> {console.log('eachItem[0].id',eachItem[0].id)}}>
+                      <Card className="product-card" onClick={()=> {console.log('eachItem[0].id',eachItem[0].id)}}>
+                        
                         <Card.Img
                           src={eachItem[1].results[0].photos[0].thumbnail_url}
                           alt="Profuct image"
