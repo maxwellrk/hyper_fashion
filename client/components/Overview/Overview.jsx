@@ -1,12 +1,13 @@
-import { Avatar, Row, Col, Dropdown, Button } from 'antd';
-import { DownOutlined } from '@ant-design/icons';
-import axios from 'axios';
-import React, { useEffect, useState } from 'react';
-import ProductDescription from '../../containers/OverviewContainers/productDescriptionContainer';
-import Carousel from '../../containers/OverviewContainers/CarouselContainer';
-import Display from './Display.jsx';
+import {Avatar, Row, Col, Dropdown, Button} from "antd";
+import {DownOutlined} from "@ant-design/icons";
+import axios from "axios";
+import React, {useEffect, useState} from "react";
+import ProductDescription from "../../containers/OverviewContainers/productDescriptionContainer";
+import Carousel from "../../containers/OverviewContainers/CarouselContainer";
+import Display from "./Display.jsx";
+import Reviews from "../../containers/OverviewContainers/ReviewsContainer";
 
-const Overview = ({ productById }) => {
+const Overview = ({productById}) => {
   const [styles, setStyles] = useState([]);
   const [currentStyle, setCurrentStyle] = useState({});
 
@@ -20,7 +21,7 @@ const Overview = ({ productById }) => {
         setCurrentStyle(result.data.results[0]);
       })
       .catch((err) => {
-        console.log('error getting styles', err);
+        console.log("error getting styles", err);
       });
   }
 
@@ -36,16 +37,17 @@ const Overview = ({ productById }) => {
         <Col span={16}>
           <Carousel currentStyle={currentStyle} />
         </Col>
-        <Col span={8} style={{ marginTop: 30 }}>
+        <Col span={8} style={{marginTop: 20}}>
+          <Reviews />
           <Display currentStyle={currentStyle} productById={productById} />
-          Style > {Object.values(currentStyle).length ? currentStyle.name : ''}
+          Style > {Object.values(currentStyle).length ? currentStyle.name : ""}
           <br />
           <br />
           {styles.map((style) => {
             const image = style.photos[0].thumbnail_url;
             return (
               <Avatar
-                style={{ margin: '2px' }}
+                style={{margin: "2px"}}
                 src={image}
                 size={64}
                 onClick={() => setCurrentStyle(style)}
