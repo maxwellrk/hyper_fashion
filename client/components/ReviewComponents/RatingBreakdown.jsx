@@ -2,6 +2,7 @@ import React from "react";
 import LinearProgress from "@material-ui/core/LinearProgress";
 import { lighten, makeStyles, withStyles } from "@material-ui/core/styles";
 import ratingBreakDownPercentage from "./ReviewComponentHelpers/ratingBreakdownPercentage";
+import "./ReviewStyles/reviewstyles.css";
 
 const RatingBreakdown = (props) => {
   //   useEffect(() => {
@@ -24,9 +25,12 @@ const RatingBreakdown = (props) => {
   }
   const BorderLinearProgress = withStyles({
     root: {
-      height: 20,
+      height: 10,
+      width: 210,
       backgroundColor: lighten("#ebebeb", 0.3),
-      margin: 30,
+      margin: 10,
+      position: "relative",
+      left: 45,
     },
     bar: {
       borderRadius: 0,
@@ -35,8 +39,8 @@ const RatingBreakdown = (props) => {
   })(LinearProgress);
   return (
     <div>
-      <div>
-        <div>5 stars</div>
+      <div className="linearbar5">
+        <div className="starrating">5 stars</div>
         <BorderLinearProgress
           className="whatever"
           variant="determinate"
@@ -44,8 +48,8 @@ const RatingBreakdown = (props) => {
           value={valueFive}
         />
       </div>
-      <div>
-        <div>4 stars</div>
+      <div className="linearbar4">
+        <div className="starrating">4 stars</div>
         <BorderLinearProgress
           className="whatever"
           variant="determinate"
@@ -53,8 +57,8 @@ const RatingBreakdown = (props) => {
           value={valueFour}
         />
       </div>
-      <div>
-        <div>3 stars</div>
+      <div className="linearbar3">
+        <div className="starrating">3 stars</div>
         <BorderLinearProgress
           className="whatever"
           variant="determinate"
@@ -62,8 +66,8 @@ const RatingBreakdown = (props) => {
           value={valueThree}
         />
       </div>
-      <div>
-        <div>2 stars</div>
+      <div className="linearbar2">
+        <div className="starrating">2 stars</div>
         <BorderLinearProgress
           className="whatever"
           variant="determinate"
@@ -71,8 +75,8 @@ const RatingBreakdown = (props) => {
           value={valueTwo}
         />
       </div>
-      <div>
-        <div>1 stars</div>
+      <div className="linearbar1">
+        <div className="starrating">1 stars</div>
         <BorderLinearProgress
           className="whatever"
           variant="determinate"

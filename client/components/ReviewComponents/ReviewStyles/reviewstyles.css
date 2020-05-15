@@ -1,0 +1,49 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap");
+
+.overallRating {
+  font-size: 4.5rem;
+  font-family: "Roboto", sans-serif;
+  margin-bottom: 1px;
+}
+
+.overallComponent {
+  display: flexbox;
+  width: 350px;
+}
+
+.linearbar4 {
+  position: relative;
+  bottom: 20px;
+}
+
+.linearbar3 {
+  position: relative;
+  bottom: 40px;
+}
+
+.linearbar2 {
+  position: relative;
+  bottom: 60px;
+}
+
+.linearbar1 {
+  position: relative;
+  bottom: 80px;
+}
+
+.starrating {
+  position: relative;
+  top: 25px;
+  text-decoration: underline;
+}
+
+.ratingsbreakdownbox {
+  position: relative;
+  bottom: 10px;
+}
+
+/* .reviewpercentage {
+  margin-bottom: 50px;
+  position: "relative";
+  top: "-150px";
+} */
