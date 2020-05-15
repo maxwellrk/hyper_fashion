@@ -5,7 +5,8 @@ const Display = ({ currentStyle, productById }) => {
     <div>
       <div>{productById.category}</div>
       <h1>{productById.name}</h1>
-      <div>{currentStyle.original_price}</div>
+      <div>${currentStyle.original_price}</div>
+      <br />
     </div>
   );
 };

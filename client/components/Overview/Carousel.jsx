@@ -25,7 +25,7 @@ const Carousel = ({ currentStyle }) => {
     setState({
       ...state,
       index: index + 1,
-      translate: (index + 1) * 600,
+      translate: (index + 1) * 800,
     });
   };
 
@@ -33,7 +33,7 @@ const Carousel = ({ currentStyle }) => {
     if (index === 0) {
       return setState({
         ...state,
-        translate: (currentStyle.photos.length - 1) * 600,
+        translate: (currentStyle.photos.length - 1) * 800,
         index: currentStyle.photos.length - 1,
       });
     }
@@ -41,15 +41,15 @@ const Carousel = ({ currentStyle }) => {
     setState({
       ...state,
       index: index - 1,
-      translate: (index - 1) * 600,
+      translate: (index - 1) * 800,
     });
   };
 
   return (
     <div
       style={{
-        height: 400,
-        width: 600,
+        height: 600,
+        width: 800,
         position: "relative",
         overflow: "hidden",
         margin: 0,
@@ -59,7 +59,7 @@ const Carousel = ({ currentStyle }) => {
         <CarouselContent
           translate={translate}
           transition={transition}
-          width={600 * currentStyle.photos.length}
+          width={800 * currentStyle.photos.length}
           height="100%"
           overflow="hidden"
         >
