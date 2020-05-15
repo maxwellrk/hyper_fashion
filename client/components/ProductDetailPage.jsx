@@ -13,10 +13,10 @@ const ProductDetailPage = (props) => {
 
   return (
     <div>
-      <Overview />
-      <RelatedItemAndOutfit currentProduct={props.productById} />
+      {/* <Overview /> */}
+      {/* <RelatedItemAndOutfit currentProduct={props.productById} /> */}
       <QnA />
-      <RatingsandReviews page={props.match.params.id} />
+      {/* <RatingsandReviews page={props.match.params.id} /> */}
     </div>
   );
 };

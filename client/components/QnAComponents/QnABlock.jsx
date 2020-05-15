@@ -3,7 +3,7 @@ import Question from './Question';
 import Answer from './Answer';
 
 const QnABlock = ({ entry }) => {
-  const [answerDisplay, toggleAnswerDisplay] = useState(true);
+  const [answerDisplay, toggleAnswerDisplay] = useState(false);
   const months = [
     'January',
     'February',
@@ -20,7 +20,16 @@ const QnABlock = ({ entry }) => {
   ];
 
   useEffect(() => {
-    if (Object.keys(entry.answers).length <= 2) toggleAnswerDisplay(false);
+    console.log(
+      Object.keys(entry.answers),
+      Object.keys(entry.answers).length,
+      entry.answers
+    );
+    if (Object.keys(entry.answers).length > 2) {
+      toggleAnswerDisplay(true);
+    } else {
+      toggleAnswerDisplay(false);
+    }
   }, [entry.answers]);
 
   const dateFormatter = (date) => {
@@ -57,9 +66,7 @@ const QnABlock = ({ entry }) => {
         // .sort((a, b) => {})
       }
       {answerDisplay && (
-        <p onClick={() => toggleAnswerDisplay(!answerDisplay)}>
-          Load More Answers
-        </p>
+        <p onClick={() => toggleAnswerDisplay(false)}>Load More Answers</p>
       )}
     </div>
   );
