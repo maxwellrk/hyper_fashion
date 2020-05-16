@@ -1,10 +1,10 @@
-import {Avatar, Row, Col, Dropdown, Button} from "antd";
-import {DownOutlined} from "@ant-design/icons";
+import {Avatar, Row, Col} from "antd";
 import axios from "axios";
 import React, {useEffect, useState} from "react";
 import ProductDescription from "../../containers/OverviewContainers/productDescriptionContainer";
 import Carousel from "../../containers/OverviewContainers/CarouselContainer";
 import Display from "./Display.jsx";
+import DropDownMenus from "./DropDownMenus";
 import Reviews from "../../containers/OverviewContainers/ReviewsContainer";
 
 const Overview = ({productById}) => {
@@ -56,16 +56,10 @@ const Overview = ({productById}) => {
           })}
           <br />
           <br />
-          <Dropdown>
-            <Button>
-              Select Size <DownOutlined />
-            </Button>
-          </Dropdown>
-          <Dropdown>
-            <Button>
-              1 <DownOutlined />
-            </Button>
-          </Dropdown>
+          <DropDownMenus
+            currentStyle={currentStyle}
+            productById={productById}
+          />
         </Col>
       </Row>
       <ProductDescription />
