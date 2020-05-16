@@ -79,7 +79,7 @@ const RelatedItems = ({prodRating, productById, relatedItemsAndStyle,}) => {
                               className="img"
                             />
                             <Card.Body className="info">
-                              <p>double check id: {eachItem[0].id}</p>
+                              {/* <p>double check id: {eachItem[0].id}</p> */}
                               <Card.Text>{eachItem[0].category}</Card.Text>
                               <Card.Title>{eachItem[0].name}</Card.Title>
                               <Card.Text>{eachItem[0].name}</Card.Text>
