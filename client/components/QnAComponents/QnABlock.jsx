@@ -61,12 +61,13 @@ const QnABlock = ({ entry }) => {
         question_helpfulness={entry.question_helpfulness}
         reported={entry.reported}
       />
+      {/* <AnswerModal /> */}
       {Object.keys(entry.answers)
         .map((answerId, index) => {
           entry.answers[answerId].newDate = dateFormatter(
             entry.answers[answerId].date
           );
-          return <Answer info={entry.answers[answerId]} />;
+          return <Answer info={entry.answers[answerId]} question />;
         })
         //  Need to bring seller answers to the top of the page
         .sort((a, b) => {
@@ -83,7 +84,7 @@ const QnABlock = ({ entry }) => {
     </div>
   );
 };
-//above still needs to cause a 
+//above still needs to cause a
 export default QnABlock;
 
 // if (answerDisplay && index < 2) {
