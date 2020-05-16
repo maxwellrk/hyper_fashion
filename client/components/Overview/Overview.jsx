@@ -1,4 +1,4 @@
-import {Avatar, Row, Col, Space} from "antd";
+import {Avatar, Row, Col, Space, Badge} from "antd";
 import axios from "axios";
 import React, {useEffect, useState} from "react";
 import ProductDescription from "../../containers/OverviewContainers/productDescriptionContainer";
@@ -11,6 +11,7 @@ import Buttons from "./Buttons";
 const Overview = ({productById}) => {
   const [styles, setStyles] = useState([]);
   const [currentStyle, setCurrentStyle] = useState({});
+  const [currentSelected, setCurrentSelected] = useState([1]);
 
   function getStyles() {
     let id = productById.id;
@@ -31,6 +32,12 @@ const Overview = ({productById}) => {
       getStyles();
     }
   }, [productById]);
+
+  const setAsCurrent = (style) => {
+    console.log("set as current!", style);
+    setCurrentStyle(style);
+    setCurrentSelected([style.style_id]);
+  };
 
   return (
     <div>
@@ -55,14 +62,25 @@ const Overview = ({productById}) => {
             <Col span={16}>
               {styles.map((style) => {
                 const image = style.photos[0].thumbnail_url;
-                return (
-                  <Avatar
-                    style={{margin: "2px"}}
-                    src={image}
-                    size={64}
-                    onClick={() => setCurrentStyle(style)}
-                  />
-                );
+                if (style.style_id === currentSelected[0]) {
+                  return (
+                    <Avatar
+                      style={{margin: "2px"}}
+                      src={image}
+                      size={64}
+                      onClick={() => setAsCurrent(style)}
+                    />
+                  );
+                } else {
+                  return (
+                    <Avatar
+                      style={{margin: "2px"}}
+                      src={image}
+                      size={50}
+                      onClick={() => setAsCurrent(style)}
+                    />
+                  );
+                }
               })}
             </Col>
           </Row>

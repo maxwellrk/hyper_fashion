@@ -1,9 +1,9 @@
 /** @jsx jsx */
 import React from "react";
-import { css, jsx } from "@emotion/core";
-import { ArrowLeftOutlined, ArrowRightOutlined } from "@ant-design/icons";
+import {css, jsx} from "@emotion/core";
+import {ArrowLeftOutlined, ArrowRightOutlined} from "@ant-design/icons";
 
-const Arrow = ({ direction, handleClick }) => (
+const Arrow = ({direction, handleClick}) => (
   <div
     onClick={handleClick}
     css={css`
@@ -20,7 +20,7 @@ const Arrow = ({ direction, handleClick }) => (
       align-items: center;
       transition: transform ease-in 0.1s;
       &:hover {
-        transform: scale(1.1);
+        transform: scale(1.5);
       }
       img {
         transform: translateX(${direction === "left" ? "-2" : "2"}px);
@@ -31,9 +31,9 @@ const Arrow = ({ direction, handleClick }) => (
     `}
   >
     {direction === "right" ? (
-      <ArrowRightOutlined style={{ fontSize: "20px" }} />
+      <ArrowRightOutlined style={{fontSize: "20px"}} />
     ) : (
-      <ArrowLeftOutlined style={{ fontSize: "20px" }} />
+      <ArrowLeftOutlined style={{fontSize: "20px"}} />
     )}
   </div>
 );
