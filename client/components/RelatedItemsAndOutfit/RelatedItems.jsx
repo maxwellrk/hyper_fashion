@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Carousel, Row, Col, Card, Button } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Link } from "react-router-dom";
-
+import Rating from "@material-ui/lab/Rating";
 // const RelatedItems = ({ relatedItemsAndStyle }) => {
 
 //   return (
@@ -32,8 +32,7 @@ import { Link } from "react-router-dom";
 //   );
 // };
 
-const RelatedItems = ({prodRating, productById, relatedItemsAndStyle,}) => {
-
+const RelatedItems = ({ prodRating, productById, relatedItemsAndStyle }) => {
   const createSlides = () => {
     let itemSlides = [];
     let start = 0;
@@ -64,15 +63,16 @@ const RelatedItems = ({prodRating, productById, relatedItemsAndStyle,}) => {
                   {slide.map((eachItem, j) => {
                     return (
                       <Col key={j} className="relatedProducts-carousel-col">
-                        <Link to={`/item/${eachItem[0].id}`} className="related-product-link">
-                          <Card
-                            className="product-card"
-                          >
+                        <Link
+                          to={`/item/${eachItem[0].id}`}
+                          className="related-product-link"
+                        >
+                          <Card className="product-card">
                             <Card.Img
                               src={
                                 eachItem[1].results.length
                                   ? eachItem[1].results[0].photos[0]
-                                      .thumbnail_url
+                                    .thumbnail_url
                                   : null
                               }
                               alt="Missing product image"
@@ -86,7 +86,13 @@ const RelatedItems = ({prodRating, productById, relatedItemsAndStyle,}) => {
                               <Card.Text>
                                 ${eachItem[0].default_price}
                               </Card.Text>
-                              <Card.Text>Rating</Card.Text>
+                              <Rating
+                                style={{ color: "black" }}
+                                precision={0.1}
+                                size="small"
+                                readOnly
+                                value={prodRating.averageRating}
+                              />
                             </Card.Body>
                           </Card>
                         </Link>
