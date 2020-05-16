@@ -7,6 +7,7 @@ import QuestionModal from './QuestionModal';
 const QnA = ({ fetchQuestionsById, questionsList, productById }) => {
   const [questionRender, changeQuestionRender] = useState(2);
   const [searchInput, changeSearchInput] = useState('');
+  const [questionModalRender, toggleQuestionModel] = useState(false);
 
   useEffect(() => {
     fetchQuestionsById(productById.id)
@@ -79,7 +80,10 @@ const QnA = ({ fetchQuestionsById, questionsList, productById }) => {
         changeSearchInput={changeSearchInput}
       />
       {listOfQnABlock}
-      <QuestionModal />
+      <QuestionModal
+        questionModalRender={questionModalRender}
+        toggleQuestionModel={toggleQuestionModel}
+      />
       {moreQuestions}
     </div>
   );
