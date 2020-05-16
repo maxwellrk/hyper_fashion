@@ -1,8 +1,8 @@
-import React, { useEffect } from 'react';
-import RatingsandReviews from './ReviewComponents/RatingsandReviews';
-import QnA from '../containers/QnAContainers/QnAContainer';
-import RelatedItemAndOutfit from './RelatedItemsAndOutfit/RelatedItemsAndOutfit';
-import Overview from '../containers/OverviewContainers/OverviewContainer';
+import React, {useEffect} from "react";
+import RatingsandReviews from "./ReviewComponents/RatingsandReviews";
+import QnA from "../containers/QnAContainers/QnAContainer";
+import RelatedItemAndOutfit from "./RelatedItemsAndOutfit/RelatedItemsAndOutfit";
+import Overview from "../containers/OverviewContainers/OverviewContainer";
 
 const ProductDetailPage = (props) => {
   useEffect(() => {
