@@ -11,7 +11,7 @@ import Buttons from "./Buttons";
 const Overview = ({productById}) => {
   const [styles, setStyles] = useState([]);
   const [currentStyle, setCurrentStyle] = useState({});
-  const [currentSelected, setCurrentSelected] = useState([1]);
+  const [currentSelected, setCurrentSelected] = useState([]);
 
   function getStyles() {
     let id = productById.id;
@@ -21,6 +21,7 @@ const Overview = ({productById}) => {
       .then((result) => {
         setStyles(result.data.results);
         setCurrentStyle(result.data.results[0]);
+        setCurrentSelected([result.data.results[0].style_id]);
       })
       .catch((err) => {
         console.log("error getting styles", err);
