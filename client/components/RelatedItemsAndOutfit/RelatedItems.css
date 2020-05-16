@@ -11,6 +11,10 @@ h3 {
     font-weight: bold;
     margin: 5px 0px;
   }
+  h6 {
+    color: grey;
+    text-align: center;
+  }
 /*=================================================
             related items
 =================================================*/
