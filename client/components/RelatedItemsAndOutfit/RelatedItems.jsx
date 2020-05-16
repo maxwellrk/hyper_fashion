@@ -31,8 +31,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 //   );
 // };
 
-const RelatedItems = ({ relatedItemsAndStyle }) => {
-  // console.log("relatedItemsAndStyle in child level", relatedItemsAndStyle);
+const RelatedItems = ({fetchProductById, productById, relatedItemsAndStyle}) => {
+
   const createSlides = () => {
     let itemSlides = [];
     let start = 0;
@@ -65,9 +65,10 @@ const RelatedItems = ({ relatedItemsAndStyle }) => {
                       <Col key={j} className="relatedProducts-carousel-col">
                         <Card
                           className="product-card"
-                          // onClick={() => {
-                          //   console.log("eachItem[0].id", eachItem[0].id);
-                          // }}
+                          onClick={() => {
+                            fetchProductById(eachItem[0].id);
+                            // console.log("eachItem[0].id", eachItem[0].id);
+                          }}
                         >
                           <Card.Img
                             src={
@@ -79,7 +80,7 @@ const RelatedItems = ({ relatedItemsAndStyle }) => {
                             className="img"
                           />
                           <Card.Body className="info">
-                            {/* <p>double check id: {eachItem[0].id}</p> */}
+                            <p>double check id: {eachItem[0].id}</p>
                             <Card.Text>{eachItem[0].category}</Card.Text>
                             <Card.Title>{eachItem[0].name}</Card.Title>
                             <Card.Text>{eachItem[0].name}</Card.Text>
