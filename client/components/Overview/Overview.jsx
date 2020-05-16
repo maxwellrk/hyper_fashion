@@ -34,7 +34,6 @@ const Overview = ({productById}) => {
   }, [productById]);
 
   const setAsCurrent = (style) => {
-    console.log("set as current!", style);
     setCurrentStyle(style);
     setCurrentSelected([style.style_id]);
   };
