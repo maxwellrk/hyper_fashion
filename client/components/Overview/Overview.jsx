@@ -56,10 +56,7 @@ const Overview = ({productById}) => {
           })}
           <br />
           <br />
-          <DropDownMenus
-            currentStyle={currentStyle}
-            productById={productById}
-          />
+          <DropDownMenus currentStyle={currentStyle} />
         </Col>
       </Row>
       <ProductDescription />
