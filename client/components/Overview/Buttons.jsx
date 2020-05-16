@@ -5,7 +5,7 @@ import {PlusOutlined, StarOutlined} from "@ant-design/icons";
 const Buttons = ({currentStyle}) => {
   return (
     <div>
-      <Space>
+      <Space size="large">
         <Button type="default" size="large">
           <PlusOutlined size="large" />
           Add To Your Cart!

@@ -72,7 +72,7 @@ const Overview = ({productById}) => {
             <Col span={24}>
               <DropDownMenus currentStyle={currentStyle} />
             </Col>
-            <Col span={24}>
+            <Col span={24} style={{marginTop: "20px"}}>
               <Buttons currentStyle={currentStyle} />
             </Col>
           </Row>

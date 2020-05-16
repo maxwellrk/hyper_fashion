@@ -45,7 +45,7 @@ const QuantityDropdown = ({currentSize, currentStyle}) => {
       {currentSize.length ? (
         <Dropdown overlay={menu2}>
           <Button>
-            {currentQuantity.length ? currentQuantity : "Select Quantity"}{" "}
+            {currentQuantity.length ? currentQuantity : "Quantity"}{" "}
             <DownOutlined />
           </Button>
         </Dropdown>

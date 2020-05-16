@@ -27,7 +27,7 @@ const DropDownMenus = ({currentStyle}) => {
   return (
     <div>
       <Row>
-        <Col span={10}>
+        <Col span={4}>
           <div>
             <Dropdown overlay={menu1}>
               <Button>
@@ -37,9 +37,10 @@ const DropDownMenus = ({currentStyle}) => {
             </Dropdown>
           </div>
         </Col>
-        <Col span={6}>
+        <Col span={12}>
           <div>
             <QuantityDropDown
+              style={{width: "100px"}}
               currentSize={currentSize}
               currentStyle={currentStyle}
             />
