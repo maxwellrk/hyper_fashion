@@ -3,9 +3,6 @@ import React, { useEffect } from 'react';
 import Helpful from './Helpful';
 
 const Answer = ({ info }) => {
-  useEffect(() => {
-    console.log(info);
-  });
   return (
     <div>
       <h3>A: </h3>

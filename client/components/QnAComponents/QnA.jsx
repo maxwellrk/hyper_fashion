@@ -1,8 +1,9 @@
 /* eslint-disable */
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
+import axios from 'axios';
 import QnABlock from './QnABlock';
 import SearchBar from './SearchBar';
-import QuestionModal from './QuestionModal';
+import QuestionModal from '../../containers/QnAContainers/QuestionModalContainer';
 
 const QnA = ({ fetchQuestionsById, questionsList, productById }) => {
   const [questionRender, changeQuestionRender] = useState(2);
@@ -12,16 +13,12 @@ const QnA = ({ fetchQuestionsById, questionsList, productById }) => {
   useEffect(() => {
     fetchQuestionsById(productById.id)
       .then(() => {
-        return changeQuestionRender(2);
+        changeQuestionRender(2);
       })
       .then(() => {
         changeSearchInput('');
       });
   }, [productById]);
-  //not sure if i want this
-  // useEffect(() => {
-  //   if (searchInput.length > 2) changeQuestionRender(2);
-  // }, [searchInput]);
 
   //filter function for searchBar
   const filterQuestions = (entry) => {

@@ -1,7 +1,18 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Modal, Button } from 'antd';
+import axios from 'axios';
 
-const QuestionModal = ({ questionModalRender, toggleQuestionModel }) => {
+//fetchQuestionsById and currentId should be hooked up by react store, not passed down
+//with props, need to go back and fix
+const QuestionModal = ({
+  questionModalRender,
+  toggleQuestionModel,
+  productById,
+}) => {
+  const [inputEmail, changeInputEmail] = useState('');
+  const [inputQuestion, changeInputQuestion] = useState('');
+  const [inputNickname, changeInputNickname] = useState('');
+
   return (
     <div>
       <button
@@ -11,12 +22,24 @@ const QuestionModal = ({ questionModalRender, toggleQuestionModel }) => {
         }}
       >
         ADD A QUESTION
-      </button>
+      </Button>
       <Modal
-        title="example modal"
+        title={
+          <div>
+            <p>Ask Your Question</p>
+            <p>About the {productById.name}</p>
+          </div>
+        }
         visible={questionModalRender}
         onOk={() => {
-          toggleQuestionModel(false);
+          // axios
+          // .post(`http://18.224.200.47/qa/${productById.id}`, {})
+          // .then(() => {
+          fetchQuestionsById(productById.id)
+            // })
+            .then(() => {
+              toggleQuestionModel(false);
+            });
         }}
         onCancel={() => {
           toggleQuestionModel(false);
