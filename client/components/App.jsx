@@ -20,7 +20,6 @@ const App = (props) => {
     <Router>
       <Switch>
         <Route exact path="/" render={() => <Redirect to="/item/1" />} />
-        {/* <Route path={!isNaN(props.currentId) ? `/item/:${props.currentId}` : '/item/:id'} component={ProductDetailPage} /> */}
         <Route path="/item/:id" component={ProductDetailPage} />
       </Switch>
     </Router>

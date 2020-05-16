@@ -1,14 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Carousel, Row, Col, Card, Button } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
-import {
-  // HashRouter as Router,
-  // Route,
-  // Switch,
-  Link,
-  // withRouter,
-  // Redirect,
-} from "react-router-dom";
+import { Link } from "react-router-dom";
 
 // const RelatedItems = ({ relatedItemsAndStyle }) => {
 
@@ -39,12 +32,8 @@ import {
 //   );
 // };
 
-const RelatedItems = ({
-  updateCurrentId,
-  productById,
-  relatedItemsAndStyle,
-}) => {
-  // console.log('updateCurrentId, productById, relatedItemsAndStyle', updateCurrentId, productById, relatedItemsAndStyle)
+const RelatedItems = ({prodRating, productById, relatedItemsAndStyle,}) => {
+
   const createSlides = () => {
     let itemSlides = [];
     let start = 0;
@@ -75,14 +64,9 @@ const RelatedItems = ({
                   {slide.map((eachItem, j) => {
                     return (
                       <Col key={j} className="relatedProducts-carousel-col">
-                        <Link to={`/item/${eachItem[0].id}`}>
+                        <Link to={`/item/${eachItem[0].id}`} className="related-product-link">
                           <Card
                             className="product-card"
-                            // onClick={() => {
-                            //   updateCurrentId(eachItem[0].id);
-                            // //   // <Route path="/item/:id" component={ProductDetailPage} />
-                            // //   // console.log("eachItem[0].id", eachItem[0].id);
-                            // }}
                           >
                             <Card.Img
                               src={

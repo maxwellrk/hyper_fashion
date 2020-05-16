@@ -4,7 +4,6 @@ import productByIdReducer from "./productByIdReducer";
 import reviewMetaDataReducer from "./ReviewComponentReducers/reviewMetaDataReducer";
 import questionsByIdReducer from "./QnAReducers/questionsByIdReducer";
 import reviewDataReducer from "./ReviewComponentReducers/reviewDataReducer";
-import currentIdReducer from "./RelatedItemsAndOutfitReducers/RelatedItemsAndOutfitReducer"
 
 export default combineReducers({
   productList: productListReducer,
@@ -12,5 +11,4 @@ export default combineReducers({
   prodRating: reviewMetaDataReducer,
   questionsList: questionsByIdReducer,
   reviewList: reviewDataReducer,
-  currentId: currentIdReducer,
 });
