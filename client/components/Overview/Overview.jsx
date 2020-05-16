@@ -1,4 +1,4 @@
-import {Avatar, Row, Col} from "antd";
+import {Avatar, Row, Col, Space} from "antd";
 import axios from "axios";
 import React, {useEffect, useState} from "react";
 import ProductDescription from "../../containers/OverviewContainers/productDescriptionContainer";
@@ -6,6 +6,7 @@ import Carousel from "../../containers/OverviewContainers/CarouselContainer";
 import Display from "./Display.jsx";
 import DropDownMenus from "./DropDownMenus";
 import Reviews from "../../containers/OverviewContainers/ReviewsContainer";
+import Buttons from "./Buttons";
 
 const Overview = ({productById}) => {
   const [styles, setStyles] = useState([]);
@@ -38,26 +39,43 @@ const Overview = ({productById}) => {
           <Carousel currentStyle={currentStyle} />
         </Col>
         <Col span={8} style={{marginTop: 20}}>
-          <Reviews />
-          <Display currentStyle={currentStyle} productById={productById} />
-          Style > {Object.values(currentStyle).length ? currentStyle.name : ""}
+          <Row>
+            <Col span={24}>
+              <Reviews />
+            </Col>
+            <Col span={24}>
+              <Display currentStyle={currentStyle} productById={productById} />
+            </Col>
+            <Col span={24}>
+              Style >{" "}
+              {Object.values(currentStyle).length ? currentStyle.name : ""}
+            </Col>
+            <br />
+            <br />
+            <Col span={24}>
+              {styles.map((style) => {
+                const image = style.photos[0].thumbnail_url;
+                return (
+                  <Avatar
+                    style={{margin: "2px"}}
+                    src={image}
+                    size={64}
+                    onClick={() => setCurrentStyle(style)}
+                  />
+                );
+              })}
+            </Col>
+          </Row>
           <br />
           <br />
-          {styles.map((style) => {
-            const image = style.photos[0].thumbnail_url;
-            return (
-              <Avatar
-                style={{margin: "2px"}}
-                src={image}
-                size={64}
-                onClick={() => setCurrentStyle(style)}
-              />
-            );
-          })}
-          <br />
-          <br />
-          <DropDownMenus currentStyle={currentStyle} />
-          <Buttons />
+          <Row>
+            <Col span={24}>
+              <DropDownMenus currentStyle={currentStyle} />
+            </Col>
+            <Col span={24}>
+              <Buttons currentStyle={currentStyle} />
+            </Col>
+          </Row>
         </Col>
       </Row>
       <ProductDescription />

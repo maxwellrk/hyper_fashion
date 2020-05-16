@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {Dropdown, Button, Menu} from "antd";
+import {Dropdown, Button, Menu, Row, Col} from "antd";
 import {DownOutlined, UserOutlined} from "@ant-design/icons";
 import QuantityDropDown from "./QuantityDropDown";
 
@@ -26,25 +26,26 @@ const DropDownMenus = ({currentStyle}) => {
 
   return (
     <div>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-        }}
-      >
-        <Dropdown overlay={menu1}>
-          <Button>
-            {currentSize.length ? currentSize : "Select A Size!"}{" "}
-            <DownOutlined />
-          </Button>
-        </Dropdown>
-      </div>
-      <div style={{marginTop: "8px"}}>
-        <QuantityDropDown
-          currentSize={currentSize}
-          currentStyle={currentStyle}
-        />
-      </div>
+      <Row>
+        <Col span={10}>
+          <div>
+            <Dropdown overlay={menu1}>
+              <Button>
+                {currentSize.length ? currentSize : "Select A Size!"}{" "}
+                <DownOutlined />
+              </Button>
+            </Dropdown>
+          </div>
+        </Col>
+        <Col span={6}>
+          <div>
+            <QuantityDropDown
+              currentSize={currentSize}
+              currentStyle={currentStyle}
+            />
+          </div>
+        </Col>
+      </Row>
     </div>
   );
 };
