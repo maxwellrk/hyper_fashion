@@ -32,61 +32,72 @@ import "bootstrap/dist/css/bootstrap.min.css";
 // };
 
 const RelatedItems = ({ relatedItemsAndStyle }) => {
-    console.log('relatedItemsAndStyle in child level', relatedItemsAndStyle);
+  // console.log("relatedItemsAndStyle in child level", relatedItemsAndStyle);
   const createSlides = () => {
     let itemSlides = [];
-    for (let i = 0; i < relatedItemsAndStyle.length; i = i + 3) {
-      itemSlides.push(relatedItemsAndStyle.slice(i, i + 3));
+    let start = 0;
+    for (let i = 0; i < relatedItemsAndStyle.length - 2; i++) {
+      itemSlides.push(relatedItemsAndStyle.slice(start, i + 3));
+      start += 1;
     }
     return itemSlides;
   };
 
   const itemSlides = createSlides();
-//   console.log("slides", itemSlides);
+  // console.log("slides", itemSlides);
   return (
-    <div className="relatedItems">
+    <div className="relatedProducts">
       <h3>Related Product</h3>
-      <Carousel
-        wrap={true}
-        interval={null}
-        indicators={false}
-        controls={true}
-        slide={true}
-      >
-        {itemSlides.map((slide, i) => {
-          return (
-            <Carousel.Item key={i}>
-              <Row className="d-flex">
-                {slide.map((eachItem, j) => {
-                  return (
-                    <Col key={j}>
-                      <Card className="best-deals__product-card text-center" onClick={()=> {console.log('eachItem[0].id',eachItem[0].id)}}>
-                        <Card.Img
-                          src={eachItem[1].results[0].photos[0].thumbnail_url}
-                          alt="Profuct image"
-                          className="itemImg"
-                        />
-                        <Card.Body className="itemInfo">
-                          <Card.Title className="itemInfo name">
-                            {eachItem[0].name}
-                          </Card.Title>
-                          <Card.Text className="itemInfo description">
-                            <p>double check id: {eachItem[0].id}</p>
-                            <p>{eachItem[0].category}</p>
-                            <p>{eachItem[0].name}</p>
-                            <p>${eachItem[0].default_price}</p>
-                            <p>Rating</p>
-                          </Card.Text>
-                        </Card.Body>
-                      </Card>
-                    </Col>
-                  );
-                })}
-              </Row>
-            </Carousel.Item>
-          );
-        })}
-      </Carousel>
+      {relatedItemsAndStyle.length ? (
+        <Carousel
+          wrap={false}
+          interval={null}
+          indicators={false}
+          controls={true}
+          slide={true}
+        >
+          {itemSlides.map((slide, i) => {
+            return (
+              <Carousel.Item key={i}>
+                <Row className="relatedProducts-carousel-row">
+                  {slide.map((eachItem, j) => {
+                    return (
+                      <Col key={j} className="relatedProducts-carousel-col">
+                        <Card
+                          className="product-card"
+                          // onClick={() => {
+                          //   console.log("eachItem[0].id", eachItem[0].id);
+                          // }}
+                        >
+                          <Card.Img
+                            src={
+                              eachItem[1].results.length
+                                ? eachItem[1].results[0].photos[0].thumbnail_url
+                                : null
+                            }
+                            alt="Missing product image"
+                            className="img"
+                          />
+                          <Card.Body className="info">
+                            {/* <p>double check id: {eachItem[0].id}</p> */}
+                            <Card.Text>{eachItem[0].category}</Card.Text>
+                            <Card.Title>{eachItem[0].name}</Card.Title>
+                            <Card.Text>{eachItem[0].name}</Card.Text>
+                            <Card.Text>${eachItem[0].default_price}</Card.Text>
+                            <Card.Text>Rating</Card.Text>
+                          </Card.Body>
+                        </Card>
+                      </Col>
+                    );
+                  })}
+                </Row>
+              </Carousel.Item>
+            );
+          })}
+        </Carousel>
+      ) : (
+        <h6>There is no related products...</h6>
+      )}
     </div>
   );
 };
