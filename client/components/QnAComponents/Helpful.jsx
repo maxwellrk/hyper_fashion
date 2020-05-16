@@ -1,8 +1,6 @@
 import React from 'react';
 
 const Helpful = ({ helpfulness, answerId }) => {
-  console.log('Helpful -> answerId', answerId);
-
   const handleClick = () => {};
 
   return (
