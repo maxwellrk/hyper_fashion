@@ -1,4 +1,4 @@
-const React = require('react');
+import React from 'react';
 
 const Question = ({
   asker_Name,
@@ -21,7 +21,14 @@ const Question = ({
           display: 'inline',
         }}
       >
-        Helpful? Yes: {question_helpfulness} | Add Answer
+        Helpful? Yes: {question_helpfulness} |
+      </p>
+      <p
+        style={{
+          display: 'inline',
+        }}
+      >
+        Add Answer
       </p>
       <p>---------------------------------------------</p>
     </div>

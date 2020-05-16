@@ -1,14 +1,17 @@
-import { Avatar, Row, Col, Dropdown, Button } from "antd";
-import { DownOutlined } from "@ant-design/icons";
+import {Avatar, Row, Col, Space, Badge} from "antd";
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, {useEffect, useState} from "react";
 import ProductDescription from "../../containers/OverviewContainers/productDescriptionContainer";
 import Carousel from "../../containers/OverviewContainers/CarouselContainer";
 import Display from "./Display.jsx";
+import DropDownMenus from "./DropDownMenus";
+import Reviews from "../../containers/OverviewContainers/ReviewsContainer";
+import Buttons from "./Buttons";
 
-const Overview = ({ productById }) => {
+const Overview = ({productById}) => {
   const [styles, setStyles] = useState([]);
   const [currentStyle, setCurrentStyle] = useState({});
+  const [currentSelected, setCurrentSelected] = useState([]);
 
   function getStyles() {
     let id = productById.id;
@@ -18,6 +21,7 @@ const Overview = ({ productById }) => {
       .then((result) => {
         setStyles(result.data.results);
         setCurrentStyle(result.data.results[0]);
+        setCurrentSelected([result.data.results[0].style_id]);
       })
       .catch((err) => {
         console.log("error getting styles", err);
@@ -30,40 +34,66 @@ const Overview = ({ productById }) => {
     }
   }, [productById]);
 
+  const setAsCurrent = (style) => {
+    setCurrentStyle(style);
+    setCurrentSelected([style.style_id]);
+  };
+
   return (
     <div>
       <Row>
         <Col span={16}>
           <Carousel currentStyle={currentStyle} />
         </Col>
-        <Col span={8} style={{ marginTop: 30 }}>
-          <Display currentStyle={currentStyle} productById={productById} />
-          Style > {Object.values(currentStyle).length ? currentStyle.name : ""}
+        <Col span={8} style={{marginTop: 20}}>
+          <Row>
+            <Col span={24}>
+              <Reviews />
+            </Col>
+            <Col span={24}>
+              <Display currentStyle={currentStyle} productById={productById} />
+            </Col>
+            <Col span={24}>
+              Style >{" "}
+              {Object.values(currentStyle).length ? currentStyle.name : ""}
+            </Col>
+            <br />
+            <br />
+            <Col span={16}>
+              {styles.map((style) => {
+                const image = style.photos[0].thumbnail_url;
+                if (style.style_id === currentSelected[0]) {
+                  return (
+                    <Avatar
+                      style={{margin: "2px"}}
+                      src={image}
+                      size={64}
+                      onClick={() => setAsCurrent(style)}
+                    />
+                  );
+                } else {
+                  return (
+                    <Avatar
+                      style={{margin: "2px"}}
+                      src={image}
+                      size={50}
+                      onClick={() => setAsCurrent(style)}
+                    />
+                  );
+                }
+              })}
+            </Col>
+          </Row>
           <br />
           <br />
-          {styles.map((style) => {
-            const image = style.photos[0].thumbnail_url;
-            return (
-              <Avatar
-                style={{ margin: "2px" }}
-                src={image}
-                size={64}
-                onClick={() => setCurrentStyle(style)}
-              />
-            );
-          })}
-          <br />
-          <br />
-          <Dropdown>
-            <Button>
-              Select Size <DownOutlined />
-            </Button>
-          </Dropdown>
-          <Dropdown>
-            <Button>
-              1 <DownOutlined />
-            </Button>
-          </Dropdown>
+          <Row>
+            <Col span={24}>
+              <DropDownMenus currentStyle={currentStyle} />
+            </Col>
+            <Col span={24} style={{marginTop: "20px"}}>
+              <Buttons currentStyle={currentStyle} />
+            </Col>
+          </Row>
         </Col>
       </Row>
       <ProductDescription />
