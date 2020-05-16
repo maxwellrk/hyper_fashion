@@ -12,8 +12,6 @@ const QuantityDropdown = ({currentSize, currentStyle}) => {
   }
 
   useEffect(() => {
-    console.log("currentSTyle", currentStyle);
-    console.log("currentSize", currentSize);
     if (currentSize.length) {
       let num = currentStyle.skus[currentSize];
       createQuantities(num);

@@ -25,13 +25,26 @@ const DropDownMenus = ({currentStyle}) => {
   );
 
   return (
-    <div style={{display: "flex", justifyContent: "space-around"}}>
-      <Dropdown overlay={menu1}>
-        <Button>
-          {currentSize.length ? currentSize : "Select A Size!"} <DownOutlined />
-        </Button>
-      </Dropdown>
-      <QuantityDropDown currentSize={currentSize} currentStyle={currentStyle} />
+    <div>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+        }}
+      >
+        <Dropdown overlay={menu1}>
+          <Button>
+            {currentSize.length ? currentSize : "Select A Size!"}{" "}
+            <DownOutlined />
+          </Button>
+        </Dropdown>
+      </div>
+      <div style={{marginTop: "8px"}}>
+        <QuantityDropDown
+          currentSize={currentSize}
+          currentStyle={currentStyle}
+        />
+      </div>
     </div>
   );
 };
