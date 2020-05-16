@@ -1,14 +1,34 @@
-import React from "react";
-import {Dropdown, Button} from "antd";
-import {DownOutlined} from "@ant-design/icons";
+import React, {useState} from "react";
+import {Dropdown, Button, Menu} from "antd";
+import {DownOutlined, UserOutlined} from "@ant-design/icons";
 
-const DropDownMenus = (props) => {
-  console.log("props in Dropdowns", props);
+const DropDownMenus = ({currentStyle, productById}) => {
+  console.log("currentStyle in Dropdowns", currentStyle);
+
+  const [currentSize, setSize] = useState([]);
+
+  function handleMenu1Click(e) {
+    setSize(e.key);
+  }
+
+  const menu1 = (
+    <Menu onClick={handleMenu1Click}>
+      {Object.values(currentStyle).length
+        ? Object.keys(currentStyle.skus).map((size, i) => {
+            return (
+              <Menu.Item key={size} icon={<UserOutlined />}>
+                {size}
+              </Menu.Item>
+            );
+          })
+        : ""}
+    </Menu>
+  );
   return (
     <div>
-      <Dropdown>
+      <Dropdown overlay={menu1}>
         <Button>
-          Select Size <DownOutlined />
+          {currentSize.length ? currentSize : "Select A Size!"} <DownOutlined />
         </Button>
       </Dropdown>
       <Dropdown>
