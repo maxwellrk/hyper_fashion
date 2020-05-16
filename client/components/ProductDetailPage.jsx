@@ -5,6 +5,7 @@ import RelatedItemAndOutfit from "./RelatedItemsAndOutfit/RelatedItemsAndOutfit"
 import Overview from "../containers/OverviewContainers/OverviewContainer";
 
 const ProductDetailPage = (props) => {
+
   useEffect(() => {
     // console.log('props in peductDetail', props);
     // console.log('id from props paramas', props.match.params.id);
