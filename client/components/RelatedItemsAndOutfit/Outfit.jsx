@@ -2,7 +2,9 @@ import React from 'react';
 
 const Outfit = ({id}) => {
     return (
-        <div>outfit</div>
+        <div>
+            <h3>Your Outfit</h3>
+            </div>
     )
 };
 

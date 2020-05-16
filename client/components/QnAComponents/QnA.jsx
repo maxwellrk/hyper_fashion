@@ -1,24 +1,25 @@
-import React, { useEffect, useState } from 'react';
+/* eslint-disable */
+import React, { useEffect, useState, useRef } from 'react';
+import axios from 'axios';
 import QnABlock from './QnABlock';
 import SearchBar from './SearchBar';
+import QuestionModal from '../../containers/QnAContainers/QuestionModalContainer';
+import { Link } from 'react-router-dom';
 
 const QnA = ({ fetchQuestionsById, questionsList, productById }) => {
   const [questionRender, changeQuestionRender] = useState(2);
   const [searchInput, changeSearchInput] = useState('');
+  const [questionModalRender, toggleQuestionModel] = useState(false);
 
   useEffect(() => {
     fetchQuestionsById(productById.id)
       .then(() => {
-        return changeQuestionRender(2);
+        changeQuestionRender(2);
       })
       .then(() => {
         changeSearchInput('');
       });
   }, [productById]);
-  //not sure if i want this
-  // useEffect(() => {
-  //   if (searchInput.length > 2) changeQuestionRender(2);
-  // }, [searchInput]);
 
   //filter function for searchBar
   const filterQuestions = (entry) => {
@@ -77,7 +78,10 @@ const QnA = ({ fetchQuestionsById, questionsList, productById }) => {
         changeSearchInput={changeSearchInput}
       />
       {listOfQnABlock}
-      <button>ADD QUESTION</button>
+      <QuestionModal
+        questionModalRender={questionModalRender}
+        toggleQuestionModel={toggleQuestionModel}
+      />
       {moreQuestions}
     </div>
   );
