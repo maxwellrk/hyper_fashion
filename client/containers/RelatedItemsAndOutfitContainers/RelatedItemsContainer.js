@@ -1,9 +1,9 @@
-import {connect} from "react-redux";
+import { connect } from "react-redux";
 import RelatedItems from "../../components/RelatedItemsAndOutfit/RelatedItems";
-import fetchProductById from "../../actions/fetchProductById";
+import updateCurrentId from "../../actions/RelatedItemsAndOutfitActions/updateCurrentId";
 
 const mapStateToProps = (state) => {
-  return { productById: state.productById };
+  return { currentId: state.currentId, productById: state.productById };
 };
 
-export default connect(mapStateToProps, { fetchProductById })(RelatedItems);
+export default connect(mapStateToProps, { updateCurrentId })(RelatedItems);

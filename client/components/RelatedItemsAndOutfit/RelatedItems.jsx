@@ -1,6 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { Carousel, Row, Col, Card, Button } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
+import {
+  // HashRouter as Router,
+  // Route,
+  // Switch,
+  Link,
+  // withRouter,
+  // Redirect,
+} from "react-router-dom";
 
 // const RelatedItems = ({ relatedItemsAndStyle }) => {
 
@@ -31,8 +39,12 @@ import "bootstrap/dist/css/bootstrap.min.css";
 //   );
 // };
 
-const RelatedItems = ({fetchProductById, productById, relatedItemsAndStyle}) => {
-
+const RelatedItems = ({
+  updateCurrentId,
+  productById,
+  relatedItemsAndStyle,
+}) => {
+  // console.log('updateCurrentId, productById, relatedItemsAndStyle', updateCurrentId, productById, relatedItemsAndStyle)
   const createSlides = () => {
     let itemSlides = [];
     let start = 0;
@@ -63,31 +75,37 @@ const RelatedItems = ({fetchProductById, productById, relatedItemsAndStyle}) => 
                   {slide.map((eachItem, j) => {
                     return (
                       <Col key={j} className="relatedProducts-carousel-col">
-                        <Card
-                          className="product-card"
-                          onClick={() => {
-                            fetchProductById(eachItem[0].id);
-                            // console.log("eachItem[0].id", eachItem[0].id);
-                          }}
-                        >
-                          <Card.Img
-                            src={
-                              eachItem[1].results.length
-                                ? eachItem[1].results[0].photos[0].thumbnail_url
-                                : null
-                            }
-                            alt="Missing product image"
-                            className="img"
-                          />
-                          <Card.Body className="info">
-                            <p>double check id: {eachItem[0].id}</p>
-                            <Card.Text>{eachItem[0].category}</Card.Text>
-                            <Card.Title>{eachItem[0].name}</Card.Title>
-                            <Card.Text>{eachItem[0].name}</Card.Text>
-                            <Card.Text>${eachItem[0].default_price}</Card.Text>
-                            <Card.Text>Rating</Card.Text>
-                          </Card.Body>
-                        </Card>
+                        <Link to={`/item/${eachItem[0].id}`}>
+                          <Card
+                            className="product-card"
+                            // onClick={() => {
+                            //   updateCurrentId(eachItem[0].id);
+                            // //   // <Route path="/item/:id" component={ProductDetailPage} />
+                            // //   // console.log("eachItem[0].id", eachItem[0].id);
+                            // }}
+                          >
+                            <Card.Img
+                              src={
+                                eachItem[1].results.length
+                                  ? eachItem[1].results[0].photos[0]
+                                      .thumbnail_url
+                                  : null
+                              }
+                              alt="Missing product image"
+                              className="img"
+                            />
+                            <Card.Body className="info">
+                              <p>double check id: {eachItem[0].id}</p>
+                              <Card.Text>{eachItem[0].category}</Card.Text>
+                              <Card.Title>{eachItem[0].name}</Card.Title>
+                              <Card.Text>{eachItem[0].name}</Card.Text>
+                              <Card.Text>
+                                ${eachItem[0].default_price}
+                              </Card.Text>
+                              <Card.Text>Rating</Card.Text>
+                            </Card.Body>
+                          </Card>
+                        </Link>
                       </Col>
                     );
                   })}
