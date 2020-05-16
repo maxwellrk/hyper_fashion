@@ -19,6 +19,9 @@ const QuantityDropdown = ({currentSize, currentStyle}) => {
   }, [currentSize]);
 
   const createQuantities = (num) => {
+    if (num > 15) {
+      num = 15;
+    }
     let quantities = [];
     for (let i = 1; i <= num + 1; i++) {
       quantities.push(i);
@@ -45,8 +48,7 @@ const QuantityDropdown = ({currentSize, currentStyle}) => {
       {currentSize.length ? (
         <Dropdown overlay={menu2}>
           <Button>
-            {currentQuantity.length ? currentQuantity : "Quantity"}{" "}
-            <DownOutlined />
+            {currentQuantity.length ? currentQuantity : "1"} <DownOutlined />
           </Button>
         </Dropdown>
       ) : (

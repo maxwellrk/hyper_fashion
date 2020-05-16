@@ -52,7 +52,7 @@ const Overview = ({productById}) => {
             </Col>
             <br />
             <br />
-            <Col span={24}>
+            <Col span={16}>
               {styles.map((style) => {
                 const image = style.photos[0].thumbnail_url;
                 return (

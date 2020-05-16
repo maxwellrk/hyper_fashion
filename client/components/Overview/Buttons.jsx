@@ -7,8 +7,8 @@ const Buttons = ({currentStyle}) => {
     <div>
       <Space size="large">
         <Button type="default" size="large">
-          <PlusOutlined size="large" />
-          Add To Your Cart!
+          {/* <PlusOutlined size="large" /> */}
+          ADD TO BAG
         </Button>
         <Button type="default" icon={<StarOutlined />} size="large" />
       </Space>
