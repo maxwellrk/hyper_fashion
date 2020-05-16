@@ -8,7 +8,7 @@ const SearchBar = ({ searchInput, changeSearchInput }) => {
       }}
     >
       <input
-        type="“Have a question? Search for answers…”"
+        type="Have a question? Search for answers…"
         value={searchInput}
         onChange={(e) => {
           changeSearchInput(e.target.value);

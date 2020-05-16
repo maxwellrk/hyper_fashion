@@ -13,7 +13,7 @@ import "./ReviewStyles/reviewstyles.css";
 
 const RatingInfo = (props) => {
   useEffect(() => {
-    // console.log("props:", props);
+    // console.log("props in info:", props);
     props.fetchReviewMetaData(props.page);
   }, [props.page]);
 
