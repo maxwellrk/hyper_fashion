@@ -23,6 +23,14 @@ const RatingInfo = (props) => {
     );
   }
 
+  // function updateFilter(input) {
+  //   props.addtoFilter(4);
+  // }
+
+  // function removeFilter(input) {
+  //   props.removefromFilter(4);
+  // }
+
   const convertedRating = Number(props.prodRating.averageRating);
   return (
     <div className="overallComponent">
@@ -65,7 +73,11 @@ const RatingInfo = (props) => {
         </Grid>
       </Grid>
       <div className="ratingsbreakdownbox">
-        <RatingBreakdown rate={breakDown} />
+        <RatingBreakdown
+          addtoFilter={props.addtoFilter}
+          removefromFilter={props.removefromFilter}
+          rate={breakDown}
+        />
         {/* <div>
           <BorderLinearProgress
           className="whatever"
@@ -87,6 +99,10 @@ const RatingInfo = (props) => {
                 <div></div>
                 )}
             </div> */}
+      {/* <div>
+        <button onClick={() => updateFilter()}>sort by 5</button>
+        <button onClick={() => removeFilter()}>Remove 5</button>
+      </div> */}
     </div>
   );
 };

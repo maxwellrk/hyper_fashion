@@ -1,5 +1,6 @@
 import React from "react";
 import ReviewListItem from "./ReviewListItem";
+import RatingInfo from "./RatingInfo";
 import { useEffect, useState } from "react";
 import TestComponent from "./TestComponent";
 import $ from "jquery";
@@ -11,7 +12,10 @@ const ReviewList = (props) => {
   const [addSortOrder, changeSortOrder] = useState("relevant");
   const [disableFetch, changeDisableFetch] = useState(false);
   const [finalCount, changeFinalCount] = useState(null);
-  // const [reviewItems, addReviewItems] = useState([]);
+  const [overallFilters, changeOverallFilters] = useState(props.totalFilters);
+  const [reviewItems, addReviewItems] = useState([]);
+
+  console.log("totalfilters:", props.totalFilters);
 
   useEffect(() => {
     addReviewRender(2);
@@ -19,6 +23,7 @@ const ReviewList = (props) => {
     changeFinalCount(null);
     changeDisableFetch(false);
     changeSortOrder("relevant");
+    addReviewItems([]);
     props.fetchReviews(props.page, pageList, reviewCount, addSortOrder);
     props.fetchReviewMetaData(props.page).then((data) => {
       console.log("reviewmetadata,", data);
@@ -33,18 +38,31 @@ const ReviewList = (props) => {
     props
       .fetchReviews(props.page, pageList, reviewCount, addSortOrder)
       .then(() => {
-        if (reviewCount < finalCount) {
+        if (reviewCount <= finalCount) {
           changeReviewCount(reviewCount + 5);
         }
       });
   }, [reviewCount, addSortOrder]);
 
   useEffect(() => {
-    if (finalCount !== null && reviewRender >= finalCount) {
+    addReviewItems(props.reviewList.results);
+  }, [props.reviewList.results]);
+
+  useEffect(() => {
+    if (
+      finalCount !== null &&
+      (reviewRender >= finalCount ||
+        reviewRender >= filterReview(reviewItems, props.totalFilters).length)
+    ) {
       changeDisableFetch(true);
       console.log("no longer should update");
     }
   }, [finalCount, reviewRender]);
+
+  // useEffect(() => {
+  //   if (props.totalFilters.length > 0) {
+  //   }
+  // }, [props.totalFilters]);
 
   let updateFunction = function updater() {
     console.log("clicked");
@@ -56,39 +74,13 @@ const ReviewList = (props) => {
     changeSortOrder(event.target.value);
   };
 
-  // useEffect(() => {
-  //   props.fetchReviews(props.page, pageList, addSortOrder).then((data) => {
-  //     // console.log("fetchdata:", data);
-  //     return addReviewItems((reviewItems) => [
-  //       ...reviewItems,
-  //       data.payload.results,
-  //     ]);
-  //   });
-  // }, [props.page]);
-
-  // onClick={() => addReviewRender(reviewRender + 2); changePageList(pageList + 1); changeReviewCount(reviewCount + 10) }
-
-  // fetchQuestionsById(productById.id)
-  //     .then(() => {
-  //       return changeQuestionRender(2);
-  //     })
-  // if (
-  //   questionsList.results === undefined ||
-  //   !questionsList.results.length ||
-  //   questionsList.results.filter(filterQuestions).length <= questionRender
-  // ) {
-  //   moreQuestions = <div />;
-  // } else {
-  //   moreQuestions = (
-  //     <button onClick={() => changeQuestionRender(questionRender + 2)}>
-  //       MORE ANSWERED QUESTIONS
-  //     </button>
-  //   );
-  // }
-  // const fetchReviewMetaData = (id = 1, pageNumber = 1, sortOrder = "relevant") => {
-  //   return (dispatch) => {
-  //     let url = `http://18.224.200.47/reviews/${id}/list`;
-  //     let url = `http://18.224.200.47/reviews/${id}/list/?page=${pageNumber}&count=10&sort=${sortOrder}`;
+  const filterReview = (input, filters) => {
+    if (filters.length === 0) {
+      return input;
+    } else {
+      return input.filter((item) => filters.includes(item.rating));
+    }
+  };
 
   return (
     // <div>whatever</div>
@@ -107,17 +99,19 @@ const ReviewList = (props) => {
         </select>
       </div>
       <div>
-        {Object.keys(props.reviewList).length ? (
-          props.reviewList.results.slice(0, reviewRender).map((item) => {
-            return <ReviewListItem item={item} />;
-          })
+        {reviewItems ? (
+          filterReview(reviewItems, props.totalFilters)
+            .slice(0, reviewRender)
+            .map((item) => {
+              return <ReviewListItem item={item} />;
+            })
         ) : (
           <div></div>
         )}
       </div>
       <div>
         <button
-          disabled={disableFetch}
+          disabled={disableFetch || props.prodRating.totalRating === 0}
           type="button"
           onClick={() => updateFunction()}
         >
@@ -128,6 +122,12 @@ const ReviewList = (props) => {
   );
 };
 
+// {reviewItems ? (
+//   reviewItems.slice(0, reviewRender).map((item) => {
+//     return <ReviewListItem item={item} />;
+//   })
+// )
+
 // {Object.keys(props.reviewList).length ? (
 //   props.reviewList.results.map((item) => {
 //     return <ReviewListItem item={item} />;
@@ -135,3 +135,37 @@ const ReviewList = (props) => {
 // )
 
 export default ReviewList;
+
+// useEffect(() => {
+//   props.fetchReviews(props.page, pageList, addSortOrder).then((data) => {
+//     // console.log("fetchdata:", data);
+//     return addReviewItems((reviewItems) => [
+//       ...reviewItems,
+//       data.payload.results,
+//     ]);
+//   });
+// }, [props.page]);
+
+// onClick={() => addReviewRender(reviewRender + 2); changePageList(pageList + 1); changeReviewCount(reviewCount + 10) }
+
+// fetchQuestionsById(productById.id)
+//     .then(() => {
+//       return changeQuestionRender(2);
+//     })
+// if (
+//   questionsList.results === undefined ||
+//   !questionsList.results.length ||
+//   questionsList.results.filter(filterQuestions).length <= questionRender
+// ) {
+//   moreQuestions = <div />;
+// } else {
+//   moreQuestions = (
+//     <button onClick={() => changeQuestionRender(questionRender + 2)}>
+//       MORE ANSWERED QUESTIONS
+//     </button>
+//   );
+// }
+// const fetchReviewMetaData = (id = 1, pageNumber = 1, sortOrder = "relevant") => {
+//   return (dispatch) => {
+//     let url = `http://18.224.200.47/reviews/${id}/list`;
+//     let url = `http://18.224.200.47/reviews/${id}/list/?page=${pageNumber}&count=10&sort=${sortOrder}`;
