@@ -4,6 +4,7 @@ import axios from 'axios';
 import QnABlock from './QnABlock';
 import SearchBar from './SearchBar';
 import QuestionModal from '../../containers/QnAContainers/QuestionModalContainer';
+import { Link } from 'react-router-dom';
 
 const QnA = ({ fetchQuestionsById, questionsList, productById }) => {
   const [questionRender, changeQuestionRender] = useState(2);
