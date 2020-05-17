@@ -1,17 +1,17 @@
-import React, { useState } from "react";
+import React, {useState} from "react";
 import CarouselContent from "./CarouselContent";
 import Slide from "./Slide";
 import Arrow from "./Arrows";
 import ThumbNails from "./Thumbnails";
 
-const Carousel = ({ currentStyle }) => {
+const Carousel = ({currentStyle}) => {
   const [state, setState] = useState({
     index: 0,
     translate: 0,
     transition: 0.45,
   });
 
-  const { translate, transition, index } = state;
+  const {translate, transition, index} = state;
 
   const nextSlide = () => {
     if (index === currentStyle.photos.length - 1) {

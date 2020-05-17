@@ -1,7 +1,8 @@
 import React from "react";
-import { Avatar } from "antd";
+import {Avatar} from "antd";
 
-const ThumbNails = ({ index, thumbnails }) => {
+const ThumbNails = ({index, thumbnails}) => {
+  console.log("index inside of thumbnails", index);
   return (
     <div
       style={{
@@ -20,7 +21,7 @@ const ThumbNails = ({ index, thumbnails }) => {
             shape="square"
             size={50}
             src={image}
-            style={{ margin: "5px" }}
+            style={{margin: "5px"}}
           />
         );
       })}
