@@ -3,6 +3,7 @@ import { Carousel, Row, Col, Card, Button } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Link } from "react-router-dom";
 import Rating from "@material-ui/lab/Rating";
+import CompareModal from "./CompareModal";
 // const RelatedItems = ({ relatedItemsAndStyle }) => {
 
 //   return (
@@ -33,6 +34,13 @@ import Rating from "@material-ui/lab/Rating";
 // };
 
 const RelatedItems = ({ prodRating, productById, relatedItemsAndStyle }) => {
+  const [displayModal, setDisplayModal] = useState(false);
+  const [relatedItem, setrelatedItem] = useState([]);
+
+  const closeModal = () => {
+    setDisplayModal(false);
+  };
+
   const createSlides = () => {
     let itemSlides = [];
     let start = 0;
@@ -48,6 +56,12 @@ const RelatedItems = ({ prodRating, productById, relatedItemsAndStyle }) => {
   return (
     <div className="relatedProducts">
       <h3>Related Product</h3>
+      <CompareModal
+        relatedItem={relatedItem}
+        currentItem={productById}
+        displayModal={displayModal}
+        closeModal={closeModal}
+      />
       {relatedItemsAndStyle.length ? (
         <Carousel
           wrap={false}
@@ -63,23 +77,30 @@ const RelatedItems = ({ prodRating, productById, relatedItemsAndStyle }) => {
                   {slide.map((eachItem, j) => {
                     return (
                       <Col key={j} className="relatedProducts-carousel-col">
-                        <Link
-                          to={`/item/${eachItem[0].id}`}
-                          className="related-product-link"
-                        >
-                          <Card className="product-card">
-                            <Card.Img
-                              src={
-                                eachItem[1].results.length
-                                  ? eachItem[1].results[0].photos[0]
-                                    .thumbnail_url
-                                  : null
-                              }
-                              alt="Missing product image"
-                              className="img"
-                            />
+                        <Card className="product-card">
+                          <button
+                            onClick={() => {
+                              setrelatedItem(eachItem);
+                              setDisplayModal(true);
+                            }}
+                          >
+                            ✩
+                          </button>
+                          <Card.Img
+                            src={
+                              eachItem[1].results.length
+                                ? eachItem[1].results[0].photos[0].thumbnail_url
+                                : null
+                            }
+                            alt="Missing product image"
+                            className="img"
+                          />
+                          <Link
+                            to={`/item/${eachItem[0].id}`}
+                            className="related-product-link"
+                          >
                             <Card.Body className="info">
-                              {/* <p>double check id: {eachItem[0].id}</p> */}
+                              <p>double check id: {eachItem[0].id}</p>
                               <Card.Text>{eachItem[0].category}</Card.Text>
                               <Card.Title>{eachItem[0].name}</Card.Title>
                               <Card.Text>{eachItem[0].name}</Card.Text>
@@ -94,8 +115,8 @@ const RelatedItems = ({ prodRating, productById, relatedItemsAndStyle }) => {
                                 value={prodRating.averageRating}
                               />
                             </Card.Body>
-                          </Card>
-                        </Link>
+                          </Link>
+                        </Card>
                       </Col>
                     );
                   })}
