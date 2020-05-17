@@ -1,10 +1,13 @@
 /* eslint-disable */
 import React, { useEffect, useState } from 'react';
 import Question from './Question';
+import AnswerModal from '../../containers/QnAContainers/AnswerModalContainer';
 import Answer from './Answer';
 
 const QnABlock = ({ entry }) => {
+  console.log('entry', { entry });
   const [answerDisplay, toggleAnswerDisplay] = useState(false);
+  const [answerModalRender, toggleAnswerModal] = useState(false);
   const months = [
     'January',
     'February',
@@ -61,13 +64,18 @@ const QnABlock = ({ entry }) => {
         question_helpfulness={entry.question_helpfulness}
         reported={entry.reported}
       />
-      {/* <AnswerModal /> */}
+      <AnswerModal
+        question_body={entry.question_body}
+        question_id={entry.question_id}
+        answerModalRender={answerModalRender}
+        toggleAnswerModal={toggleAnswerModal}
+      />
       {Object.keys(entry.answers)
         .map((answerId, index) => {
           entry.answers[answerId].newDate = dateFormatter(
             entry.answers[answerId].date
           );
-          return <Answer info={entry.answers[answerId]} question />;
+          return <Answer info={entry.answers[answerId]} />;
         })
         //  Need to bring seller answers to the top of the page
         .sort((a, b) => {

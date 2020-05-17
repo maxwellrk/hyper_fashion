@@ -9,7 +9,7 @@ import { Link } from 'react-router-dom';
 const QnA = ({ fetchQuestionsById, questionsList, productById }) => {
   const [questionRender, changeQuestionRender] = useState(2);
   const [searchInput, changeSearchInput] = useState('');
-  const [questionModalRender, toggleQuestionModel] = useState(false);
+  const [questionModalRender, toggleQuestionModal] = useState(false);
 
   useEffect(() => {
     fetchQuestionsById(productById.id)
@@ -80,7 +80,7 @@ const QnA = ({ fetchQuestionsById, questionsList, productById }) => {
       {listOfQnABlock}
       <QuestionModal
         questionModalRender={questionModalRender}
-        toggleQuestionModel={toggleQuestionModel}
+        toggleQuestionModal={toggleQuestionModal}
       />
       {moreQuestions}
     </div>
