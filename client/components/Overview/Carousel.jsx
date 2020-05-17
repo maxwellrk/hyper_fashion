@@ -45,6 +45,14 @@ const Carousel = ({currentStyle}) => {
     });
   };
 
+  const setThumbnailCurrent = (i) => {
+    setState({
+      ...state,
+      index: i,
+      translate: i * 800,
+    });
+  };
+
   return (
     <div
       style={{
@@ -75,7 +83,11 @@ const Carousel = ({currentStyle}) => {
       <Arrow direction="left" handleClick={prevSlide} />
       <Arrow direction="right" handleClick={nextSlide} />
       {currentStyle.photos ? (
-        <ThumbNails thumbnails={currentStyle.photos} index={index} />
+        <ThumbNails
+          thumbnails={currentStyle.photos}
+          index={index}
+          setThumbnailCurrent={setThumbnailCurrent}
+        />
       ) : (
         ""
       )}

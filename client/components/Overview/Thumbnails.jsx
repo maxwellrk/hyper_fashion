@@ -1,8 +1,7 @@
 import React from "react";
 import {Avatar} from "antd";
 
-const ThumbNails = ({index, thumbnails}) => {
-  console.log("index inside of thumbnails", index);
+const ThumbNails = ({index, thumbnails, setThumbnailCurrent}) => {
   return (
     <div
       style={{
@@ -14,7 +13,7 @@ const ThumbNails = ({index, thumbnails}) => {
         justifyContent: "center",
       }}
     >
-      {thumbnails.map((thumbnail) => {
+      {thumbnails.map((thumbnail, i) => {
         const image = thumbnail.thumbnail_url;
         return (
           <Avatar
@@ -22,6 +21,7 @@ const ThumbNails = ({index, thumbnails}) => {
             size={50}
             src={image}
             style={{margin: "5px"}}
+            onClick={() => setThumbnailCurrent(i)}
           />
         );
       })}
