@@ -72,6 +72,7 @@ const QnABlock = ({ entry }) => {
       />
       {Object.keys(entry.answers)
         .map((answerId, index) => {
+          console.log(entry.answers[answerId]);
           entry.answers[answerId].newDate = dateFormatter(
             entry.answers[answerId].date
           );
@@ -79,7 +80,11 @@ const QnABlock = ({ entry }) => {
         })
         //  Need to bring seller answers to the top of the page
         .sort((a, b) => {
-          return b.props.info.helpfulness - a.props.info.helpfulness;
+          return (
+            (b.props.info.answerer_name === 'Seller') -
+              (a.props.info.answerer_name === 'Seller') ||
+            b.props.info.helpfulness - a.props.info.helpfulness
+          );
         })
         .filter((ele, index) => {
           if (answerDisplay && index < 2) {
