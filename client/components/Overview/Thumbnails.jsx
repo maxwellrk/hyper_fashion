@@ -15,6 +15,17 @@ const ThumbNails = ({index, thumbnails, setThumbnailCurrent}) => {
     >
       {thumbnails.map((thumbnail, i) => {
         const image = thumbnail.thumbnail_url;
+        if (index === i) {
+          return (
+            <Avatar
+              shape="square"
+              size={64}
+              src={image}
+              style={{margin: "5px"}}
+              onClick={() => setThumbnailCurrent(i)}
+            />
+          );
+        }
         return (
           <Avatar
             shape="square"
