@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Carousel, Row, Col, Card, Button } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { Link } from "react-router-dom";
 
 // const RelatedItems = ({ relatedItemsAndStyle }) => {
 
@@ -31,8 +32,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 //   );
 // };
 
-const RelatedItems = ({ relatedItemsAndStyle }) => {
-  // console.log("relatedItemsAndStyle in child level", relatedItemsAndStyle);
+const RelatedItems = ({prodRating, productById, relatedItemsAndStyle,}) => {
+
   const createSlides = () => {
     let itemSlides = [];
     let start = 0;
@@ -63,30 +64,32 @@ const RelatedItems = ({ relatedItemsAndStyle }) => {
                   {slide.map((eachItem, j) => {
                     return (
                       <Col key={j} className="relatedProducts-carousel-col">
-                        <Card
-                          className="product-card"
-                          // onClick={() => {
-                          //   console.log("eachItem[0].id", eachItem[0].id);
-                          // }}
-                        >
-                          <Card.Img
-                            src={
-                              eachItem[1].results.length
-                                ? eachItem[1].results[0].photos[0].thumbnail_url
-                                : null
-                            }
-                            alt="Missing product image"
-                            className="img"
-                          />
-                          <Card.Body className="info">
-                            {/* <p>double check id: {eachItem[0].id}</p> */}
-                            <Card.Text>{eachItem[0].category}</Card.Text>
-                            <Card.Title>{eachItem[0].name}</Card.Title>
-                            <Card.Text>{eachItem[0].name}</Card.Text>
-                            <Card.Text>${eachItem[0].default_price}</Card.Text>
-                            <Card.Text>Rating</Card.Text>
-                          </Card.Body>
-                        </Card>
+                        <Link to={`/item/${eachItem[0].id}`} className="related-product-link">
+                          <Card
+                            className="product-card"
+                          >
+                            <Card.Img
+                              src={
+                                eachItem[1].results.length
+                                  ? eachItem[1].results[0].photos[0]
+                                      .thumbnail_url
+                                  : null
+                              }
+                              alt="Missing product image"
+                              className="img"
+                            />
+                            <Card.Body className="info">
+                              {/* <p>double check id: {eachItem[0].id}</p> */}
+                              <Card.Text>{eachItem[0].category}</Card.Text>
+                              <Card.Title>{eachItem[0].name}</Card.Title>
+                              <Card.Text>{eachItem[0].name}</Card.Text>
+                              <Card.Text>
+                                ${eachItem[0].default_price}
+                              </Card.Text>
+                              <Card.Text>Rating</Card.Text>
+                            </Card.Body>
+                          </Card>
+                        </Link>
                       </Col>
                     );
                   })}

@@ -71,6 +71,11 @@
   position: relative;
   top: 25px;
   text-decoration: underline;
+
+  /* display: inline-block;
+  z-index: 1;
+  padding: 2em;
+  margin: -2em; */
 }
 
 .ratingsbreakdownbox {
