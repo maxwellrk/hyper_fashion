@@ -3,6 +3,7 @@ import ReviewListItem from "./ReviewListItem";
 import RatingInfo from "./RatingInfo";
 import { useEffect, useState } from "react";
 import TestComponent from "./TestComponent";
+import SubmitReviewForm from "./SubmitReviewForm";
 import $ from "jquery";
 
 const ReviewList = (props) => {
@@ -14,8 +15,6 @@ const ReviewList = (props) => {
   const [finalCount, changeFinalCount] = useState(null);
   const [overallFilters, changeOverallFilters] = useState(props.totalFilters);
   const [reviewItems, addReviewItems] = useState([]);
-
-  console.log("totalfilters:", props.totalFilters);
 
   useEffect(() => {
     addReviewRender(2);
@@ -117,6 +116,7 @@ const ReviewList = (props) => {
         >
           More Reviews
         </button>
+        <SubmitReviewForm pageId={props.page} name={props.productById.name} />
       </div>
     </div>
   );
