@@ -1,6 +1,6 @@
 import React from "react";
 
-const Display = ({ currentStyle, productById }) => {
+const Display = ({currentStyle, productById}) => {
   return (
     <div>
       <div>{productById.category}</div>
