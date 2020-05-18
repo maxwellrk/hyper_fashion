@@ -79,6 +79,7 @@ const RelatedItems = ({ prodRating, productById, relatedItemsAndStyle }) => {
                       <Col key={j} className="relatedProducts-carousel-col">
                         <Card className="product-card">
                           <button
+                          className='btn compare'
                             onClick={() => {
                               setrelatedItem(eachItem);
                               setDisplayModal(true);

@@ -52,7 +52,7 @@ h6 {
   text-decoration: none;
   cursor: pointer;
 }
-button {
+.btn .compare {
   background: transparent;
   position: absolute;
   right: 0;
@@ -64,12 +64,13 @@ button {
   font-size: 35px;
 }
 
-button:hover {
+
+.btn .compare:hover {
   color: rgb(10, 48, 143);
   font-weight: bold;
 }
 /*//still need fix button blue stuff*/
-button:active {
+.btn .compare:active {
   background: transparent;
   /* border: 1px solid red; */
 }
