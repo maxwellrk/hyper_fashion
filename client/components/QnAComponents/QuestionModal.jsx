@@ -1,29 +1,29 @@
-import React, { useEffect, useState } from 'react';
-import { Modal, Button } from 'antd';
-import axios from 'axios';
+import React, { useEffect, useState } from "react";
+import { Modal, Button } from "antd";
+import axios from "axios";
 
 //fetchQuestionsById and currentId should be hooked up by react store, not passed down
 //with props, need to go back and fix
 const QuestionModal = ({
   questionModalRender,
-  toggleQuestionModel,
+  toggleQuestionModal,
   productById,
   fetchQuestionsById,
 }) => {
-  const [inputEmail, changeInputEmail] = useState('');
-  const [inputQuestion, changeInputQuestion] = useState('');
-  const [inputNickname, changeInputNickname] = useState('');
+  const [inputEmail, changeInputEmail] = useState("");
+  const [inputQuestion, changeInputQuestion] = useState("");
+  const [inputNickname, changeInputNickname] = useState("");
 
   const checkInputField = () => {
-    let toAlert = 'You must enter the following:';
+    let toAlert = "You must enter the following:";
     if (!inputQuestion.length) {
-      toAlert += '\nQuestion';
+      toAlert += "\nQuestion";
     }
     if (!inputNickname.length) {
-      toAlert += '\nNickname';
+      toAlert += "\nNickname";
     }
-    if (inputEmail.indexOf('@') === -1 || inputEmail.indexOf('.') === -1) {
-      toAlert += '\nEmail';
+    if (inputEmail.indexOf("@") === -1 || inputEmail.indexOf(".") === -1) {
+      toAlert += "\nEmail";
     }
 
     if (toAlert.length > 29) {
@@ -39,10 +39,10 @@ const QuestionModal = ({
       <button
         type="primary"
         onClick={() => {
-          toggleQuestionModel(true);
+          toggleQuestionModal(true);
         }}
       >
-        ADD A QUESTION
+        Add A Question +
       </button>
       <Modal
         title={
@@ -64,18 +64,18 @@ const QuestionModal = ({
                 fetchQuestionsById(productById.id);
               })
               .then(() => {
-                toggleQuestionModel(false);
-                changeInputEmail('');
-                changeInputNickname('');
-                changeInputQuestion('');
+                toggleQuestionModal(false);
+                changeInputEmail("");
+                changeInputNickname("");
+                changeInputQuestion("");
               });
           }
         }}
         onCancel={() => {
-          toggleQuestionModel(false);
-          changeInputEmail('');
-          changeInputNickname('');
-          changeInputQuestion('');
+          toggleQuestionModal(false);
+          changeInputEmail("");
+          changeInputNickname("");
+          changeInputQuestion("");
         }}
       >
         <input

@@ -1,12 +1,7 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import Helpful from './Helpful';
 
-const Question = ({
-  asker_Name,
-  question_body,
-  question_date,
-  question_helpfulness,
-  reported,
-}) => {
+const Question = ({ question_body, question_helpfulness, question_id }) => {
   return (
     <div>
       <h3
@@ -16,20 +11,11 @@ const Question = ({
       >
         Q: {question_body}
       </h3>
-      <p
-        style={{
-          display: 'inline',
-        }}
-      >
-        Helpful? Yes: {question_helpfulness} |
-      </p>
-      <p
-        style={{
-          display: 'inline',
-        }}
-      >
-        Add Answer
-      </p>
+      <Helpful
+        idBeingUsed={question_id}
+        helpfulness={question_helpfulness}
+        typeOfStored="questionId"
+      />
       <p>---------------------------------------------</p>
     </div>
   );

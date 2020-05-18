@@ -77,7 +77,7 @@ const RatingBreakdown = (props) => {
           className="whatever"
           variant="determinate"
           color="secondary"
-          value={valueFive}
+          value={valueFive || 0}
         />
       </div>
       <div className="linearbar4">
@@ -88,7 +88,7 @@ const RatingBreakdown = (props) => {
           className="whatever"
           variant="determinate"
           color="secondary"
-          value={valueFour}
+          value={valueFour || 0}
         />
       </div>
       <div className="linearbar3">
@@ -99,7 +99,7 @@ const RatingBreakdown = (props) => {
           className="whatever"
           variant="determinate"
           color="secondary"
-          value={valueThree}
+          value={valueThree || 0}
         />
       </div>
       <div className="linearbar2">
@@ -110,7 +110,7 @@ const RatingBreakdown = (props) => {
           className="whatever"
           variant="determinate"
           color="secondary"
-          value={valueTwo}
+          value={valueTwo || 0}
         />
       </div>
       <div className="linearbar1">
@@ -121,7 +121,7 @@ const RatingBreakdown = (props) => {
           className="whatever"
           variant="determinate"
           color="secondary"
-          value={valueOne}
+          value={valueOne || 0}
         />
       </div>
     </div>
