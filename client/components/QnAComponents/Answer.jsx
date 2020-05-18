@@ -7,15 +7,19 @@ const Answer = ({ info }) => {
 
   return (
     <div>
-      <h3>A: </h3>
-      <p>{info.body}</p>
+      <p className="answer">
+        <span style={{ 'font-size': '18px', 'font-weight': 'bold' }}>A: </span>
+        {info.body}
+      </p>
 
-      <p>
+      <p className="text14">
         by{' '}
         {info.answerer_name === 'Seller' ? (
-          <span style={{ 'font-weight': 'bold' }}>{info.answerer_name}</span>
+          <span className="text14" style={{ 'font-weight': 'bold' }}>
+            {info.answerer_name}
+          </span>
         ) : (
-          info.answerer_name
+          <span>info.answerer_name</span>
         )}
         , {info.newDate} |{' '}
         <Helpful

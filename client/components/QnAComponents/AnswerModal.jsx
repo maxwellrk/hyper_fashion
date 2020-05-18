@@ -36,15 +36,18 @@ const AnswerModal = ({
   };
 
   return (
-    <div>
-      <Button
-        type="primary"
-        onClick={() => {
-          toggleAnswerModal(true);
-        }}
-      >
-        Add Answer
-      </Button>
+    <div className="answerModalContainer">
+      <p className="answerModal">
+        {' '}
+        <a
+          type="primary"
+          onClick={() => {
+            toggleAnswerModal(true);
+          }}
+        >
+          Add Answer
+        </a>
+      </p>
       <Modal
         title={
           <div>
