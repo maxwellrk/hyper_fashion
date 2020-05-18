@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Modal } from 'antd';
+import { Modal, Button } from 'antd';
 import axios from 'axios';
 
 const AnswerModal = ({
@@ -37,14 +37,14 @@ const AnswerModal = ({
 
   return (
     <div>
-      <button
+      <Button
         type="primary"
         onClick={() => {
           toggleAnswerModal(true);
         }}
       >
         Add Answer
-      </button>
+      </Button>
       <Modal
         title={
           <div>
