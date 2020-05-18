@@ -129,6 +129,26 @@ const SubmitReviewForm = (props) => {
       setLoading(false);
       setVisible(false);
     }, 3000);
+    axios
+      .post(`http://18.224.200.47/reviews/${props.pageId}/`, {
+        rating: value,
+        summary: isReviewSummary,
+        body: isReviewBody,
+        recommend: isRecommended,
+        name: isNickname,
+        email: isEmail,
+        photos: filesList,
+        characteristics: isCharacteristics,
+      })
+      .then(() => {
+        props.addedR();
+      })
+      .then(() => {
+        // toggleQuestionModel(false);
+        // changeInputEmail("");
+        // changeInputNickname("");
+        // changeInputQuestion("");
+      });
   }
 
   function handleCancel(e) {
@@ -408,7 +428,7 @@ const SubmitReviewForm = (props) => {
               <span style={{ color: "red", backgroundPosition: "right top" }}>
                 *
               </span>
-              <div>Quality</div>
+              <div>Fit</div>
               <Radio.Group
                 defaultValue={3}
                 buttonStyle="solid"
