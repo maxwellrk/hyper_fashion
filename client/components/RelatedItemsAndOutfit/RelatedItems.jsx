@@ -55,7 +55,7 @@ const RelatedItems = ({ prodRating, productById, relatedItemsAndStyle }) => {
   // console.log("slides", itemSlides);
   return (
     <div className="relatedProducts">
-      <h3>Related Product</h3>
+      <h3 calssName='related-h3'>Related Product</h3>
       <CompareModal
         relatedItem={relatedItem}
         currentItem={productById}
@@ -79,7 +79,7 @@ const RelatedItems = ({ prodRating, productById, relatedItemsAndStyle }) => {
                       <Col key={j} className="relatedProducts-carousel-col">
                         <Card className="product-card">
                           <button
-                          className='btn compare'
+                          className='btn-compare'
                             onClick={() => {
                               setrelatedItem(eachItem);
                               setDisplayModal(true);
@@ -127,7 +127,7 @@ const RelatedItems = ({ prodRating, productById, relatedItemsAndStyle }) => {
           })}
         </Carousel>
       ) : (
-        <h6>There is no related products...</h6>
+        <h6 className='non-related-h6'>There is no related products...</h6>
       )}
     </div>
   );

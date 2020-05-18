@@ -8,12 +8,12 @@
   margin: 5px auto;
 }
 
-h3 {
+.related-h3 {
   font-weight: bold;
   margin: 5px 0px;
 }
 
-h6 {
+.non-related-h6 {
   color: grey;
   text-align: center;
 }
@@ -52,7 +52,7 @@ h6 {
   text-decoration: none;
   cursor: pointer;
 }
-.btn .compare {
+.btn-compare {
   background: transparent;
   position: absolute;
   right: 0;
@@ -65,12 +65,12 @@ h6 {
 }
 
 
-.btn .compare:hover {
+.btn-compare:hover {
   color: rgb(10, 48, 143);
   font-weight: bold;
 }
 /*//still need fix button blue stuff*/
-.btn .compare:active {
+.btn-compare:active {
   background: transparent;
   /* border: 1px solid red; */
 }
