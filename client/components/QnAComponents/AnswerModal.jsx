@@ -70,7 +70,7 @@ const AnswerModal = ({
                 toggleAnswerModal(false);
                 changeInputEmail('');
                 changeInputNickname('');
-                changeInputQuestion('');
+                changeInputAnswer('');
               });
           }
         }}

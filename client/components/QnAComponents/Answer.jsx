@@ -1,9 +1,9 @@
-import React, { useEffect } from 'react';
-
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import Helpful from './Helpful';
 
 const Answer = ({ info }) => {
-  console.log('Answer -> info', info);
+  const [reportedStatus, changeReportedStatus] = useState(true);
 
   return (
     <div>
@@ -23,7 +23,23 @@ const Answer = ({ info }) => {
           helpfulness={info.helpfulness}
           typeOfStored="answerId"
         />{' '}
-        | Report
+        |{' '}
+        {reportedStatus ? (
+          <span
+            onClick={() => {
+              axios
+                .put(`http://18.224.200.47/qa/answer/${info.id}/report`)
+                .then((resp) => {
+                  console.log(resp);
+                  changeReportedStatus(false);
+                });
+            }}
+          >
+            Report
+          </span>
+        ) : (
+          <span>Reported</span>
+        )}
       </p>
     </div>
   );

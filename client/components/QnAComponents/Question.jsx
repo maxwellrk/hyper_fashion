@@ -2,10 +2,6 @@ import React, { useEffect, useState } from 'react';
 import Helpful from './Helpful';
 
 const Question = ({ question_body, question_helpfulness, question_id }) => {
-  // useEffect(() => {
-  //   console.log(window.localStorage.getItem('test'));
-  // });
-
   return (
     <div>
       <h3
