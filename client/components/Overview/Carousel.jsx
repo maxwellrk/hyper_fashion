@@ -56,11 +56,19 @@ const Carousel = ({currentStyle}) => {
     });
   };
 
-  const zoomFunction = () => {
+  const zoomFunction = (index) => {
+    let newCurrent;
+
+    currentStyle.photos.forEach((photo, i) => {
+      if (index === i) {
+        newCurrent = photo.thumbnail_url;
+      }
+    });
     let current = state.zoom;
     setState({
       ...state,
       zoom: !current,
+      currentPhoto: [newCurrent],
     });
   };
 
@@ -79,6 +87,7 @@ const Carousel = ({currentStyle}) => {
         currentStyle={currentStyle}
         index={index}
         zoomFunction={zoomFunction}
+        currentPhoto={currentPhoto}
       />
       {currentStyle.photos ? (
         <CarouselContent
@@ -87,7 +96,7 @@ const Carousel = ({currentStyle}) => {
           width={800 * currentStyle.photos.length}
           height="100%"
           overflow="hidden"
-          onClick={() => zoomFunction()}
+          onClick={() => zoomFunction(index)}
         >
           {currentStyle.photos
             ? currentStyle.photos.map((slide, index) => (

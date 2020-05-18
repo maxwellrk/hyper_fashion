@@ -1,7 +1,8 @@
 import React, {useState, useEffect} from "react";
 import {Modal} from "antd";
 
-const Zoom = ({index, currentStyle, zoom, zoomFunction}) => {
+const Zoom = ({currentPhoto, zoom, zoomFunction}) => {
+  console.log("current photo", currentPhoto);
   return (
     <div>
       {zoom ? (
@@ -14,7 +15,7 @@ const Zoom = ({index, currentStyle, zoom, zoomFunction}) => {
           //   onOk={this.handleOk}
           //   onCancel={this.handleCancel}
         >
-          <p>what I have so far</p>
+          <img src={currentPhoto}></img>
         </Modal>
       ) : (
         ""
