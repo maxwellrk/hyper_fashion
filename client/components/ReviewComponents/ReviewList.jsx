@@ -38,7 +38,7 @@ const ReviewList = (props) => {
         changeReviewCount(reviewCount + 5);
       }
     });
-  }, [props.page, addedReview]);
+  }, [props.page, props.productById.id, addedReview]);
 
   useEffect(() => {
     props
