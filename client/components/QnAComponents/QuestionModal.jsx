@@ -6,7 +6,7 @@ import axios from "axios";
 //with props, need to go back and fix
 const QuestionModal = ({
   questionModalRender,
-  toggleQuestionModel,
+  toggleQuestionModal,
   productById,
   fetchQuestionsById,
 }) => {
@@ -39,10 +39,10 @@ const QuestionModal = ({
       <button
         type="primary"
         onClick={() => {
-          toggleQuestionModel(true);
+          toggleQuestionModal(true);
         }}
       >
-        ADD A QUESTION
+        Add A Question +
       </button>
       <Modal
         title={
@@ -64,7 +64,7 @@ const QuestionModal = ({
                 fetchQuestionsById(productById.id);
               })
               .then(() => {
-                toggleQuestionModel(false);
+                toggleQuestionModal(false);
                 changeInputEmail("");
                 changeInputNickname("");
                 changeInputQuestion("");
@@ -72,7 +72,7 @@ const QuestionModal = ({
           }
         }}
         onCancel={() => {
-          toggleQuestionModel(false);
+          toggleQuestionModal(false);
           changeInputEmail("");
           changeInputNickname("");
           changeInputQuestion("");

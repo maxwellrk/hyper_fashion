@@ -1,7 +1,7 @@
 import React from "react";
-import { Avatar } from "antd";
+import {Avatar} from "antd";
 
-const ThumbNails = ({ index, thumbnails }) => {
+const ThumbNails = ({index, thumbnails, setThumbnailCurrent}) => {
   return (
     <div
       style={{
@@ -13,14 +13,26 @@ const ThumbNails = ({ index, thumbnails }) => {
         justifyContent: "center",
       }}
     >
-      {thumbnails.map((thumbnail) => {
+      {thumbnails.map((thumbnail, i) => {
         const image = thumbnail.thumbnail_url;
+        if (index === i) {
+          return (
+            <Avatar
+              shape="square"
+              size={64}
+              src={image}
+              style={{margin: "5px"}}
+              onClick={() => setThumbnailCurrent(i)}
+            />
+          );
+        }
         return (
           <Avatar
             shape="square"
             size={50}
             src={image}
-            style={{ margin: "5px" }}
+            style={{margin: "5px"}}
+            onClick={() => setThumbnailCurrent(i)}
           />
         );
       })}
