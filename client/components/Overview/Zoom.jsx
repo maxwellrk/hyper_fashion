@@ -12,10 +12,12 @@ const Zoom = ({currentPhoto, zoom, zoomFunction}) => {
           visible={zoom}
           okButtonProps={{style: {display: "none"}}}
           cancelButtonProps={{style: {display: "none"}}}
+          width={820}
+          bodyStyle={{height: 820}}
           //   onOk={this.handleOk}
           //   onCancel={this.handleCancel}
         >
-          <img src={currentPhoto}></img>
+          <img src={currentPhoto} style={{width: 500}}></img>
         </Modal>
       ) : (
         ""
