@@ -1,10 +1,23 @@
 /* eslint-disable */
 import React, { useEffect, useState } from 'react';
 import Question from './Question';
+import AnswerModal from '../../containers/QnAContainers/AnswerModalContainer';
 import Answer from './Answer';
 
-const QnABlock = ({ entry }) => {
+const QnABlock = ({ entry, productById }) => {
+  console.log('QnABlock -> entry', entry);
+
   const [answerDisplay, toggleAnswerDisplay] = useState(false);
+  const [answerModalRender, toggleAnswerModal] = useState(false);
+
+  useEffect(() => {
+    if (Object.keys(entry.answers).length > 2) {
+      toggleAnswerDisplay(true);
+    } else {
+      toggleAnswerDisplay(false);
+    }
+  }, [entry.answers]);
+
   const months = [
     'January',
     'February',
@@ -19,14 +32,6 @@ const QnABlock = ({ entry }) => {
     'November',
     'December',
   ];
-
-  useEffect(() => {
-    if (Object.keys(entry.answers).length > 2) {
-      toggleAnswerDisplay(true);
-    } else {
-      toggleAnswerDisplay(false);
-    }
-  }, [entry.answers]);
 
   const dateFormatter = (date) => {
     const datesArray = date.toString().slice(0, 10).split('-');
@@ -55,23 +60,34 @@ const QnABlock = ({ entry }) => {
       }}
     >
       <Question
+        question_id={entry.question_id}
         asker_Name={entry.asker_name}
         question_body={entry.question_body}
         question_date={entry.question_date}
         question_helpfulness={entry.question_helpfulness}
         reported={entry.reported}
       />
-      {/* <AnswerModal /> */}
+      <AnswerModal
+        question_body={entry.question_body}
+        question_id={entry.question_id}
+        answerModalRender={answerModalRender}
+        toggleAnswerModal={toggleAnswerModal}
+      />
       {Object.keys(entry.answers)
         .map((answerId, index) => {
+          console.log(entry.answers[answerId]);
           entry.answers[answerId].newDate = dateFormatter(
             entry.answers[answerId].date
           );
-          return <Answer info={entry.answers[answerId]} question />;
+          return <Answer info={entry.answers[answerId]} />;
         })
         //  Need to bring seller answers to the top of the page
         .sort((a, b) => {
-          return b.props.info.helpfulness - a.props.info.helpfulness;
+          return (
+            (b.props.info.answerer_name === 'Seller') -
+              (a.props.info.answerer_name === 'Seller') ||
+            b.props.info.helpfulness - a.props.info.helpfulness
+          );
         })
         .filter((ele, index) => {
           if (answerDisplay && index < 2) {
@@ -86,9 +102,3 @@ const QnABlock = ({ entry }) => {
 };
 //above still needs to cause a
 export default QnABlock;
-
-// if (answerDisplay && index < 2) {
-//   return <Answer info={entry.answers[answerId]} />;
-// } else if (!answerDisplay) {
-//   return <Answer info={entry.answers[answerId]} />;
-// }
