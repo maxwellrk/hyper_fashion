@@ -12,3 +12,4 @@ const getAverageReview = function (input) {
   return finalAverage;
 };
 export default getAverageReview;
+// input.filter()

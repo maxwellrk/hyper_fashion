@@ -11,6 +11,8 @@ import "./ReviewStyles/reviewstyles.css";
 const ReviewListItem = ({ item }) => {
   //   let date = item.date.slice(0, 10);
   const [isVisible, setVisible] = useState(false);
+  const [isHelpful, setHelpful] = useState(false);
+  const [isReported, setReported] = useState(false);
   let formattedDate = dateFormatter(item.date);
 
   function showModal() {
@@ -25,6 +27,22 @@ const ReviewListItem = ({ item }) => {
   function handleCancel(e) {
     console.log(e);
     setVisible(false);
+  }
+
+  function markAsHelpful() {
+    axios
+      .put(`http://18.224.200.47/reviews/helpfu/${props.item.review_id}/`)
+      .then(() => {
+        setHelpful(true);
+      });
+  }
+
+  function markAsReported() {
+    axios
+      .put(`http://18.224.200.47/reviews/report/${props.item.review_id}/`)
+      .then(() => {
+        setReported(true);
+      });
   }
 
   if (item.photos.length > 0) {
@@ -110,7 +128,16 @@ const ReviewListItem = ({ item }) => {
           <img alt="example" src={currentPhoto} />
         </Modal>
       </div>
-      <div>Helpful? Yes({item.helpfulness}) | Report</div>
+      <div>
+        Helpful?{" "}
+        <a disabled={isHelpful} onClick={() => markAsHelpful()}>
+          Yes({item.helpfulness})
+        </a>{" "}
+        |{" "}
+        <a disabled={isReported} onClick={() => markAsReported()}>
+          Report
+        </a>
+      </div>
       <p>---------------------------------------------</p>
     </div>
   );
