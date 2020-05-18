@@ -3,15 +3,18 @@ import CarouselContent from "./CarouselContent";
 import Slide from "./Slide";
 import Arrow from "./Arrows";
 import ThumbNails from "./Thumbnails";
+import Zoom from "./Zoom";
 
 const Carousel = ({currentStyle}) => {
   const [state, setState] = useState({
     index: 0,
     translate: 0,
     transition: 0.45,
+    zoom: false,
+    currentPhoto: [],
   });
 
-  const {translate, transition, index} = state;
+  const {translate, transition, index, zoom, currentPhoto} = state;
 
   const nextSlide = () => {
     if (index === currentStyle.photos.length - 1) {
@@ -53,6 +56,14 @@ const Carousel = ({currentStyle}) => {
     });
   };
 
+  const zoomFunction = () => {
+    let current = state.zoom;
+    setState({
+      ...state,
+      zoom: !current,
+    });
+  };
+
   return (
     <div
       style={{
@@ -63,6 +74,12 @@ const Carousel = ({currentStyle}) => {
         margin: 0,
       }}
     >
+      <Zoom
+        zoom={zoom}
+        currentStyle={currentStyle}
+        index={index}
+        zoomFunction={zoomFunction}
+      />
       {currentStyle.photos ? (
         <CarouselContent
           translate={translate}
@@ -70,6 +87,7 @@ const Carousel = ({currentStyle}) => {
           width={800 * currentStyle.photos.length}
           height="100%"
           overflow="hidden"
+          onClick={() => zoomFunction()}
         >
           {currentStyle.photos
             ? currentStyle.photos.map((slide, index) => (
