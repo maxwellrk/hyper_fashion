@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import RelatedItems from "../../containers/RelatedItemsAndOutfitContainers/RelatedItemsContainer";
-import Outfit from "./Outfit";
+import Outfit from "../../containers/RelatedItemsAndOutfitContainers/OutfitContainer";
 import axios from "axios";
 import Promise from "bluebird";
 import './RelatedItems.css';
