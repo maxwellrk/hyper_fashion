@@ -88,3 +88,32 @@
   position: "relative";
   top: "-150px";
 } */
+.submitrating {
+  color: black;
+  width: 200px;
+  display: flex;
+  align-items: center;
+}
+
+.MuiRating-root {
+  position: relative;
+  top: 5px;
+}
+
+.uploadbutton:disabled {
+  visibility: hidden;
+}
+
+/* .radiogroup {
+  position: relative;
+  left: 10px;
+} */
+
+/* .hover-feedback-1,
+.hoverfeed-back-2,
+.hover-feedback-3,
+.hover-feedback-4,
+.hover-feedback-5 {
+  position: relative;
+  top: 5px;
+} */

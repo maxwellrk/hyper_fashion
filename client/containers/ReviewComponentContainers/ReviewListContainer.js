@@ -4,7 +4,11 @@ import fetchReviewMetaData from "../../actions/ReviewComponentActions/fetchRevie
 import { connect } from "react-redux";
 
 const mapStateToProps = (state) => {
-  return { reviewList: state.reviewList, prodRating: state.prodRating };
+  return {
+    reviewList: state.reviewList,
+    prodRating: state.prodRating,
+    productById: state.productById,
+  };
 };
 
 export default connect(mapStateToProps, {

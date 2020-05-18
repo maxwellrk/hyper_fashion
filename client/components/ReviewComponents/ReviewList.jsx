@@ -3,19 +3,25 @@ import ReviewListItem from "./ReviewListItem";
 import RatingInfo from "./RatingInfo";
 import { useEffect, useState } from "react";
 import TestComponent from "./TestComponent";
+import SubmitReviewForm from "./SubmitReviewForm";
+import { List, message, Avatar, Spin } from "antd";
+import InfiniteScroll from "react-infinite-scroller";
 import $ from "jquery";
 
 const ReviewList = (props) => {
   const [reviewRender, addReviewRender] = useState(2);
   const [pageList, changePageList] = useState(1);
-  const [reviewCount, changeReviewCount] = useState(5);
+  const [reviewCount, changeReviewCount] = useState(0);
   const [addSortOrder, changeSortOrder] = useState("relevant");
   const [disableFetch, changeDisableFetch] = useState(false);
   const [finalCount, changeFinalCount] = useState(null);
   const [overallFilters, changeOverallFilters] = useState(props.totalFilters);
   const [reviewItems, addReviewItems] = useState([]);
-
-  console.log("totalfilters:", props.totalFilters);
+  const [addedReview, setAddedReview] = useState(0);
+  const [pageRefresh, setPageRefresh] = useState(false);
+  const [isLoading, setLoading] = useState(false);
+  const [hasMore, setHasMore] = useState(true);
+  const [isReviewDisplay, setReviewDisplay] = useState(<div></div>);
 
   useEffect(() => {
     addReviewRender(2);
@@ -32,7 +38,7 @@ const ReviewList = (props) => {
         changeReviewCount(reviewCount + 5);
       }
     });
-  }, [props.page]);
+  }, [props.page, addedReview]);
 
   useEffect(() => {
     props
@@ -59,10 +65,33 @@ const ReviewList = (props) => {
     }
   }, [finalCount, reviewRender]);
 
+  let getMoreReviews = function getTheReviews() {
+    setAddedReview(1);
+  };
+
   // useEffect(() => {
   //   if (props.totalFilters.length > 0) {
   //   }
   // }, [props.totalFilters]);
+  // function handleInfiniteOnLoad () {
+  //   let data = reviewItems;
+  //   setLoading(true)
+  //   if (data.length > 14) {
+  //     message.warning('Infinite List loaded all');
+  //     this.setState({
+  //       hasMore: false,
+  //       loading: false,
+  //     });
+  //     return;
+  //   }
+  //   this.fetchData(res => {
+  //     data = data.concat(res.results);
+  //     this.setState({
+  //       data,
+  //       loading: false,
+  //     });
+  //   });
+  // };
 
   let updateFunction = function updater() {
     console.log("clicked");
@@ -82,6 +111,38 @@ const ReviewList = (props) => {
     }
   };
 
+  useEffect(() => {
+    if (reviewItems && reviewRender < 4) {
+      setReviewDisplay(
+        filterReview(reviewItems, props.totalFilters)
+          .slice(0, reviewRender)
+          .map((item) => {
+            return <ReviewListItem item={item} />;
+          })
+      );
+    } else if (reviewItems && reviewRender >= 4) {
+      setReviewDisplay(
+        <div>
+          <div className="demo-infinite-container">
+            <InfiniteScroll initialLoad={false} pageStart={0} useWindow={false}>
+              <List
+                dataSource={filterReview(reviewItems, props.totalFilters)}
+                style={{ maxHeight: 1200, overflow: "auto" }}
+                renderItem={(item) => (
+                  <List.Item key={item.review_id}>
+                    <ReviewListItem item={item} />
+                  </List.Item>
+                )}
+              ></List>
+            </InfiniteScroll>
+          </div>
+        </div>
+      );
+    } else {
+      setReviewDisplay(<div></div>);
+    }
+  }, [props.page, reviewItems, reviewRender, props.totalFilters]);
+
   return (
     // <div>whatever</div>
     <div>
@@ -98,17 +159,8 @@ const ReviewList = (props) => {
           <option value="helpful">Helpful</option>
         </select>
       </div>
-      <div>
-        {reviewItems ? (
-          filterReview(reviewItems, props.totalFilters)
-            .slice(0, reviewRender)
-            .map((item) => {
-              return <ReviewListItem item={item} />;
-            })
-        ) : (
-          <div></div>
-        )}
-      </div>
+      <div>{isReviewDisplay}</div>
+
       <div>
         <button
           disabled={disableFetch || props.prodRating.totalRating === 0}
@@ -117,6 +169,12 @@ const ReviewList = (props) => {
         >
           More Reviews
         </button>
+        <SubmitReviewForm
+          addedR={getMoreReviews}
+          fetchReviews={props.fetchReviews}
+          pageId={props.page}
+          name={props.productById.name}
+        />
       </div>
     </div>
   );
