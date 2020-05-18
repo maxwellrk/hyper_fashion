@@ -1,7 +1,6 @@
 import React from "react";
 
 const Display = ({currentStyle, productById}) => {
-  console.log("current style in display", currentStyle);
   return (
     <div>
       <div>{productById.category}</div>
