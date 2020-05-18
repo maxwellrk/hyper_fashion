@@ -1,8 +1,10 @@
-import React, { useEffect } from "react";
+import React, {useEffect} from "react";
+import ReactDom from "react-dom";
 import RatingsandReviews from "./ReviewComponents/RatingsandReviews";
 import QnA from "../containers/QnAContainers/QnAContainer";
 import RelatedItemAndOutfit from "./RelatedItemsAndOutfit/RelatedItemsAndOutfit";
 import Overview from "../containers/OverviewContainers/OverviewContainer";
+import {Link, animateScroll} from "react-scroll";
 
 const ProductDetailPage = (props) => {
   useEffect(() => {

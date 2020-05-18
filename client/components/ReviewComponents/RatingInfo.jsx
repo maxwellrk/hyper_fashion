@@ -5,7 +5,7 @@ import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
 import Grid from "@material-ui/core/Grid";
 import LinearProgress from "@material-ui/core/LinearProgress";
-import { useEffect, useState } from "react";
+import {useEffect, useState} from "react";
 import reviewPercentage from "./ReviewComponentHelpers/reviewPercentage";
 import RatingBreakdown from "./RatingBreakdown";
 import ratingBreakDownPercentage from "./ReviewComponentHelpers/ratingBreakdownPercentage";
@@ -33,7 +33,7 @@ const RatingInfo = (props) => {
 
   const convertedRating = Number(props.prodRating.averageRating);
   return (
-    <div className="overallComponent">
+    <div className="overallComponent" id="section1">
       <Grid container direction="row" spacing={0.5}>
         <h1 className="overallRating">{props.prodRating.averageRating}</h1>
         <div>
@@ -50,7 +50,7 @@ const RatingInfo = (props) => {
             </Typography> */}
               <Rating
                 name="overallRating"
-                style={{ color: "black" }}
+                style={{color: "black"}}
                 value={convertedRating}
                 precision={0.1}
                 size="small"
