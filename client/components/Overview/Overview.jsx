@@ -96,7 +96,7 @@ const Overview = ({productById}) => {
           </Row>
         </Col>
       </Row>
-      <ProductDescription />
+      <ProductDescription currentStyle={currentStyle} />
     </div>
   );
 };
