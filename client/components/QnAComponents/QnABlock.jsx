@@ -41,7 +41,7 @@ const QnABlock = ({ entry, productById }) => {
 
   if (answerDisplay) {
     answersButton = (
-      <a onClick={() => toggleAnswerDisplay(false)}>Load More Answers</a>
+      <a onClick={() => toggleAnswerDisplay(false)}>See More Answers</a>
     );
   } else if (!answerDisplay) {
     answersButton = (
@@ -92,8 +92,8 @@ const QnABlock = ({ entry, productById }) => {
               return ele;
             }
           })}
-        {Object.keys(entry.answers).length > 2 && answersButton}
       </div>
+      {Object.keys(entry.answers).length > 2 && answersButton}
     </div>
   );
 };
