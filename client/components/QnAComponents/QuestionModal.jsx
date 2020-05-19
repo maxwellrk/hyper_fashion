@@ -35,8 +35,18 @@ const QuestionModal = ({
   };
 
   return (
-    <div>
+    <div
+      style={{
+        display: 'inline-block',
+        'margin-left': '20px',
+      }}
+    >
       <button
+        style={{
+          border: '1px solid black',
+          height: '50px',
+          'background-color': 'white',
+        }}
         type="primary"
         onClick={() => {
           toggleQuestionModal(true);
@@ -45,8 +55,10 @@ const QuestionModal = ({
         Add A Question +
       </button>
       <Modal
+        width="60vw"
+        height="40vh"
         title={
-          <div>
+          <div style={{ 'font-size': '20px' }}>
             <p>Ask Your Question</p>
             <p>About the {productById.name}</p>
           </div>
@@ -80,16 +92,25 @@ const QuestionModal = ({
           changeInputQuestion('');
         }}
       >
-        <input
+        <p>Question:</p>
+        <textarea
+          style={{
+            width: '95%',
+            height: '120px',
+            resize: 'none',
+            'margin-bottom': '10px',
+          }}
           type="text"
           maxLength="1000"
+          placeholder="Enter question here..."
           onChange={(e) => {
             changeInputQuestion(e.target.value);
           }}
           value={inputQuestion}
         />
-        <br />
+        <p>Username:</p>
         <input
+          style={{ width: '95%' }}
           type="text"
           maxLength="60"
           placeholder="Example: jackson11!"
@@ -99,8 +120,9 @@ const QuestionModal = ({
           value={inputNickname}
         />
         <p>For privacy reasons, do not use your full name or email address</p>
-        <br />
+        <p>Email:</p>
         <input
+          style={{ width: '95%' }}
           type="text"
           maxLength="60"
           placeholder="Why did you like the product or not?"

@@ -41,7 +41,7 @@ const QnABlock = ({ entry, productById }) => {
 
   if (answerDisplay) {
     answersButton = (
-      <p onClick={() => toggleAnswerDisplay(false)}>See More Answers</p>
+      <p onClick={() => toggleAnswerDisplay(false)}>Load More Answers</p>
     );
   } else if (!answerDisplay) {
     answersButton = (
@@ -52,11 +52,7 @@ const QnABlock = ({ entry, productById }) => {
   }
 
   return (
-    <div
-      style={{
-        border: '2px solid red',
-      }}
-    >
+    <div>
       <div className="questionHeaderContainer">
         <Question
           question_id={entry.question_id}

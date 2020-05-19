@@ -38,7 +38,14 @@ const QnA = ({ fetchQuestionsById, questionsList, productById }) => {
     moreQuestions = <div />;
   } else {
     moreQuestions = (
-      <button onClick={() => changeQuestionRender(questionRender + 2)}>
+      <button
+        style={{
+          border: '1px solid black',
+          height: '50px',
+          'background-color': 'white',
+        }}
+        onClick={() => changeQuestionRender(questionRender + 2)}
+      >
         MORE ANSWERED QUESTIONS
       </button>
     );
@@ -70,11 +77,11 @@ const QnA = ({ fetchQuestionsById, questionsList, productById }) => {
           changeSearchInput={changeSearchInput}
         />
         <div className="scrollContainerQuestions">{listOfQnABlock}</div>
+        {moreQuestions}
         <QuestionModal
           questionModalRender={questionModalRender}
           toggleQuestionModal={toggleQuestionModal}
         />
-        {moreQuestions}
       </div>
     </div>
   );

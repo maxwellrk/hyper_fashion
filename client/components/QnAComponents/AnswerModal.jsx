@@ -49,8 +49,10 @@ const AnswerModal = ({
         </a>
       </p>
       <Modal
+        width="60vw"
+        height="40vh"
         title={
-          <div>
+          <div style={{ 'font-size': '20px' }}>
             <p>Submit Your Answer</p>
             <p>
               {productById.name}: {question_body}
@@ -84,7 +86,15 @@ const AnswerModal = ({
           changeInputAnswer('');
         }}
       >
-        <input
+        <p>Answer:</p>
+        <textarea
+          style={{
+            width: '95%',
+            height: '120px',
+            resize: 'none',
+            'margin-bottom': '10px',
+          }}
+          placeholder="Enter answer here..."
           type="text"
           maxLength="1000"
           onChange={(e) => {
@@ -92,8 +102,9 @@ const AnswerModal = ({
           }}
           value={inputAnswer}
         />
-        <br />
+        <p>Username:</p>
         <input
+          style={{ width: '95%' }}
           type="text"
           maxLength="60"
           placeholder="Example: jack543!"
@@ -103,8 +114,9 @@ const AnswerModal = ({
           value={inputNickname}
         />
         <p>For privacy reasons, do not use your full name or email address</p>
-        <br />
+        <p>Email:</p>
         <input
+          style={{ width: '95%' }}
           type="text"
           maxLength="60"
           placeholder="Example: jack@email.com"
@@ -114,8 +126,6 @@ const AnswerModal = ({
           value={inputEmail}
         />
         <p>For authentication reasons, you will not be emailed</p>
-        <br />
-        <button>ADD IMAGE HERE (NON FUNC)</button>
       </Modal>
     </div>
   );
