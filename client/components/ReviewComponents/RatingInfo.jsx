@@ -321,7 +321,30 @@ const RatingInfo = (props) => {
         </div> */}
       </div>
       <div className={classes.root} style={{ position: "relative", left: 30 }}>
-        <Typography gutterBottom>Size</Typography>
+        {props.prodRating.fulldata &&
+        props.prodRating.fulldata.characteristics.Size ? (
+          <div>
+            <Typography gutterBottom>Size</Typography>
+            <IOSSlider
+              aria-label="ios slider"
+              // defaultValue={props.prodRating.fulldata.characteristics.Size.value}
+              defaultValue={
+                props.prodRating.fulldata &&
+                props.prodRating.fulldata.characteristics.Size
+                  ? props.prodRating.fulldata.characteristics.Size.value
+                  : 3
+              }
+              marks={markssize}
+              max={5}
+              min={1}
+              valueLabelDisplay="on"
+              ThumbComponent={ArrowDropDownIcon}
+            />
+          </div>
+        ) : (
+          <div></div>
+        )}
+        {/* <Typography gutterBottom>Size</Typography>
         <IOSSlider
           aria-label="ios slider"
           // defaultValue={props.prodRating.fulldata.characteristics.Size.value}
@@ -336,9 +359,32 @@ const RatingInfo = (props) => {
           min={1}
           valueLabelDisplay="on"
           ThumbComponent={ArrowDropDownIcon}
-        />
+        /> */}
         <div className={classes.margin} />
-        <Typography gutterBottom>Width</Typography>
+        {props.prodRating.fulldata &&
+        props.prodRating.fulldata.characteristics.Width ? (
+          <div>
+            <Typography gutterBottom>Width</Typography>
+            <IOSSlider
+              aria-label="ios slider"
+              // defaultValue={props.prodRating.fulldata.characteristics.Size.value}
+              defaultValue={
+                props.prodRating.fulldata &&
+                props.prodRating.fulldata.characteristics.Width
+                  ? props.prodRating.fulldata.characteristics.Width.value
+                  : 3
+              }
+              marks={markswidth}
+              max={5}
+              min={1}
+              valueLabelDisplay="on"
+              ThumbComponent={ArrowDropDownIcon}
+            />
+          </div>
+        ) : (
+          <div></div>
+        )}
+        {/* <Typography gutterBottom>Width</Typography>
         <IOSSlider
           aria-label="ios slider"
           defaultValue={
@@ -352,84 +398,105 @@ const RatingInfo = (props) => {
           min={1}
           valueLabelDisplay="on"
           ThumbComponent={ArrowDropDownIcon}
-        />
+        /> */}
         <div className={classes.margin} />
-
-        <Typography gutterBottom>Comfort</Typography>
-        <IOSSlider
-          aria-label="ios slider"
-          defaultValue={
-            props.prodRating.fulldata &&
-            props.prodRating.fulldata.characteristics.Comfort
-              ? props.prodRating.fulldata.characteristics.Comfort.value
-              : 3
-          }
-          marks={markscomfort}
-          max={5}
-          min={1}
-          valueLabelDisplay="on"
-          ThumbComponent={ArrowDropDownIcon}
-        />
-
-        <div className={classes.margin} />
-
-        <div>
-          <Typography gutterBottom>Quality</Typography>
-          <IOSSlider
-            aria-label="ios slider"
-            defaultValue={
-              props.prodRating.fulldata &&
-              props.prodRating.fulldata.characteristics.Quality
-                ? props.prodRating.fulldata.characteristics.Quality.value
-                : 3
-            }
-            marks={marksquality}
-            max={5}
-            min={1}
-            valueLabelDisplay="on"
-            ThumbComponent={ArrowDropDownIcon}
-          />
-        </div>
+        {props.prodRating.fulldata &&
+        props.prodRating.fulldata.characteristics.Comfort ? (
+          <div>
+            <Typography gutterBottom>Comfort</Typography>
+            <IOSSlider
+              aria-label="ios slider"
+              defaultValue={
+                props.prodRating.fulldata &&
+                props.prodRating.fulldata.characteristics.Comfort
+                  ? props.prodRating.fulldata.characteristics.Comfort.value
+                  : 3
+              }
+              marks={markscomfort}
+              max={5}
+              min={1}
+              valueLabelDisplay="on"
+              ThumbComponent={ArrowDropDownIcon}
+            />
+          </div>
+        ) : (
+          <div></div>
+        )}
 
         <div className={classes.margin} />
 
-        <div>
-          <Typography gutterBottom>Length</Typography>
-          <IOSSlider
-            aria-label="ios slider"
-            defaultValue={
-              props.prodRating.fulldata &&
-              props.prodRating.fulldata.characteristics.Length
-                ? props.prodRating.fulldata.characteristics.Length.value
-                : 3
-            }
-            marks={markslength}
-            max={5}
-            min={1}
-            valueLabelDisplay="on"
-            ThumbComponent={ArrowDropDownIcon}
-          />
-        </div>
+        {props.prodRating.fulldata &&
+        props.prodRating.fulldata.characteristics.Quality ? (
+          <div>
+            <Typography gutterBottom>Quality</Typography>
+            <IOSSlider
+              aria-label="ios slider"
+              defaultValue={
+                props.prodRating.fulldata &&
+                props.prodRating.fulldata.characteristics.Quality
+                  ? props.prodRating.fulldata.characteristics.Quality.value
+                  : 3
+              }
+              marks={marksquality}
+              max={5}
+              min={1}
+              valueLabelDisplay="on"
+              ThumbComponent={ArrowDropDownIcon}
+            />
+          </div>
+        ) : (
+          <div></div>
+        )}
 
         <div className={classes.margin} />
 
-        <div>
-          <Typography gutterBottom>Fit</Typography>
-          <IOSSlider
-            aria-label="ios slider"
-            defaultValue={
-              props.prodRating.fulldata &&
-              props.prodRating.fulldata.characteristics.Fit
-                ? props.prodRating.fulldata.characteristics.Fit.value
-                : 3
-            }
-            marks={marksfit}
-            max={5}
-            min={1}
-            valueLabelDisplay="on"
-            ThumbComponent={ArrowDropDownIcon}
-          />
-        </div>
+        {props.prodRating.fulldata &&
+        props.prodRating.fulldata.characteristics.Length ? (
+          <div>
+            <Typography gutterBottom>Length</Typography>
+            <IOSSlider
+              aria-label="ios slider"
+              defaultValue={
+                props.prodRating.fulldata &&
+                props.prodRating.fulldata.characteristics.Length
+                  ? props.prodRating.fulldata.characteristics.Length.value
+                  : 3
+              }
+              marks={markslength}
+              max={5}
+              min={1}
+              valueLabelDisplay="on"
+              ThumbComponent={ArrowDropDownIcon}
+            />
+          </div>
+        ) : (
+          <div></div>
+        )}
+
+        <div className={classes.margin} />
+
+        {props.prodRating.fulldata &&
+        props.prodRating.fulldata.characteristics.Fit ? (
+          <div>
+            <Typography gutterBottom>Fit</Typography>
+            <IOSSlider
+              aria-label="ios slider"
+              defaultValue={
+                props.prodRating.fulldata &&
+                props.prodRating.fulldata.characteristics.Fit
+                  ? props.prodRating.fulldata.characteristics.Fit.value
+                  : 3
+              }
+              marks={marksfit}
+              max={5}
+              min={1}
+              valueLabelDisplay="on"
+              ThumbComponent={ArrowDropDownIcon}
+            />
+          </div>
+        ) : (
+          <div></div>
+        )}
 
         <div className={classes.margin} />
       </div>

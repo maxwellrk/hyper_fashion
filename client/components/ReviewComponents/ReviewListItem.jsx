@@ -15,6 +15,7 @@ const ReviewListItem = ({ item, answerList }) => {
   const [isHelpful, setHelpful] = useState(false);
   const [isReported, setReported] = useState(false);
   const [fullItemBody, setFullItemBody] = useState(false);
+  const [currentPhoto, setCurrentPhoto] = useState("");
   // const [answerUsers, setAnswerUsers] = useState(
   //   verifiedUserHelper(answerList)
   // );
@@ -50,9 +51,9 @@ const ReviewListItem = ({ item, answerList }) => {
       });
   }
 
-  if (item.photos.length > 0) {
-    var currentPhoto = item.photos[0].url;
-  }
+  // if (item.photos.length > 0) {
+  //   var currentPhoto = item.photos[0].url;
+  // }
 
   //come back to this to deal with multiple photos
 
@@ -108,41 +109,50 @@ const ReviewListItem = ({ item, answerList }) => {
         {item.photos.length > 0 ? (
           item.photos.map((photo) => {
             return (
-              <Card
-                onClick={showModal}
-                // footer={null}
-                // hoverable={true}
-                bordered={false}
-                style={{ width: 240 }}
-                cover={<img alt="example" src={photo.url} />}
-              ></Card>
-
-              //   <img
-              //     style={{
-              //       width: "50%",
-              //       height: "auto",
-              //     }}
-              //     src={photo.url}
-              //     alt="new"
-              //   />
+              <div>
+                <Card
+                  onClick={showModal}
+                  // footer={null}
+                  // hoverable={true}
+                  bordered={false}
+                  style={{ width: 240 }}
+                  cover={
+                    <img
+                      onClick={() => setCurrentPhoto(photo.url)}
+                      alt="example"
+                      src={photo.url}
+                    />
+                  }
+                ></Card>
+              </div>
             );
           })
         ) : (
           <div>no photo placeholder</div>
         )}
       </div>
-      <div>
+      <div className="picturemodalratings">
         <Modal
           title=""
           visible={isVisible}
           centered
+          bodyStyle={{ padding: "0" }}
+          width={"60%"}
+          height={"80%"}
           footer={null}
           onOk={handleOk}
           onCancel={handleCancel}
+          onClick={handleCancel}
+          closable={false}
           okButtonProps={{ disabled: true }}
           cancelButtonProps={{ disabled: true }}
         >
-          <img alt="example" src={currentPhoto} />
+          <img
+            style={{ width: "100%", height: "100%" }}
+            className="modalimage"
+            alt="example"
+            src={currentPhoto}
+          />
         </Modal>
       </div>
       <div>

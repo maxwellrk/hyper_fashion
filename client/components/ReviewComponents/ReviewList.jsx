@@ -34,7 +34,7 @@ const ReviewList = (props) => {
     props.fetchReviews(props.page, pageList, reviewCount, addSortOrder);
     props.fetchReviewMetaData(props.page).then((data) => {
       console.log("reviewmetadata,", data);
-      if (reviewCount < data.payload.totalRating) {
+      if (reviewCount <= data.payload.totalRating) {
         changeFinalCount(data.payload.totalRating);
         changeReviewCount(reviewCount + 5);
       }
