@@ -6,8 +6,8 @@ const CompareModal = ({
   closeModal,
   displayModal,
 }) => {
-  //combinedFeatures [[feature, currentItemFeatureVal, relatedItemFeatureVal], [feature, currentItemFeatureVal, relatedItemFeatureVal]]
-  //if there is no such feature for currentItem or relatedItem. then the value = none
+  // combinedFeatures [[feature, currentItemFeatureVal, relatedItemFeatureVal], [feature, currentItemFeatureVal, ..]..]
+  // if there is no such feature for currentItem or relatedItem. then the value = none
   const [combinedFeatures, setCombinedFeatures] = useState([]);
   // console.log("combinedFeatures", combinedFeatures);
   // console.log('currentItem feature', currentItem);
@@ -60,23 +60,26 @@ const CompareModal = ({
             <span className="close" onClick={() => closeModal()}>
               &times;
             </span>
-            <h5 className="compareModal-title">Compare</h5>
+            <h5 className="compareModal-title-h5">Compare</h5>
             <table className="compareModal-table">
-              <tr className="table-th">
+              <thead>
+              <tr className="table-th-box">
                 <th>{currentItem.name}</th>
                 <th> </th>
                 <th>{relatedItem[0].name}</th>
               </tr>
+              </thead>
+              <tbody className="table-body">
               {combinedFeatures.map((feature) => {
                 return (
-                  <tr className="table-td">
-                    <td className='curItemFeatureVal'>{feature[1]==='none' ? ' ' : (feature[1]==='null'? '✓' : feature[1]) } </td>
-                    <td className='features'>{feature[0]}</td>
-                    <td className='relItemFeatureVal'>{feature[2]==='none' ? ' ' : (feature[2]==='null'? '✓' : feature[2])} </td>
-                    </tr>
+                  <tr className="table-td-box">
+                    <td name='curItemFeatureVal'>{feature[1]==='none' ? ' ' : (feature[1]==='null'? '✓' : feature[1]) } </td>
+                    <td name='features'>{feature[0]}</td>
+                    <td name='relItemFeatureVal'>{feature[2]==='none' ? ' ' : (feature[2]==='null'? '✓' : feature[2])} </td>
+                  </tr>
                 );
               })}
-                
+              </tbody>
             </table>
           </div>
         </div>
