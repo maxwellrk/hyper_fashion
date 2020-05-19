@@ -65,8 +65,8 @@ const QnA = ({ fetchQuestionsById, questionsList, productById }) => {
       })
       .slice(0, questionRender)
       .map((entry) => {
-        console.log('entry id', entry.id);
-        return <QnABlock entry={entry} id={entry.id} />;
+        console.log('entry id', entry);
+        return <QnABlock entry={entry} key={entry.question_id} />;
       });
   } else {
     listOfQnABlock = <div />;

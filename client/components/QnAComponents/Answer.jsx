@@ -11,7 +11,7 @@ const Answer = ({ info }) => {
         <span className="bold" style={{ 'font-size': '18px' }}>
           A:{' '}
         </span>
-        {info.body}
+        {info.body || ''}
       </p>
 
       <p className="text14">
