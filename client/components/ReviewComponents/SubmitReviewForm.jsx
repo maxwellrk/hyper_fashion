@@ -5,6 +5,7 @@ import Rating from "@material-ui/lab/Rating";
 import { Card, Modal, Button, Form, Radio, Input, Upload } from "antd";
 import { UploadOutlined } from "@ant-design/icons";
 import { useState, useEffect } from "react";
+import axios from "axios";
 import $ from "jquery";
 import "./ReviewStyles/reviewstyles.css";
 
@@ -357,7 +358,7 @@ const SubmitReviewForm = (props) => {
               >
                 <Radio.Button value={1}>Uncomfortable</Radio.Button>
                 <Radio.Button value={2}>Slightly uncomfortable</Radio.Button>
-                <Radio.Button value={3}>>Ok</Radio.Button>
+                <Radio.Button value={3}>Ok</Radio.Button>
                 <Radio.Button value={4}>Comfortable</Radio.Button>
                 <Radio.Button value={5}>Perfect</Radio.Button>
               </Radio.Group>
@@ -440,7 +441,7 @@ const SubmitReviewForm = (props) => {
                 }}
               >
                 <Radio.Button value={1}>Runs tight</Radio.Button>
-                <Radio.Button value={2}>>Runs slightly tight</Radio.Button>
+                <Radio.Button value={2}>Runs slightly tight</Radio.Button>
                 <Radio.Button value={3}>Perfect</Radio.Button>
                 <Radio.Button value={4}>Runs slightly long</Radio.Button>
                 <Radio.Button value={5}>Runs long</Radio.Button>
