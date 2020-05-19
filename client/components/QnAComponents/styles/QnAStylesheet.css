@@ -47,6 +47,11 @@
   font-weight: bold;
 }
 
+.scrollContainerQuestions {
+  overflow-y: auto;
+  max-height: 70vh;
+}
+
 .underline {
   text-decoration: underline !important;
 }
@@ -75,4 +80,9 @@
 
 .answer {
   font-size: 14px;
+}
+
+.scrollContainerAnswers {
+  overflow-y: auto;
+  max-height: 30vh;
 }

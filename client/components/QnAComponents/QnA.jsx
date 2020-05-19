@@ -69,7 +69,7 @@ const QnA = ({ fetchQuestionsById, questionsList, productById }) => {
           searchInput={searchInput}
           changeSearchInput={changeSearchInput}
         />
-        {listOfQnABlock}
+        <div className="scrollContainerQuestions">{listOfQnABlock}</div>
         <QuestionModal
           questionModalRender={questionModalRender}
           toggleQuestionModal={toggleQuestionModal}

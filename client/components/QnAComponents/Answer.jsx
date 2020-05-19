@@ -8,18 +8,18 @@ const Answer = ({ info }) => {
   return (
     <div>
       <p className="answer">
-        <span style={{ 'font-size': '18px', 'font-weight': 'bold' }}>A: </span>
+        <span className="bold" style={{ 'font-size': '18px' }}>
+          A:{' '}
+        </span>
         {info.body}
       </p>
 
       <p className="text14">
         by{' '}
         {info.answerer_name === 'Seller' ? (
-          <span className="text14" style={{ 'font-weight': 'bold' }}>
-            {info.answerer_name}
-          </span>
+          <span className="text14 bold">{info.answerer_name}</span>
         ) : (
-          <span>info.answerer_name</span>
+          <span>{info.answerer_name}</span>
         )}
         , {info.newDate} |{' '}
         <Helpful
@@ -29,7 +29,7 @@ const Answer = ({ info }) => {
         />{' '}
         |{' '}
         {reportedStatus ? (
-          <span
+          <a
             onClick={() => {
               axios
                 .put(`http://18.224.200.47/qa/answer/${info.id}/report`)
@@ -40,9 +40,9 @@ const Answer = ({ info }) => {
             }}
           >
             Report
-          </span>
+          </a>
         ) : (
-          <span>Reported</span>
+          <a>Reported</a>
         )}
       </p>
     </div>

@@ -5,8 +5,6 @@ import AnswerModal from '../../containers/QnAContainers/AnswerModalContainer';
 import Answer from './Answer';
 
 const QnABlock = ({ entry, productById }) => {
-  console.log('QnABlock -> entry', entry);
-
   const [answerDisplay, toggleAnswerDisplay] = useState(false);
   const [answerModalRender, toggleAnswerModal] = useState(false);
 
@@ -75,30 +73,31 @@ const QnABlock = ({ entry, productById }) => {
           toggleAnswerModal={toggleAnswerModal}
         />
       </div>
-      {Object.keys(entry.answers)
-        .map((answerId, index) => {
-          console.log(entry.answers[answerId]);
-          entry.answers[answerId].newDate = dateFormatter(
-            entry.answers[answerId].date
-          );
-          return <Answer info={entry.answers[answerId]} />;
-        })
-        //  Need to bring seller answers to the top of the page
-        .sort((a, b) => {
-          return (
-            (b.props.info.answerer_name === 'Seller') -
-              (a.props.info.answerer_name === 'Seller') ||
-            b.props.info.helpfulness - a.props.info.helpfulness
-          );
-        })
-        .filter((ele, index) => {
-          if (answerDisplay && index < 2) {
-            return ele;
-          } else if (!answerDisplay) {
-            return ele;
-          }
-        })}
-      {Object.keys(entry.answers).length > 2 && answersButton}
+      <div className="scrollContainerAnswers">
+        {Object.keys(entry.answers)
+          .map((answerId, index) => {
+            entry.answers[answerId].newDate = dateFormatter(
+              entry.answers[answerId].date
+            );
+            return <Answer info={entry.answers[answerId]} />;
+          })
+          //  Need to bring seller answers to the top of the page
+          .sort((a, b) => {
+            return (
+              (b.props.info.answerer_name === 'Seller') -
+                (a.props.info.answerer_name === 'Seller') ||
+              b.props.info.helpfulness - a.props.info.helpfulness
+            );
+          })
+          .filter((ele, index) => {
+            if (answerDisplay && index < 2) {
+              return ele;
+            } else if (!answerDisplay) {
+              return ele;
+            }
+          })}
+        {Object.keys(entry.answers).length > 2 && answersButton}
+      </div>
     </div>
   );
 };
