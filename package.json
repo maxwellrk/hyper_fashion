@@ -4,12 +4,7 @@
   "description": "FEC Tyche",
   "main": "index.js",
   "scripts": {
-<<<<<<< HEAD
-    "test": "jest",
-    "test:watch": "npm test -- --watch",
-=======
     "test": "jest --verbose",
->>>>>>> ea6407785da689f522f027329e6251d5c2a7676c
     "clean": "rm dist/bundle.js",
     "build-dev": "webpack -d --mode development --watch",
     "build-prod": "webpack -p --mode production",
