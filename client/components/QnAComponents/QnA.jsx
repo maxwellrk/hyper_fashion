@@ -40,6 +40,8 @@ const QnA = ({ fetchQuestionsById, questionsList, productById }) => {
     moreQuestions = (
       <button
         style={{
+          'margin-top': '10px',
+          'margin-right': '20px',
           border: '1px solid black',
           height: '50px',
           'background-color': 'white',

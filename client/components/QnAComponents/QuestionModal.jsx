@@ -37,8 +37,8 @@ const QuestionModal = ({
   return (
     <div
       style={{
+        'margin-top': '10px',
         display: 'inline-block',
-        'margin-left': '20px',
       }}
     >
       <button

@@ -41,11 +41,11 @@ const QnABlock = ({ entry, productById }) => {
 
   if (answerDisplay) {
     answersButton = (
-      <p onClick={() => toggleAnswerDisplay(false)}>Load More Answers</p>
+      <a onClick={() => toggleAnswerDisplay(false)}>Load More Answers</a>
     );
   } else if (!answerDisplay) {
     answersButton = (
-      <p onClick={() => toggleAnswerDisplay(true)}>Collapse Answers</p>
+      <a onClick={() => toggleAnswerDisplay(true)}>Collapse Answers</a>
     );
   } else {
     return;
