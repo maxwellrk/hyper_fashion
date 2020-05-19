@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import QnABlock from './QnABlock';
 import SearchBar from './SearchBar';
 import QuestionModal from '../../containers/QnAContainers/QuestionModalContainer';
-import './styles/QnAStylesheet.css';
+// import './styles/QnAStylesheet.css';
 const QnA = ({ fetchQuestionsById, questionsList, productById }) => {
   const [questionRender, changeQuestionRender] = useState(2);
   const [searchInput, changeSearchInput] = useState('');
@@ -35,10 +35,11 @@ const QnA = ({ fetchQuestionsById, questionsList, productById }) => {
     !questionsList.results.length ||
     questionsList.results.filter(filterQuestions).length <= questionRender
   ) {
-    moreQuestions = <div />;
+    moreQuestions = <div className="moreQuestions" />;
   } else {
     moreQuestions = (
       <button
+        className="moreQuestions"
         style={{
           'margin-top': '10px',
           'margin-right': '20px',
@@ -64,7 +65,8 @@ const QnA = ({ fetchQuestionsById, questionsList, productById }) => {
       })
       .slice(0, questionRender)
       .map((entry) => {
-        return <QnABlock entry={entry} />;
+        console.log('entry id', entry.id);
+        return <QnABlock entry={entry} id={entry.id} />;
       });
   } else {
     listOfQnABlock = <div />;
