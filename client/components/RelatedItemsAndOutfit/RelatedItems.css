@@ -2,7 +2,7 @@
             related items and outfit Block
 =================================================*/
 .itemsAndOutfit {
-  width: 90%;
+  width: 80%;
   height: auto;
   border: 1px solid black;
   margin: 5px auto;
@@ -22,13 +22,13 @@
 =================================================*/
 
 /*-------------Card--------*/
-.relatedProducts-carousel-row {
+.relatedProductsOutfit-carousel-row {
   border: 1px solid grey;
   margin: 10px auto;
   width: 100%;
 }
 
-.relatedProducts-carousel-col {
+.relatedProductsOutfit-carousel-col {
   display: inline-block;
   /* border: 1px solid grey; */
   padding: 0 3px;
