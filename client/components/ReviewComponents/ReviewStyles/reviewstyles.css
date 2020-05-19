@@ -35,6 +35,13 @@
 .box:hover::after {
   opacity: 1;
 } */
+.addmorereviewsbutton:disabled {
+  visibility: hidden;
+}
+
+.showfullreview:disabled {
+  visibility: hidden;
+}
 
 .overallRating {
   font-size: 4.5rem;
@@ -103,6 +110,10 @@
 .uploadbutton:disabled {
   visibility: hidden;
 }
+
+/* .individual-reviewitem {
+  border-bottom: 2px solid black;
+} */
 
 /* .radiogroup {
   position: relative;
