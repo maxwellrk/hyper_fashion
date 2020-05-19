@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, {useEffect} from "react";
 import RatingsandReviews from "./ReviewComponents/RatingsandReviews";
 import QnA from "../containers/QnAContainers/QnAContainer";
 import RelatedItemAndOutfit from "./RelatedItemsAndOutfit/RelatedItemsAndOutfit";
