@@ -130,7 +130,7 @@ const RatingBreakdown = (props) => {
       </div>
       {props.totalFilters.length ? (
         <div>
-          Filters currently applied: {props.totalFilters.toString()} |{" "}
+          Filters currently applied: {props.totalFilters.toString()} |
           <a onClick={() => removeFilters()}>Remove All Filters</a>
         </div>
       ) : (

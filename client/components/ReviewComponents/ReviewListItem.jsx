@@ -58,7 +58,7 @@ const ReviewListItem = ({ item, answerList }) => {
   //come back to this to deal with multiple photos
 
   return (
-    <div>
+    <div className="individual-reviewitem">
       <div>
         {item.rating}
         <Rating

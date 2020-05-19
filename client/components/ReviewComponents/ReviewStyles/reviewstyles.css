@@ -111,6 +111,10 @@
   visibility: hidden;
 }
 
+/* .individual-reviewitem {
+  border-bottom: 2px solid black;
+} */
+
 /* .radiogroup {
   position: relative;
   left: 10px;
