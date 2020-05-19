@@ -1,5 +1,5 @@
 import React from 'react';
-import './styles/QnAStylesheet.css';
+// import './styles/QnAStylesheet.css';
 
 const SearchBar = ({ searchInput, changeSearchInput }) => {
   return (
