@@ -254,17 +254,9 @@ const RatingInfo = (props) => {
 
   const classes = useStyles();
 
-  // function updateFilter(input) {
-  //   props.addtoFilter(4);
-  // }
-
-  // function removeFilter(input) {
-  //   props.removefromFilter(4);
-  // }
-
   const convertedRating = Number(props.prodRating.averageRating);
   return (
-    <div className="overallComponent">
+    <div className="overallComponent" id="section1">
       <Grid container direction="row" spacing={0.5}>
         <h1 className="overallRating">{props.prodRating.averageRating}</h1>
         <div>
@@ -276,9 +268,6 @@ const RatingInfo = (props) => {
               marginTop="30px"
               marginLeft="14px"
             >
-              {/* <Typography component="legend">
-                {props.prodRating.averageRating}
-            </Typography> */}
               <Rating
                 name="overallRating"
                 style={{ color: "black" }}
@@ -311,14 +300,6 @@ const RatingInfo = (props) => {
           removeAllFilters={props.removeAllFilters}
           rate={breakDown}
         />
-        {/* <div>
-          <BorderLinearProgress
-          className="whatever"
-          variant="determinate"
-          color="secondary"
-          value={50}
-          />
-        </div> */}
       </div>
       <div className={classes.root} style={{ position: "relative", left: 30 }}>
         {props.prodRating.fulldata &&
@@ -344,22 +325,6 @@ const RatingInfo = (props) => {
         ) : (
           <div></div>
         )}
-        {/* <Typography gutterBottom>Size</Typography>
-        <IOSSlider
-          aria-label="ios slider"
-          // defaultValue={props.prodRating.fulldata.characteristics.Size.value}
-          defaultValue={
-            props.prodRating.fulldata &&
-            props.prodRating.fulldata.characteristics.Size
-              ? props.prodRating.fulldata.characteristics.Size.value
-              : 3
-          }
-          marks={markssize}
-          max={5}
-          min={1}
-          valueLabelDisplay="on"
-          ThumbComponent={ArrowDropDownIcon}
-        /> */}
         <div className={classes.margin} />
         {props.prodRating.fulldata &&
         props.prodRating.fulldata.characteristics.Width ? (
@@ -384,21 +349,7 @@ const RatingInfo = (props) => {
         ) : (
           <div></div>
         )}
-        {/* <Typography gutterBottom>Width</Typography>
-        <IOSSlider
-          aria-label="ios slider"
-          defaultValue={
-            props.prodRating.fulldata &&
-            props.prodRating.fulldata.characteristics.Width
-              ? props.prodRating.fulldata.characteristics.Width.value
-              : 3
-          }
-          marks={markswidth}
-          max={5}
-          min={1}
-          valueLabelDisplay="on"
-          ThumbComponent={ArrowDropDownIcon}
-        /> */}
+
         <div className={classes.margin} />
         {props.prodRating.fulldata &&
         props.prodRating.fulldata.characteristics.Comfort ? (
