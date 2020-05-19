@@ -4,7 +4,7 @@
   "description": "FEC Tyche",
   "main": "index.js",
   "scripts": {
-    "test": "jest",
+    "test": "jest --verbose",
     "clean": "rm dist/bundle.js",
     "build-dev": "webpack -d --mode development --watch",
     "build-prod": "webpack -p --mode production",
@@ -20,6 +20,9 @@
     "testMatch": [
       "**/tests/**/*.[jt]s?(x)",
       "**/?(*.)+(spec|test).[jt]s?(x)"
+    ],
+    "setupFilesAfterEnv": [
+      "<rootDir>jest.setup.js"
     ]
   },
   "repository": {
@@ -63,8 +66,11 @@
     "@babel/core": "^7.8.3",
     "@babel/preset-env": "^7.8.3",
     "@babel/preset-react": "^7.8.3",
+    "babel-jest": "^26.0.1",
     "babel-loader": "^8.0.6",
     "css-loader": "^3.5.3",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.2",
     "eslint": "^6.8.0",
     "eslint-config-airbnb": "^18.1.0",
     "eslint-plugin-import": "^2.20.2",

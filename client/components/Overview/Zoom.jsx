@@ -7,17 +7,20 @@ const Zoom = ({currentPhoto, zoom, zoomFunction}) => {
     <div>
       {zoom ? (
         <Modal
-          onCancel={() => zoomFunction()}
           title=""
           visible={zoom}
-          okButtonProps={{style: {display: "none"}}}
-          cancelButtonProps={{style: {display: "none"}}}
-          width={820}
-          bodyStyle={{height: 820}}
-          //   onOk={this.handleOk}
-          //   onCancel={this.handleCancel}
+          centered
+          bodyStyle={{padding: "0"}}
+          width={"60%"}
+          height={"80%"}
+          footer={null}
+          closable={false}
+          onCancel={zoomFunction}
+          onClick={zoomFunction}
+          okButtonProps={{disabled: true}}
+          cancelButtonProps={{disabled: true}}
         >
-          <img src={currentPhoto} style={{width: 500}}></img>
+          <img src={currentPhoto} style={{width: "100%", height: "100%"}}></img>
         </Modal>
       ) : (
         ""

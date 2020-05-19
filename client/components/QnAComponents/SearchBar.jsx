@@ -1,20 +1,15 @@
 import React from 'react';
+// import './styles/QnAStylesheet.css';
 
 const SearchBar = ({ searchInput, changeSearchInput }) => {
   return (
-    <form
-      onSubmit={() => {
-        event.preventDefault();
+    <input
+      className="searchbar"
+      placeholder="HAVE A QUESTION? SEARCH FOR ANSWERS..."
+      onChange={(e) => {
+        changeSearchInput(e.target.value);
       }}
-    >
-      <input
-        type="Have a question? Search for answers…"
-        value={searchInput}
-        onChange={(e) => {
-          changeSearchInput(e.target.value);
-        }}
-      />
-    </form>
+    />
   );
 };
 

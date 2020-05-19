@@ -6,7 +6,7 @@ import Carousel from "../../containers/OverviewContainers/CarouselContainer";
 import Display from "./Display.jsx";
 import DropDownMenus from "./DropDownMenus";
 import Reviews from "../../containers/OverviewContainers/ReviewsContainer";
-import Buttons from "./Buttons";
+import Buttons from "../../containers/OverviewContainers/ButtonsContainer";
 
 const Overview = ({productById}) => {
   const [styles, setStyles] = useState([]);
