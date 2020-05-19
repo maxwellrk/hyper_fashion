@@ -8,8 +8,8 @@ import LinearProgress from "@material-ui/core/LinearProgress";
 import Slider from "@material-ui/core/Slider";
 import Tooltip from "@material-ui/core/Tooltip";
 import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
-import { withStyles, makeStyles } from "@material-ui/core/styles";
-import { useEffect, useState } from "react";
+import {withStyles, makeStyles} from "@material-ui/core/styles";
+import {useEffect, useState} from "react";
 import reviewPercentage from "./ReviewComponentHelpers/reviewPercentage";
 import RatingBreakdown from "./RatingBreakdown";
 import ratingBreakDownPercentage from "./ReviewComponentHelpers/ratingBreakdownPercentage";
@@ -264,7 +264,7 @@ const RatingInfo = (props) => {
 
   const convertedRating = Number(props.prodRating.averageRating);
   return (
-    <div className="overallComponent">
+    <div className="overallComponent" id="section1">
       <Grid container direction="row" spacing={0.5}>
         <h1 className="overallRating">{props.prodRating.averageRating}</h1>
         <div>
@@ -281,7 +281,7 @@ const RatingInfo = (props) => {
             </Typography> */}
               <Rating
                 name="overallRating"
-                style={{ color: "black" }}
+                style={{color: "black"}}
                 value={convertedRating}
                 precision={0.1}
                 size="small"
@@ -318,7 +318,7 @@ const RatingInfo = (props) => {
           />
         </div> */}
       </div>
-      <div className={classes.root} style={{ position: "relative", left: 30 }}>
+      <div className={classes.root} style={{position: "relative", left: 30}}>
         <Typography gutterBottom>Size</Typography>
         <IOSSlider
           aria-label="ios slider"

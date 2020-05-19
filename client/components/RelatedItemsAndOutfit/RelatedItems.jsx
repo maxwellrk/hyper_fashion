@@ -55,7 +55,7 @@ const RelatedItems = ({ prodRating, productById, relatedItemsAndStyle }) => {
   // console.log("slides", itemSlides);
   return (
     <div className="relatedProducts">
-      <h3 calssName='related-h3'>Related Product</h3>
+      <h3 className='related-outfit-h3'>Related Product</h3>
       <CompareModal
         relatedItem={relatedItem}
         currentItem={productById}
