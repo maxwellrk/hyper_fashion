@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
-import { Modal, Button } from "antd";
-import axios from "axios";
+import React, { useEffect, useState } from 'react';
+import { Modal, Button } from 'antd';
+import axios from 'axios';
 
 //fetchQuestionsById and currentId should be hooked up by react store, not passed down
 //with props, need to go back and fix
@@ -10,20 +10,20 @@ const QuestionModal = ({
   productById,
   fetchQuestionsById,
 }) => {
-  const [inputEmail, changeInputEmail] = useState("");
-  const [inputQuestion, changeInputQuestion] = useState("");
-  const [inputNickname, changeInputNickname] = useState("");
+  const [inputEmail, changeInputEmail] = useState('');
+  const [inputQuestion, changeInputQuestion] = useState('');
+  const [inputNickname, changeInputNickname] = useState('');
 
   const checkInputField = () => {
-    let toAlert = "You must enter the following:";
+    let toAlert = 'You must enter the following:';
     if (!inputQuestion.length) {
-      toAlert += "\nQuestion";
+      toAlert += '\nQuestion';
     }
     if (!inputNickname.length) {
-      toAlert += "\nNickname";
+      toAlert += '\nNickname';
     }
-    if (inputEmail.indexOf("@") === -1 || inputEmail.indexOf(".") === -1) {
-      toAlert += "\nEmail";
+    if (inputEmail.indexOf('@') === -1 || inputEmail.indexOf('.') === -1) {
+      toAlert += '\nEmail';
     }
 
     if (toAlert.length > 29) {
@@ -35,8 +35,18 @@ const QuestionModal = ({
   };
 
   return (
-    <div>
+    <div
+      style={{
+        'margin-top': '10px',
+        display: 'inline-block',
+      }}
+    >
       <button
+        style={{
+          border: '1px solid black',
+          height: '50px',
+          'background-color': 'white',
+        }}
         type="primary"
         onClick={() => {
           toggleQuestionModal(true);
@@ -45,8 +55,10 @@ const QuestionModal = ({
         Add A Question +
       </button>
       <Modal
+        width="60vw"
+        height="40vh"
         title={
-          <div>
+          <div style={{ 'font-size': '20px' }}>
             <p>Ask Your Question</p>
             <p>About the {productById.name}</p>
           </div>
@@ -60,34 +72,45 @@ const QuestionModal = ({
                 name: inputNickname,
                 email: inputEmail,
               })
-              .then(() => {
+              .then((resp) => {
+                console.log('resp', resp);
+
                 fetchQuestionsById(productById.id);
               })
               .then(() => {
                 toggleQuestionModal(false);
-                changeInputEmail("");
-                changeInputNickname("");
-                changeInputQuestion("");
+                changeInputEmail('');
+                changeInputNickname('');
+                changeInputQuestion('');
               });
           }
         }}
         onCancel={() => {
           toggleQuestionModal(false);
-          changeInputEmail("");
-          changeInputNickname("");
-          changeInputQuestion("");
+          changeInputEmail('');
+          changeInputNickname('');
+          changeInputQuestion('');
         }}
       >
-        <input
+        <p>Question:</p>
+        <textarea
+          style={{
+            width: '95%',
+            height: '120px',
+            resize: 'none',
+            'margin-bottom': '10px',
+          }}
           type="text"
           maxLength="1000"
+          placeholder="Enter question here..."
           onChange={(e) => {
             changeInputQuestion(e.target.value);
           }}
           value={inputQuestion}
         />
-        <br />
+        <p>Username:</p>
         <input
+          style={{ width: '95%' }}
           type="text"
           maxLength="60"
           placeholder="Example: jackson11!"
@@ -97,8 +120,9 @@ const QuestionModal = ({
           value={inputNickname}
         />
         <p>For privacy reasons, do not use your full name or email address</p>
-        <br />
+        <p>Email:</p>
         <input
+          style={{ width: '95%' }}
           type="text"
           maxLength="60"
           placeholder="Why did you like the product or not?"

@@ -1,0 +1,90 @@
+/* main container */
+
+.mainContainer {
+  margin-top: 40px;
+  margin-bottom: 40px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  border: '2px solid black';
+  justify-content: center;
+  align-items: center;
+}
+
+.subContainer {
+  width: 80%;
+}
+
+/* searchbar */
+
+.searchbar ::-webkit-input-placeholder {
+  color: rgb(61, 61, 61);
+  font-weight: 600;
+  text-indent: 10px;
+}
+
+.searchbar {
+  outline: none;
+  color: rgb(61, 61, 61);
+  font-weight: 600;
+  text-indent: 10px;
+  width: 100%;
+  height: 60px;
+  border: 1px solid rgb(61, 61, 61);
+}
+
+/* question */
+.questionHeaderContainer {
+  display: flex;
+}
+.questionAndHelp {
+  display: flex;
+  justify-content: space-between;
+  width: 88%;
+  margin-top: 10px;
+}
+.question {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.scrollContainerQuestions {
+  overflow-y: auto;
+  max-height: 75vh;
+}
+
+.underline {
+  text-decoration: underline !important;
+}
+
+/* modals */
+.answerModalContainer {
+  width: 12%;
+  margin-top: 10px;
+}
+
+.answerModal {
+  font-size: 14px;
+  margin-left: 20%;
+}
+
+/* helpful */
+.text14 {
+  display: 'inline';
+  font-size: 14px;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+/* answer */
+
+.answer {
+  font-size: 14px;
+}
+
+.scrollContainerAnswers {
+  overflow-y: auto;
+  max-height: 40vh;
+}
