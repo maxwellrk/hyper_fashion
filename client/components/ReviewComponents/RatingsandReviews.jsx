@@ -17,13 +17,20 @@ const RatingsandReviews = (props) => {
   function removeFilter(input) {
     setFilteredState(filteredState.filter((item) => item !== input));
   }
+
+  function removeAllFilters(input) {
+    setFilteredState([]);
+  }
+
   return (
     <div>
       <h1>Review Component</h1>
       <RatingInfo
+        removeAllFilters={removeAllFilters}
         removefromFilter={removeFilter}
         addtoFilter={addFilters}
         page={props.page}
+        totalFilters={filteredState}
       />
       <ReviewList totalFilters={filteredState} page={props.page} />
     </div>

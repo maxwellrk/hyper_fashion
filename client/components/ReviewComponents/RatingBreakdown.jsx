@@ -29,6 +29,10 @@ const RatingBreakdown = (props) => {
     }
   }
 
+  function removeFilters() {
+    props.removeAllFilters();
+    toggleBar([]);
+  }
   // function removeFilter(input) {
   //   props.removefromFilter(4);
   // }
@@ -124,6 +128,14 @@ const RatingBreakdown = (props) => {
           value={valueOne || 0}
         />
       </div>
+      {props.totalFilters.length ? (
+        <div>
+          Filters currently applied: {props.totalFilters.toString()} |{" "}
+          <a onClick={() => removeFilters()}>Remove All Filters</a>
+        </div>
+      ) : (
+        <div></div>
+      )}
     </div>
   );
 };

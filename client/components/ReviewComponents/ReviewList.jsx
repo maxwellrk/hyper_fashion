@@ -7,6 +7,7 @@ import SubmitReviewForm from "./SubmitReviewForm";
 import { List, message, Avatar, Spin } from "antd";
 import InfiniteScroll from "react-infinite-scroller";
 import $ from "jquery";
+import "./ReviewStyles/reviewstyles.css";
 
 const ReviewList = (props) => {
   const [reviewRender, addReviewRender] = useState(2);
@@ -57,14 +58,28 @@ const ReviewList = (props) => {
   useEffect(() => {
     if (
       finalCount !== null &&
-      (reviewRender >= finalCount ||
-        reviewRender >= filterReview(reviewItems, props.totalFilters).length)
+      (reviewRender > reviewItems ||
+        reviewRender > filterReview(reviewItems, props.totalFilters).length ||
+        (reviewItems && reviewRender >= 4))
     ) {
-      changeDisableFetch(true);
+      changeDisableFetch(!disableFetch);
       console.log("no longer should update");
     }
-  }, [finalCount, reviewRender]);
+  }, [reviewRender, reviewItems]);
 
+  useEffect(() => {
+    $(".sortdropdown").val("relevant");
+  }, [props.productById.id]);
+  // useEffect(() => {
+  //   if (
+  //     finalCount !== null &&
+  //     (reviewRender >= reviewItems ||
+  //       reviewRender >= filterReview(reviewItems, props.totalFilters).length)
+  //   ) {
+  //     changeDisableFetch(true);
+  //     console.log("no longer should update");
+  //   }
+  // }, [finalCount, reviewRender]);
   let getMoreReviews = function getTheReviews() {
     setAddedReview(1);
   };
@@ -117,7 +132,12 @@ const ReviewList = (props) => {
         filterReview(reviewItems, props.totalFilters)
           .slice(0, reviewRender)
           .map((item) => {
-            return <ReviewListItem item={item} />;
+            return (
+              <ReviewListItem
+                answerList={props.questionsList.results}
+                item={item}
+              />
+            );
           })
       );
     } else if (reviewItems && reviewRender >= 4) {
@@ -130,7 +150,10 @@ const ReviewList = (props) => {
                 style={{ maxHeight: 1200, overflow: "auto" }}
                 renderItem={(item) => (
                   <List.Item key={item.review_id}>
-                    <ReviewListItem item={item} />
+                    <ReviewListItem
+                      answerList={props.questionsList.results}
+                      item={item}
+                    />
                   </List.Item>
                 )}
               ></List>
@@ -163,6 +186,7 @@ const ReviewList = (props) => {
 
       <div>
         <button
+          className="addmorereviewsbutton"
           disabled={disableFetch || props.prodRating.totalRating === 0}
           type="button"
           onClick={() => updateFunction()}

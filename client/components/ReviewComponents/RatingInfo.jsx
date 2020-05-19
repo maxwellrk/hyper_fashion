@@ -305,8 +305,10 @@ const RatingInfo = (props) => {
       </Grid>
       <div className="ratingsbreakdownbox">
         <RatingBreakdown
+          totalFilters={props.totalFilters}
           addtoFilter={props.addtoFilter}
           removefromFilter={props.removefromFilter}
+          removeAllFilters={props.removeAllFilters}
           rate={breakDown}
         />
         {/* <div>

@@ -6,13 +6,18 @@ import Box from "@material-ui/core/Box";
 import { Card, Modal } from "antd";
 import { useState } from "react";
 import dateFormatter from "./ReviewComponentHelpers/reviewListItemDateFormatter";
+import verifiedUserHelper from "./ReviewComponentHelpers/verifiedUserHelper";
 import "./ReviewStyles/reviewstyles.css";
 
-const ReviewListItem = ({ item }) => {
+const ReviewListItem = ({ item, answerList }) => {
   //   let date = item.date.slice(0, 10);
   const [isVisible, setVisible] = useState(false);
   const [isHelpful, setHelpful] = useState(false);
   const [isReported, setReported] = useState(false);
+  const [fullItemBody, setFullItemBody] = useState(false);
+  // const [answerUsers, setAnswerUsers] = useState(
+  //   verifiedUserHelper(answerList)
+  // );
   let formattedDate = dateFormatter(item.date);
 
   function showModal() {
@@ -72,7 +77,19 @@ const ReviewListItem = ({ item }) => {
         {item.reviewer_name},{formattedDate}
       </div>
       <div>{item.summary}</div>
-      <div>{item.body}</div>
+      <div>{fullItemBody ? item.body : item.body.slice(0, 251)}</div>
+      {item.body.length > 250 ? (
+        <button
+          disabled={fullItemBody}
+          className="showfullreview"
+          onClick={() => setFullItemBody(true)}
+        >
+          Show more
+        </button>
+      ) : (
+        <div></div>
+      )}
+      {/* const [fullItemBody, setFullItemBody] = useState(false) */}
       <div>
         {item.recommend ? (
           <div>&#10003;I recommend this product</div>
@@ -82,7 +99,7 @@ const ReviewListItem = ({ item }) => {
       </div>
       <div>
         {item.response && item.response !== "null" ? (
-          <div>Response: {item.response}</div>
+          <div>Response from seller: {item.response}</div>
         ) : (
           <div>no response placeholder</div>
         )}

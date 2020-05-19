@@ -8,6 +8,7 @@ const mapStateToProps = (state) => {
     reviewList: state.reviewList,
     prodRating: state.prodRating,
     productById: state.productById,
+    questionsList: state.questionsList,
   };
 };
 
