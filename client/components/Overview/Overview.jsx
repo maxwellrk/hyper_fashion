@@ -65,7 +65,7 @@ const Overview = ({productById}) => {
                 if (style.style_id === currentSelected[0]) {
                   return (
                     <Avatar
-                      style={{margin: "2px"}}
+                      style={{margin: "2px", cursor: "pointer"}}
                       src={image}
                       size={64}
                       onClick={() => setAsCurrent(style)}
@@ -74,7 +74,7 @@ const Overview = ({productById}) => {
                 } else {
                   return (
                     <Avatar
-                      style={{margin: "2px"}}
+                      style={{margin: "2px", cursor: "pointer"}}
                       src={image}
                       size={50}
                       onClick={() => setAsCurrent(style)}

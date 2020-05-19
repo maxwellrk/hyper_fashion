@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
+    "test:watch": "npm test -- --watch",
     "clean": "rm dist/bundle.js",
     "build-dev": "webpack -d --mode development --watch",
     "build-prod": "webpack -p --mode production",
