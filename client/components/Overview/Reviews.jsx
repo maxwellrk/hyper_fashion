@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from "react";
 import {Rating} from "@material-ui/lab";
+import {Link, animateScroll} from "react-scroll";
 
 const Reviews = ({productRating}) => {
   const [value, setValue] = useState(0);
@@ -25,6 +26,16 @@ const Reviews = ({productRating}) => {
       ) : (
         ""
       )}
+      <Link
+        activeClass="active"
+        to="section1"
+        spy={true}
+        smooth={true}
+        offset={-70}
+        duration={500}
+      >
+        Read All Reviews
+      </Link>
     </div>
   );
 };
