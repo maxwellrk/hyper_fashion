@@ -1,6 +1,7 @@
 import React from "react";
 import StarRatings from "react-star-ratings";
 import Rating from "@material-ui/lab/Rating";
+import StarBorderIcon from "@material-ui/icons/StarBorder";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
 import Grid from "@material-ui/core/Grid";
@@ -184,7 +185,7 @@ const RatingInfo = (props) => {
       width: 300 + theme.spacing(3) * 2,
     },
     margin: {
-      height: theme.spacing(3),
+      height: 4,
     },
   }));
 
@@ -195,18 +196,36 @@ const RatingInfo = (props) => {
     root: {
       color: "#dfdfdf",
       height: 2,
+      width: 290,
       padding: "15px 0",
+      left: -6,
+    },
+
+    markLabel: {
+      color: "gray",
+      fontSize: 12,
+      fontWeight: "normal",
+      '&[data-index="0"]': {
+        right: 700,
+      },
+      // '&[data-index="2"]': {
+      //   right: 1.5,
+      // },
+      '&[data-index="4"]': {
+        left: 500,
+      },
     },
     // thumbColorPrimary: {
 
     // },
     thumb: {
-      height: 27,
+      height: 35,
+      //27
       width: 27,
       color: "black",
       backgroundColor: "transparent",
       border: "0px solid black",
-      marginTop: -12,
+      marginTop: -13.5,
       marginLeft: -13,
       // boxShadow: "#ebebeb 0px 2px 2px",
       // "&:focus, &:hover, &$active": {
@@ -221,27 +240,30 @@ const RatingInfo = (props) => {
         marginRight: 1,
       },
     },
+    // thumb:disabled {
+
+    // }
     active: {},
     valueLabel: {
       left: "calc(-50% + 12px)",
       top: -22,
       "& *": {
         background: "transparent",
-        color: "#000",
+        color: "gray",
       },
     },
     track: {
-      height: 2,
+      height: 8,
       color: "#dfdfdf",
     },
     rail: {
-      height: 2,
+      height: 8,
       opacity: 0.5,
-      backgroundColor: "#bfbfbf",
+      backgroundColor: "#dfdfdf",
     },
     mark: {
       backgroundColor: "white",
-      height: 8,
+      height: 11,
       width: 10,
       marginTop: -3,
     },
@@ -265,15 +287,25 @@ const RatingInfo = (props) => {
               component="fieldset"
               mb={3}
               borderColor="transparent"
-              marginTop="30px"
+              marginTop="10px"
               marginLeft="14px"
             >
               <Rating
                 name="overallRating"
-                style={{ color: "black" }}
+                style={{
+                  color: "black",
+                  backgroundColor: "white",
+                  borderColor: "black",
+                }}
                 value={convertedRating}
                 precision={0.1}
                 size="small"
+                emptyIcon={
+                  <StarBorderIcon
+                    fontSize="inherit"
+                    style={{ color: "black", borderColor: "black" }}
+                  />
+                }
                 readOnly
               />
             </Box>
@@ -281,7 +313,7 @@ const RatingInfo = (props) => {
             <div></div>
           )}
         </div>
-        <Grid container item xs={12} spacing={0.5} marginTop="2px">
+        <Grid container item xs={12} spacing={0.2} marginTop="5px">
           {props.prodRating.fulldata ? (
             <div className="reviewpercentage">
               {reviewPercentage(props.prodRating.fulldata.recommended)}% of
@@ -292,7 +324,7 @@ const RatingInfo = (props) => {
           )}
         </Grid>
       </Grid>
-      <div className="ratingsbreakdownbox">
+      <div className="ratingsbreakdownbox" style={{ marginBottom: -70 }}>
         <RatingBreakdown
           totalFilters={props.totalFilters}
           addtoFilter={props.addtoFilter}
@@ -301,11 +333,23 @@ const RatingInfo = (props) => {
           rate={breakDown}
         />
       </div>
-      <div className={classes.root} style={{ position: "relative", left: 30 }}>
+      <div
+        className={classes.root}
+        style={{ position: "relative", left: 35, marginLeft: -30 }}
+      >
         {props.prodRating.fulldata &&
         props.prodRating.fulldata.characteristics.Size ? (
           <div>
-            <Typography gutterBottom>Size</Typography>
+            <Typography
+              style={{
+                left: 10,
+                fontSize: 13,
+                fontWeight: "normal",
+              }}
+              gutterBottom
+            >
+              Size
+            </Typography>
             <IOSSlider
               aria-label="ios slider"
               // defaultValue={props.prodRating.fulldata.characteristics.Size.value}
@@ -318,18 +362,30 @@ const RatingInfo = (props) => {
               marks={markssize}
               max={5}
               min={1}
+              // disabled="true"
               valueLabelDisplay="on"
               ThumbComponent={ArrowDropDownIcon}
             />
           </div>
         ) : (
-          <div></div>
+          <div style={{ height: 0 }}></div>
         )}
         <div className={classes.margin} />
         {props.prodRating.fulldata &&
         props.prodRating.fulldata.characteristics.Width ? (
           <div>
-            <Typography gutterBottom>Width</Typography>
+            <Typography
+              style={{
+                position: "relative",
+                top: 10,
+                left: 6,
+                fontSize: 14,
+                fontWeight: "normal",
+              }}
+              gutterBottom
+            >
+              Width
+            </Typography>
             <IOSSlider
               aria-label="ios slider"
               // defaultValue={props.prodRating.fulldata.characteristics.Size.value}
@@ -342,19 +398,31 @@ const RatingInfo = (props) => {
               marks={markswidth}
               max={5}
               min={1}
+              // disabled="true"
               valueLabelDisplay="on"
               ThumbComponent={ArrowDropDownIcon}
             />
           </div>
         ) : (
-          <div></div>
+          <div style={{ height: 0 }}></div>
         )}
 
         <div className={classes.margin} />
         {props.prodRating.fulldata &&
         props.prodRating.fulldata.characteristics.Comfort ? (
           <div>
-            <Typography gutterBottom>Comfort</Typography>
+            <Typography
+              style={{
+                position: "relative",
+                top: 10,
+                left: 6,
+                fontSize: 14,
+                fontWeight: "normal",
+              }}
+              gutterBottom
+            >
+              Comfort
+            </Typography>
             <IOSSlider
               aria-label="ios slider"
               defaultValue={
@@ -366,12 +434,13 @@ const RatingInfo = (props) => {
               marks={markscomfort}
               max={5}
               min={1}
+              // disabled="true"
               valueLabelDisplay="on"
               ThumbComponent={ArrowDropDownIcon}
             />
           </div>
         ) : (
-          <div></div>
+          <div style={{ height: 0 }}></div>
         )}
 
         <div className={classes.margin} />
@@ -379,7 +448,18 @@ const RatingInfo = (props) => {
         {props.prodRating.fulldata &&
         props.prodRating.fulldata.characteristics.Quality ? (
           <div>
-            <Typography gutterBottom>Quality</Typography>
+            <Typography
+              style={{
+                position: "relative",
+                top: 10,
+                left: 6,
+                fontSize: 14,
+                fontWeight: "normal",
+              }}
+              gutterBottom
+            >
+              Quality
+            </Typography>
             <IOSSlider
               aria-label="ios slider"
               defaultValue={
@@ -391,12 +471,13 @@ const RatingInfo = (props) => {
               marks={marksquality}
               max={5}
               min={1}
+              // disabled="true"
               valueLabelDisplay="on"
               ThumbComponent={ArrowDropDownIcon}
             />
           </div>
         ) : (
-          <div></div>
+          <div style={{ height: 0 }}></div>
         )}
 
         <div className={classes.margin} />
@@ -404,7 +485,18 @@ const RatingInfo = (props) => {
         {props.prodRating.fulldata &&
         props.prodRating.fulldata.characteristics.Length ? (
           <div>
-            <Typography gutterBottom>Length</Typography>
+            <Typography
+              style={{
+                position: "relative",
+                top: 10,
+                left: 6,
+                fontSize: 14,
+                fontWeight: "normal",
+              }}
+              gutterBottom
+            >
+              Length
+            </Typography>
             <IOSSlider
               aria-label="ios slider"
               defaultValue={
@@ -416,12 +508,13 @@ const RatingInfo = (props) => {
               marks={markslength}
               max={5}
               min={1}
+              // disabled="true"
               valueLabelDisplay="on"
               ThumbComponent={ArrowDropDownIcon}
             />
           </div>
         ) : (
-          <div></div>
+          <div style={{ height: 0 }}></div>
         )}
 
         <div className={classes.margin} />
@@ -429,7 +522,18 @@ const RatingInfo = (props) => {
         {props.prodRating.fulldata &&
         props.prodRating.fulldata.characteristics.Fit ? (
           <div>
-            <Typography gutterBottom>Fit</Typography>
+            <Typography
+              style={{
+                position: "relative",
+                top: 10,
+                left: 6,
+                fontSize: 14,
+                fontWeight: "normal",
+              }}
+              gutterBottom
+            >
+              Fit
+            </Typography>
             <IOSSlider
               aria-label="ios slider"
               defaultValue={
@@ -441,12 +545,13 @@ const RatingInfo = (props) => {
               marks={marksfit}
               max={5}
               min={1}
+              // disabled="true"
               valueLabelDisplay="on"
               ThumbComponent={ArrowDropDownIcon}
             />
           </div>
         ) : (
-          <div></div>
+          <div style={{ height: 0 }}></div>
         )}
 
         <div className={classes.margin} />
