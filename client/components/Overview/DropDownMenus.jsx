@@ -11,17 +11,23 @@ const DropDownMenus = ({currentStyle}) => {
   }
 
   const menu1 = (
-    <Menu onClick={handleMenu1Click}>
-      {Object.values(currentStyle).length
-        ? Object.keys(currentStyle.skus).map((size) => {
-            return (
-              <Menu.Item key={size} icon={<UserOutlined />}>
-                {size}
-              </Menu.Item>
-            );
-          })
-        : ""}
-    </Menu>
+    <div>
+      {currentStyle ? (
+        <Menu onClick={handleMenu1Click}>
+          {Object.values(currentStyle).length
+            ? Object.keys(currentStyle.skus).map((size) => {
+                return (
+                  <Menu.Item key={size} icon={<UserOutlined />}>
+                    {size}
+                  </Menu.Item>
+                );
+              })
+            : ""}
+        </Menu>
+      ) : (
+        ""
+      )}
+    </div>
   );
 
   return (

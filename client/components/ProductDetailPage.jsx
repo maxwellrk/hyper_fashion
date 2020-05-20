@@ -3,19 +3,29 @@ import RatingsandReviews from "./ReviewComponents/RatingsandReviews";
 import QnA from "../containers/QnAContainers/QnAContainer";
 import RelatedItemAndOutfit from "./RelatedItemsAndOutfit/RelatedItemsAndOutfit";
 import Overview from "../containers/OverviewContainers/OverviewContainer";
+import axios from "axios";
 
 export const AddClickTracking = (Component) => {
   return (props) => {
-    console.log("props outer", props);
     return (
       <div
         onClick={(e, props) => {
-          console.log("props inner", props);
           console.log(
             e.target,
             new Date(),
             (<Component />).type.name || Component.WrappedComponent.name
           );
+          let url = `http://18.224.200.47/interactions/`;
+          let interactionsModel = {
+            element: e.target.toString(),
+            widget:
+              (<Component />).type.name ||
+              Component.WrappedComponent.name.toString(),
+            time: new Date(),
+          };
+          // return axios.post(url, interactionsModel).then((results) => {
+          //   console.log("tracking results", results);
+          // });
         }}
       >
         <Component {...props} />
