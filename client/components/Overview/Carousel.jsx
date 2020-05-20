@@ -96,6 +96,7 @@ const Carousel = ({currentStyle}) => {
           width={800 * currentStyle.photos.length}
           height="100%"
           overflow="hidden"
+          style={{cursor: "zoom-in"}}
           onClick={() => zoomFunction(index)}
         >
           {currentStyle.photos
