@@ -2,13 +2,9 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
 import OutfitEntry from "./OutfitEntry";
+import getAverageReview from "../../actions/ReviewComponentActions/ActionHelpers/averageReviewHelper";
 
-const Outfit = ({
-  prodRating,
-  currentProduct,
-  addDeleteOutfit,
-  outfitIdArr,
-}) => {
+const Outfit = ({ currentProduct, addDeleteOutfit, outfitIdArr }) => {
   let firstCard = [
     [
       {
@@ -45,13 +41,18 @@ const Outfit = ({
       outfitIdArr.map((id) => {
         const itemsUrl = `http://18.224.200.47/products/${id}`;
         const styleUrl = `http://18.224.200.47/products/${id}/styles`;
+        const ratingUrl = `http://18.224.200.47/reviews/${id}/meta`;
+
         const requestItem = axios.get(itemsUrl);
         const requestStyle = axios.get(styleUrl);
-        return axios.all([requestItem, requestStyle]).then(
+        const requestRating = axios.get(ratingUrl);
+
+        return axios.all([requestItem, requestStyle, requestRating]).then(
           axios.spread((...responses) => {
             const responseItem = responses[0].data;
             const responseStyle = responses[1].data;
-            return [responseItem, responseStyle];
+            const responseRating = getAverageReview(responses[2].data.ratings);
+            return [responseItem, responseStyle, responseRating];
           })
         );
       })
@@ -61,13 +62,12 @@ const Outfit = ({
   };
 
   return (
-    <div className="relatedOut">
+    <div className="relatedOutfit">
       <h3 className="related-outfit-h3">Your Outfit</h3>
       <OutfitEntry
         currentProduct={currentProduct}
         addDeleteOutfit={addDeleteOutfit}
         relatedItemsAndStyle={relatedItemsAndStyle}
-        prodRating={prodRating}
         outfitIdArr={outfitIdArr}
       />
     </div>
