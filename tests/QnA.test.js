@@ -48,6 +48,7 @@ describe('Answer Test Unit Tests', () => {
     expect(wrapper.exists()).toBe(true);
   });
 });
+
 //question log helpful0 question_id35469
 
 describe('Helpful Test Unit Tests', () => {
@@ -55,7 +56,6 @@ describe('Helpful Test Unit Tests', () => {
   const wrapperWithProps = shallow(
     <Helpful helpfulness={4} idBeingUsed={100} typeOfStored="answerId" />
   );
-  console.log(wrapperWithProps.debug());
   test('renders with no props', () => {
     expect(wrapper.exists()).toBe(true);
   });
@@ -91,3 +91,5 @@ describe('Search Bar Unit Tests', () => {
     expect(wrapper.find('.searchbar').exists()).toBe(true);
   });
 });
+
+describe('Integration QnA Test', () => {});

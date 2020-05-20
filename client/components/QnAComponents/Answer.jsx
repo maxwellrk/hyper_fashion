@@ -10,7 +10,7 @@ const Answer = ({ info }) => {
       {info ? (
         <div>
           <p className="answer">
-            <span className="bold" style={{ 'font-size': '18px' }}>
+            <span className="bold" style={{ fontSize: '18px' }}>
               A:{' '}
             </span>
             {info.body || ''}
@@ -36,7 +36,6 @@ const Answer = ({ info }) => {
                   axios
                     .put(`http://18.224.200.47/qa/answer/${info.id}/report`)
                     .then((resp) => {
-                      console.log(resp);
                       changeReportedStatus(false);
                     });
                 }}

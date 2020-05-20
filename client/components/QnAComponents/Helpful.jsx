@@ -5,7 +5,7 @@ const Helpful = ({ helpfulness, idBeingUsed, typeOfStored }) => {
   const [isVoted, toggleVote] = useState(false);
 
   return (
-    <p className="text14" style={{ display: 'inline' }}>
+    <span className="text14" style={{ display: 'inline' }}>
       Helpful?{' '}
       {stored[idBeingUsed] || isVoted ? (
         <span className="underline bold">
@@ -24,7 +24,6 @@ const Helpful = ({ helpfulness, idBeingUsed, typeOfStored }) => {
                   : `http://18.224.200.47/qa/answer/${idBeingUsed}/helpful`
               )
               .then((resp) => {
-                console.log(resp);
                 window.localStorage.setItem(
                   typeOfStored,
                   JSON.stringify(stored)
@@ -41,7 +40,7 @@ const Helpful = ({ helpfulness, idBeingUsed, typeOfStored }) => {
           Yes ({helpfulness})
         </a>
       )}
-    </p>
+    </span>
   );
 };
 
