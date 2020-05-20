@@ -65,7 +65,6 @@ const QnA = ({ fetchQuestionsById, questionsList, productById }) => {
       })
       .slice(0, questionRender)
       .map((entry) => {
-        console.log('entry id', entry);
         return <QnABlock entry={entry} key={entry.question_id} />;
       });
   } else {
@@ -73,12 +72,7 @@ const QnA = ({ fetchQuestionsById, questionsList, productById }) => {
   }
 
   return (
-    <div
-      className="mainContainer"
-      onClick={(e) => {
-        console.log('Q&A', e.target);
-      }}
-    >
+    <div className="mainContainer">
       <div className="subContainer">
         <h6>QUESTIONS & ANSWERS</h6>
         <SearchBar
