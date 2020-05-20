@@ -56,11 +56,8 @@ const QnABlock = ({ entry, productById }) => {
       <div className="questionHeaderContainer">
         <Question
           question_id={entry.question_id}
-          asker_Name={entry.asker_name}
           question_body={entry.question_body}
-          question_date={entry.question_date}
           question_helpfulness={entry.question_helpfulness}
-          reported={entry.reported}
         />
         <AnswerModal
           question_body={entry.question_body}

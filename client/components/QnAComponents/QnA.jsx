@@ -73,7 +73,12 @@ const QnA = ({ fetchQuestionsById, questionsList, productById }) => {
   }
 
   return (
-    <div className="mainContainer">
+    <div
+      className="mainContainer"
+      onClick={(e) => {
+        console.log('Q&A', e.target);
+      }}
+    >
       <div className="subContainer">
         <h6>QUESTIONS & ANSWERS</h6>
         <SearchBar
