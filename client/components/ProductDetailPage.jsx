@@ -4,12 +4,13 @@ import QnA from "../containers/QnAContainers/QnAContainer";
 import RelatedItemAndOutfit from "./RelatedItemsAndOutfit/RelatedItemsAndOutfit";
 import Overview from "../containers/OverviewContainers/OverviewContainer";
 
-const AddClickTracking = (Component) => {
+export const AddClickTracking = (Component) => {
   return (props) => {
+    console.log("props outer", props);
     return (
       <div
-        onClick={(e) => {
-          console.log("props in tracking", props);
+        onClick={(e, props) => {
+          console.log("props inner", props);
           console.log(
             e.target,
             new Date(),

@@ -3,7 +3,6 @@ import {Button, Radio, Space} from "antd";
 import {PlusOutlined, StarOutlined} from "@ant-design/icons";
 
 const Buttons = (props) => {
-  console.log("state in buttons", props);
   return (
     <div>
       <Space size="large">
