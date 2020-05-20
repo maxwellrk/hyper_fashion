@@ -5,8 +5,6 @@ import AnswerModal from '../../containers/QnAContainers/AnswerModalContainer';
 import Answer from './Answer';
 
 const QnABlock = ({ entry, productById }) => {
-  console.log('QnABlock -> entry', entry);
-
   const [answerDisplay, toggleAnswerDisplay] = useState(false);
   const [answerModalRender, toggleAnswerModal] = useState(false);
 
@@ -43,59 +41,55 @@ const QnABlock = ({ entry, productById }) => {
 
   if (answerDisplay) {
     answersButton = (
-      <p onClick={() => toggleAnswerDisplay(false)}>See More Answers</p>
+      <a onClick={() => toggleAnswerDisplay(false)}>See More Answers</a>
     );
   } else if (!answerDisplay) {
     answersButton = (
-      <p onClick={() => toggleAnswerDisplay(true)}>Collapse Answers</p>
+      <a onClick={() => toggleAnswerDisplay(true)}>Collapse Answers</a>
     );
   } else {
     return;
   }
 
   return (
-    <div
-      style={{
-        border: '2px solid red',
-      }}
-    >
-      <Question
-        question_id={entry.question_id}
-        asker_Name={entry.asker_name}
-        question_body={entry.question_body}
-        question_date={entry.question_date}
-        question_helpfulness={entry.question_helpfulness}
-        reported={entry.reported}
-      />
-      <AnswerModal
-        question_body={entry.question_body}
-        question_id={entry.question_id}
-        answerModalRender={answerModalRender}
-        toggleAnswerModal={toggleAnswerModal}
-      />
-      {Object.keys(entry.answers)
-        .map((answerId, index) => {
-          console.log(entry.answers[answerId]);
-          entry.answers[answerId].newDate = dateFormatter(
-            entry.answers[answerId].date
-          );
-          return <Answer info={entry.answers[answerId]} />;
-        })
-        //  Need to bring seller answers to the top of the page
-        .sort((a, b) => {
-          return (
-            (b.props.info.answerer_name === 'Seller') -
-              (a.props.info.answerer_name === 'Seller') ||
-            b.props.info.helpfulness - a.props.info.helpfulness
-          );
-        })
-        .filter((ele, index) => {
-          if (answerDisplay && index < 2) {
-            return ele;
-          } else if (!answerDisplay) {
-            return ele;
-          }
-        })}
+    <div>
+      <div className="questionHeaderContainer">
+        <Question
+          question_id={entry.question_id}
+          question_body={entry.question_body}
+          question_helpfulness={entry.question_helpfulness}
+        />
+        <AnswerModal
+          question_body={entry.question_body}
+          question_id={entry.question_id}
+          answerModalRender={answerModalRender}
+          toggleAnswerModal={toggleAnswerModal}
+        />
+      </div>
+      <div className="scrollContainerAnswers">
+        {Object.keys(entry.answers)
+          .map((answerId, index) => {
+            entry.answers[answerId].newDate = dateFormatter(
+              entry.answers[answerId].date
+            );
+            return <Answer info={entry.answers[answerId]} />;
+          })
+          //  Need to bring seller answers to the top of the page
+          .sort((a, b) => {
+            return (
+              (b.props.info.answerer_name === 'Seller') -
+                (a.props.info.answerer_name === 'Seller') ||
+              b.props.info.helpfulness - a.props.info.helpfulness
+            );
+          })
+          .filter((ele, index) => {
+            if (answerDisplay && index < 2) {
+              return ele;
+            } else if (!answerDisplay) {
+              return ele;
+            }
+          })}
+      </div>
       {Object.keys(entry.answers).length > 2 && answersButton}
     </div>
   );
