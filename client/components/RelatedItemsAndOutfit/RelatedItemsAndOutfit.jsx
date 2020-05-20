@@ -3,8 +3,8 @@ import RelatedItems from "../../containers/RelatedItemsAndOutfitContainers/Relat
 import Outfit from "../../containers/RelatedItemsAndOutfitContainers/OutfitContainer";
 import axios from "axios";
 import Promise from "bluebird";
-import './RelatedItems.css';
-
+import "./RelatedItems.css";
+import getAverageReview from "../../actions/ReviewComponentActions/ActionHelpers/averageReviewHelper";
 const RelatedItemsAndOutfit = ({ currentProduct }) => {
   const [relatedItemsAndStyle, setRelatedItemsAndStyle] = useState([]);
 
@@ -29,13 +29,18 @@ const RelatedItemsAndOutfit = ({ currentProduct }) => {
           idArr.map((id) => {
             const itemsUrl = `http://18.224.200.47/products/${id}`;
             const styleUrl = `http://18.224.200.47/products/${id}/styles`;
+            const ratingUrl = `http://18.224.200.47/reviews/${id}/meta`;
+
             const requestItem = axios.get(itemsUrl);
             const requestStyle = axios.get(styleUrl);
-            return axios.all([requestItem, requestStyle]).then(
+            const requestRating = axios.get(ratingUrl);
+
+            return axios.all([requestItem, requestStyle, requestRating]).then(
               axios.spread((...responses) => {
                 const responseItem = responses[0].data;
                 const responseStyle = responses[1].data;
-                return [responseItem, responseStyle];
+                const responseRating = getAverageReview(responses[2].data.ratings);
+                return [responseItem, responseStyle, responseRating];
               })
             );
           })
@@ -49,7 +54,7 @@ const RelatedItemsAndOutfit = ({ currentProduct }) => {
   return (
     <div className="itemsAndOutfit">
       <RelatedItems relatedItemsAndStyle={relatedItemsAndStyle} />
-      <Outfit currentProduct={currentProduct}/>
+      <Outfit currentProduct={currentProduct} />
     </div>
   );
 };

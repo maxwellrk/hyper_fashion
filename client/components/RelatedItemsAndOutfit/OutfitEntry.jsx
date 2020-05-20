@@ -8,7 +8,6 @@ const OutfitEntry = ({
   currentProduct,
   addDeleteOutfit,
   relatedItemsAndStyle,
-  prodRating,
   outfitIdArr,
 }) => {
   let fakeCard = [
@@ -148,7 +147,7 @@ const OutfitEntry = ({
                                 precision={0.1}
                                 size="small"
                                 readOnly
-                                value={prodRating.averageRating}
+                                value={eachItem[2]}
                               />
                             </Card.Body>
                           )}
