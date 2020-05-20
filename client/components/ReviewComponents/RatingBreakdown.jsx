@@ -60,7 +60,7 @@ const RatingBreakdown = (props) => {
   const BorderLinearProgress = withStyles({
     root: {
       height: 10,
-      width: 210,
+      width: 235,
       backgroundColor: lighten("#ebebeb", 0.3),
       margin: 10,
       position: "relative",
@@ -74,7 +74,11 @@ const RatingBreakdown = (props) => {
   return (
     <div>
       <div className="linearbar5">
-        <div className="starrating" onClick={(event) => updateFilter(event, 5)}>
+        <div
+          // className="starrating"
+          className={bar.includes(5) ? "starrating-clicked" : "starrating"}
+          onClick={(event) => updateFilter(event, 5)}
+        >
           5 stars
         </div>
         <BorderLinearProgress
@@ -85,7 +89,11 @@ const RatingBreakdown = (props) => {
         />
       </div>
       <div className="linearbar4">
-        <div className="starrating" onClick={(event) => updateFilter(event, 4)}>
+        <div
+          // className="starrating"
+          className={bar.includes(4) ? "starrating-clicked" : "starrating"}
+          onClick={(event) => updateFilter(event, 4)}
+        >
           4 stars
         </div>
         <BorderLinearProgress
@@ -96,7 +104,11 @@ const RatingBreakdown = (props) => {
         />
       </div>
       <div className="linearbar3">
-        <div className="starrating" onClick={(event) => updateFilter(event, 3)}>
+        <div
+          // className={"starrating"}
+          className={bar.includes(3) ? "starrating-clicked" : "starrating"}
+          onClick={(event) => updateFilter(event, 3)}
+        >
           3 stars
         </div>
         <BorderLinearProgress
@@ -107,7 +119,11 @@ const RatingBreakdown = (props) => {
         />
       </div>
       <div className="linearbar2">
-        <div className="starrating" onClick={(event) => updateFilter(event, 2)}>
+        <div
+          // className="starrating"
+          className={bar.includes(2) ? "starrating-clicked" : "starrating"}
+          onClick={(event) => updateFilter(event, 2)}
+        >
           2 stars
         </div>
         <BorderLinearProgress
@@ -118,7 +134,11 @@ const RatingBreakdown = (props) => {
         />
       </div>
       <div className="linearbar1">
-        <div className="starrating" onClick={(event) => updateFilter(event, 1)}>
+        <div
+          // className="starrating"
+          className={bar.includes(1) ? "starrating-clicked" : "starrating"}
+          onClick={(event) => updateFilter(event, 1)}
+        >
           1 stars
         </div>
         <BorderLinearProgress
@@ -127,15 +147,18 @@ const RatingBreakdown = (props) => {
           color="secondary"
           value={valueOne || 0}
         />
+        <div style={{ height: 10, width: 235 }}></div>
+        {props.totalFilters.length ? (
+          <div>
+            Filter currently applied: {props.totalFilters.toString()} |{" "}
+            <a id="removefiltersbutton" onClick={() => removeFilters()}>
+              Remove All Filters
+            </a>
+          </div>
+        ) : (
+          <div></div>
+        )}
       </div>
-      {props.totalFilters.length ? (
-        <div>
-          Filters currently applied: {props.totalFilters.toString()} |
-          <a onClick={() => removeFilters()}>Remove All Filters</a>
-        </div>
-      ) : (
-        <div></div>
-      )}
     </div>
   );
 };
