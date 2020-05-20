@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import {Dropdown, Button, Menu, Row, Col} from "antd";
 import {DownOutlined, UserOutlined} from "@ant-design/icons";
 import QuantityDropDown from "./QuantityDropDown";
+import Buttons from "../../containers/OverviewContainers/ButtonsContainer";
 
 const DropDownMenus = ({currentStyle}) => {
   const [currentSize, setSize] = useState([]);
@@ -25,7 +26,7 @@ const DropDownMenus = ({currentStyle}) => {
             : ""}
         </Menu>
       ) : (
-        ""
+        "OUT OF STOCK!"
       )}
     </div>
   );
@@ -53,6 +54,9 @@ const DropDownMenus = ({currentStyle}) => {
           </div>
         </Col>
       </Row>
+      <Col span={24} style={{marginTop: "20px"}}>
+        <Buttons currentStyle={currentStyle} currentSize={currentSize} />
+      </Col>
     </div>
   );
 };

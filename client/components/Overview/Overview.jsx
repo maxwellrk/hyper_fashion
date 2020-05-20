@@ -6,7 +6,6 @@ import Carousel from "../../containers/OverviewContainers/CarouselContainer";
 import Display from "./Display.jsx";
 import DropDownMenus from "./DropDownMenus";
 import Reviews from "../../containers/OverviewContainers/ReviewsContainer";
-import Buttons from "../../containers/OverviewContainers/ButtonsContainer";
 
 const Overview = ({productById}) => {
   const [styles, setStyles] = useState([]);
@@ -89,9 +88,6 @@ const Overview = ({productById}) => {
           <Row>
             <Col span={24}>
               <DropDownMenus currentStyle={currentStyle} />
-            </Col>
-            <Col span={24} style={{marginTop: "20px"}}>
-              <Buttons currentStyle={currentStyle} />
             </Col>
           </Row>
         </Col>
