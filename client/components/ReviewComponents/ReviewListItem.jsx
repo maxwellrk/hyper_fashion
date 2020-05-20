@@ -165,7 +165,7 @@ const ReviewListItem = ({ item, answerList }) => {
           Report
         </a>
       </div>
-      <p>---------------------------------------------</p>
+      <hr style={{ border: "0.5px solid black", width: "auto%" }} />
     </div>
   );
 };

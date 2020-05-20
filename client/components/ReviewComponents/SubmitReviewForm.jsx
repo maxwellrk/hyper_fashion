@@ -163,7 +163,7 @@ const SubmitReviewForm = (props) => {
   //   }
 
   return (
-    <div>
+    <div className="reviewsmodal">
       <Button type="primary" onClick={showModal}>
         Open Modal with customized footer
       </Button>
@@ -171,21 +171,35 @@ const SubmitReviewForm = (props) => {
         visible={isVisible}
         width={1000}
         title={
-          <div>
-            <div>Write Your Review</div>
-            <div>About the {props.name}</div>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              flexBasis: "30%",
+            }}
+          >
+            <div style={{ fontSize: "35px" }}>Write Your Review</div>
+            <div style={{ height: "15px" }}></div>
+            <div style={{ fontSize: "20px" }}>About the {props.name}</div>
           </div>
         }
         onOk={handleOk}
         onCancel={handleCancel}
         centered
         footer={[
-          <Button key="back" onClick={handleCancel}>
-            Return
+          <Button
+            id="mybutton"
+            style={{ backgroundColor: "white", borderColor: "black" }}
+            key="back"
+            onClick={handleCancel}
+          >
+            <div id="mybuttontext">Return</div>
           </Button>,
           <Button
+            id="mybutton"
             key="submit"
             type="primary"
+            style={{ backgroundColor: "white", borderColor: "black" }}
             loading={isLoading}
             onClick={() => {
               if (checkInputs()) {
@@ -194,405 +208,537 @@ const SubmitReviewForm = (props) => {
             }}
             //   {handleOk}
           >
-            Submit
+            <div id="mybuttontext">Submit</div>
           </Button>,
         ]}
       >
         {/* <p>Overall Rating</p> */}
-        <Form
-          {...layout}
-          name="basic"
-          initialValues={{
-            remember: true,
-          }}
-          onFinish={onFinish}
-          onFinishFailed={onFinishFailed}
-        >
-          <Form.Item
-            label="Overall Rating"
-            name="Overall Rating"
-            rules={[
-              {
-                required: true,
-                message: "Please input a rating!",
-              },
-            ]}
-          >
-            <div className="submitrating">
-              <Rating
-                name="hover-feedback"
-                value={value}
-                style={{ color: "black" }}
-                precision={1}
-                onChange={(event, newValue) => {
-                  setValue(newValue);
-                }}
-                onChangeActive={(event, newHover) => {
-                  setHover(newHover);
-                }}
-              />
-              {value !== null && (
-                <Box ml={2}>{labels[hover !== -1 ? hover : value]}</Box>
-              )}
-            </div>
-          </Form.Item>
-          <div
-            style={{
-              display: "inline-flex",
-              position: "relative",
-              left: "45px",
+        <div className="modalcontainer">
+          <Form
+            {...layout}
+            name="basic"
+            initialValues={{
+              remember: true,
             }}
+            onFinish={onFinish}
+            onFinishFailed={onFinishFailed}
           >
-            <span style={{ color: "red", backgroundPosition: "right top" }}>
-              *
-            </span>
-            <div>Do you recommend this product?</div>
-            {/* <Form.Item
-              label="Do you recommend this product?"
-              name="Overall Rating"
-              rules={[
-                {
-                  required: true,
-                  message: "Please choose an option!",
-                },
-              ]}
-            > */}
-            <Radio.Group
-              style={{
-                display: "inline-flex",
-                position: "relative",
-                left: "10px",
-              }}
-              name="radiogroup"
-              defaultValue={true}
-              onChange={(e) => {
-                setRecommended(e.target.value);
-              }}
-            >
-              <Radio value={true}>Yes</Radio>
-              <Radio value={false}>No</Radio>
-            </Radio.Group>
-          </div>
-          <div
-            style={{
-              position: "relative",
-              left: "45px",
-            }}
-          >
+            <div className="overallratinginput">
+              <Form.Item
+                label="Overall Rating"
+                name="Overall Rating"
+                rules={[
+                  {
+                    required: true,
+                    message: "Please input a rating!",
+                  },
+                ]}
+              >
+                <div className="submitrating">
+                  <Rating
+                    name="hover-feedback"
+                    value={value}
+                    style={{ color: "black" }}
+                    fontSize={20}
+                    precision={1}
+                    onChange={(event, newValue) => {
+                      setValue(newValue);
+                    }}
+                    onChangeActive={(event, newHover) => {
+                      setHover(newHover);
+                    }}
+                  />
+                  {value !== null && (
+                    <Box ml={2}>{labels[hover !== -1 ? hover : value]}</Box>
+                  )}
+                </div>
+              </Form.Item>
+            </div>
             <div
-              style={{
-                display: "inline-flex",
-                // position: "relative",
-                // left: "10px",
-              }}
+              // style={{
+              //   display: "inline-flex",
+              //   position: "relative",
+              //   left: "45px",
+              // }}
+              className="recommendinput"
             >
               <span style={{ color: "red", backgroundPosition: "right top" }}>
                 *
               </span>
-              <div>Size</div>
-              <Radio.Group
-                defaultValue={3}
-                buttonStyle="solid"
-                onChange={(e) => {
-                  setCharacteristics({
-                    ...isCharacteristics,
-                    14: e.target.value,
-                  });
-                }}
-              >
-                <Radio.Button value={1}>A size too small</Radio.Button>
-                <Radio.Button value={2}>½ a size too small</Radio.Button>
-                <Radio.Button value={3}>Perfect</Radio.Button>
-                <Radio.Button value={4}>½ a size too big</Radio.Button>
-                <Radio.Button value={5}>A size too wide</Radio.Button>
-              </Radio.Group>
-            </div>
-            <div
-              style={{
-                display: "inline-flex",
-                // position: "relative",
-                // left: "10px",
-              }}
-            >
-              <span style={{ color: "red", backgroundPosition: "right top" }}>
-                *
-              </span>
-              <div>Width</div>
-              <Radio.Group
-                defaultValue={3}
-                buttonStyle="solid"
-                onChange={(e) => {
-                  setCharacteristics({
-                    ...isCharacteristics,
-                    15: e.target.value,
-                  });
-                }}
-              >
-                <Radio.Button value={1}>Too narrow</Radio.Button>
-                <Radio.Button value={2}>Slightly narrow</Radio.Button>
-                <Radio.Button value={3}>Perfect</Radio.Button>
-                <Radio.Button value={4}>Slightly wide</Radio.Button>
-                <Radio.Button value={5}>Too wide</Radio.Button>
-              </Radio.Group>
-            </div>
-            <div
-              style={{
-                display: "inline-flex",
-                // position: "relative",
-                // left: "10px",
-              }}
-            >
-              <span style={{ color: "red", backgroundPosition: "right top" }}>
-                *
-              </span>
-              <div>Comfort</div>
-              <Radio.Group
-                defaultValue={3}
-                buttonStyle="solid"
-                onChange={(e) => {
-                  setCharacteristics({
-                    ...isCharacteristics,
-                    16: e.target.value,
-                  });
-                }}
-              >
-                <Radio.Button value={1}>Uncomfortable</Radio.Button>
-                <Radio.Button value={2}>Slightly uncomfortable</Radio.Button>
-                <Radio.Button value={3}>Ok</Radio.Button>
-                <Radio.Button value={4}>Comfortable</Radio.Button>
-                <Radio.Button value={5}>Perfect</Radio.Button>
-              </Radio.Group>
-            </div>
-            <div
-              style={{
-                display: "inline-flex",
-                // position: "relative",
-                // left: "10px",
-              }}
-            >
-              <span style={{ color: "red", backgroundPosition: "right top" }}>
-                *
-              </span>
-              <div>Quality</div>
-              <Radio.Group
-                defaultValue={3}
-                buttonStyle="solid"
-                onChange={(e) => {
-                  setCharacteristics({
-                    ...isCharacteristics,
-                    17: e.target.value,
-                  });
-                }}
-              >
-                <Radio.Button value={1}>Poor</Radio.Button>
-                <Radio.Button value={2}>Below average</Radio.Button>
-                <Radio.Button value={3}>What I expected</Radio.Button>
-                <Radio.Button value={4}>Pretty great</Radio.Button>
-                <Radio.Button value={5}>Perfect</Radio.Button>
-              </Radio.Group>
-            </div>
-            <div
-              style={{
-                display: "inline-flex",
-                // position: "relative",
-                // left: "10px",
-              }}
-            >
-              <span style={{ color: "red", backgroundPosition: "right top" }}>
-                *
-              </span>
-              <div>Length</div>
-              <Radio.Group
-                defaultValue={3}
-                buttonStyle="solid"
-                onChange={(e) => {
-                  setCharacteristics({
-                    ...isCharacteristics,
-                    18: e.target.value,
-                  });
-                }}
-              >
-                <Radio.Button value={1}>Runs Short</Radio.Button>
-                <Radio.Button value={2}>Runs slightly short</Radio.Button>
-                <Radio.Button value={3}>Perfect</Radio.Button>
-                <Radio.Button value={4}>Runs slightly long</Radio.Button>
-                <Radio.Button value={5}>Runs long</Radio.Button>
-              </Radio.Group>
-            </div>
-            <div
-              style={{
-                display: "inline-flex",
-                // position: "relative",
-                // left: "10px",
-              }}
-            >
-              <span style={{ color: "red", backgroundPosition: "right top" }}>
-                *
-              </span>
-              <div>Fit</div>
-              <Radio.Group
-                defaultValue={3}
-                buttonStyle="solid"
-                onChange={(e) => {
-                  setCharacteristics({
-                    ...isCharacteristics,
-                    19: e.target.value,
-                  });
-                }}
-              >
-                <Radio.Button value={1}>Runs tight</Radio.Button>
-                <Radio.Button value={2}>Runs slightly tight</Radio.Button>
-                <Radio.Button value={3}>Perfect</Radio.Button>
-                <Radio.Button value={4}>Runs slightly long</Radio.Button>
-                <Radio.Button value={5}>Runs long</Radio.Button>
-              </Radio.Group>
-            </div>
-          </div>
-        </Form>
-        <div style={{ margin: "24px", height: "20px" }} />
+              <div>Do you recommend this product?</div>
 
-        <Input.Group style={{ width: "800px", alignItems: "center" }}>
-          <div
-            style={{
-              display: "inline-flex",
-              // position: "relative",
-              // left: "10px",
-            }}
-          >
-            <div>Review summary</div>
-            <TextArea
-              placeholder="Example: Best purchase ever!"
-              autoSize
-              maxLength="60"
+              <div style={{ display: "flex", width: "10%" }}></div>
+              <Radio.Group
+                style={{
+                  display: "flex",
+                  flexDirection: "row",
+                }}
+                name="radiogroup"
+                defaultValue={true}
+                onChange={(e) => {
+                  setRecommended(e.target.value);
+                }}
+              >
+                <Radio value={true}>Yes</Radio>
+                <div style={{ display: "flex", width: "10%" }}></div>
+
+                <Radio value={false}>No</Radio>
+              </Radio.Group>
+            </div>
+            <div style={{ height: "2rem" }}></div>
+
+            <div
               style={{
-                position: "relative",
-                width: "700px",
-                left: "100px",
+                display: "flex",
+                flexDirection: "column",
+                // justifyContent: "center",
+                // alignItems: "center",
               }}
-              onChange={(e) => {
-                setReviewSummary(e.target.value);
-              }}
-              value={isReviewSummary}
-            />
-          </div>
+            >
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "row",
+                  alignItems: "center",
+                  // position: "relative",
+                  // left: "10px",
+                }}
+              >
+                <span style={{ color: "red", backgroundPosition: "right top" }}>
+                  *
+                </span>
+                <div>Size</div>
+                <div style={{ display: "flex", width: "11.4%" }}></div>
+
+                <div
+                  style={{ display: "flex", width: "100%", flexWrap: "nowrap" }}
+                >
+                  <Radio.Group
+                    defaultValue={3}
+                    style={{
+                      display: "flex",
+                      flexBasis: "100%",
+                      textAlign: "center",
+                    }}
+                    buttonStyle="solid"
+                    onChange={(e) => {
+                      setCharacteristics({
+                        ...isCharacteristics,
+                        14: e.target.value,
+                      });
+                    }}
+                  >
+                    <Radio.Button value={1}>A size too small</Radio.Button>
+                    <Radio.Button value={2}>½ a size too small</Radio.Button>
+                    <Radio.Button value={3}>Perfect</Radio.Button>
+                    <Radio.Button value={4}>½ a size too big</Radio.Button>
+                    <Radio.Button value={5}>A size too wide</Radio.Button>
+                  </Radio.Group>
+                </div>
+              </div>
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "row",
+                  alignItems: "center",
+                  // position: "relative",
+                  // left: "10px",
+                }}
+              >
+                <span style={{ color: "red", backgroundPosition: "right top" }}>
+                  *
+                </span>
+                <div>Width</div>
+                <div style={{ display: "flex", width: "10%" }}></div>
+
+                <div
+                  style={{ display: "flex", width: "100%", flexWrap: "nowrap" }}
+                >
+                  <Radio.Group
+                    defaultValue={3}
+                    buttonStyle="solid"
+                    style={{
+                      display: "flex",
+                      flexBasis: "100%",
+                      textAlign: "center",
+                    }}
+                    onChange={(e) => {
+                      setCharacteristics({
+                        ...isCharacteristics,
+                        15: e.target.value,
+                      });
+                    }}
+                  >
+                    <Radio.Button value={1}>Too narrow</Radio.Button>
+                    <Radio.Button value={2}>Slightly narrow</Radio.Button>
+                    <Radio.Button value={3}>Perfect</Radio.Button>
+                    <Radio.Button value={4}>Slightly wide</Radio.Button>
+                    <Radio.Button value={5}>Too wide</Radio.Button>
+                  </Radio.Group>
+                </div>
+              </div>
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "row",
+                  alignItems: "center",
+                  // position: "relative",
+                  // left: "10px",
+                }}
+              >
+                <span style={{ color: "red", backgroundPosition: "right top" }}>
+                  *
+                </span>
+                <div>Comfort</div>
+                <div style={{ display: "flex", width: "8.2%" }}></div>
+
+                <Radio.Group
+                  defaultValue={3}
+                  buttonStyle="solid"
+                  style={{
+                    display: "flex",
+                    flexBasis: "100%",
+                    textAlign: "center",
+                  }}
+                  onChange={(e) => {
+                    setCharacteristics({
+                      ...isCharacteristics,
+                      16: e.target.value,
+                    });
+                  }}
+                >
+                  <Radio.Button value={1}>Uncomfortable</Radio.Button>
+                  <Radio.Button value={2}>Slightly uncomfortable</Radio.Button>
+                  <Radio.Button value={3}>Ok</Radio.Button>
+                  <Radio.Button value={4}>Comfortable</Radio.Button>
+                  <Radio.Button value={5}>Perfect</Radio.Button>
+                </Radio.Group>
+              </div>
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "row",
+                  alignItems: "center",
+                  // position: "relative",
+                  // left: "10px",
+                }}
+              >
+                <span style={{ color: "red", backgroundPosition: "right top" }}>
+                  *
+                </span>
+                <div>Quality</div>
+                <div style={{ display: "flex", width: "9.15%" }}></div>
+
+                <Radio.Group
+                  defaultValue={3}
+                  buttonStyle="solid"
+                  style={{
+                    display: "flex",
+                    flexBasis: "100%",
+                    textAlign: "center",
+                  }}
+                  onChange={(e) => {
+                    setCharacteristics({
+                      ...isCharacteristics,
+                      17: e.target.value,
+                    });
+                  }}
+                >
+                  <Radio.Button value={1}>Poor</Radio.Button>
+                  <Radio.Button value={2}>Below average</Radio.Button>
+                  <Radio.Button value={3}>What I expected</Radio.Button>
+                  <Radio.Button value={4}>Pretty great</Radio.Button>
+                  <Radio.Button value={5}>Perfect</Radio.Button>
+                </Radio.Group>
+              </div>
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "row",
+                  alignItems: "center",
+                  // position: "relative",
+                  // left: "10px",
+                }}
+              >
+                <span style={{ color: "red", backgroundPosition: "right top" }}>
+                  *
+                </span>
+                <div>Length</div>
+                <div style={{ display: "flex", width: "9.2%" }}></div>
+
+                <Radio.Group
+                  defaultValue={3}
+                  buttonStyle="solid"
+                  style={{
+                    display: "flex",
+                    flexBasis: "100%",
+                    textAlign: "center",
+                  }}
+                  onChange={(e) => {
+                    setCharacteristics({
+                      ...isCharacteristics,
+                      18: e.target.value,
+                    });
+                  }}
+                >
+                  <Radio.Button value={1}>Runs Short</Radio.Button>
+                  <Radio.Button value={2}>Runs slightly short</Radio.Button>
+                  <Radio.Button value={3}>Perfect</Radio.Button>
+                  <Radio.Button value={4}>Runs slightly long</Radio.Button>
+                  <Radio.Button value={5}>Runs long</Radio.Button>
+                </Radio.Group>
+              </div>
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "row",
+
+                  alignItems: "center",
+                  // position: "relative",
+                  // left: "10px",
+                }}
+              >
+                <span style={{ color: "red", backgroundPosition: "right top" }}>
+                  *
+                </span>
+                <div>Fit</div>
+                <div style={{ display: "flex", width: "12.7%" }}></div>
+
+                <Radio.Group
+                  defaultValue={3}
+                  buttonStyle="solid"
+                  style={{
+                    display: "flex",
+                    flexBasis: "100%",
+                    textAlign: "center",
+                  }}
+                  onChange={(e) => {
+                    setCharacteristics({
+                      ...isCharacteristics,
+                      19: e.target.value,
+                    });
+                  }}
+                >
+                  <Radio.Button value={1}>Runs tight</Radio.Button>
+                  <Radio.Button value={2}>Runs slightly tight</Radio.Button>
+                  <Radio.Button value={3}>Perfect</Radio.Button>
+                  <Radio.Button value={4}>Runs slightly long</Radio.Button>
+                  <Radio.Button value={5}>Runs long</Radio.Button>
+                </Radio.Group>
+              </div>
+            </div>
+          </Form>
           <div style={{ margin: "24px", height: "20px" }} />
-          <div
-            style={{
-              display: "inline-flex",
-              // position: "relative",
-              // left: "10px",
-            }}
-          >
-            <span style={{ color: "red", backgroundPosition: "right top" }}>
-              *
-            </span>
-            <div>Review body</div>
-            <TextArea
-              placeholder="Why did you like the product or not?"
-              autoSize
-              maxLength="1000"
+
+          <Input.Group style={{ display: "flex", flexDirection: "column" }}>
+            <div
               style={{
-                position: "relative",
-                width: "700px",
-                left: "100px",
+                display: "flex",
+                flexDirection: "row",
+                alignItems: "center",
+                // position: "relative",
+                // left: "10px",
               }}
-              onChange={(e) => {
-                setReviewBody(e.target.value);
+            >
+              <div style={{ display: "flex", width: "20%" }}>
+                Review summary
+              </div>
+              <TextArea
+                placeholder="Example: Best purchase ever!"
+                autoSize
+                maxLength="60"
+                style={{
+                  display: "flex",
+                  width: "80%",
+                }}
+                onChange={(e) => {
+                  setReviewSummary(e.target.value);
+                }}
+                value={isReviewSummary}
+              />
+            </div>
+            <div style={{ margin: "24px", height: "20px" }} />
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "row",
+                alignItems: "center",
+                // position: "relative",
+                // left: "10px",
               }}
-              value={isReviewBody}
-            />
-          </div>
-          <div>
-            {isReviewBody.length < 50
-              ? `Minimum required characters left: ${50 - isReviewBody.length}`
-              : "Minimum reached"}
-          </div>
-          {/* <TextArea
+            >
+              <span style={{ color: "red", backgroundPosition: "right top" }}>
+                *
+              </span>
+              <div style={{ display: "flex", width: "19.2%" }}>Review body</div>
+              {/* <div
+                style={{
+                  display: "flex",
+                  flexDirection: "row",
+                  alignSelf: "center",
+                }}
+              > */}
+              <TextArea
+                placeholder="Why did you like the product or not?"
+                autoSize
+                maxLength="1000"
+                style={{
+                  display: "flex",
+                  width: "80%",
+                }}
+                onChange={(e) => {
+                  setReviewBody(e.target.value);
+                }}
+                value={isReviewBody}
+              />
+              {/* {isReviewBody.length < 50
+                  ? `Minimum required characters left: ${
+                      50 - isReviewBody.length
+                    }`
+                  : "Minimum reached"} */}
+              {/* </div> */}
+            </div>
+            <div style={{ position: "relative", left: "11.8rem" }}>
+              {isReviewBody.length < 50
+                ? `Minimum required characters left: ${
+                    50 - isReviewBody.length
+                  }`
+                : "Minimum reached"}
+            </div>
+            {/* <TextArea
             // value={value}
             // onChange={this.onChange}
             placeholder="Controlled autosize"
             autoSize={{ minRows: 3, maxRows: 5 }}
           /> */}
-        </Input.Group>
-        <div style={{ margin: "24px", height: "20px" }} />
+          </Input.Group>
+          <div style={{ margin: "24px", height: "20px" }} />
 
-        <div
-          style={{
-            display: "inline-flex",
-            // position: "relative",
-            // left: "10px",
-          }}
-        >
-          <div>Upload your photos</div>
-
-          <Upload {...props1} onChange={(file) => setFileList(file.fileList)}>
-            <Button className="uploadbutton">
-              <UploadOutlined /> Upload
-            </Button>
-          </Upload>
-        </div>
-        <div style={{ margin: "24px", height: "20px" }} />
-
-        <div
-          style={{
-            display: "inline-flex",
-            // position: "relative",
-            // left: "10px",
-          }}
-        >
-          <span style={{ color: "red", backgroundPosition: "right top" }}>
-            *
-          </span>
-          <div>What is your nickname?</div>
-          <TextArea
-            placeholder="Example: jackson11!"
-            autoSize
-            maxLength="60"
+          <div
             style={{
-              position: "relative",
-              width: "700px",
-              left: "100px",
+              display: "flex",
+              flexDirection: "row",
+              alignItems: "center",
+              // position: "relative",
+              // left: "10px",
             }}
-            onChange={(e) => {
-              setNickname(e.target.value);
-            }}
-            value={isNickname}
-          />
-        </div>
-        <div style={{ margin: "24px", height: "20px" }} />
+          >
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "row",
+                flexBasis: "19.6%",
+              }}
+            >
+              Upload your photos
+            </div>
 
-        <div>
-          For privacy reasons, do not use your full name or email address
-        </div>
-        <div style={{ margin: "24px", height: "20px" }} />
+            <Upload {...props1} onChange={(file) => setFileList(file.fileList)}>
+              <Button className="uploadbutton">
+                <UploadOutlined /> Upload
+              </Button>
+            </Upload>
+          </div>
+          <div style={{ margin: "24px", height: "20px" }} />
 
-        <div
-          style={{
-            display: "inline-flex",
-            // position: "relative",
-            // left: "10px",
-          }}
-        >
-          <span style={{ color: "red", backgroundPosition: "right top" }}>
-            *
-          </span>
-          <div>Your email</div>
-          <TextArea
-            placeholder="Example: jackson11@email.com"
-            autoSize
-            maxLength="60"
+          <div
             style={{
+              display: "flex",
+              flexDirection: "row",
+              alignItems: "center",
+              // position: "relative",
+              // left: "10px",
+            }}
+          >
+            <span style={{ color: "red", backgroundPosition: "right top" }}>
+              *
+            </span>
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "row",
+                flexBasis: "23.4%",
+              }}
+            >
+              What is your nickname?
+            </div>
+            <TextArea
+              placeholder="Example: jackson11!"
+              autoSize
+              maxLength="60"
+              style={
+                {
+                  // position: "relative",
+                  // width: "700px",
+                  // left: "100px",
+                }
+              }
+              onChange={(e) => {
+                setNickname(e.target.value);
+              }}
+              value={isNickname}
+            />
+          </div>
+          {/* <div style={{ margin: "24px", height: "20px" }} /> */}
+
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "row",
               position: "relative",
-              width: "700px",
-              left: "100px",
+              left: "19.4%",
             }}
-            onChange={(e) => {
-              setEmail(e.target.value);
+          >
+            For privacy reasons, do not use your full name or email address
+          </div>
+          <div style={{ margin: "24px", height: "20px" }} />
+
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              alignItems: "center",
+              // position: "relative",
+              // left: "10px",
             }}
-            value={isEmail}
-          />
+          >
+            <span style={{ color: "red", backgroundPosition: "right top" }}>
+              *
+            </span>
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "row",
+                flexBasis: "18.4%",
+              }}
+            >
+              Your email
+            </div>
+            <TextArea
+              placeholder="Example: jackson11@email.com"
+              autoSize
+              maxLength="60"
+              style={{
+                display: "flex",
+                width: "80%",
+              }}
+              onChange={(e) => {
+                setEmail(e.target.value);
+              }}
+              value={isEmail}
+            />
+          </div>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              position: "relative",
+              left: "19%",
+            }}
+          >
+            For authentication reasons, you will not be emailed
+          </div>
         </div>
-        <div>For authentication reasons, you will not be emailed</div>
       </Modal>
     </div>
   );

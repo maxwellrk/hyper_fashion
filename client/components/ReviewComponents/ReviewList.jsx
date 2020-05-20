@@ -168,7 +168,7 @@ const ReviewList = (props) => {
 
   return (
     // <div>whatever</div>
-    <div>
+    <div className="wholereviewlist">
       <div>
         <h2>{props.prodRating.totalRating} reviews, sorted by</h2>
         <select
