@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 const Helpful = ({ helpfulness, idBeingUsed, typeOfStored }) => {
   let stored = JSON.parse(window.localStorage.getItem(typeOfStored)) || {};
-
   const [isVoted, toggleVote] = useState(false);
 
   return (

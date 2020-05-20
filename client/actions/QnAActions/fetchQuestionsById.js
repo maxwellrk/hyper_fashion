@@ -6,7 +6,7 @@ const fetchQuestionsById = (id) => {
     return axios
       .get(url, {
         params: {
-          count: 99999,
+          count: 10000,
         },
       })
       .then((results) => {
