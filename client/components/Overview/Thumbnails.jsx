@@ -21,7 +21,7 @@ const ThumbNails = ({index, thumbnails, setThumbnailCurrent}) => {
               shape="square"
               size={64}
               src={image}
-              style={{margin: "5px"}}
+              style={{margin: "5px", cursor: "pointer"}}
               onClick={() => setThumbnailCurrent(i)}
             />
           );
@@ -31,7 +31,7 @@ const ThumbNails = ({index, thumbnails, setThumbnailCurrent}) => {
             shape="square"
             size={50}
             src={image}
-            style={{margin: "5px"}}
+            style={{margin: "5px", cursor: "pointer"}}
             onClick={() => setThumbnailCurrent(i)}
           />
         );
