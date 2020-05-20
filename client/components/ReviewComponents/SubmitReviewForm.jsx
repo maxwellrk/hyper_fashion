@@ -249,7 +249,7 @@ const SubmitReviewForm = (props) => {
                     }}
                   />
                   {value !== null && (
-                    <Box ml={2}>{labels[hover !== -1 ? hover : value]}</Box>
+                    <Box ml={3}>{labels[hover !== -1 ? hover : value]}</Box>
                   )}
                 </div>
               </Form.Item>
