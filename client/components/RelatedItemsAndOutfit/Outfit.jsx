@@ -30,26 +30,6 @@ const Outfit = ({
       },
     ],
   ];
-  let fakeCard = [
-    [
-      {
-        id: -91,
-      },
-      {
-        product_id: -91,
-        results: [
-          {
-            photos: [
-              {
-                thumbnail_url:
-                  "https://img.pngio.com/index-of-files-37108-37108-page-images-blank-png-1754_2596.png",
-              },
-            ],
-          },
-        ],
-      },
-    ],
-  ];
   const [relatedItemsAndStyle, setRelatedItemsAndStyle] = useState(firstCard);
 
   useEffect(() => {
@@ -88,6 +68,7 @@ const Outfit = ({
         addDeleteOutfit={addDeleteOutfit}
         relatedItemsAndStyle={relatedItemsAndStyle}
         prodRating={prodRating}
+        outfitIdArr={outfitIdArr}
       />
     </div>
   );

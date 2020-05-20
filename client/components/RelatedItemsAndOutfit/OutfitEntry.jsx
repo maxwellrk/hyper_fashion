@@ -9,6 +9,7 @@ const OutfitEntry = ({
   addDeleteOutfit,
   relatedItemsAndStyle,
   prodRating,
+  outfitIdArr,
 }) => {
   let fakeCard = [
     [
@@ -39,6 +40,10 @@ const OutfitEntry = ({
   useEffect(() => {
     setItemSlides(createSlides());
   }, [relatedItemsAndStyle]);
+
+  // useEffect(() => {
+  //   setItemSlides(createSlides());
+  // }, [outfitIdArr]);
 
   const createSlides = () => {
     let itemSlides = [];
