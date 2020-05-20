@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import QnABlock from "./QnABlock";
 import SearchBar from "./SearchBar";
 import QuestionModal from "../../containers/QnAContainers/QuestionModalContainer";
-import "./styles/QnAStylesheet.css";
+// import "./styles/QnAStylesheet.css";
 const QnA = ({ fetchQuestionsById, questionsList, productById }) => {
   const [questionRender, changeQuestionRender] = useState(2);
   const [searchInput, changeSearchInput] = useState("");

@@ -157,7 +157,7 @@ const ReviewListItem = ({ item, answerList }) => {
         )}
       </div>
       <div style={{ height: "1rem" }}></div>
-      <div className="box">
+      <div style={{ display: "flex", flexWrap: "wrap" }} className="box">
         {item.photos.length > 0 ? (
           item.photos.map((photo) => {
             return (
@@ -171,6 +171,13 @@ const ReviewListItem = ({ item, answerList }) => {
                   cover={
                     <img
                       onClick={() => setCurrentPhoto(photo.url)}
+                      style={{
+                        cursor: "pointer",
+                        objectFit: "cover",
+                        minHeight: "250px",
+                        maxHeight: "250px",
+                        paddingRight: "20px",
+                      }}
                       alt="example"
                       src={photo.url}
                     />
@@ -207,15 +214,20 @@ const ReviewListItem = ({ item, answerList }) => {
           />
         </Modal>
       </div>
-      <div style={{ fontSize: "12px" }}>
-        Helpful?{" "}
-        <a disabled={isHelpful} onClick={() => markAsHelpful()}>
-          Yes({item.helpfulness})
-        </a>{" "}
-        |{" "}
-        <a disabled={isReported} onClick={() => markAsReported()}>
+      <div
+        className="helpfulnessandreported"
+        style={{ display: "flex", fontSize: "12px" }}
+      >
+        Helpful?
+        <div style={{ width: "0.3rem" }}></div>
+        <div disabled={isHelpful} onClick={() => markAsHelpful()}>
+          Yes ({item.helpfulness})
+        </div>
+        <div style={{ width: "0.7rem" }}></div>|
+        <div style={{ width: "0.7rem" }}></div>
+        <div disabled={isReported} onClick={() => markAsReported()}>
           Report
-        </a>
+        </div>
       </div>
       <hr style={{ border: "0.5px solid black", width: "auto%" }} />
     </div>

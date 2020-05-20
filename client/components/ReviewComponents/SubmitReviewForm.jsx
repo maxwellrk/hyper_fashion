@@ -164,8 +164,22 @@ const SubmitReviewForm = (props) => {
 
   return (
     <div className="reviewsmodal">
-      <Button type="primary" onClick={showModal}>
-        Open Modal with customized footer
+      <Button
+        className="openmodalbutton"
+        type="primary"
+        style={{
+          padding: "15px",
+          height: "auto",
+          fontWeight: 400,
+          fontSize: 16,
+          width: "auto",
+          backgroundColor: "white",
+          borderColor: "black",
+          color: "black",
+        }}
+        onClick={showModal}
+      >
+        Add A Review +
       </Button>
       <Modal
         visible={isVisible}

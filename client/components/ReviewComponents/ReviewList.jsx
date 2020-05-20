@@ -218,6 +218,7 @@ const ReviewList = (props) => {
           justifyContent: "flex-start",
           flexBasis: "50%",
           flexGrow: "1",
+          marginBottom: "-25px",
         }}
         className="partialreviewList"
       >
@@ -277,6 +278,7 @@ const ReviewList = (props) => {
         >
           <span className="addmorereviewsbuttontext">More Reviews</span>
         </button>
+        <div style={{ width: "1.5rem" }}></div>
         <SubmitReviewForm
           addedR={getMoreReviews}
           fetchReviews={props.fetchReviews}
