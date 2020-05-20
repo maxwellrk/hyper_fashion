@@ -71,12 +71,12 @@ const OutfitEntry = ({
       slide={true}
     >
       {itemSlides.map((slide, i) => {
-        // console.log('get runned carousel in outfit', slide)
+        // console.log('get runned carousel in outfit', slide, i);
         return (
           <Carousel.Item key={i}>
             <Row className="relatedProductsOutfit-carousel-row">
               {slide.map((eachItem, j) => {
-                // console.log('slide get runned carousel in outfit')
+                // console.log('slide get runned',eachItem, j);
                 return (
                   <Col key={j} className="relatedProductsOutfit-carousel-col">
                     {eachItem[0].id === -90 ? (

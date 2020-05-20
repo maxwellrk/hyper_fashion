@@ -9,10 +9,11 @@ export default (state =   JSON.parse(localStorage.getItem("outfitIds")) || [], a
   }
   if (action.type === "DELETE_OUTFIT_ID") {
     const ind2 = curLocalStorage.indexOf(action.outfitId);
+    // console.log('ind2', ind2);
     if (ind2 !== -1) {
         curLocalStorage.splice(ind2, 1);
     }
-    // console.log('ind2', ind2);
+
     // console.log('curLocalStorage after splice', curLocalStorage);
     localStorage.setItem("outfitIds", JSON.stringify(curLocalStorage));
     return JSON.parse(localStorage.getItem("outfitIds"));
