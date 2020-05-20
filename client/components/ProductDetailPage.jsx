@@ -1,14 +1,15 @@
-import React, { useEffect, Children } from 'react';
-import RatingsandReviews from './ReviewComponents/RatingsandReviews';
-import QnA from '../containers/QnAContainers/QnAContainer';
-import RelatedItemAndOutfit from './RelatedItemsAndOutfit/RelatedItemsAndOutfit';
-import Overview from '../containers/OverviewContainers/OverviewContainer';
+import React, {useEffect, Children} from "react";
+import RatingsandReviews from "./ReviewComponents/RatingsandReviews";
+import QnA from "../containers/QnAContainers/QnAContainer";
+import RelatedItemAndOutfit from "./RelatedItemsAndOutfit/RelatedItemsAndOutfit";
+import Overview from "../containers/OverviewContainers/OverviewContainer";
 
 const AddClickTracking = (Component) => {
   return (props) => {
     return (
       <div
         onClick={(e) => {
+          console.log("props in tracking", props);
           console.log(
             e.target,
             new Date(),
