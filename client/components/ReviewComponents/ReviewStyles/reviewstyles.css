@@ -190,6 +190,13 @@
   flex-direction: row;
 }
 
+#reviewtitle {
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 19px;
+  font-weight: bolder;
+}
+
 /* .ant-radio-group {
   display: "flex";
   width: 800px;
@@ -223,6 +230,41 @@
 .ant-radio-button-wrapper.ant-radio-button-wrapper-checked {
   background: black !important;
   border-color: black !important;
+}
+
+.addmorereviewsbutton {
+  background: white !important;
+  border-color: black !important;
+  padding: 15px !important;
+}
+
+.addmorereviewsbutton:hover {
+  background-color: black !important;
+  border-color: black !important;
+}
+
+.addmorereviewsbuttontext:hover {
+  color: white !important;
+}
+
+.addmorereviewsbuttontext {
+  font-weight: 500;
+}
+
+.addmorereviewsbutton:hover .addmorereviewsbuttontext {
+  color: white !important;
+}
+
+.showfullreview {
+  background: white !important;
+  border-color: black !important;
+  color: black;
+}
+
+.showfullreview:hover {
+  background-color: black !important;
+  border-color: black !important;
+  color: white !important;
 }
 
 .ant-radio-input:checked {

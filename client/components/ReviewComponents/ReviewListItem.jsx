@@ -5,6 +5,8 @@ import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
 import { Card, Modal } from "antd";
 import { useState } from "react";
+import StarBorderIcon from "@material-ui/icons/StarBorder";
+
 import dateFormatter from "./ReviewComponentHelpers/reviewListItemDateFormatter";
 import verifiedUserHelper from "./ReviewComponentHelpers/verifiedUserHelper";
 import "./ReviewStyles/reviewstyles.css";
@@ -59,26 +61,73 @@ const ReviewListItem = ({ item, answerList }) => {
 
   return (
     <div className="individual-reviewitem">
-      <div>
-        {item.rating}
-        <Rating
-          name="indivdualRating"
-          style={{ color: "black" }}
-          value={item.rating}
-          precision={0.1}
-          size="large"
-          readOnly
-        />
+      <div
+        style={
+          {
+            // display: "flex",
+            // flexFlow: "row nowrap",
+            // alignItems: "center",
+          }
+        }
+      >
+        {/* {item.rating} */}
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "flex-start",
+            position: "relative",
+            top: "21px",
+          }}
+        >
+          <Rating
+            name="indivdualRating"
+            style={{
+              color: "black",
+              backgroundColor: "white",
+              borderColor: "black",
+              display: "flex",
+              flexDirection: "row",
+              width: "5px",
+            }}
+            value={item.rating}
+            precision={0.1}
+            size="small"
+            emptyIcon={
+              <StarBorderIcon
+                fontSize="inherit"
+                style={{ color: "black", borderColor: "black" }}
+              />
+            }
+            readOnly
+          />
+        </div>
         {/* <StarRatings
           rating={item.rating}
           starRatedColor="black"
           numberOfStars={5}
           name="rating"
         /> */}
-        {item.reviewer_name},{formattedDate}
+        <div
+          style={{
+            display: "flex",
+            // flexDirection: "column",
+            justifyContent: "flex-end",
+            fontSize: "14px",
+            color: "#adadad",
+            position: "relative",
+            top: "5px",
+          }}
+        >
+          {item.reviewer_name}, {formattedDate}
+        </div>
       </div>
-      <div>{item.summary}</div>
-      <div>{fullItemBody ? item.body : item.body.slice(0, 251)}</div>
+      <div style={{ height: "1.5rem" }}></div>
+      <div id="reviewtitle">{item.summary}</div>
+      <div style={{ height: "1.5rem" }}></div>
+      <div style={{ fontSize: "15px" }}>
+        {fullItemBody ? item.body : item.body.slice(0, 251)}
+      </div>
       {item.body.length > 250 ? (
         <button
           disabled={fullItemBody}
@@ -91,20 +140,23 @@ const ReviewListItem = ({ item, answerList }) => {
         <div></div>
       )}
       {/* const [fullItemBody, setFullItemBody] = useState(false) */}
-      <div>
+      <div style={{ height: "1.7rem" }}></div>
+      <div style={{ fontSize: "15px" }}>
         {item.recommend ? (
           <div>&#10003;I recommend this product</div>
         ) : (
           <div>don't recommend placeholder</div>
         )}
       </div>
-      <div>
+      <div style={{ height: "0.8rem" }}></div>
+      <div style={{ fontSize: "15px", background: "gainsboro" }}>
         {item.response && item.response !== "null" ? (
-          <div>Response from seller: {item.response}</div>
+          <div>Response: {item.response}</div>
         ) : (
           <div>no response placeholder</div>
         )}
       </div>
+      <div style={{ height: "1rem" }}></div>
       <div className="box">
         {item.photos.length > 0 ? (
           item.photos.map((photo) => {
@@ -155,7 +207,7 @@ const ReviewListItem = ({ item, answerList }) => {
           />
         </Modal>
       </div>
-      <div>
+      <div style={{ fontSize: "12px" }}>
         Helpful?{" "}
         <a disabled={isHelpful} onClick={() => markAsHelpful()}>
           Yes({item.helpfulness})

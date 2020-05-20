@@ -259,6 +259,7 @@ const ReviewList = (props) => {
         </FormControl>
       </div>
       <div>{isReviewDisplay}</div>
+      <div style={{ height: "7rem" }}></div>
 
       <div
         style={{
@@ -274,7 +275,7 @@ const ReviewList = (props) => {
           type="button"
           onClick={() => updateFunction()}
         >
-          More Reviews
+          <span className="addmorereviewsbuttontext">More Reviews</span>
         </button>
         <SubmitReviewForm
           addedR={getMoreReviews}
