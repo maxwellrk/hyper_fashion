@@ -4,13 +4,16 @@
 .itemsAndOutfit {
   width: 80%;
   height: auto;
-  border: 1px solid black;
+  /* border: 1px solid black; */
   margin: 5px auto;
 }
 
 .related-outfit-h3 {
   font-weight: bold;
   margin: 5px 0px;
+  font-size: 20px;
+  margin-left: 20px;
+  padding-bottom: 0px;
 }
 
 .non-related-h6 {
@@ -23,45 +26,36 @@
 
 /*-------------Card--------*/
 .relatedProductsOutfit-carousel-row {
-  border: 1px solid grey;
+  /* border: 1px solid grey; */
   margin: 10px auto;
   width: 100%;
+  height: 350px;
 }
 
 .relatedProductsOutfit-carousel-col {
   display: inline-block;
   /* border: 1px solid grey; */
   padding: 0 3px;
-  margin: 0 20px;
+  margin: 0 25px;
   width: 33%;
-  height: 500px;
+  height: 350px;
 }
 
 .product-card {
   width: 100%;
-  height: 500px;
+  height: 350px;
 }
-.related-product-link {
-  color: black;
-  width: 100%;
-  height: 40%;
-}
-.related-product-link:hover {
-  color: grey;
-  background-color: transparent;
-  text-decoration: none;
-  cursor: pointer;
-}
+
 .btn-compare {
   background: transparent;
   position: absolute;
   right: 0;
-  height: 70px;
-  width: 70px;
+  height: 40px;
+  width: 40px;
   border: none;
   z-index: 2;
   cursor: pointer;
-  font-size: 35px;
+  font-size: 30px;
 }
 
 
@@ -74,29 +68,56 @@
   background: transparent;
   /* border: 1px solid red; */
 }
+
 .product-card .img {
   object-fit: cover;
   width: auto;
-  height: 60%;
+  height: 68%;
   text-align: bottom;
 }
 
+/* info is the link */
 .product-card .info {
   width: 100%;
   height: 100%;
-  line-height: 1.2em;
+  line-height: 1.4em;
   text-align: left;
   background-color: rgb(231, 228, 228);
+  margin-top: 0px;
+  margin-bottom: 0;
+  padding-top: 5px;
+  padding-bottom: 5px;
 }
-
-.product-card .card-text {
-  /* display: inline-block; */
-  margin-top: 6px;
+.product-card .card-title {
+  font-size: 14px;
+  font-weight: bold;
+  margin-top: 0;
   margin-bottom: 0;
   padding-top: 0;
-  padding-bottom: 3px;
+  padding-bottom: 0;
   text-align: left;
 }
+.product-card .card-text {
+  /* display: inline-block; */
+  margin-top: 0px;
+  margin-bottom: 0;
+  padding-top: 0;
+  padding-bottom: 0px;
+  text-align: left;
+  font-size: 14px;
+}
+.related-product-link {
+  color: black;
+  width: 100%;
+  height: 32%;
+}
+.related-product-link:hover {
+  color: grey;
+  background-color: transparent;
+  text-decoration: none;
+  cursor: pointer;
+}
+
 
 /*=================================================
             Modal
@@ -178,4 +199,9 @@
   width: 130px;
   font-size: 14px;
   padding-top: 3px;
+}
+
+.firstCard:hover {
+  color: grey;
+  cursor: pointer;
 }
