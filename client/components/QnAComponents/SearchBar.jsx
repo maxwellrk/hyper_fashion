@@ -1,5 +1,6 @@
+/* eslint-disable */
 import React from 'react';
-// import './styles/QnAStylesheet.css';
+
 
 const SearchBar = ({ changeSearchInput }) => {
   return (

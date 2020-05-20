@@ -72,7 +72,9 @@ const QnABlock = ({ entry, productById }) => {
             entry.answers[answerId].newDate = dateFormatter(
               entry.answers[answerId].date
             );
-            return <Answer info={entry.answers[answerId]} />;
+            return (
+              <Answer info={entry.answers[answerId]} key={'Answer' + index} />
+            );
           })
           //  Need to bring seller answers to the top of the page
           .sort((a, b) => {
