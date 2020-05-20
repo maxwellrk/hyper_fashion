@@ -2,7 +2,7 @@
             related items and outfit Block
 =================================================*/
 .itemsAndOutfit {
-  width: 90%;
+  width: 80%;
   height: auto;
   border: 1px solid black;
   margin: 5px auto;
@@ -22,13 +22,13 @@
 =================================================*/
 
 /*-------------Card--------*/
-.relatedProducts-carousel-row {
+.relatedProductsOutfit-carousel-row {
   border: 1px solid grey;
   margin: 10px auto;
   width: 100%;
 }
 
-.relatedProducts-carousel-col {
+.relatedProductsOutfit-carousel-col {
   display: inline-block;
   /* border: 1px solid grey; */
   padding: 0 3px;
@@ -98,7 +98,9 @@
   text-align: left;
 }
 
-/*-------------Modal--------*/
+/*=================================================
+            Modal
+=================================================*/
 
 .compareModal {
   display: block; /* Hidden by default */
@@ -120,7 +122,8 @@
   margin: auto;
   padding: 15px;
   border: 1px solid #888;
-  width: 80%;
+  width: 40%;
+  height: 240px;
   font-family: sans-serif;
   text-align: center;
   font-size: 20px;
@@ -129,9 +132,13 @@
 /* The Close Button */
 .close {
   color: #aaaaaa;
-  float: right;
-  font-size: 28px;
+  /* text-align: right;
+  float: right; */
+  font-size: 35px;
   font-weight: bold;
+  z-index: 2;
+  position: absolute;
+  right: 20px;
 }
 
 .close:hover,
@@ -139,4 +146,36 @@
   color: #000;
   text-decoration: none;
   cursor: pointer;
+}
+
+.compareModal-title-h5 {
+  font-weight: bold;
+  margin: 5px 0px;
+  background-color: lightgray;
+}
+
+.compareModal-table {
+  width: 95%;
+  margin: 5px 0px 5px 20px;
+  table-layout:fixed
+}
+.compareModal-table thead, .compareModal-table tbody{
+  display: block;
+  width: 100%;
+}
+.compareModal-table tbody {
+  height: 120px;
+  overflow: auto;
+}
+.table-th-box th {
+  width: 130px;
+  font-size: 14px;
+}
+.table-td-box {
+  width: 400px;
+}
+.table-td-box td {
+  width: 130px;
+  font-size: 14px;
+  padding-top: 3px;
 }
