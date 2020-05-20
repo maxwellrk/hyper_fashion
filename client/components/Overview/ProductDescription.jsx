@@ -9,7 +9,6 @@ import {
 
 const ProductDescription = ({productById, currentStyle}) => {
   useEffect(() => {}, [productById]);
-  console.log("current style in PD", productById.features);
   return (
     <div>
       {" "}

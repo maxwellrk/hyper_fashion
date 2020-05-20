@@ -26,16 +26,18 @@ const Reviews = ({productRating}) => {
       ) : (
         ""
       )}
-      <Link
-        activeClass="active"
-        to="section1"
-        spy={true}
-        smooth={true}
-        offset={-70}
-        duration={500}
-      >
-        Read All Reviews
-      </Link>
+      <div style={{fontSize: "10px", marginBottom: "10px"}}>
+        <Link
+          activeClass="active"
+          to="section1"
+          spy={true}
+          smooth={true}
+          offset={-70}
+          duration={500}
+        >
+          Read All Reviews
+        </Link>
+      </div>
     </div>
   );
 };
