@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { useEffect, useState } from 'react';
 import { Modal, Button } from 'antd';
 import axios from 'axios';
@@ -38,7 +39,7 @@ const QuestionModal = ({
     <div
       style={{
         marginTop: '10px',
-        display: 'inlineBlock',
+        display: 'inline-block',
       }}
     >
       <button
