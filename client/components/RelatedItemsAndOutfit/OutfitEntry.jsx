@@ -72,10 +72,12 @@ const OutfitEntry = ({
       slide={true}
     >
       {itemSlides.map((slide, i) => {
+        // console.log('get runned carousel in outfit', slide)
         return (
           <Carousel.Item key={i}>
             <Row className="relatedProductsOutfit-carousel-row">
               {slide.map((eachItem, j) => {
+                // console.log('slide get runned carousel in outfit')
                 return (
                   <Col key={j} className="relatedProductsOutfit-carousel-col">
                     {eachItem[0].id === -90 ? (
