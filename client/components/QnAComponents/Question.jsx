@@ -3,20 +3,13 @@ import Helpful from './Helpful';
 
 const Question = ({ question_body, question_helpfulness, question_id }) => {
   return (
-    <div>
-      <h3
-        style={{
-          display: 'inline',
-        }}
-      >
-        Q: {question_body}
-      </h3>
+    <div className="questionAndHelp">
+      <p className="question">Q: {question_body}</p>
       <Helpful
         idBeingUsed={question_id}
         helpfulness={question_helpfulness}
         typeOfStored="questionId"
       />
-      <p>---------------------------------------------</p>
     </div>
   );
 };

@@ -4,7 +4,11 @@ const fetchQuestionsById = (id) => {
   return (dispatch) => {
     let url = `http://18.224.200.47/qa/${id}`;
     return axios
-      .get(url)
+      .get(url, {
+        params: {
+          count: 10000,
+        },
+      })
       .then((results) => {
         return dispatch({
           type: 'QUESTIONS_BY_ID',

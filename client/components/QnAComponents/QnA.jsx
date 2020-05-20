@@ -1,11 +1,9 @@
 /* eslint-disable */
-import React, { useEffect, useState, useRef } from 'react';
-import axios from 'axios';
+import React, { useEffect, useState } from 'react';
 import QnABlock from './QnABlock';
 import SearchBar from './SearchBar';
 import QuestionModal from '../../containers/QnAContainers/QuestionModalContainer';
-import { Link } from 'react-router-dom';
-
+// import './styles/QnAStylesheet.css';
 const QnA = ({ fetchQuestionsById, questionsList, productById }) => {
   const [questionRender, changeQuestionRender] = useState(2);
   const [searchInput, changeSearchInput] = useState('');
@@ -21,18 +19,14 @@ const QnA = ({ fetchQuestionsById, questionsList, productById }) => {
       });
   }, [productById]);
 
-  //filter function for searchBar
   const filterQuestions = (entry) => {
     //this function is currently forcing a requery of questions even
     //if its under 3 characters, should come back to make it only query if over 3
     //maybe make a function that creates filter callbacks?
 
-    //changing of the query will not reset the questionRender, maybe it should?
     let query = searchInput.length > 2 ? searchInput.toLowerCase() : '';
     return entry.question_body.toLowerCase().indexOf(query) > -1;
   };
-
-  //more questions button rendering function
 
   let moreQuestions;
 
@@ -41,10 +35,20 @@ const QnA = ({ fetchQuestionsById, questionsList, productById }) => {
     !questionsList.results.length ||
     questionsList.results.filter(filterQuestions).length <= questionRender
   ) {
-    moreQuestions = <div />;
+    moreQuestions = <div className="moreQuestions" />;
   } else {
     moreQuestions = (
-      <button onClick={() => changeQuestionRender(questionRender + 2)}>
+      <button
+        className="moreQuestions"
+        style={{
+          'margin-top': '10px',
+          'margin-right': '20px',
+          border: '1px solid black',
+          height: '50px',
+          'background-color': 'white',
+        }}
+        onClick={() => changeQuestionRender(questionRender + 2)}
+      >
         MORE ANSWERED QUESTIONS
       </button>
     );
@@ -61,28 +65,27 @@ const QnA = ({ fetchQuestionsById, questionsList, productById }) => {
       })
       .slice(0, questionRender)
       .map((entry) => {
-        return <QnABlock entry={entry} />;
+        return <QnABlock entry={entry} key={entry.question_id} />;
       });
   } else {
     listOfQnABlock = <div />;
   }
 
   return (
-    <div
-      style={{
-        border: '2px solid black',
-      }}
-    >
-      <SearchBar
-        searchInput={searchInput}
-        changeSearchInput={changeSearchInput}
-      />
-      {listOfQnABlock}
-      <QuestionModal
-        questionModalRender={questionModalRender}
-        toggleQuestionModal={toggleQuestionModal}
-      />
-      {moreQuestions}
+    <div className="mainContainer">
+      <div className="subContainer">
+        <h6>QUESTIONS & ANSWERS</h6>
+        <SearchBar
+          searchInput={searchInput}
+          changeSearchInput={changeSearchInput}
+        />
+        <div className="scrollContainerQuestions">{listOfQnABlock}</div>
+        {moreQuestions}
+        <QuestionModal
+          questionModalRender={questionModalRender}
+          toggleQuestionModal={toggleQuestionModal}
+        />
+      </div>
     </div>
   );
 };

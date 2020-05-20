@@ -46,22 +46,10 @@ const RelatedItemsAndOutfit = ({ currentProduct }) => {
       });
   };
 
-  // let curOutfitIds = [];
-  // const [outfitIds, setOutfitIds] = useState(curOutfitIds);
-
-  // useEffect(() => {
-  //   localStorage.setItem("outfitIds", JSON.stringify(outfitIds));
-  // }, [outfitIds]);
-
-  // const addOutfitId = () => {
-  //   setOutfitIds(outfitIds.concat(currentProduct.id));
-  // };
-
   return (
     <div className="itemsAndOutfit">
       <RelatedItems relatedItemsAndStyle={relatedItemsAndStyle} />
       <Outfit currentProduct={currentProduct}/>
-      {/* <p onClick={addOutfitId}>Add Outfit222</p> */}
     </div>
   );
 };
