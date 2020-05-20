@@ -6,6 +6,7 @@ const mapStateToProps = (state) => {
   return {
     productById: state.productById,
     outfitIdArr: state.outfitIdArr,
+    prodRating: state.prodRating,
   };
 };
 

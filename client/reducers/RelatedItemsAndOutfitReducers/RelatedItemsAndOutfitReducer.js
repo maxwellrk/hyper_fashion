@@ -1,4 +1,4 @@
-export default (state = [], action) => {
+export default (state =   JSON.parse(localStorage.getItem("outfitIds")) || [], action) => {
   const curLocalStorage = JSON.parse(localStorage.getItem("outfitIds")) || [];
   if (action.type === "Add_OUTFIT_ID") {
     const ind1 = curLocalStorage.indexOf(action.outfitId);

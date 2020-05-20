@@ -73,8 +73,6 @@ const QuestionModal = ({
                 email: inputEmail,
               })
               .then((resp) => {
-                console.log('resp', resp);
-
                 fetchQuestionsById(productById.id);
               })
               .then(() => {
