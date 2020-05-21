@@ -3,7 +3,7 @@ import RelatedItems from "../../containers/RelatedItemsAndOutfitContainers/Relat
 import Outfit from "../../containers/RelatedItemsAndOutfitContainers/OutfitContainer";
 import axios from "axios";
 import Promise from "bluebird";
-import "./RelatedItems.css";
+// import "./RelatedItems.css";
 import getAverageReview from "../../actions/ReviewComponentActions/ActionHelpers/averageReviewHelper";
 const RelatedItemsAndOutfit = ({ currentProduct }) => {
   const [relatedItemsAndStyle, setRelatedItemsAndStyle] = useState([]);
