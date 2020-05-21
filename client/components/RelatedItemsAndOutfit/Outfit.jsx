@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import "bootstrap/dist/css/bootstrap.min.css";
 import OutfitEntry from "./OutfitEntry";
 import getAverageReview from "../../actions/ReviewComponentActions/ActionHelpers/averageReviewHelper";
 
