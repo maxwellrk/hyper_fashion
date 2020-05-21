@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import "bootstrap/dist/css/bootstrap.min.css";
 import OutfitEntry from "./OutfitEntry";
 import getAverageReview from "../../actions/ReviewComponentActions/ActionHelpers/averageReviewHelper";
 
@@ -18,7 +17,8 @@ const Outfit = ({ currentProduct, addDeleteOutfit, outfitIdArr }) => {
             photos: [
               {
                 thumbnail_url:
-                  "https://cdn.pixabay.com/photo/2018/11/13/21/43/instagram-3814051_1280.png",
+                  // "https://cdn.pixabay.com/photo/2018/11/13/21/43/instagram-3814051_1280.png",
+                  './assets/addOutfit.png',
               },
             ],
           },

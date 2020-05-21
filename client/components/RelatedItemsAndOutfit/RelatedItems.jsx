@@ -16,9 +16,11 @@ const RelatedItems = ({ productById, relatedItemsAndStyle }) => {
   const createSlides = () => {
     let itemSlides = [];
     let start = 0;
-    for (let i = 0; i < relatedItemsAndStyle.length - 2; i++) {
-      itemSlides.push(relatedItemsAndStyle.slice(start, i + 3));
-      start += 1;
+    if (relatedItemsAndStyle) {
+      for (let i = 0; i < relatedItemsAndStyle.length - 2; i++) {
+        itemSlides.push(relatedItemsAndStyle.slice(start, i + 3));
+        start += 1;
+      }
     }
     return itemSlides;
   };
@@ -62,7 +64,7 @@ const RelatedItems = ({ productById, relatedItemsAndStyle }) => {
                           <Card.Img
                             src={
                               eachItem[1].results.length
-                                ? eachItem[1].results[0].photos[0].thumbnail_url
+                                ? (eachItem[1].results[0].photos[0].thumbnail_url ? eachItem[1].results[0].photos[0].thumbnail_url : './assets/noImg.png')
                                 : null
                             }
                             alt="Missing product image"

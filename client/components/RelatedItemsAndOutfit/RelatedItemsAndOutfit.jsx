@@ -10,7 +10,7 @@ const RelatedItemsAndOutfit = ({ currentProduct }) => {
 
   useEffect(() => {
     fetchRelatedItemsAndStyleById(currentProduct.id);
-  }, [currentProduct.id]);
+  }, [currentProduct]);
 
   const fetchRelatedItemsAndStyleById = (id) => {
     const url = `http://18.224.200.47/products/${id}/related`;
