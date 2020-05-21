@@ -22,7 +22,8 @@ const OutfitEntry = ({
             photos: [
               {
                 thumbnail_url:
-                  "https://img.pngio.com/index-of-files-37108-37108-page-images-blank-png-1754_2596.png",
+                  // "https://img.pngio.com/index-of-files-37108-37108-page-images-blank-png-1754_2596.png",
+                  './assets/white.png',
               },
             ],
           },
@@ -98,7 +99,7 @@ const OutfitEntry = ({
                           className="img"
                         />
                         <Card.Body className="info">
-                          <Card.Title style={{ "text-align": "center" }}>
+                          <Card.Title style={{ "text-align": "center", "margin-top": "5px" }}>
                             {eachItem[0].name}
                           </Card.Title>
                         </Card.Body>
@@ -117,7 +118,7 @@ const OutfitEntry = ({
                         <Card.Img
                           src={
                             eachItem[1].results.length
-                              ? eachItem[1].results[0].photos[0].thumbnail_url
+                              ? (eachItem[1].results[0].photos[0].thumbnail_url ? eachItem[1].results[0].photos[0].thumbnail_url : './assets/noImg.png')
                               : null
                           }
                           alt="Missing product image"
