@@ -172,7 +172,7 @@ const ReviewListItem = ({ item, answerList, fullquery }) => {
         {item.recommend ? (
           <div>&#10003;I recommend this product</div>
         ) : (
-          <div>don't recommend placeholder</div>
+          <div></div>
         )}
       </div>
       <div style={{ height: "0.8rem" }}></div>
@@ -193,7 +193,7 @@ const ReviewListItem = ({ item, answerList, fullquery }) => {
             <div style={{ height: "1.3rem" }} />
           </div>
         ) : (
-          <div>no response placeholder</div>
+          <div></div>
         )}
       </div>
       <div style={{ height: "1rem" }}></div>
@@ -227,7 +227,7 @@ const ReviewListItem = ({ item, answerList, fullquery }) => {
             );
           })
         ) : (
-          <div>no photo placeholder</div>
+          <div></div>
         )}
       </div>
       <div className="picturemodalratings">

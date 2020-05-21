@@ -138,7 +138,7 @@
   display: flex;
   flex-grow: 1;
   flex-basis: 66%;
-  margin-top: -25px;
+  margin-top: -48px;
 }
 
 .wholereviewlist {
@@ -201,6 +201,35 @@
   font-size: 19px;
   font-weight: bolder;
 }
+
+.MuiInputBase-input.MuiInput-input {
+  width: 18.08rem;
+}
+
+/* .searchbarinput {
+  background: #2b303b;
+  border: none;
+  border-radius: 0px !important
+  font-size: 10pt;
+  float: left;
+  color: #262626;
+  padding-left: 35px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  color: #fff;
+
+  -webkit-transition: width 0.55s ease;
+  -moz-transition: width 0.55s ease;
+  -ms-transition: width 0.55s ease;
+  -o-transition: width 0.55s ease;
+  transition: width 0.55s ease;
+}
+
+.searchbarinput:-webkit-input-placeholder {
+  color: black;
+  
+} */
 
 /* .ant-radio-group {
   display: "flex";

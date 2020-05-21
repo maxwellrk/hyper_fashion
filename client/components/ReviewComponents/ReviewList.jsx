@@ -6,6 +6,7 @@ import TestComponent from "./TestComponent";
 import SubmitReviewForm from "./SubmitReviewForm";
 import ExpandMoreOutlinedIcon from "@material-ui/icons/ExpandMoreOutlined";
 import { List, message, Avatar, Spin } from "antd";
+import Input from "@material-ui/core/Input";
 import MenuItem from "@material-ui/core/MenuItem";
 import FormHelperText from "@material-ui/core/FormHelperText";
 import FormControl from "@material-ui/core/FormControl";
@@ -254,6 +255,32 @@ const ReviewList = (props) => {
   return (
     // <div>whatever</div>
     <div className="wholereviewlist">
+      <div style={{ position: "relative", top: "8.1rem" }}>
+        {/* <input
+          id="searchbarinput"
+          value={searchInput}
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            position: "relative",
+            top: "8rem",
+          }}
+          placeholder="HAVE A QUESTION? SEARCH FOR ANSWERS..."
+          onChange={(e) => {
+            changeSearchInput(e.target.value);
+          }}
+        /> */}
+        <form className={classes.root} noValidate autoComplete="off">
+          <Input
+            placeholder="SEARCH FOR REVIEWS"
+            value={searchInput}
+            inputProps={{ "aria-label": "description" }}
+            onChange={(e) => {
+              changeSearchInput(e.target.value);
+            }}
+          />
+        </form>
+      </div>
       <div
         style={{
           display: "flex",
@@ -276,16 +303,6 @@ const ReviewList = (props) => {
         >
           {props.prodRating.totalRating} reviews, sorted by
         </h2>
-        <div>
-          <input
-            className="searchbar"
-            value={searchInput}
-            placeholder="HAVE A QUESTION? SEARCH FOR ANSWERS..."
-            onChange={(e) => {
-              changeSearchInput(e.target.value);
-            }}
-          />
-        </div>
         {/* <select
           className="sortdropdown"
           id="1"
