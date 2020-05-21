@@ -5,9 +5,11 @@ import Rating from "@material-ui/lab/Rating";
 import { Card, Modal, Button, Form, Radio, Input, Upload } from "antd";
 import { UploadOutlined } from "@ant-design/icons";
 import { useState, useEffect } from "react";
+import StarBorderIcon from "@material-ui/icons/StarBorder";
 import axios from "axios";
 import $ from "jquery";
 import "./ReviewStyles/reviewstyles.css";
+// import { is } from "bluebird";
 
 const SubmitReviewForm = (props) => {
   const [cId, setcId] = useState(props.page);
@@ -15,21 +17,28 @@ const SubmitReviewForm = (props) => {
   const [isLoading, setLoading] = useState(false);
   const [value, setValue] = useState(0);
   const [hover, setHover] = useState(-1);
-  const [filesList, setFileList] = useState([]);
+  const [filesLists, setFileList] = useState({});
   const [disableUpload, setDisableUpload] = useState(false);
   const [isRecommended, setRecommended] = useState(true);
-  const [isCharacteristics, setCharacteristics] = useState({
-    14: 3,
-    15: 3,
-    16: 3,
-    17: 3,
-    18: 3,
-    19: 3,
-  });
+  const [isCharacteristics, setCharacteristics] = useState({});
+  const [presentCharacteristics, setpresentCharacteristics] = useState({});
+  const [finalCharacteristics, setFinalCharacteristics] = useState({});
   const [isReviewSummary, setReviewSummary] = useState("");
   const [isReviewBody, setReviewBody] = useState("");
   const [isNickname, setNickname] = useState("");
   const [isEmail, setEmail] = useState("");
+  const [testState, setTestState] = useState([]);
+
+  useEffect(() => {
+    let object1 = {};
+    if (props.presentcharacter) {
+      for (var key in props.presentcharacter.characteristics) {
+        let current = props.presentcharacter.characteristics[key]["id"];
+        object1[key] = current;
+      }
+    }
+    setCharacteristics(object1);
+  }, [props.presentcharacter]);
 
   const { TextArea } = Input;
   //   onChange={(e) => {
@@ -37,16 +46,16 @@ const SubmitReviewForm = (props) => {
   //   }}
 
   //   const classes = useStyles();
-  useEffect(() => {
-    console.log(value);
-    console.log(isRecommended);
-    console.log(isCharacteristics);
-    console.log(isReviewSummary);
-    console.log(isReviewBody);
-    console.log(filesList);
-    console.log(isNickname);
-    console.log(isEmail);
-  }, [value]);
+  // useEffect(() => {
+  //   console.log(value);
+  //   console.log(isRecommended);
+  //   console.log(finalCharacteristics);
+  //   console.log(isReviewSummary);
+  //   console.log(isReviewBody);
+  //   console.log(filesLists);
+  //   console.log(isNickname);
+  //   console.log(isEmail);
+  // }, [finalCharacteristics]);
 
   function checkInputs() {
     let toAlert = "You must enter the following:";
@@ -63,7 +72,7 @@ const SubmitReviewForm = (props) => {
       toAlert += "\nReview body";
     }
 
-    if (toAlert.length) {
+    if (toAlert.length > 31) {
       window.alert(toAlert);
       return false;
     } else {
@@ -93,6 +102,22 @@ const SubmitReviewForm = (props) => {
   };
   const fileList = [];
 
+  useEffect(() => {
+    var finalObject = {};
+    if (Object.keys(presentCharacteristics).length > 0) {
+      for (var key in presentCharacteristics) {
+        var finalid = isCharacteristics[key];
+        var finalcharacter = presentCharacteristics[key];
+        finalObject[finalid] = finalcharacter;
+      }
+    }
+    setFinalCharacteristics(finalObject);
+  }, [presentCharacteristics, isVisible]);
+
+  useEffect(() => {
+    setVisible(false);
+  }, [props.pageId]);
+
   const props1 = {
     action: "https://www.mocky.io/v2/5cc8019d300000980a055e76",
     listType: "picture",
@@ -107,10 +132,11 @@ const SubmitReviewForm = (props) => {
   //   });
 
   useEffect(() => {
-    if (filesList.length >= 5) {
+    if (Object.keys(filesLists).length >= 1) {
       $(".uploadbutton").prop("disabled", true);
+      // console.log(filesLists.file.file.thumbUrl);
     }
-  }, [filesList]);
+  }, [filesLists]);
 
   const onFinish = (values) => {
     console.log("Success:", values);
@@ -130,6 +156,8 @@ const SubmitReviewForm = (props) => {
       setLoading(false);
       setVisible(false);
     }, 3000);
+    setTestState([filesLists.file.file.thumbUrl]);
+
     axios
       .post(`http://18.224.200.47/reviews/${props.pageId}/`, {
         rating: value,
@@ -138,13 +166,14 @@ const SubmitReviewForm = (props) => {
         recommend: isRecommended,
         name: isNickname,
         email: isEmail,
-        photos: filesList,
-        characteristics: isCharacteristics,
+        photos: [testState],
+        characteristics: finalCharacteristics,
       })
       .then(() => {
         props.addedR();
       })
       .then(() => {
+        Modal.destroyAll();
         // toggleQuestionModel(false);
         // changeInputEmail("");
         // changeInputNickname("");
@@ -184,6 +213,7 @@ const SubmitReviewForm = (props) => {
       <Modal
         visible={isVisible}
         width={1000}
+        destroyOnClose={true}
         title={
           <div
             style={{
@@ -214,7 +244,7 @@ const SubmitReviewForm = (props) => {
             key="submit"
             type="primary"
             style={{ backgroundColor: "white", borderColor: "black" }}
-            loading={isLoading}
+            // loading={isLoading}
             onClick={() => {
               if (checkInputs()) {
                 handleOk();
@@ -255,6 +285,12 @@ const SubmitReviewForm = (props) => {
                     style={{ color: "black" }}
                     fontSize={20}
                     precision={1}
+                    emptyIcon={
+                      <StarBorderIcon
+                        fontSize="inherit"
+                        style={{ color: "black", borderColor: "black" }}
+                      />
+                    }
                     onChange={(event, newValue) => {
                       setValue(newValue);
                     }}
@@ -335,12 +371,19 @@ const SubmitReviewForm = (props) => {
                       textAlign: "center",
                     }}
                     buttonStyle="solid"
-                    onChange={(e) => {
-                      setCharacteristics({
-                        ...isCharacteristics,
-                        14: e.target.value,
-                      });
-                    }}
+                    onChange={
+                      (e) =>
+                        isCharacteristics["Size"]
+                          ? setpresentCharacteristics({
+                              ...presentCharacteristics,
+                              Size: e.target.value,
+                            })
+                          : console.log(e)
+                      // setCharacteristics({
+                      // ...isCharacteristics,
+                      // 14: e.target.value,
+                      // });
+                    }
                   >
                     <Radio.Button value={1}>A size too small</Radio.Button>
                     <Radio.Button value={2}>½ a size too small</Radio.Button>
@@ -377,10 +420,16 @@ const SubmitReviewForm = (props) => {
                       textAlign: "center",
                     }}
                     onChange={(e) => {
-                      setCharacteristics({
-                        ...isCharacteristics,
-                        15: e.target.value,
-                      });
+                      isCharacteristics["Width"]
+                        ? setpresentCharacteristics({
+                            ...presentCharacteristics,
+                            Width: e.target.value,
+                          })
+                        : console.log(e);
+                      // setCharacteristics({
+                      //   ...isCharacteristics,
+                      //   15: e.target.value,
+                      // });
                     }}
                   >
                     <Radio.Button value={1}>Too narrow</Radio.Button>
@@ -415,10 +464,16 @@ const SubmitReviewForm = (props) => {
                     textAlign: "center",
                   }}
                   onChange={(e) => {
-                    setCharacteristics({
-                      ...isCharacteristics,
-                      16: e.target.value,
-                    });
+                    isCharacteristics["Comfort"]
+                      ? setpresentCharacteristics({
+                          ...presentCharacteristics,
+                          Comfort: e.target.value,
+                        })
+                      : console.log(e);
+                    // setCharacteristics({
+                    //   ...isCharacteristics,
+                    //   16: e.target.value,
+                    // });
                   }}
                 >
                   <Radio.Button value={1}>Uncomfortable</Radio.Button>
@@ -452,10 +507,16 @@ const SubmitReviewForm = (props) => {
                     textAlign: "center",
                   }}
                   onChange={(e) => {
-                    setCharacteristics({
-                      ...isCharacteristics,
-                      17: e.target.value,
-                    });
+                    isCharacteristics["Quality"]
+                      ? setpresentCharacteristics({
+                          ...presentCharacteristics,
+                          Quality: e.target.value,
+                        })
+                      : console.log(e);
+                    // setCharacteristics({
+                    //   ...isCharacteristics,
+                    //   17: e.target.value,
+                    // });
                   }}
                 >
                   <Radio.Button value={1}>Poor</Radio.Button>
@@ -489,10 +550,16 @@ const SubmitReviewForm = (props) => {
                     textAlign: "center",
                   }}
                   onChange={(e) => {
-                    setCharacteristics({
-                      ...isCharacteristics,
-                      18: e.target.value,
-                    });
+                    isCharacteristics["Length"]
+                      ? setpresentCharacteristics({
+                          ...presentCharacteristics,
+                          Length: e.target.value,
+                        })
+                      : console.log(e);
+                    // setCharacteristics({
+                    //   ...isCharacteristics,
+                    //   18: e.target.value,
+                    // });
                   }}
                 >
                   <Radio.Button value={1}>Runs Short</Radio.Button>
@@ -527,10 +594,16 @@ const SubmitReviewForm = (props) => {
                     textAlign: "center",
                   }}
                   onChange={(e) => {
-                    setCharacteristics({
-                      ...isCharacteristics,
-                      19: e.target.value,
-                    });
+                    isCharacteristics["Fit"]
+                      ? setpresentCharacteristics({
+                          ...presentCharacteristics,
+                          Fit: e.target.value,
+                        })
+                      : console.log(e);
+                    // setCharacteristics({
+                    //   ...isCharacteristics,
+                    //   19: e.target.value,
+                    // });
                   }}
                 >
                   <Radio.Button value={1}>Runs tight</Radio.Button>
@@ -647,7 +720,10 @@ const SubmitReviewForm = (props) => {
               Upload your photos
             </div>
 
-            <Upload {...props1} onChange={(file) => setFileList(file.fileList)}>
+            <Upload
+              {...props1}
+              onChange={(file) => setFileList({ ...filesLists, file })}
+            >
               <Button className="uploadbutton">
                 <UploadOutlined /> Upload
               </Button>

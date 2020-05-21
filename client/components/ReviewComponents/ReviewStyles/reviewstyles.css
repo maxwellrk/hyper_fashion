@@ -287,6 +287,10 @@
   color: black !important;
 }
 
+.ant-radio-group.ant-radio-group-solid span {
+  font-size: 12px !important;
+}
+
 #mybuttontext:hover {
   color: white !important;
 }
@@ -310,6 +314,11 @@
 
 .MuiInput-underline:after {
   border-bottom: black !important;
+}
+
+.ant-list-item .individual-reviewitem {
+  /* display: inherit; */
+  width: 100%;
 }
 
 /* .individual-reviewitem {

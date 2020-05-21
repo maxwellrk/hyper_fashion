@@ -23,7 +23,9 @@ const ReviewList = (props) => {
   const [disableFetch, changeDisableFetch] = useState(false);
   const [finalCount, changeFinalCount] = useState(null);
   const [overallFilters, changeOverallFilters] = useState(props.totalFilters);
+  const [searchFilter, addSearchFilter] = useState([]);
   const [reviewItems, addReviewItems] = useState([]);
+  const [searchInput, changeSearchInput] = useState("");
   const [addedReview, setAddedReview] = useState(0);
   const [pageRefresh, setPageRefresh] = useState(false);
   const [isLoading, setLoading] = useState(false);
@@ -56,6 +58,32 @@ const ReviewList = (props) => {
         }
       });
   }, [reviewCount, addSortOrder]);
+
+  const filterReviews = () => {
+    //this function is currently forcing a requery of questions even
+    //if its under 3 characters, should come back to make it only query if over 3
+    //maybe make a function that creates filter callbacks?
+
+    let query = searchInput.length > 2 ? searchInput.toLowerCase() : "";
+    console.log("query:", query);
+    let finalentry = reviewItems.filter(
+      (item) => item.body.toLowerCase().indexOf(query) > -1
+    );
+    // var testentry;
+    // for (var i = 0; i < finalentry.length; i++) {
+    //   testentry = finalentry[i].body.split(new RegExp(`(${query})`, "gi"));
+    // }
+    // console.log("testentry:", testentry);
+    addSearchFilter(finalentry);
+    // return entry.filter((item) => item.body.toLowerCase().indexOf(query) > -1);
+    // console.log(entry);
+    // .toLowerCase().indexOf(query) > -1;
+    // console.log(entry);
+  };
+
+  useEffect(() => {
+    if (searchInput.length > 2) filterReviews(reviewItems);
+  }, [searchInput]);
 
   useEffect(() => {
     addReviewItems(props.reviewList.results);
@@ -133,13 +161,21 @@ const ReviewList = (props) => {
   };
 
   useEffect(() => {
+    var firstinput;
+    if (searchInput.length > 2) {
+      firstinput = searchFilter;
+    } else {
+      firstinput = reviewItems;
+    }
+    console.log(firstinput);
     if (reviewItems && reviewRender < 4) {
       setReviewDisplay(
-        filterReview(reviewItems, props.totalFilters)
+        filterReview(firstinput, props.totalFilters)
           .slice(0, reviewRender)
           .map((item) => {
             return (
               <ReviewListItem
+                fullquery={searchInput}
                 answerList={props.questionsList.results}
                 item={item}
               />
@@ -152,11 +188,12 @@ const ReviewList = (props) => {
           <div className="demo-infinite-container">
             <InfiniteScroll initialLoad={false} pageStart={0} useWindow={false}>
               <List
-                dataSource={filterReview(reviewItems, props.totalFilters)}
+                dataSource={filterReview(firstinput, props.totalFilters)}
                 style={{ maxHeight: 1200, overflow: "auto" }}
                 renderItem={(item) => (
                   <List.Item key={item.review_id}>
                     <ReviewListItem
+                      fullquery={searchInput}
                       answerList={props.questionsList.results}
                       item={item}
                     />
@@ -170,7 +207,14 @@ const ReviewList = (props) => {
     } else {
       setReviewDisplay(<div></div>);
     }
-  }, [props.page, reviewItems, reviewRender, props.totalFilters]);
+  }, [
+    props.page,
+    reviewItems,
+    searchFilter,
+    searchInput,
+    reviewRender,
+    props.totalFilters,
+  ]);
 
   const useStyles = makeStyles((theme) => ({
     formControl: {
@@ -232,6 +276,16 @@ const ReviewList = (props) => {
         >
           {props.prodRating.totalRating} reviews, sorted by
         </h2>
+        <div>
+          <input
+            className="searchbar"
+            value={searchInput}
+            placeholder="HAVE A QUESTION? SEARCH FOR ANSWERS..."
+            onChange={(e) => {
+              changeSearchInput(e.target.value);
+            }}
+          />
+        </div>
         {/* <select
           className="sortdropdown"
           id="1"
@@ -281,6 +335,7 @@ const ReviewList = (props) => {
         <div style={{ width: "1.5rem" }}></div>
         <SubmitReviewForm
           addedR={getMoreReviews}
+          presentcharacter={props.prodRating.fulldata}
           fetchReviews={props.fetchReviews}
           pageId={props.page}
           name={props.productById.name}

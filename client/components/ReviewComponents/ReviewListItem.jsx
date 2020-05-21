@@ -6,12 +6,12 @@ import Box from "@material-ui/core/Box";
 import { Card, Modal } from "antd";
 import { useState } from "react";
 import StarBorderIcon from "@material-ui/icons/StarBorder";
-
+import axios from "axios";
 import dateFormatter from "./ReviewComponentHelpers/reviewListItemDateFormatter";
 import verifiedUserHelper from "./ReviewComponentHelpers/verifiedUserHelper";
 import "./ReviewStyles/reviewstyles.css";
 
-const ReviewListItem = ({ item, answerList }) => {
+const ReviewListItem = ({ item, answerList, fullquery }) => {
   //   let date = item.date.slice(0, 10);
   const [isVisible, setVisible] = useState(false);
   const [isHelpful, setHelpful] = useState(false);
@@ -22,6 +22,31 @@ const ReviewListItem = ({ item, answerList }) => {
   //   verifiedUserHelper(answerList)
   // );
   let formattedDate = dateFormatter(item.date);
+
+  function highLightText(text, querystring) {
+    if (fullquery.length > 2) {
+      const parts = text.split(new RegExp(`(${querystring})`, "gi"));
+      return (
+        <span>
+          {" "}
+          {parts.map((part, i) => (
+            <span
+              key={i}
+              style={
+                part.toLowerCase() === querystring.toLowerCase()
+                  ? { backgroundColor: "#FFFF00" }
+                  : {}
+              }
+            >
+              {part}
+            </span>
+          ))}{" "}
+        </span>
+      );
+    } else {
+      return text;
+    }
+  }
 
   function showModal() {
     setVisible(true);
@@ -39,7 +64,7 @@ const ReviewListItem = ({ item, answerList }) => {
 
   function markAsHelpful() {
     axios
-      .put(`http://18.224.200.47/reviews/helpfu/${props.item.review_id}/`)
+      .put(`http://18.224.200.47/reviews/helpful/${item.review_id}/`)
       .then(() => {
         setHelpful(true);
       });
@@ -47,7 +72,7 @@ const ReviewListItem = ({ item, answerList }) => {
 
   function markAsReported() {
     axios
-      .put(`http://18.224.200.47/reviews/report/${props.item.review_id}/`)
+      .put(`http://18.224.200.47/reviews/report/${item.review_id}/`)
       .then(() => {
         setReported(true);
       });
@@ -126,7 +151,9 @@ const ReviewListItem = ({ item, answerList }) => {
       <div id="reviewtitle">{item.summary}</div>
       <div style={{ height: "1.5rem" }}></div>
       <div style={{ fontSize: "15px" }}>
-        {fullItemBody ? item.body : item.body.slice(0, 251)}
+        {fullItemBody
+          ? highLightText(item.body, fullquery)
+          : highLightText(item.body.slice(0, 251), fullquery)}
       </div>
       {item.body.length > 250 ? (
         <button
@@ -151,7 +178,20 @@ const ReviewListItem = ({ item, answerList }) => {
       <div style={{ height: "0.8rem" }}></div>
       <div style={{ fontSize: "15px", background: "gainsboro" }}>
         {item.response && item.response !== "null" ? (
-          <div>Response: {item.response}</div>
+          <div>
+            <div style={{ height: "1rem" }} />
+            <div
+              style={{ position: "relative", left: "1.5rem", fontWeight: 600 }}
+            >
+              Response:{" "}
+            </div>
+            <div style={{ height: "1rem" }} />
+
+            <div style={{ position: "relative", left: "1.5rem" }}>
+              {item.response}
+            </div>
+            <div style={{ height: "1.3rem" }} />
+          </div>
         ) : (
           <div>no response placeholder</div>
         )}
@@ -221,7 +261,7 @@ const ReviewListItem = ({ item, answerList }) => {
         Helpful?
         <div style={{ width: "0.3rem" }}></div>
         <div disabled={isHelpful} onClick={() => markAsHelpful()}>
-          Yes ({item.helpfulness})
+          Yes ({isHelpful ? item.helpfulness + 1 : item.helpfulness})
         </div>
         <div style={{ width: "0.7rem" }}></div>|
         <div style={{ width: "0.7rem" }}></div>
