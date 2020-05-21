@@ -6,7 +6,6 @@ import Helpful from './Helpful';
 
 const Answer = ({ answerer_name, helpfulness, answer_id, newDate, body }) => {
   const [reportedStatus, changeReportedStatus] = useState(true);
-  console.log(answerer_name, helpfulness, answer_id, newDate, body);
 
   return (
     <div>

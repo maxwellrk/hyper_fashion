@@ -1,45 +1,47 @@
-import React, {useEffect} from "react";
-import {Space, Card, Descriptions} from "antd";
+import React, { useEffect } from 'react';
+import { Space, Card, Descriptions } from 'antd';
 import {
   FacebookFilled,
   TwitterSquareFilled,
   InstagramFilled,
   CheckOutlined,
-} from "@ant-design/icons";
+} from '@ant-design/icons';
 
-const ProductDescription = ({productById, currentStyle}) => {
+const ProductDescription = ({ productById, currentStyle }) => {
   useEffect(() => {}, [productById]);
   return (
     <div>
-      {" "}
+      {' '}
       <Space direction="horizontal">
         <Card title={productById.slogan} bordered={false}>
           <p>{productById.description}</p>
         </Card>
 
-        <Card style={{width: 100}} bordered={false} align={"center"}>
+        <Card style={{ width: 100 }} bordered={false} align={'center'}>
           <Space direction="vertical">
-            <FacebookFilled style={{fontSize: "30px"}} />
+            <FacebookFilled style={{ fontSize: '30px' }} />
             <br />
-            <TwitterSquareFilled style={{fontSize: "30px"}} />
+            <TwitterSquareFilled style={{ fontSize: '30px' }} />
             <br />
-            <InstagramFilled style={{fontSize: "30px"}} />
+            <InstagramFilled style={{ fontSize: '30px' }} />
           </Space>
         </Card>
-        <Card title={"Features"} bordered={false}>
+        <Card title={'Features'} bordered={false}>
           {productById.features
             ? productById.features.map((feature) => {
                 return (
                   <div>
-                    <CheckOutlined /> {feature.value} {feature.feature}
+                    <CheckOutlined />{' '}
+                    {feature.value === 'null' ? '' : feature.value}{' '}
+                    {feature.feature}
                   </div>
                 );
               })
-            : ""}
+            : ''}
         </Card>
       </Space>
       <Space>
-        <Card style={{width: 300}} bordered={false} align={"center"}>
+        <Card style={{ width: 300 }} bordered={false} align={'center'}>
           <Space direction="vertical">
             {/* <FacebookFilled style={{fontSize: "30px"}} />
             <br />

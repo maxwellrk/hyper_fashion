@@ -1,20 +1,15 @@
-import React, {useEffect, Children} from "react";
-import RatingsandReviews from "./ReviewComponents/RatingsandReviews";
-import QnA from "../containers/QnAContainers/QnAContainer";
-import RelatedItemAndOutfit from "./RelatedItemsAndOutfit/RelatedItemsAndOutfit";
-import Overview from "../containers/OverviewContainers/OverviewContainer";
-import axios from "axios";
+import React, { useEffect, Children } from 'react';
+import RatingsandReviews from './ReviewComponents/RatingsandReviews';
+import QnA from '../containers/QnAContainers/QnAContainer';
+import RelatedItemAndOutfit from './RelatedItemsAndOutfit/RelatedItemsAndOutfit';
+import Overview from '../containers/OverviewContainers/OverviewContainer';
+import axios from 'axios';
 
 export const AddClickTracking = (Component) => {
   return (props) => {
     return (
       <div
         onClick={(e, props) => {
-          console.log(
-            e.target,
-            new Date(),
-            (<Component />).type.name || Component.WrappedComponent.name
-          );
           let url = `http://18.224.200.47/interactions/`;
           let interactionsModel = {
             element: e.target.toString(),
@@ -23,9 +18,7 @@ export const AddClickTracking = (Component) => {
               Component.WrappedComponent.name.toString(),
             time: new Date(),
           };
-          // return axios.post(url, interactionsModel).then((results) => {
-          //   console.log("tracking results", results);
-          // });
+          return axios.post(url, interactionsModel);
         }}
       >
         <Component {...props} />
