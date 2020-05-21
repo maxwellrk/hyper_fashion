@@ -28,8 +28,7 @@ xdescribe("Overview tests", () => {
   });
   test("it renders props correctly", () => {
     const wrapper = shallow(<Overview store={mockStore({})} />);
-    const component = mount(<Overview store={store} />);
-    console.log("overview instace", component);
+    expect(wrapper.exists()).toBe(true);
   });
 });
 
