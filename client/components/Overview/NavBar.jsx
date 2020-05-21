@@ -1,5 +1,4 @@
 import React from "react";
-import {BorderBottomOutlined} from "@ant-design/icons";
 
 const NavBar = () => {
   return (
