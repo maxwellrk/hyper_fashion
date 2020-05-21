@@ -34,8 +34,8 @@ const RatingsandReviews = (props) => {
     >
       <div className="flex-container review">
         <div className="flex-container ratinginfo">
-          <h1 style={{ fontSize: 19, fontWeight: "normal", height: 30 }}>
-            Ratings & Reviews
+          <h1 style={{ fontSize: 20, fontWeight: "bold", height: 30 }}>
+            RATING & REVIEWS
           </h1>
           <RatingInfo
             removeAllFilters={removeAllFilters}

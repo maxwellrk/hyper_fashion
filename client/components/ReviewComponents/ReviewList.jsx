@@ -48,7 +48,7 @@ const ReviewList = (props) => {
         changeReviewCount(reviewCount + 5);
       }
     });
-  }, [props.page, props.productById.id, addedReview]);
+  }, [props.page, props.productById.id]);
 
   useEffect(() => {
     props
@@ -58,7 +58,7 @@ const ReviewList = (props) => {
           changeReviewCount(reviewCount + 5);
         }
       });
-  }, [reviewCount, addSortOrder]);
+  }, [reviewCount, addSortOrder, addedReview]);
 
   const filterReviews = () => {
     //this function is currently forcing a requery of questions even
