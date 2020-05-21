@@ -4,7 +4,7 @@ const NavBar = () => {
   return (
     <div style={{borderBottom: "1px solid"}}>
       <nav class="navbar navbar-light justify-content-between">
-        <a class="navbar-brand">Team Tyche</a>
+        <a class="navbar-brand">Hyper Fashion</a>
         <form class="form-inline">
           <input
             class="form-control mr-sm-2"
