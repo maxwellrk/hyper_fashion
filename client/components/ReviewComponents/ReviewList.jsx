@@ -42,7 +42,7 @@ const ReviewList = (props) => {
     addReviewItems([]);
     props.fetchReviews(props.page, pageList, reviewCount, addSortOrder);
     props.fetchReviewMetaData(props.page).then((data) => {
-      console.log("reviewmetadata,", data);
+      // console.log("reviewmetadata,", data);
       if (reviewCount <= data.payload.totalRating) {
         changeFinalCount(data.payload.totalRating);
         changeReviewCount(reviewCount + 5);
@@ -66,7 +66,7 @@ const ReviewList = (props) => {
     //maybe make a function that creates filter callbacks?
 
     let query = searchInput.length > 2 ? searchInput.toLowerCase() : "";
-    console.log("query:", query);
+    // console.log("query:", query);
     let finalentry = reviewItems.filter(
       (item) => item.body.toLowerCase().indexOf(query) > -1
     );
@@ -98,7 +98,7 @@ const ReviewList = (props) => {
         (reviewItems && reviewRender >= 4))
     ) {
       changeDisableFetch(!disableFetch);
-      console.log("no longer should update");
+      // console.log("no longer should update");
     }
   }, [reviewRender, reviewItems]);
 
@@ -144,7 +144,7 @@ const ReviewList = (props) => {
   // };
 
   let updateFunction = function updater() {
-    console.log("clicked");
+    // console.log("clicked");
     addReviewRender(reviewRender + 2);
     // changeReviewCount(reviewCount + 5);
   };
@@ -168,7 +168,7 @@ const ReviewList = (props) => {
     } else {
       firstinput = reviewItems;
     }
-    console.log(firstinput);
+    // console.log(firstinput);
     if (reviewItems && reviewRender < 4) {
       setReviewDisplay(
         filterReview(firstinput, props.totalFilters)
@@ -186,7 +186,7 @@ const ReviewList = (props) => {
     } else if (reviewItems && reviewRender >= 4) {
       setReviewDisplay(
         <div>
-          <div className="demo-infinite-container">
+          <div id="demo-infinite-container">
             <InfiniteScroll initialLoad={false} pageStart={0} useWindow={false}>
               <List
                 dataSource={filterReview(firstinput, props.totalFilters)}
@@ -194,6 +194,7 @@ const ReviewList = (props) => {
                 renderItem={(item) => (
                   <List.Item key={item.review_id}>
                     <ReviewListItem
+                      style={{ position: "relative", top: "20px" }}
                       fullquery={searchInput}
                       answerList={props.questionsList.results}
                       item={item}
@@ -220,7 +221,8 @@ const ReviewList = (props) => {
   const useStyles = makeStyles((theme) => ({
     formControl: {
       margin: theme.spacing(1),
-      minWidth: 120,
+      width: 140,
+      minWidth: 150,
       // paddingBottom: 0,
     },
 
@@ -289,7 +291,7 @@ const ReviewList = (props) => {
           justifyContent: "flex-start",
           flexBasis: "50%",
           flexGrow: "1",
-          marginBottom: "-25px",
+          marginBottom: "-15px",
         }}
         className="partialreviewList"
       >
@@ -301,7 +303,11 @@ const ReviewList = (props) => {
             top: "10px",
           }}
         >
-          {props.prodRating.totalRating} reviews, sorted by
+          {props.reviewList.results
+            ? props.reviewList.results.length
+            : props.prodRating.totalRating}{" "}
+          reviews, sorted by
+          {/* props.prodRating.totalRating */}
         </h2>
         {/* <select
           className="sortdropdown"

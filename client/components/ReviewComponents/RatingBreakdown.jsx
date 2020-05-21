@@ -19,7 +19,7 @@ const RatingBreakdown = (props) => {
 
   // }
   function updateFilter(event, input) {
-    console.log("eventtarget", event.target);
+    // console.log("eventtarget", event.target);
     if (bar.includes(input)) {
       props.removefromFilter(input);
       toggleBar(bar.filter((item) => item !== input));
