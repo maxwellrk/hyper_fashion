@@ -8,7 +8,6 @@ const OutfitEntry = ({
   currentProduct,
   addDeleteOutfit,
   relatedItemsAndStyle,
-  prodRating,
   outfitIdArr,
 }) => {
   let fakeCard = [
@@ -41,10 +40,6 @@ const OutfitEntry = ({
     setItemSlides(createSlides());
   }, [relatedItemsAndStyle]);
 
-  // useEffect(() => {
-  //   setItemSlides(createSlides());
-  // }, [outfitIdArr]);
-
   const createSlides = () => {
     let itemSlides = [];
     let start = 0;
@@ -63,8 +58,16 @@ const OutfitEntry = ({
     return itemSlides;
   };
 
+  const [index, setIndex] = useState(0);
+
+  const handleSelect = (selectedIndex, e) => {
+    setIndex(selectedIndex);
+  };
+
   return (
     <Carousel
+      activeIndex={index}
+      onSelect={handleSelect}
       wrap={false}
       interval={null}
       indicators={false}
@@ -72,12 +75,10 @@ const OutfitEntry = ({
       slide={true}
     >
       {itemSlides.map((slide, i) => {
-        // console.log('get runned carousel in outfit', slide)
         return (
           <Carousel.Item key={i}>
             <Row className="relatedProductsOutfit-carousel-row">
               {slide.map((eachItem, j) => {
-                // console.log('slide get runned carousel in outfit')
                 return (
                   <Col key={j} className="relatedProductsOutfit-carousel-col">
                     {eachItem[0].id === -90 ? (
@@ -108,6 +109,7 @@ const OutfitEntry = ({
                           className="btn-compare"
                           onClick={() => {
                             addDeleteOutfit(eachItem[0].id, false, true);
+                            setIndex(index >= 1 ? index - 1 : 0);
                           }}
                         >
                           ⓧ
@@ -148,7 +150,7 @@ const OutfitEntry = ({
                                 precision={0.1}
                                 size="small"
                                 readOnly
-                                value={prodRating.averageRating}
+                                value={eachItem[2]}
                               />
                             </Card.Body>
                           )}

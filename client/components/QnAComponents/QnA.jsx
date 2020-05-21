@@ -1,12 +1,12 @@
 /* eslint-disable */
-import React, {useEffect, useState} from "react";
-import QnABlock from "./QnABlock";
-import SearchBar from "./SearchBar";
-import QuestionModal from "../../containers/QnAContainers/QuestionModalContainer";
+import React, { useEffect, useState } from 'react';
+import QnABlock from './QnABlock';
+import SearchBar from './SearchBar';
+import QuestionModal from '../../containers/QnAContainers/QuestionModalContainer';
 // import "./styles/QnAStylesheet.css";
-const QnA = ({fetchQuestionsById, questionsList, productById}) => {
+const QnA = ({ fetchQuestionsById, questionsList, productById }) => {
   const [questionRender, changeQuestionRender] = useState(2);
-  const [searchInput, changeSearchInput] = useState("");
+  const [searchInput, changeSearchInput] = useState('');
   const [questionModalRender, toggleQuestionModal] = useState(false);
 
   useEffect(() => {
@@ -15,7 +15,7 @@ const QnA = ({fetchQuestionsById, questionsList, productById}) => {
         changeQuestionRender(2);
       })
       .then(() => {
-        changeSearchInput("");
+        changeSearchInput('');
       });
   }, [productById]);
 
@@ -24,7 +24,7 @@ const QnA = ({fetchQuestionsById, questionsList, productById}) => {
     //if its under 3 characters, should come back to make it only query if over 3
     //maybe make a function that creates filter callbacks?
 
-    let query = searchInput.length > 2 ? searchInput.toLowerCase() : "";
+    let query = searchInput.length > 2 ? searchInput.toLowerCase() : '';
     return entry.question_body.toLowerCase().indexOf(query) > -1;
   };
 
@@ -41,11 +41,11 @@ const QnA = ({fetchQuestionsById, questionsList, productById}) => {
       <button
         className="moreQuestions"
         style={{
-          "margin-top": "10px",
-          "margin-right": "20px",
-          border: "1px solid black",
-          height: "50px",
-          "background-color": "white",
+          marginTop: '10px',
+          marginRight: '20px',
+          border: '1px solid black',
+          height: '50px',
+          backgroundColor: 'white',
         }}
         onClick={() => changeQuestionRender(questionRender + 2)}
       >

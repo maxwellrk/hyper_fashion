@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import Rating from "@material-ui/lab/Rating";
 import CompareModal from "./CompareModal";
 
-const RelatedItems = ({ prodRating, productById, relatedItemsAndStyle }) => {
+const RelatedItems = ({ productById, relatedItemsAndStyle }) => {
   const [displayModal, setDisplayModal] = useState(false);
   const [relatedItem, setrelatedItem] = useState([]);
 
@@ -84,7 +84,7 @@ const RelatedItems = ({ prodRating, productById, relatedItemsAndStyle }) => {
                                 precision={0.1}
                                 size="small"
                                 readOnly
-                                value={prodRating.averageRating}
+                                value={eachItem[2]}
                               />
                             </Card.Body>
                           </Link>

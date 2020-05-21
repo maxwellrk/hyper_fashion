@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { useState } from 'react';
 import { Modal, Button } from 'antd';
 import axios from 'axios';
@@ -52,7 +53,7 @@ const AnswerModal = ({
         width="60vw"
         height="40vh"
         title={
-          <div style={{ 'font-size': '20px' }}>
+          <div style={{ fontSize: '20px' }}>
             <p>Submit Your Answer</p>
             <p>
               {productById.name}: {question_body}
@@ -92,7 +93,7 @@ const AnswerModal = ({
             width: '95%',
             height: '120px',
             resize: 'none',
-            'margin-bottom': '10px',
+            marginBottom: '10px',
           }}
           placeholder="Enter answer here..."
           type="text"
