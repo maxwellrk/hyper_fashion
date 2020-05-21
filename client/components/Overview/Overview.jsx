@@ -6,6 +6,7 @@ import Carousel from "../../containers/OverviewContainers/CarouselContainer";
 import Display from "./Display.jsx";
 import DropDownMenus from "./DropDownMenus";
 import Reviews from "../../containers/OverviewContainers/ReviewsContainer";
+import NavBar from "./NavBar";
 
 const Overview = ({productById}) => {
   const [styles, setStyles] = useState([]);
@@ -40,6 +41,7 @@ const Overview = ({productById}) => {
 
   return (
     <div>
+      <NavBar />
       <Row>
         <Col span={16}>
           <Carousel currentStyle={currentStyle} />
@@ -92,7 +94,9 @@ const Overview = ({productById}) => {
           </Row>
         </Col>
       </Row>
-      <ProductDescription currentStyle={currentStyle} />
+      <div style={{width: "80%", margin: "auto"}}>
+        <ProductDescription currentStyle={currentStyle} />
+      </div>
     </div>
   );
 };
