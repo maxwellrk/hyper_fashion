@@ -3,14 +3,14 @@ import RelatedItems from "../../containers/RelatedItemsAndOutfitContainers/Relat
 import Outfit from "../../containers/RelatedItemsAndOutfitContainers/OutfitContainer";
 import axios from "axios";
 import Promise from "bluebird";
-import "./RelatedItems.css";
+// import "./RelatedItems.css";
 import getAverageReview from "../../actions/ReviewComponentActions/ActionHelpers/averageReviewHelper";
 const RelatedItemsAndOutfit = ({ currentProduct }) => {
   const [relatedItemsAndStyle, setRelatedItemsAndStyle] = useState([]);
 
   useEffect(() => {
     fetchRelatedItemsAndStyleById(currentProduct.id);
-  }, [currentProduct.id]);
+  }, [currentProduct]);
 
   const fetchRelatedItemsAndStyleById = (id) => {
     const url = `http://18.224.200.47/products/${id}/related`;

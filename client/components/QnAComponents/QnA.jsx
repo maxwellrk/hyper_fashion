@@ -74,7 +74,7 @@ const QnA = ({ fetchQuestionsById, questionsList, productById }) => {
   return (
     <div className="mainContainer">
       <div className="subContainer">
-        <h6>QUESTIONS & ANSWERS</h6>
+        <h6 style={{fontSize: '20px', fontWeight: 'bold'}}>QUESTIONS & ANSWERS</h6>
         <SearchBar
           searchInput={searchInput}
           changeSearchInput={changeSearchInput}
