@@ -138,6 +138,11 @@ const SubmitReviewForm = (props) => {
     }
   }, [filesLists]);
 
+  useEffect(() => {
+    console.log(testState[0]);
+    $("#output").attr("src", testState[0]);
+  }, [testState]);
+
   const onFinish = (values) => {
     console.log("Success:", values);
   };
@@ -150,13 +155,36 @@ const SubmitReviewForm = (props) => {
     setVisible(true);
   }
 
+  const uploadImage = async (e) => {
+    // const theFile = e.target.files;
+    const theFile = event.target.files;
+    const data = new FormData();
+    data.append("file", theFile[0]);
+    data.append("upload_preset", "aaaimages");
+
+    const res = await fetch(
+      "https://api.cloudinary.com/v1_1/defu6rghk/image/upload",
+      {
+        method: "POST",
+        body: data,
+      }
+    );
+    const finalfile = await res.json();
+    // console.log(finalfile);
+    setTestState([...testState, finalfile.url]);
+    // console.log(testState);
+  };
+
+  // useEffect(() => {
+  //   console.log(testState);
+  // }, [testState]);
+
   function handleOk(e) {
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
       setVisible(false);
     }, 3000);
-    setTestState([filesLists.file.file.thumbUrl]);
 
     axios
       .post(`http://18.224.200.47/reviews/${props.pageId}/`, {
@@ -166,7 +194,7 @@ const SubmitReviewForm = (props) => {
         recommend: isRecommended,
         name: isNickname,
         email: isEmail,
-        photos: [testState],
+        photos: testState,
         characteristics: finalCharacteristics,
       })
       .then(() => {
@@ -720,16 +748,39 @@ const SubmitReviewForm = (props) => {
               Upload your photos
             </div>
 
-            <Upload
+            {/* <Upload
               {...props1}
-              onChange={(file) => setFileList({ ...filesLists, file })}
+              // onChange={(file) => setFileList({ ...filesLists, file })}
+              // onChange={(file) => uploadImage(file)}
+              onChange={uploadImage}
             >
               <Button className="uploadbutton">
                 <UploadOutlined /> Upload
               </Button>
-            </Upload>
+            </Upload> */}
+            <input
+              type="file"
+              name="file"
+              id="file-selector"
+              placerholder="Upload"
+              onChange={uploadImage}
+            />
           </div>
-          <div style={{ margin: "24px", height: "20px" }} />
+          <div>
+            <img
+              style={{
+                display: "flex",
+                minHeight: "10px",
+                height: "100px",
+                maxWidth: "100px",
+                position: "relative",
+                left: "187px",
+                top: "10px",
+              }}
+              id="output"
+            ></img>
+          </div>
+          <div style={{ minHeight: "44px" }} />
 
           <div
             style={{

@@ -220,7 +220,8 @@ const ReviewList = (props) => {
   const useStyles = makeStyles((theme) => ({
     formControl: {
       margin: theme.spacing(1),
-      minWidth: 120,
+      width: 140,
+      minWidth: 150,
       // paddingBottom: 0,
     },
 
