@@ -50,6 +50,7 @@
     "live-server": "^1.2.1",
     "lodash": "^4.17.15",
     "nodemon": "^1.19.4",
+    "prop-types": "^15.7.2",
     "react": "^16.12.0",
     "react-anchor-link-smooth-scroll": "^1.0.12",
     "react-bootstrap": "^1.0.1",

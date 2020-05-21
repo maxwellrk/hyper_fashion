@@ -1,8 +1,8 @@
-import React from "react";
-import { useEffect, useState } from "react";
-import RatingInfo from "../../containers/ReviewComponentContainers/RatingInfoContainer";
-import ReviewList from "../../containers/ReviewComponentContainers/ReviewListContainer";
-import "./ReviewStyles/reviewstyles.css";
+import React from 'react';
+import { useEffect, useState } from 'react';
+import RatingInfo from '../../containers/ReviewComponentContainers/RatingInfoContainer';
+import ReviewList from '../../containers/ReviewComponentContainers/ReviewListContainer';
+import './ReviewStyles/reviewstyles.css';
 
 const RatingsandReviews = (props) => {
   const [filteredState, setFilteredState] = useState([]);
@@ -26,15 +26,15 @@ const RatingsandReviews = (props) => {
   return (
     <div
       style={{
-        position: "relative",
-        display: "flex",
+        position: 'relative',
+        display: 'flex',
         left: 164,
-        marginRight: "20%",
+        marginRight: '20%',
       }}
     >
       <div className="flex-container review">
         <div className="flex-container ratinginfo">
-          <h1 style={{ fontSize: 20, fontWeight: "bold", height: 30 }}>
+          <h1 style={{ fontSize: 20, fontWeight: 'bold', height: 30 }}>
             RATING & REVIEWS
           </h1>
           <RatingInfo
