@@ -53,12 +53,12 @@ const ReviewListItem = ({ item, answerList, fullquery }) => {
   }
 
   function handleOk(e) {
-    console.log(e);
+    // console.log(e);
     setVisible(false);
   }
 
   function handleCancel(e) {
-    console.log(e);
+    // console.log(e);
     setVisible(false);
   }
 

@@ -139,7 +139,7 @@ const SubmitReviewForm = (props) => {
   }, [filesLists]);
 
   useEffect(() => {
-    console.log(testState[0]);
+    // console.log(testState[0]);
     $("#output").attr("src", testState[0]);
   }, [testState]);
 
@@ -758,13 +758,17 @@ const SubmitReviewForm = (props) => {
                 <UploadOutlined /> Upload
               </Button>
             </Upload> */}
-            <input
-              type="file"
-              name="file"
-              id="file-selector"
-              placerholder="Upload"
-              onChange={uploadImage}
-            />
+            <label class="custom-file-upload">
+              Upload
+              <input
+                type="file"
+                name="file"
+                style={{ display: "none" }}
+                id="file-selector"
+                placerholder="Upload"
+                onChange={uploadImage}
+              />
+            </label>
           </div>
           <div>
             <img
