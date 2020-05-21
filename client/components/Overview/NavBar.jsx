@@ -1,9 +1,10 @@
 import React from "react";
+import {BorderBottomOutlined} from "@ant-design/icons";
 
 const NavBar = () => {
   return (
-    <div>
-      <nav class="navbar navbar-light bg-light justify-content-between">
+    <div style={{borderBottom: "1px solid"}}>
+      <nav class="navbar navbar-light justify-content-between">
         <a class="navbar-brand">Team Tyche</a>
         <form class="form-inline">
           <input
