@@ -21,7 +21,7 @@ describe("Overview", () => {
   });
 });
 
-describe("Overview tests", () => {
+xdescribe("Overview tests", () => {
   test("renders", () => {
     const wrapper = shallow(<Overview store={mockStore({})} />);
     expect(wrapper.exists()).toBe(true);

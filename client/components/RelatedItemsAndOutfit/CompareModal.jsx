@@ -62,7 +62,7 @@ const CompareModal = ({
             </span>
             <h5 className="compareModal-title-h5">Compare</h5>
             <table className="compareModal-table">
-              <thead>
+              <thead className="thead">
               <tr className="table-th-box">
                 <th>{currentItem.name}</th>
                 <th> </th>
@@ -70,9 +70,9 @@ const CompareModal = ({
               </tr>
               </thead>
               <tbody className="table-body">
-              {combinedFeatures.map((feature) => {
+              {combinedFeatures.map((feature, i) => {
                 return (
-                  <tr className="table-td-box">
+                  <tr key={i} className="table-td-box">
                     <td name='curItemFeatureVal'>{feature[1]==='none' ? ' ' : (feature[1]==='null'? '✓' : feature[1]) } </td>
                     <td name='features'>{feature[0]}</td>
                     <td name='relItemFeatureVal'>{feature[2]==='none' ? ' ' : (feature[2]==='null'? '✓' : feature[2])} </td>

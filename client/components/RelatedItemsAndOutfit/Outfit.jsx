@@ -63,7 +63,7 @@ const Outfit = ({ currentProduct, addDeleteOutfit, outfitIdArr }) => {
 
   return (
     <div className="relatedOutfit">
-      <h3 className="related-outfit-h3">Your Outfit</h3>
+      <h3 className="related-outfit-h3">YOUR OUTFIT</h3>
       <OutfitEntry
         currentProduct={currentProduct}
         addDeleteOutfit={addDeleteOutfit}

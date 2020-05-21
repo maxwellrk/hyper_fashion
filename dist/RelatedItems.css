@@ -138,7 +138,7 @@
 }
 
 /* Modal Content */
-.modal-content {
+.compareModal .modal-content {
   background-color: #fefefe;
   margin: auto;
   padding: 15px;
@@ -180,11 +180,11 @@
   margin: 5px 0px 5px 20px;
   table-layout:fixed
 }
-.compareModal-table thead, .compareModal-table tbody{
+.compareModal-table .thead, .compareModal-table .table-body{
   display: block;
   width: 100%;
 }
-.compareModal-table tbody {
+.compareModal-table .table-body {
   height: 120px;
   overflow: auto;
 }
