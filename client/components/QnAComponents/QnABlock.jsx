@@ -73,15 +73,22 @@ const QnABlock = ({ entry, productById }) => {
               entry.answers[answerId].date
             );
             return (
-              <Answer info={entry.answers[answerId]} key={'Answer' + index} />
+              <Answer
+                answerer_name={entry.answers[answerId].answerer_name}
+                helpfulness={entry.answers[answerId].helpfulness}
+                answer_id={entry.answers[answerId].id}
+                newDate={entry.answers[answerId].newDate}
+                body={entry.answers[answerId].body}
+                key={'Answer' + index}
+              />
             );
           })
           //  Need to bring seller answers to the top of the page
           .sort((a, b) => {
             return (
-              (b.props.info.answerer_name === 'Seller') -
-                (a.props.info.answerer_name === 'Seller') ||
-              b.props.info.helpfulness - a.props.info.helpfulness
+              (b.props.answerer_name === 'Seller') -
+                (a.props.answerer_name === 'Seller') ||
+              b.props.helpfulness - a.props.helpfulness
             );
           })
           .filter((ele, index) => {

@@ -49,8 +49,6 @@ describe('Answer Unit Tests', () => {
   });
 });
 
-//question log helpful0 question_id35469
-
 describe('Helpful Test Unit Tests', () => {
   const wrapper = shallow(<Helpful />);
   const wrapperWithProps = mount(
