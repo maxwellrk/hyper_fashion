@@ -2,8 +2,8 @@ import React from "react";
 
 const NavBar = () => {
   return (
-    <div style={{borderBottom: "1px solid"}}>
-      <nav class="navbar navbar-light justify-content-between">
+    <div style={{ backgroundColor: "lightgrey"}}>
+      <nav class="navbar justify-content-between">
         <a class="navbar-brand">Hyper Fashion</a>
         <form class="form-inline">
           <input
