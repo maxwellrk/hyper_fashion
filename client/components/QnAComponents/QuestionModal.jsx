@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { useEffect, useState } from 'react';
 import { Modal, Button } from 'antd';
 import axios from 'axios';
@@ -37,7 +38,7 @@ const QuestionModal = ({
   return (
     <div
       style={{
-        'margin-top': '10px',
+        marginTop: '10px',
         display: 'inline-block',
       }}
     >
@@ -45,7 +46,7 @@ const QuestionModal = ({
         style={{
           border: '1px solid black',
           height: '50px',
-          'background-color': 'white',
+          backgroundColor: 'white',
         }}
         type="primary"
         onClick={() => {
@@ -58,7 +59,7 @@ const QuestionModal = ({
         width="60vw"
         height="40vh"
         title={
-          <div style={{ 'font-size': '20px' }}>
+          <div style={{ fontSize: '20px' }}>
             <p>Ask Your Question</p>
             <p>About the {productById.name}</p>
           </div>
@@ -96,7 +97,7 @@ const QuestionModal = ({
             width: '95%',
             height: '120px',
             resize: 'none',
-            'margin-bottom': '10px',
+            marginBottom: '10px',
           }}
           type="text"
           maxLength="1000"

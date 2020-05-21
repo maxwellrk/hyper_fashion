@@ -6,7 +6,6 @@ import Carousel from "../../containers/OverviewContainers/CarouselContainer";
 import Display from "./Display.jsx";
 import DropDownMenus from "./DropDownMenus";
 import Reviews from "../../containers/OverviewContainers/ReviewsContainer";
-import Buttons from "../../containers/OverviewContainers/ButtonsContainer";
 
 const Overview = ({productById}) => {
   const [styles, setStyles] = useState([]);
@@ -65,7 +64,7 @@ const Overview = ({productById}) => {
                 if (style.style_id === currentSelected[0]) {
                   return (
                     <Avatar
-                      style={{margin: "2px"}}
+                      style={{margin: "5px", cursor: "pointer"}}
                       src={image}
                       size={64}
                       onClick={() => setAsCurrent(style)}
@@ -74,7 +73,7 @@ const Overview = ({productById}) => {
                 } else {
                   return (
                     <Avatar
-                      style={{margin: "2px"}}
+                      style={{margin: "5px", cursor: "pointer"}}
                       src={image}
                       size={50}
                       onClick={() => setAsCurrent(style)}
@@ -89,9 +88,6 @@ const Overview = ({productById}) => {
           <Row>
             <Col span={24}>
               <DropDownMenus currentStyle={currentStyle} />
-            </Col>
-            <Col span={24} style={{marginTop: "20px"}}>
-              <Buttons currentStyle={currentStyle} />
             </Col>
           </Row>
         </Col>

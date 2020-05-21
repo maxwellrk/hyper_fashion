@@ -42,26 +42,30 @@ describe('Question Unit Tests', () => {
   });
 });
 
-describe('Answer Test Unit Tests', () => {
+describe('Answer Unit Tests', () => {
   test('renders with no props', () => {
     const wrapper = shallow(<Answer />);
     expect(wrapper.exists()).toBe(true);
   });
 });
+
 //question log helpful0 question_id35469
 
 describe('Helpful Test Unit Tests', () => {
   const wrapper = shallow(<Helpful />);
-  const wrapperWithProps = shallow(
-    <Helpful helpfulness={4} idBeingUsed={100} typeOfStored="answerId" />
+  const wrapperWithProps = mount(
+    <Helpful helpfulness={26} idBeingUsed={3} typeOfStored="questionId" />
   );
-  console.log(wrapperWithProps.debug());
   test('renders with no props', () => {
     expect(wrapper.exists()).toBe(true);
   });
 
-  test('renders with underline with props', () => {
-    expect(wrapperWithProps.find('.underline')).toBeTruthy();
+  test('renders with props underline ', () => {
+    expect(wrapperWithProps.find('.underline').text()).toBe('Yes (26)');
+  });
+
+  test('renders with props text14', () => {
+    expect(wrapperWithProps.find('.text14')).toBeTruthy();
   });
 });
 
@@ -75,7 +79,8 @@ describe('Question Modal Unit Tests', () => {
 describe('Answer Modal Unit Tests', () => {
   test('renders with no props', () => {
     const wrapper = shallow(<AnswerModal store={mockStore({})} />);
-    // const wrapperWithProps = mount(<AnswerModal store={mockStore({})} />);
+
+    console.log(wrapper.debug());
     expect(wrapper.exists()).toBe(true);
   });
 });

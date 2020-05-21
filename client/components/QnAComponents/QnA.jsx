@@ -41,11 +41,11 @@ const QnA = ({ fetchQuestionsById, questionsList, productById }) => {
       <button
         className="moreQuestions"
         style={{
-          "margin-top": "10px",
-          "margin-right": "20px",
+          marginTop: "10px",
+          marginRight: "20px",
           border: "1px solid black",
           height: "50px",
-          "background-color": "white",
+          backgroundColor: "white",
         }}
         onClick={() => changeQuestionRender(questionRender + 2)}
       >

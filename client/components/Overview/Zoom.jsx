@@ -2,7 +2,6 @@ import React, {useState, useEffect} from "react";
 import {Modal} from "antd";
 
 const Zoom = ({currentPhoto, zoom, zoomFunction}) => {
-  console.log("current photo", currentPhoto);
   return (
     <div>
       {zoom ? (
