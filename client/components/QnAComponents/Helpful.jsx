@@ -17,7 +17,6 @@ const Helpful = ({ helpfulness, idBeingUsed, typeOfStored }) => {
         <a
           className="underline"
           onClick={(e) => {
-            stored[idBeingUsed.toString()] = true;
             axios
               .put(
                 typeOfStored === 'questionId'
@@ -25,13 +24,15 @@ const Helpful = ({ helpfulness, idBeingUsed, typeOfStored }) => {
                   : `http://18.224.200.47/qa/answer/${idBeingUsed}/helpful`
               )
               .then((resp) => {
+                stored =
+                  JSON.parse(window.localStorage.getItem(typeOfStored)) || {};
+              })
+              .then(() => {
+                stored[idBeingUsed.toString()] = true;
                 window.localStorage.setItem(
                   typeOfStored,
                   JSON.stringify(stored)
                 );
-              })
-              .then(() => {
-                stored = JSON.parse(window.localStorage.getItem(typeOfStored));
               })
               .then(() => {
                 toggleVote(true);
