@@ -26,6 +26,7 @@ const RatingsandReviews = (props) => {
   return (
     <div
       style={{
+        flexDirection: 'column',
         position: 'relative',
         display: 'flex',
         left: 164,
