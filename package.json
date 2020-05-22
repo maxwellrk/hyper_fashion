@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest --verbose",
+    "test-coverage-report": "jest --verbose --collectCoverage",
     "clean": "rm dist/bundle.js",
     "build-dev": "webpack -d --mode development --watch",
     "build-prod": "webpack -p --mode production",
@@ -23,7 +24,12 @@
     ],
     "setupFilesAfterEnv": [
       "<rootDir>jest.setup.js"
-    ]
+    ],
+    "moduleNameMapper": {
+      "\\.(css|less)$": "<rootDir>styleMock.js"
+    },
+    "preset": "jest-puppeteer",
+    "testEnvironment": "jsdom"
   },
   "repository": {
     "type": "git",
@@ -81,6 +87,8 @@
     "eslint-plugin-react-hooks": "^2.5.0",
     "jest": "^26.0.1",
     "jest-puppeteer": "^4.4.0",
+    "jsdom": "16.2.2",
+    "jsdom-global": "3.0.2",
     "puppeteer": "^3.0.4",
     "redux-mock-store": "^1.5.4",
     "style-loader": "^1.2.1",

@@ -99,7 +99,7 @@ const OutfitEntry = ({
                           className="img"
                         />
                         <Card.Body className="info">
-                          <Card.Title style={{ "text-align": "center", "margin-top": "5px" }}>
+                          <Card.Title style={{ "textAlign": "center", "marginTop": "50px" }}>
                             {eachItem[0].name}
                           </Card.Title>
                         </Card.Body>

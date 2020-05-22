@@ -18,7 +18,7 @@ const Outfit = ({ currentProduct, addDeleteOutfit, outfitIdArr }) => {
               {
                 thumbnail_url:
                   // "https://cdn.pixabay.com/photo/2018/11/13/21/43/instagram-3814051_1280.png",
-                  './assets/addOutfit.png',
+                  "./assets/addOutfit.png",
               },
             ],
           },
