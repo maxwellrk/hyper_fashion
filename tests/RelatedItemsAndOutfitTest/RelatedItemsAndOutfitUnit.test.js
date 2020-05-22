@@ -47,14 +47,14 @@ describe("RelatedItemsAndOutfit Unit Tests: Shallow Rendering", () => {
 });
 
 describe("RelatedItems Unit Tests: Full DOM Rendering", () => {
-  const wrapperMount = mount(
-    <RelatedItems
-      related-outfit-h3_body="RELATED PRODUCT"
-      relatedItemsAndStyle={[1]}
-      store={mockStore({})}
-    />
-  );
   test("Renders with related-outfit-h3_body in RelatedItems", () => {
+    const wrapperMount = mount(
+      <RelatedItems
+        related-outfit-h3_body="RELATED PRODUCT"
+        relatedItemsAndStyle={[1]}
+        store={mockStore({})}
+      />
+    );
     expect(
       wrapperMount.containsMatchingElement(
         <h3 className="related-outfit-h3">RELATED PRODUCT</h3>
@@ -64,17 +64,17 @@ describe("RelatedItems Unit Tests: Full DOM Rendering", () => {
 });
 
 describe("Outfit Unit Tests: Full DOM Rendering", () => {
-  const wrapperMount = mount(
-    <Router>
-      <Outfit
-        related-outfit-h3_body="YOUR OUTFIT"
-        currentProduct={{ id: 1 }}
-        store={mockStore({ outfitIdArr: [1] })}
-      />
-    </Router>
-  );
 
   test("Renders with related-outfit-h3_body in Outfit", () => {
+    const wrapperMount = mount(
+      <Router>
+        <Outfit
+          related-outfit-h3_body="YOUR OUTFIT"
+          currentProduct={{ id: 1 }}
+          store={mockStore({ outfitIdArr: [1] })}
+        />
+      </Router>
+    );
     expect(
       wrapperMount.contains(<h3 className="related-outfit-h3">YOUR OUTFIT</h3>)
     ).toBeTruthy();
