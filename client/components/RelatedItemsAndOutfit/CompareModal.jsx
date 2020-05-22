@@ -9,9 +9,6 @@ const CompareModal = ({
   // combinedFeatures [[feature, currentItemFeatureVal, relatedItemFeatureVal], [feature, currentItemFeatureVal, ..]..]
   // if there is no such feature for currentItem or relatedItem. then the value = none
   const [combinedFeatures, setCombinedFeatures] = useState([]);
-  // console.log("combinedFeatures", combinedFeatures);
-  // console.log('currentItem feature', currentItem);
-  // console.log("relatedItem feature", relatedItem[0]);
 
   useEffect(() => {
     if (displayModal) {

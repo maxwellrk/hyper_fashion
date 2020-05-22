@@ -16,12 +16,10 @@ const RelatedItems = ({ productById, relatedItemsAndStyle }) => {
   const createSlides = () => {
     let itemSlides = [];
     let start = 0;
-    if (relatedItemsAndStyle) {
       for (let i = 0; i < relatedItemsAndStyle.length - 2; i++) {
         itemSlides.push(relatedItemsAndStyle.slice(start, i + 3));
         start += 1;
       }
-    }
     return itemSlides;
   };
 

@@ -23,7 +23,10 @@
     ],
     "setupFilesAfterEnv": [
       "<rootDir>jest.setup.js"
-    ]
+    ],
+    "moduleNameMapper": {
+      "\\.(css|less)$": "<rootDir>styleMock.js"
+    }
   },
   "repository": {
     "type": "git",
