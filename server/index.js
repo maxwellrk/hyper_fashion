@@ -6,11 +6,11 @@ const compression = require("compression");
 // const port = 3000;
 // here is how to use dotenv to set all the environment variable
 require("dotenv").config();
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 3000;
 
 app.use(compression());
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({extended: true}));
 
 app.use(express.static(path.join(__dirname, "../dist/")));
 
