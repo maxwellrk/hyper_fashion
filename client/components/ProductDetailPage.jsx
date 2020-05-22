@@ -5,7 +5,7 @@ import RelatedItemAndOutfit from './RelatedItemsAndOutfit/RelatedItemsAndOutfit'
 import Overview from '../containers/OverviewContainers/OverviewContainer';
 import axios from 'axios';
 
-export const AddClickTracking = (Component) => {
+export const AddClickTracking = (Component, compName) => {
   return (props) => {
     return (
       <div
@@ -13,9 +13,7 @@ export const AddClickTracking = (Component) => {
           let url = `http://18.224.200.47/interactions/`;
           let interactionsModel = {
             element: e.target.className || e.target.toString(),
-            widget: Component.WrappedComponent
-              ? Component.WrappedComponent.name
-              : (<Component />).type.name,
+            widget: compName,
             time: new Date(),
           };
           return axios.post(url, interactionsModel).then((resp) => {
@@ -29,10 +27,16 @@ export const AddClickTracking = (Component) => {
   };
 };
 
-const TrackedOverview = AddClickTracking(Overview);
-const TrackedRelatedItemAndOutfit = AddClickTracking(RelatedItemAndOutfit);
-const TrackedQnA = AddClickTracking(QnA);
-const TrackedRatingsandReviews = AddClickTracking(RatingsandReviews);
+const TrackedOverview = AddClickTracking(Overview, 'Overview');
+const TrackedRelatedItemAndOutfit = AddClickTracking(
+  RelatedItemAndOutfit,
+  'RelatedItemAndOutfit'
+);
+const TrackedQnA = AddClickTracking(QnA, 'QnA');
+const TrackedRatingsandReviews = AddClickTracking(
+  RatingsandReviews,
+  'RatingsandReviews'
+);
 
 const ProductDetailPage = (props) => {
   useEffect(() => {
