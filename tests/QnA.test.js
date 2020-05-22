@@ -21,33 +21,33 @@ describe('QnA Unit Tests', () => {
   });
 });
 
-// describe('QnABlock Unit Tests', () => {
-//   test('renders with no props', () => {
-//     const wrapper = shallow(<QnABlock store={mockStore({})} />);
-//     expect(wrapper.exists()).toBe(true);
-//   });
-// });
+describe('QnABlock Unit Tests', () => {
+  test('renders with no props', () => {
+    const wrapper = shallow(<QnABlock store={mockStore({})} />);
+    expect(wrapper.exists()).toBe(true);
+  });
+});
 
-// describe('Question Unit Tests', () => {
-//   const wrapper = shallow(<Question />);
-//   const wrapperWithProps = mount(<Question question_body="Is it blue?" />);
-//   test('renders with no props', () => {
-//     expect(wrapper.exists()).toBe(true);
-//   });
+describe('Question Unit Tests', () => {
+  const wrapper = shallow(<Question />);
+  const wrapperWithProps = mount(<Question question_body="Is it blue?" />);
+  test('renders with no props', () => {
+    expect(wrapper.exists()).toBe(true);
+  });
 
-//   test('renders with question_body', () => {
-//     expect(
-//       wrapperWithProps.contains(<p className="question">Q: Is it blue?</p>)
-//     ).toBeTruthy();
-//   });
-// });
+  test('renders with question_body', () => {
+    expect(
+      wrapperWithProps.contains(<p className="question">Q: Is it blue?</p>)
+    ).toBeTruthy();
+  });
+});
 
-// describe('Answer Unit Tests', () => {
-//   test('renders with no props', () => {
-//     const wrapper = shallow(<Answer />);
-//     expect(wrapper.exists()).toBe(true);
-//   });
-// });
+describe('Answer Unit Tests', () => {
+  test('renders with no props', () => {
+    const wrapper = shallow(<Answer />);
+    expect(wrapper.exists()).toBe(true);
+  });
+});
 
 describe('Helpful Test Unit Tests', () => {
   const wrapper = shallow(<Helpful />);
@@ -67,30 +67,30 @@ describe('Helpful Test Unit Tests', () => {
   });
 });
 
-// describe('Question Modal Unit Tests', () => {
-//   test('renders with no props', () => {
-//     const wrapper = shallow(<QuestionModal store={mockStore({})} />);
-//     expect(wrapper.exists()).toBe(true);
-//   });
-// });
+describe('Question Modal Unit Tests', () => {
+  test('renders with no props', () => {
+    const wrapper = shallow(<QuestionModal store={mockStore({})} />);
+    expect(wrapper.exists()).toBe(true);
+  });
+});
 
-// describe('Answer Modal Unit Tests', () => {
-//   test('renders with no props', () => {
-//     const wrapper = shallow(<AnswerModal store={mockStore({})} />);
+describe('Answer Modal Unit Tests', () => {
+  test('renders with no props', () => {
+    const wrapper = shallow(<AnswerModal store={mockStore({})} />);
 
-//     console.log(wrapper.debug());
-//     expect(wrapper.exists()).toBe(true);
-//   });
-// });
+    console.log(wrapper.debug());
+    expect(wrapper.exists()).toBe(true);
+  });
+});
 
-// describe('Search Bar Unit Tests', () => {
-//   const wrapper = shallow(<SearchBar />);
+describe('Search Bar Unit Tests', () => {
+  const wrapper = shallow(<SearchBar />);
 
-//   test('renders with no props', () => {
-//     expect(wrapper.exists()).toBe(true);
-//   });
+  test('renders with no props', () => {
+    expect(wrapper.exists()).toBe(true);
+  });
 
-//   test('renders an input div', () => {
-//     expect(wrapper.find('.searchbar').exists()).toBe(true);
-//   });
-// });
+  test('renders an input div', () => {
+    expect(wrapper.find('.searchbar').exists()).toBe(true);
+  });
+});

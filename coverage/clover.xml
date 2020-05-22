@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1590121310234" clover="3.2.0">
-  <project timestamp="1590121310234" name="All files">
-    <metrics statements="450" coveredstatements="131" conditionals="207" coveredconditionals="42" methods="157" coveredmethods="31" elements="814" coveredelements="204" complexity="0" loc="450" ncloc="450" packages="15" files="50" classes="50"/>
+<coverage generated="1590158724657" clover="3.2.0">
+  <project timestamp="1590158724657" name="All files">
+    <metrics statements="450" coveredstatements="136" conditionals="207" coveredconditionals="42" methods="157" coveredmethods="36" elements="814" coveredelements="214" complexity="0" loc="450" ncloc="450" packages="15" files="50" classes="50"/>
     <package name="tyche">
       <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       <file name="styleMock.js" path="/Users/susyqinqinyang/Desktop/Susy Study/hrnyc29/Bootcamp/week 8/tyche/styleMock.js">
@@ -212,7 +212,7 @@
       </file>
     </package>
     <package name="tyche.client.components.QnAComponents">
-      <metrics statements="134" coveredstatements="14" conditionals="67" coveredconditionals="5" methods="47" coveredmethods="1"/>
+      <metrics statements="134" coveredstatements="16" conditionals="67" coveredconditionals="5" methods="47" coveredmethods="3"/>
       <file name="Answer.jsx" path="/Users/susyqinqinyang/Desktop/Susy Study/hrnyc29/Bootcamp/week 8/tyche/client/components/QnAComponents/Answer.jsx">
         <metrics statements="6" coveredstatements="2" conditionals="8" coveredconditionals="0" methods="3" coveredmethods="0"/>
         <line num="7" count="1" type="stmt"/>
@@ -260,9 +260,9 @@
       <file name="Helpful.jsx" path="/Users/susyqinqinyang/Desktop/Susy Study/hrnyc29/Bootcamp/week 8/tyche/client/components/QnAComponents/Helpful.jsx">
         <metrics statements="9" coveredstatements="4" conditionals="10" coveredconditionals="5" methods="5" coveredmethods="1"/>
         <line num="4" count="1" type="stmt"/>
-        <line num="5" count="2" type="cond" truecount="2" falsecount="0"/>
-        <line num="6" count="2" type="stmt"/>
-        <line num="8" count="2" type="stmt"/>
+        <line num="5" count="3" type="cond" truecount="2" falsecount="0"/>
+        <line num="6" count="3" type="stmt"/>
+        <line num="8" count="3" type="stmt"/>
         <line num="20" count="0" type="stmt"/>
         <line num="21" count="0" type="stmt"/>
         <line num="28" count="0" type="stmt"/>
@@ -324,9 +324,9 @@
         <line num="98" count="0" type="stmt"/>
       </file>
       <file name="Question.jsx" path="/Users/susyqinqinyang/Desktop/Susy Study/hrnyc29/Bootcamp/week 8/tyche/client/components/QnAComponents/Question.jsx">
-        <metrics statements="3" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
         <line num="6" count="1" type="stmt"/>
-        <line num="7" count="0" type="stmt"/>
+        <line num="7" count="2" type="stmt"/>
         <line num="22" count="1" type="stmt"/>
       </file>
       <file name="QuestionModal.jsx" path="/Users/susyqinqinyang/Desktop/Susy Study/hrnyc29/Bootcamp/week 8/tyche/client/components/QnAComponents/QuestionModal.jsx">
@@ -365,9 +365,9 @@
         <line num="129" count="0" type="stmt"/>
       </file>
       <file name="SearchBar.jsx" path="/Users/susyqinqinyang/Desktop/Susy Study/hrnyc29/Bootcamp/week 8/tyche/client/components/QnAComponents/SearchBar.jsx">
-        <metrics statements="4" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0"/>
+        <metrics statements="4" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="1"/>
         <line num="4" count="1" type="stmt"/>
-        <line num="5" count="0" type="stmt"/>
+        <line num="5" count="1" type="stmt"/>
         <line num="9" count="0" type="stmt"/>
         <line num="14" count="1" type="stmt"/>
       </file>
@@ -543,16 +543,16 @@
       </file>
     </package>
     <package name="tyche.client.containers.QnAContainers">
-      <metrics statements="8" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="1"/>
+      <metrics statements="8" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="4"/>
       <file name="AnswerModalContainer.js" path="/Users/susyqinqinyang/Desktop/Susy Study/hrnyc29/Bootcamp/week 8/tyche/client/containers/QnAContainers/AnswerModalContainer.js">
-        <metrics statements="2" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
         <line num="4" count="1" type="stmt"/>
-        <line num="5" count="0" type="stmt"/>
+        <line num="5" count="1" type="stmt"/>
       </file>
       <file name="QnABlockContainer.js" path="/Users/susyqinqinyang/Desktop/Susy Study/hrnyc29/Bootcamp/week 8/tyche/client/containers/QnAContainers/QnABlockContainer.js">
-        <metrics statements="2" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
         <line num="3" count="1" type="stmt"/>
-        <line num="4" count="0" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
       </file>
       <file name="QnAContainer.js" path="/Users/susyqinqinyang/Desktop/Susy Study/hrnyc29/Bootcamp/week 8/tyche/client/containers/QnAContainers/QnAContainer.js">
         <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
@@ -560,9 +560,9 @@
         <line num="5" count="1" type="stmt"/>
       </file>
       <file name="QuestionModalContainer.js" path="/Users/susyqinqinyang/Desktop/Susy Study/hrnyc29/Bootcamp/week 8/tyche/client/containers/QnAContainers/QuestionModalContainer.js">
-        <metrics statements="2" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
         <line num="4" count="1" type="stmt"/>
-        <line num="5" count="0" type="stmt"/>
+        <line num="5" count="1" type="stmt"/>
       </file>
     </package>
     <package name="tyche.client.containers.RelatedItemsAndOutfitContainers">
