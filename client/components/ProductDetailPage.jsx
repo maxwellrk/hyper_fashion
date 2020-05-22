@@ -12,13 +12,15 @@ export const AddClickTracking = (Component) => {
         onClick={(e, props) => {
           let url = `http://18.224.200.47/interactions/`;
           let interactionsModel = {
-            element: e.target.toString(),
-            widget:
-              (<Component />).type.name ||
-              Component.WrappedComponent.name.toString(),
+            element: e.target.className || e.target.toString(),
+            widget: Component.WrappedComponent
+              ? Component.WrappedComponent.name
+              : (<Component />).type.name,
             time: new Date(),
           };
-          return axios.post(url, interactionsModel);
+          return axios.post(url, interactionsModel).then((resp) => {
+            console.log(resp);
+          });
         }}
       >
         <Component {...props} />
