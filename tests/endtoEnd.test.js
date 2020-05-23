@@ -34,10 +34,10 @@ describe("RelatedItemAndOutfit: End-End Test", () => {
   // Tried to get button at my section work: Failed
   // test('Star button gets clicked', async () => {
   //     // Overview's button works
-  //   // await expect(page).toClick('button', { text: 'ADD TO BAG' });
+  //   await expect(page).toClick('button', { text: 'ADD TO BAG' });
 
-  //   const text = await page.click('button');
-  //   expect(text).toContain('✩');
-  //   await expect(page).toClick('.btn-compare', { text: '✩' });
+  //   // const text = await page.click('button');
+  //   // expect(text).toContain('✩');
+  //   // await expect(page).toClick('.btn-compare', { text: '✩' });
   // });
 });
