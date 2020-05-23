@@ -1,6 +1,6 @@
 /* eslint-disable */
-import React, { useEffect, useState } from 'react';
-import { Modal, Button } from 'antd';
+import React, { useState } from 'react';
+import { Modal } from 'antd';
 import axios from 'axios';
 
 //fetchQuestionsById and currentId should be hooked up by react store, not passed down

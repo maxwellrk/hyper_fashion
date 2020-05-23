@@ -30,15 +30,9 @@ describe('QnABlock Unit Tests', () => {
 
 describe('Question Unit Tests', () => {
   const wrapper = shallow(<Question />);
-  const wrapperWithProps = mount(<Question question_body="Is it blue?" />);
+
   test('renders with no props', () => {
     expect(wrapper.exists()).toBe(true);
-  });
-
-  test('renders with question_body', () => {
-    expect(
-      wrapperWithProps.contains(<p className="question">Q: Is it blue?</p>)
-    ).toBeTruthy();
   });
 });
 
