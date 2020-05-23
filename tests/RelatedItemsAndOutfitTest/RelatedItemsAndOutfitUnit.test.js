@@ -64,7 +64,6 @@ describe("RelatedItems Unit Tests: Full DOM Rendering", () => {
 });
 
 describe("Outfit Unit Tests: Full DOM Rendering", () => {
-
   test("Renders with related-outfit-h3_body in Outfit", () => {
     const wrapperMount = mount(
       <Router>
@@ -80,5 +79,3 @@ describe("Outfit Unit Tests: Full DOM Rendering", () => {
     ).toBeTruthy();
   });
 });
-
-
