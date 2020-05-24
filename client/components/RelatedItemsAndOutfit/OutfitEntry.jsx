@@ -67,7 +67,6 @@ const OutfitEntry = ({
   const displayImg = (eachItem) => {
     if (eachItem[1].results.length) {
       if (eachItem[1].results[0].photos[0].thumbnail_url) {
-        console.log('eachItem[1].results[0].photos[0].thumbnail_url', eachItem[1].results[0].photos[0].thumbnail_url)
         return eachItem[1].results[0].photos[0].thumbnail_url;
       }
       return "./assets/noImg.png";
