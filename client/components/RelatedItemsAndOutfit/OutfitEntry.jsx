@@ -67,6 +67,7 @@ const OutfitEntry = ({
   const displayImg = (eachItem) => {
     if (eachItem[1].results.length) {
       if (eachItem[1].results[0].photos[0].thumbnail_url) {
+        console.log('eachItem[1].results[0].photos[0].thumbnail_url', eachItem[1].results[0].photos[0].thumbnail_url)
         return eachItem[1].results[0].photos[0].thumbnail_url;
       }
       return "./assets/noImg.png";
@@ -99,9 +100,9 @@ const OutfitEntry = ({
                         }}
                       >
                         <Card.Img
-                          data-src={eachItem[1].results[0].photos[0].thumbnail_url}
+                          src={eachItem[1].results[0].photos[0].thumbnail_url}
                           alt="Missing product image"
-                          className="img lazyload"
+                          className="img"
                         />
                         <Card.Body className="info">
                           <Card.Title
@@ -124,9 +125,9 @@ const OutfitEntry = ({
                           ⓧ
                         </button>
                         <Card.Img
-                          data-src={displayImg(eachItem)}
+                          src={displayImg(eachItem)}
                           alt="Missing product image"
-                          className="img lazyload"
+                          className="img"
                         />
                         <Link
                           to={

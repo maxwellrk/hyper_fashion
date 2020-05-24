@@ -75,9 +75,9 @@ const RelatedItems = ({ productById, relatedItemsAndStyle }) => {
                             ✩
                           </button>
                           <Card.Img
-                            data-src={displayImg(eachItem)}
+                            src={displayImg(eachItem)}
                             alt="Missing product image"
-                            className="img lazyload"
+                            className="img"
                           />
                           <Link
                             to={`/item/${eachItem[0].id}`}
