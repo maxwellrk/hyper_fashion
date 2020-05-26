@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 const SearchBar = ({ changeSearchInput }) => (
   <input
@@ -10,9 +9,5 @@ const SearchBar = ({ changeSearchInput }) => (
     }}
   />
 );
-
-SearchBar.propTypes = {
-  changeSearchInput: PropTypes.func.isRequired,
-};
 
 export default SearchBar;

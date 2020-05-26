@@ -1,7 +1,6 @@
 /* eslint-disable camelcase */
 import React, { useState } from 'react';
 import axios from 'axios';
-import PropTypes from 'prop-types';
 import Helpful from './Helpful';
 
 const Answer = ({ answerer_name, helpfulness, answer_id, newDate, body }) => {
@@ -56,11 +55,4 @@ const Answer = ({ answerer_name, helpfulness, answer_id, newDate, body }) => {
   );
 };
 
-Answer.propTypes = {
-  answerer_name: PropTypes.string.isRequired,
-  helpfulness: PropTypes.number.isRequired,
-  answer_id: PropTypes.number.isRequired,
-  newDate: PropTypes.string.isRequired,
-  body: PropTypes.string.isRequired,
-};
 export default Answer;
