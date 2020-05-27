@@ -52,6 +52,7 @@
 .overallComponent {
   display: flexbox;
   width: 350px;
+  /*33%*/
 }
 
 .linearbar4 {

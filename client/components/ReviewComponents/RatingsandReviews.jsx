@@ -26,11 +26,11 @@ const RatingsandReviews = (props) => {
   return (
     <div
       style={{
-        flexDirection: 'column',
-        position: 'relative',
-        display: 'flex',
-        left: 164,
-        marginRight: '20%',
+        position: "relative",
+        flexDirection: "column",
+        display: "flex",
+        left: "14rem",
+        marginRight: "20%",
       }}
     >
       <div className="flex-container review">

@@ -41,21 +41,6 @@ const SubmitReviewForm = (props) => {
   }, [props.presentcharacter]);
 
   const { TextArea } = Input;
-  //   onChange={(e) => {
-  //     changeInputEmail(e.target.value);
-  //   }}
-
-  //   const classes = useStyles();
-  // useEffect(() => {
-  //   console.log(value);
-  //   console.log(isRecommended);
-  //   console.log(finalCharacteristics);
-  //   console.log(isReviewSummary);
-  //   console.log(isReviewBody);
-  //   console.log(filesLists);
-  //   console.log(isNickname);
-  //   console.log(isEmail);
-  // }, [finalCharacteristics]);
 
   function checkInputs() {
     let toAlert = "You must enter the following:";
@@ -123,23 +108,14 @@ const SubmitReviewForm = (props) => {
     listType: "picture",
     defaultFileList: [...fileList],
   };
-  //   const useStyles = makeStyles({
-  //     root: {
-  //       width: 200,
-  //       display: "flex",
-  //       alignItems: "center",
-  //     },
-  //   });
 
   useEffect(() => {
     if (Object.keys(filesLists).length >= 1) {
       $(".uploadbutton").prop("disabled", true);
-      // console.log(filesLists.file.file.thumbUrl);
     }
   }, [filesLists]);
 
   useEffect(() => {
-    // console.log(testState[0]);
     $("#output").attr("src", testState[0]);
   }, [testState]);
 
@@ -156,7 +132,6 @@ const SubmitReviewForm = (props) => {
   }
 
   const uploadImage = async (e) => {
-    // const theFile = e.target.files;
     const theFile = event.target.files;
     const data = new FormData();
     data.append("file", theFile[0]);
@@ -170,14 +145,8 @@ const SubmitReviewForm = (props) => {
       }
     );
     const finalfile = await res.json();
-    // console.log(finalfile);
     setTestState([...testState, finalfile.url]);
-    // console.log(testState);
   };
-
-  // useEffect(() => {
-  //   console.log(testState);
-  // }, [testState]);
 
   function handleOk(e) {
     setLoading(true);
@@ -202,22 +171,12 @@ const SubmitReviewForm = (props) => {
       })
       .then(() => {
         Modal.destroyAll();
-        // toggleQuestionModel(false);
-        // changeInputEmail("");
-        // changeInputNickname("");
-        // changeInputQuestion("");
       });
   }
 
   function handleCancel(e) {
     setVisible(false);
   }
-
-  //   function handleUpload(event) {
-  // this.setState({ 'selectedFiles': info.fileList });
-  // console.log(event.target.files[0]);
-  // setFileList([...filesList, info.fileList]);
-  //   }
 
   return (
     <div className="reviewsmodal">
@@ -272,19 +231,16 @@ const SubmitReviewForm = (props) => {
             key="submit"
             type="primary"
             style={{ backgroundColor: "white", borderColor: "black" }}
-            // loading={isLoading}
             onClick={() => {
               if (checkInputs()) {
                 handleOk();
               }
             }}
-            //   {handleOk}
           >
             <div id="mybuttontext">Submit</div>
           </Button>,
         ]}
       >
-        {/* <p>Overall Rating</p> */}
         <div className="modalcontainer">
           <Form
             {...layout}
@@ -332,14 +288,7 @@ const SubmitReviewForm = (props) => {
                 </div>
               </Form.Item>
             </div>
-            <div
-              // style={{
-              //   display: "inline-flex",
-              //   position: "relative",
-              //   left: "45px",
-              // }}
-              className="recommendinput"
-            >
+            <div className="recommendinput">
               <span style={{ color: "red", backgroundPosition: "right top" }}>
                 *
               </span>
@@ -369,8 +318,6 @@ const SubmitReviewForm = (props) => {
               style={{
                 display: "flex",
                 flexDirection: "column",
-                // justifyContent: "center",
-                // alignItems: "center",
               }}
             >
               <div
@@ -378,8 +325,6 @@ const SubmitReviewForm = (props) => {
                   display: "flex",
                   flexDirection: "row",
                   alignItems: "center",
-                  // position: "relative",
-                  // left: "10px",
                 }}
               >
                 <span style={{ color: "red", backgroundPosition: "right top" }}>
@@ -399,18 +344,13 @@ const SubmitReviewForm = (props) => {
                       textAlign: "center",
                     }}
                     buttonStyle="solid"
-                    onChange={
-                      (e) =>
-                        isCharacteristics["Size"]
-                          ? setpresentCharacteristics({
-                              ...presentCharacteristics,
-                              Size: e.target.value,
-                            })
-                          : console.log(e)
-                      // setCharacteristics({
-                      // ...isCharacteristics,
-                      // 14: e.target.value,
-                      // });
+                    onChange={(e) =>
+                      isCharacteristics["Size"]
+                        ? setpresentCharacteristics({
+                            ...presentCharacteristics,
+                            Size: e.target.value,
+                          })
+                        : console.log(e)
                     }
                   >
                     <Radio.Button value={1}>A size too small</Radio.Button>
@@ -426,8 +366,6 @@ const SubmitReviewForm = (props) => {
                   display: "flex",
                   flexDirection: "row",
                   alignItems: "center",
-                  // position: "relative",
-                  // left: "10px",
                 }}
               >
                 <span style={{ color: "red", backgroundPosition: "right top" }}>
@@ -454,10 +392,6 @@ const SubmitReviewForm = (props) => {
                             Width: e.target.value,
                           })
                         : console.log(e);
-                      // setCharacteristics({
-                      //   ...isCharacteristics,
-                      //   15: e.target.value,
-                      // });
                     }}
                   >
                     <Radio.Button value={1}>Too narrow</Radio.Button>
@@ -473,8 +407,6 @@ const SubmitReviewForm = (props) => {
                   display: "flex",
                   flexDirection: "row",
                   alignItems: "center",
-                  // position: "relative",
-                  // left: "10px",
                 }}
               >
                 <span style={{ color: "red", backgroundPosition: "right top" }}>
@@ -498,10 +430,6 @@ const SubmitReviewForm = (props) => {
                           Comfort: e.target.value,
                         })
                       : console.log(e);
-                    // setCharacteristics({
-                    //   ...isCharacteristics,
-                    //   16: e.target.value,
-                    // });
                   }}
                 >
                   <Radio.Button value={1}>Uncomfortable</Radio.Button>
@@ -516,8 +444,6 @@ const SubmitReviewForm = (props) => {
                   display: "flex",
                   flexDirection: "row",
                   alignItems: "center",
-                  // position: "relative",
-                  // left: "10px",
                 }}
               >
                 <span style={{ color: "red", backgroundPosition: "right top" }}>
@@ -541,10 +467,6 @@ const SubmitReviewForm = (props) => {
                           Quality: e.target.value,
                         })
                       : console.log(e);
-                    // setCharacteristics({
-                    //   ...isCharacteristics,
-                    //   17: e.target.value,
-                    // });
                   }}
                 >
                   <Radio.Button value={1}>Poor</Radio.Button>
@@ -559,8 +481,6 @@ const SubmitReviewForm = (props) => {
                   display: "flex",
                   flexDirection: "row",
                   alignItems: "center",
-                  // position: "relative",
-                  // left: "10px",
                 }}
               >
                 <span style={{ color: "red", backgroundPosition: "right top" }}>
@@ -584,10 +504,6 @@ const SubmitReviewForm = (props) => {
                           Length: e.target.value,
                         })
                       : console.log(e);
-                    // setCharacteristics({
-                    //   ...isCharacteristics,
-                    //   18: e.target.value,
-                    // });
                   }}
                 >
                   <Radio.Button value={1}>Runs Short</Radio.Button>
@@ -603,8 +519,6 @@ const SubmitReviewForm = (props) => {
                   flexDirection: "row",
 
                   alignItems: "center",
-                  // position: "relative",
-                  // left: "10px",
                 }}
               >
                 <span style={{ color: "red", backgroundPosition: "right top" }}>
@@ -628,10 +542,6 @@ const SubmitReviewForm = (props) => {
                           Fit: e.target.value,
                         })
                       : console.log(e);
-                    // setCharacteristics({
-                    //   ...isCharacteristics,
-                    //   19: e.target.value,
-                    // });
                   }}
                 >
                   <Radio.Button value={1}>Runs tight</Radio.Button>
@@ -651,8 +561,6 @@ const SubmitReviewForm = (props) => {
                 display: "flex",
                 flexDirection: "row",
                 alignItems: "center",
-                // position: "relative",
-                // left: "10px",
               }}
             >
               <div style={{ display: "flex", width: "20%" }}>
@@ -678,21 +586,13 @@ const SubmitReviewForm = (props) => {
                 display: "flex",
                 flexDirection: "row",
                 alignItems: "center",
-                // position: "relative",
-                // left: "10px",
               }}
             >
               <span style={{ color: "red", backgroundPosition: "right top" }}>
                 *
               </span>
               <div style={{ display: "flex", width: "19.2%" }}>Review body</div>
-              {/* <div
-                style={{
-                  display: "flex",
-                  flexDirection: "row",
-                  alignSelf: "center",
-                }}
-              > */}
+
               <TextArea
                 placeholder="Why did you like the product or not?"
                 autoSize
@@ -706,12 +606,6 @@ const SubmitReviewForm = (props) => {
                 }}
                 value={isReviewBody}
               />
-              {/* {isReviewBody.length < 50
-                  ? `Minimum required characters left: ${
-                      50 - isReviewBody.length
-                    }`
-                  : "Minimum reached"} */}
-              {/* </div> */}
             </div>
             <div style={{ position: "relative", left: "11.8rem" }}>
               {isReviewBody.length < 50
@@ -720,12 +614,6 @@ const SubmitReviewForm = (props) => {
                   }`
                 : "Minimum reached"}
             </div>
-            {/* <TextArea
-            // value={value}
-            // onChange={this.onChange}
-            placeholder="Controlled autosize"
-            autoSize={{ minRows: 3, maxRows: 5 }}
-          /> */}
           </Input.Group>
           <div style={{ margin: "24px", height: "20px" }} />
 
@@ -734,8 +622,6 @@ const SubmitReviewForm = (props) => {
               display: "flex",
               flexDirection: "row",
               alignItems: "center",
-              // position: "relative",
-              // left: "10px",
             }}
           >
             <div
@@ -748,16 +634,6 @@ const SubmitReviewForm = (props) => {
               Upload your photos
             </div>
 
-            {/* <Upload
-              {...props1}
-              // onChange={(file) => setFileList({ ...filesLists, file })}
-              // onChange={(file) => uploadImage(file)}
-              onChange={uploadImage}
-            >
-              <Button className="uploadbutton">
-                <UploadOutlined /> Upload
-              </Button>
-            </Upload> */}
             <label class="custom-file-upload">
               Upload
               <input
@@ -791,8 +667,6 @@ const SubmitReviewForm = (props) => {
               display: "flex",
               flexDirection: "row",
               alignItems: "center",
-              // position: "relative",
-              // left: "10px",
             }}
           >
             <span style={{ color: "red", backgroundPosition: "right top" }}>
@@ -811,20 +685,12 @@ const SubmitReviewForm = (props) => {
               placeholder="Example: jackson11!"
               autoSize
               maxLength="60"
-              style={
-                {
-                  // position: "relative",
-                  // width: "700px",
-                  // left: "100px",
-                }
-              }
               onChange={(e) => {
                 setNickname(e.target.value);
               }}
               value={isNickname}
             />
           </div>
-          {/* <div style={{ margin: "24px", height: "20px" }} /> */}
 
           <div
             style={{
@@ -843,8 +709,6 @@ const SubmitReviewForm = (props) => {
               display: "flex",
               flexDirection: "row",
               alignItems: "center",
-              // position: "relative",
-              // left: "10px",
             }}
           >
             <span style={{ color: "red", backgroundPosition: "right top" }}>

@@ -12,15 +12,12 @@ import verifiedUserHelper from "./ReviewComponentHelpers/verifiedUserHelper";
 import "./ReviewStyles/reviewstyles.css";
 
 const ReviewListItem = ({ item, answerList, fullquery }) => {
-  //   let date = item.date.slice(0, 10);
   const [isVisible, setVisible] = useState(false);
   const [isHelpful, setHelpful] = useState(false);
   const [isReported, setReported] = useState(false);
   const [fullItemBody, setFullItemBody] = useState(false);
   const [currentPhoto, setCurrentPhoto] = useState("");
-  // const [answerUsers, setAnswerUsers] = useState(
-  //   verifiedUserHelper(answerList)
-  // );
+
   let formattedDate = dateFormatter(item.date);
 
   function highLightText(text, querystring) {
@@ -78,24 +75,9 @@ const ReviewListItem = ({ item, answerList, fullquery }) => {
       });
   }
 
-  // if (item.photos.length > 0) {
-  //   var currentPhoto = item.photos[0].url;
-  // }
-
-  //come back to this to deal with multiple photos
-
   return (
     <div className="individual-reviewitem">
-      <div
-        style={
-          {
-            // display: "flex",
-            // flexFlow: "row nowrap",
-            // alignItems: "center",
-          }
-        }
-      >
-        {/* {item.rating} */}
+      <div>
         <div
           style={{
             display: "flex",
@@ -127,16 +109,10 @@ const ReviewListItem = ({ item, answerList, fullquery }) => {
             readOnly
           />
         </div>
-        {/* <StarRatings
-          rating={item.rating}
-          starRatedColor="black"
-          numberOfStars={5}
-          name="rating"
-        /> */}
+
         <div
           style={{
             display: "flex",
-            // flexDirection: "column",
             justifyContent: "flex-end",
             fontSize: "14px",
             color: "#adadad",
@@ -166,7 +142,6 @@ const ReviewListItem = ({ item, answerList, fullquery }) => {
       ) : (
         <div></div>
       )}
-      {/* const [fullItemBody, setFullItemBody] = useState(false) */}
       <div style={{ height: "1.7rem" }}></div>
       <div style={{ fontSize: "15px" }}>
         {item.recommend ? (
@@ -204,8 +179,6 @@ const ReviewListItem = ({ item, answerList, fullquery }) => {
               <div>
                 <Card
                   onClick={showModal}
-                  // footer={null}
-                  // hoverable={true}
                   bordered={false}
                   style={{ width: 240 }}
                   cover={
@@ -273,19 +246,5 @@ const ReviewListItem = ({ item, answerList, fullquery }) => {
     </div>
   );
 };
-// src={item.photos.url}
 
 export default ReviewListItem;
-
-// {
-//     body,
-//     date,
-//     helpfulness,
-//     photos,
-//     rating,
-//     recommend,
-//     response,
-//     review_id,
-//     reviewer_name,
-//     summary,
-//   }
