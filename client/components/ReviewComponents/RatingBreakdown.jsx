@@ -8,18 +8,8 @@ import "./ReviewStyles/reviewstyles.css";
 
 const RatingBreakdown = (props) => {
   const [bar, toggleBar] = useState([]);
-  //   useEffect(() => {
-  //     props.fetchReviewMetaData(props.page);
-  //   }, [props.page]);
-  //   if (props.rate) {
-  //     var breakDown = ratingBreakDownPercentage(props.rate.ratings);
-  //     console.log(breakDown);
-  //   }
-  // if(props.rate) {
 
-  // }
   function updateFilter(event, input) {
-    // console.log("eventtarget", event.target);
     if (bar.includes(input)) {
       props.removefromFilter(input);
       toggleBar(bar.filter((item) => item !== input));
@@ -33,12 +23,6 @@ const RatingBreakdown = (props) => {
     props.removeAllFilters();
     toggleBar([]);
   }
-  // function removeFilter(input) {
-  //   props.removefromFilter(4);
-  // }
-
-  // <button onClick={() => updateFilter()}>sort by 5</button>
-  // <button onClick={() => removeFilter()}>Remove 5</button>
 
   if (props.rate) {
     var valueFive;
@@ -51,11 +35,6 @@ const RatingBreakdown = (props) => {
     isNaN(props.rate[3]) ? (valueThree = 0) : (valueThree = props.rate[3]);
     isNaN(props.rate[2]) ? (valueTwo = 0) : (valueTwo = props.rate[2]);
     isNaN(props.rate[1]) ? (valueOne = 0) : (valueOne = props.rate[1]);
-    // var valueFive = props.rate[5] === NaN ? 0 : props.rate[5];
-    // var valueFour = props.rate[4] === NaN ? 0 : props.rate[4];
-    // var valueThree = props.rate[3] === NaN ? 0 : props.rate[3];
-    // var valueTwo = props.rate[2] === NaN ? 0 : props.rate[2];
-    // var valueOne = props.rate[1] === NaN ? 0 : props.rate[1];
   }
   const BorderLinearProgress = withStyles({
     root: {
@@ -75,7 +54,6 @@ const RatingBreakdown = (props) => {
     <div>
       <div className="linearbar5">
         <div
-          // className="starrating"
           className={bar.includes(5) ? "starrating-clicked" : "starrating"}
           onClick={(event) => updateFilter(event, 5)}
         >
@@ -105,7 +83,6 @@ const RatingBreakdown = (props) => {
       </div>
       <div className="linearbar3">
         <div
-          // className={"starrating"}
           className={bar.includes(3) ? "starrating-clicked" : "starrating"}
           onClick={(event) => updateFilter(event, 3)}
         >
@@ -120,7 +97,6 @@ const RatingBreakdown = (props) => {
       </div>
       <div className="linearbar2">
         <div
-          // className="starrating"
           className={bar.includes(2) ? "starrating-clicked" : "starrating"}
           onClick={(event) => updateFilter(event, 2)}
         >
@@ -135,7 +111,6 @@ const RatingBreakdown = (props) => {
       </div>
       <div className="linearbar1">
         <div
-          // className="starrating"
           className={bar.includes(1) ? "starrating-clicked" : "starrating"}
           onClick={(event) => updateFilter(event, 1)}
         >

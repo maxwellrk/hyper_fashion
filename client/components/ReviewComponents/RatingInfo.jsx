@@ -18,7 +18,6 @@ import "./ReviewStyles/reviewstyles.css";
 
 const RatingInfo = (props) => {
   useEffect(() => {
-    // console.log("props in info:", props);
     props.fetchReviewMetaData(props.page);
   }, [props.page]);
 
@@ -27,16 +26,6 @@ const RatingInfo = (props) => {
       props.prodRating.fulldata.ratings
     );
   }
-
-  // function AirbnbThumbComponent(props) {
-  //   return (
-  //     <span {...props}>
-  //       <span className="bar" />
-  //       <span className="bar" />
-  //       <span className="bar" />
-  //     </span>
-  //   );
-  // }
 
   const markssize = [
     {
@@ -208,31 +197,23 @@ const RatingInfo = (props) => {
       '&[data-index="0"]': {
         right: 700,
       },
-      // '&[data-index="2"]': {
-      //   right: 1.5,
-      // },
+
       '&[data-index="4"]': {
         left: 500,
       },
     },
-    // thumbColorPrimary: {
 
-    // },
     thumb: {
       height: 35,
-      //27
+
       width: 27,
       color: "black",
       backgroundColor: "transparent",
       border: "0px solid black",
       marginTop: -13.5,
       marginLeft: -13,
-      // boxShadow: "#ebebeb 0px 2px 2px",
-      // "&:focus, &:hover, &$active": {
-      //   boxShadow: "#ccc 0px 2px 3px 1px",
-      // },
+
       "& .bar": {
-        // display: inline-block !important;
         height: 9,
         width: 1,
         backgroundColor: "#000",
@@ -240,9 +221,7 @@ const RatingInfo = (props) => {
         marginRight: 1,
       },
     },
-    // thumb:disabled {
 
-    // }
     active: {},
     valueLabel: {
       left: "calc(-50% + 12px)",
@@ -352,7 +331,6 @@ const RatingInfo = (props) => {
             </Typography>
             <IOSSlider
               aria-label="ios slider"
-              // defaultValue={props.prodRating.fulldata.characteristics.Size.value}
               defaultValue={
                 props.prodRating.fulldata &&
                 props.prodRating.fulldata.characteristics.Size
@@ -362,7 +340,6 @@ const RatingInfo = (props) => {
               marks={markssize}
               max={5}
               min={1}
-              // disabled="true"
               valueLabelDisplay="on"
               ThumbComponent={ArrowDropDownIcon}
             />
@@ -388,7 +365,6 @@ const RatingInfo = (props) => {
             </Typography>
             <IOSSlider
               aria-label="ios slider"
-              // defaultValue={props.prodRating.fulldata.characteristics.Size.value}
               defaultValue={
                 props.prodRating.fulldata &&
                 props.prodRating.fulldata.characteristics.Width
@@ -398,7 +374,6 @@ const RatingInfo = (props) => {
               marks={markswidth}
               max={5}
               min={1}
-              // disabled="true"
               valueLabelDisplay="on"
               ThumbComponent={ArrowDropDownIcon}
             />
@@ -434,7 +409,6 @@ const RatingInfo = (props) => {
               marks={markscomfort}
               max={5}
               min={1}
-              // disabled="true"
               valueLabelDisplay="on"
               ThumbComponent={ArrowDropDownIcon}
             />
@@ -471,7 +445,6 @@ const RatingInfo = (props) => {
               marks={marksquality}
               max={5}
               min={1}
-              // disabled="true"
               valueLabelDisplay="on"
               ThumbComponent={ArrowDropDownIcon}
             />
@@ -508,7 +481,6 @@ const RatingInfo = (props) => {
               marks={markslength}
               max={5}
               min={1}
-              // disabled="true"
               valueLabelDisplay="on"
               ThumbComponent={ArrowDropDownIcon}
             />
@@ -545,7 +517,6 @@ const RatingInfo = (props) => {
               marks={marksfit}
               max={5}
               min={1}
-              // disabled="true"
               valueLabelDisplay="on"
               ThumbComponent={ArrowDropDownIcon}
             />

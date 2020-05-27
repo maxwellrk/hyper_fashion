@@ -23,14 +23,11 @@ const ReviewList = (props) => {
   const [addSortOrder, changeSortOrder] = useState("relevant");
   const [disableFetch, changeDisableFetch] = useState(false);
   const [finalCount, changeFinalCount] = useState(null);
-  const [overallFilters, changeOverallFilters] = useState(props.totalFilters);
   const [searchFilter, addSearchFilter] = useState([]);
   const [reviewItems, addReviewItems] = useState([]);
   const [searchInput, changeSearchInput] = useState("");
   const [addedReview, setAddedReview] = useState(0);
-  const [pageRefresh, setPageRefresh] = useState(false);
   const [isLoading, setLoading] = useState(false);
-  const [hasMore, setHasMore] = useState(true);
   const [isReviewDisplay, setReviewDisplay] = useState(<div></div>);
 
   useEffect(() => {
@@ -42,7 +39,6 @@ const ReviewList = (props) => {
     addReviewItems([]);
     props.fetchReviews(props.page, pageList, reviewCount, addSortOrder);
     props.fetchReviewMetaData(props.page).then((data) => {
-      // console.log("reviewmetadata,", data);
       if (reviewCount <= data.payload.totalRating) {
         changeFinalCount(data.payload.totalRating);
         changeReviewCount(reviewCount + 5);
@@ -61,25 +57,12 @@ const ReviewList = (props) => {
   }, [reviewCount, addSortOrder, addedReview]);
 
   const filterReviews = () => {
-    //this function is currently forcing a requery of questions even
-    //if its under 3 characters, should come back to make it only query if over 3
-    //maybe make a function that creates filter callbacks?
-
     let query = searchInput.length > 2 ? searchInput.toLowerCase() : "";
-    // console.log("query:", query);
     let finalentry = reviewItems.filter(
       (item) => item.body.toLowerCase().indexOf(query) > -1
     );
-    // var testentry;
-    // for (var i = 0; i < finalentry.length; i++) {
-    //   testentry = finalentry[i].body.split(new RegExp(`(${query})`, "gi"));
-    // }
-    // console.log("testentry:", testentry);
+
     addSearchFilter(finalentry);
-    // return entry.filter((item) => item.body.toLowerCase().indexOf(query) > -1);
-    // console.log(entry);
-    // .toLowerCase().indexOf(query) > -1;
-    // console.log(entry);
   };
 
   useEffect(() => {
@@ -98,55 +81,19 @@ const ReviewList = (props) => {
         (reviewItems && reviewRender >= 4))
     ) {
       changeDisableFetch(!disableFetch);
-      // console.log("no longer should update");
     }
   }, [reviewRender, reviewItems]);
 
   useEffect(() => {
     $(".sortdropdown").val("relevant");
   }, [props.productById.id]);
-  // useEffect(() => {
-  //   if (
-  //     finalCount !== null &&
-  //     (reviewRender >= reviewItems ||
-  //       reviewRender >= filterReview(reviewItems, props.totalFilters).length)
-  //   ) {
-  //     changeDisableFetch(true);
-  //     console.log("no longer should update");
-  //   }
-  // }, [finalCount, reviewRender]);
+
   let getMoreReviews = function getTheReviews() {
     setAddedReview(1);
   };
 
-  // useEffect(() => {
-  //   if (props.totalFilters.length > 0) {
-  //   }
-  // }, [props.totalFilters]);
-  // function handleInfiniteOnLoad () {
-  //   let data = reviewItems;
-  //   setLoading(true)
-  //   if (data.length > 14) {
-  //     message.warning('Infinite List loaded all');
-  //     this.setState({
-  //       hasMore: false,
-  //       loading: false,
-  //     });
-  //     return;
-  //   }
-  //   this.fetchData(res => {
-  //     data = data.concat(res.results);
-  //     this.setState({
-  //       data,
-  //       loading: false,
-  //     });
-  //   });
-  // };
-
   let updateFunction = function updater() {
-    // console.log("clicked");
     addReviewRender(reviewRender + 2);
-    // changeReviewCount(reviewCount + 5);
   };
 
   const handleChange = (event) => {
@@ -168,7 +115,6 @@ const ReviewList = (props) => {
     } else {
       firstinput = reviewItems;
     }
-    // console.log(firstinput);
     if (reviewItems && reviewRender < 4) {
       setReviewDisplay(
         filterReview(firstinput, props.totalFilters)
@@ -223,55 +169,18 @@ const ReviewList = (props) => {
       margin: theme.spacing(1),
       width: 140,
       minWidth: 150,
-      // paddingBottom: 0,
     },
 
     selectEmpty: {
       marginTop: theme.spacing(2),
-      // style: {
-      //   paddingBottom: 0,
-      // },
     },
   }));
 
   const classes = useStyles();
 
-  // <FormControl className={classes.formControl}>
-  //       <Select
-  //         value={age}
-  //         onChange={handleChange}
-  //         displayEmpty
-  //         className={classes.selectEmpty}
-  //         inputProps={{ 'aria-label': 'Without label' }}
-  //       >
-  //         <MenuItem value="" disabled>
-  //           Placeholder
-  //         </MenuItem>
-  //         <MenuItem value={10}>Ten</MenuItem>
-  //         <MenuItem value={20}>Twenty</MenuItem>
-  //         <MenuItem value={30}>Thirty</MenuItem>
-  //       </Select>
-  //       <FormHelperText>Placeholder</FormHelperText>
-  //     </FormControl>
-
   return (
-    // <div>whatever</div>
     <div className="wholereviewlist">
       <div style={{ position: "relative", top: "8.1rem" }}>
-        {/* <input
-          id="searchbarinput"
-          value={searchInput}
-          style={{
-            display: "flex",
-            flexDirection: "row",
-            position: "relative",
-            top: "8rem",
-          }}
-          placeholder="HAVE A QUESTION? SEARCH FOR ANSWERS..."
-          onChange={(e) => {
-            changeSearchInput(e.target.value);
-          }}
-        /> */}
         <form className={classes.root} noValidate autoComplete="off">
           <Input
             placeholder="SEARCH FOR REVIEWS"
@@ -307,18 +216,8 @@ const ReviewList = (props) => {
             ? props.reviewList.results.length
             : props.prodRating.totalRating}{" "}
           reviews, sorted by
-          {/* props.prodRating.totalRating */}
         </h2>
-        {/* <select
-          className="sortdropdown"
-          id="1"
-          onChange={handleChange}
-          data-default-value="relevant"
-        >
-          <option value="relevant">Relevant</option>
-          <option value="newest">Newest</option>
-          <option value="helpful">Helpful</option>
-        </select> */}
+
         <FormControl className={classes.formControl}>
           <Select
             value={addSortOrder}
@@ -333,7 +232,6 @@ const ReviewList = (props) => {
             <MenuItem value="newest">newest</MenuItem>
             <MenuItem value="helpful">helpful</MenuItem>
           </Select>
-          {/* <FormHelperText>Placeholder</FormHelperText> */}
         </FormControl>
       </div>
       <div>{isReviewDisplay}</div>
@@ -343,7 +241,6 @@ const ReviewList = (props) => {
         style={{
           display: "flex",
           flexDirection: "row",
-          // alignItems: "center",
           alignContent: "space-between",
         }}
       >
@@ -368,50 +265,4 @@ const ReviewList = (props) => {
   );
 };
 
-// {reviewItems ? (
-//   reviewItems.slice(0, reviewRender).map((item) => {
-//     return <ReviewListItem item={item} />;
-//   })
-// )
-
-// {Object.keys(props.reviewList).length ? (
-//   props.reviewList.results.map((item) => {
-//     return <ReviewListItem item={item} />;
-//   })
-// )
-
 export default ReviewList;
-
-// useEffect(() => {
-//   props.fetchReviews(props.page, pageList, addSortOrder).then((data) => {
-//     // console.log("fetchdata:", data);
-//     return addReviewItems((reviewItems) => [
-//       ...reviewItems,
-//       data.payload.results,
-//     ]);
-//   });
-// }, [props.page]);
-
-// onClick={() => addReviewRender(reviewRender + 2); changePageList(pageList + 1); changeReviewCount(reviewCount + 10) }
-
-// fetchQuestionsById(productById.id)
-//     .then(() => {
-//       return changeQuestionRender(2);
-//     })
-// if (
-//   questionsList.results === undefined ||
-//   !questionsList.results.length ||
-//   questionsList.results.filter(filterQuestions).length <= questionRender
-// ) {
-//   moreQuestions = <div />;
-// } else {
-//   moreQuestions = (
-//     <button onClick={() => changeQuestionRender(questionRender + 2)}>
-//       MORE ANSWERED QUESTIONS
-//     </button>
-//   );
-// }
-// const fetchReviewMetaData = (id = 1, pageNumber = 1, sortOrder = "relevant") => {
-//   return (dispatch) => {
-//     let url = `http://18.224.200.47/reviews/${id}/list`;
-//     let url = `http://18.224.200.47/reviews/${id}/list/?page=${pageNumber}&count=10&sort=${sortOrder}`;

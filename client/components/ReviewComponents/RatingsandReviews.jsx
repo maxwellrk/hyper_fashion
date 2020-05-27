@@ -27,8 +27,9 @@ const RatingsandReviews = (props) => {
     <div
       style={{
         position: "relative",
+        flexDirection: "column",
         display: "flex",
-        left: 164,
+        left: "14rem",
         marginRight: "20%",
       }}
     >
