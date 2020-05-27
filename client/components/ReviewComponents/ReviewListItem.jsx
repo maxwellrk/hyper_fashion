@@ -17,7 +17,7 @@ const ReviewListItem = ({ item, answerList, fullquery }) => {
   const [isReported, setReported] = useState(false);
   const [fullItemBody, setFullItemBody] = useState(false);
   const [currentPhoto, setCurrentPhoto] = useState("");
-  
+
   let formattedDate = dateFormatter(item.date);
 
   function highLightText(text, querystring) {
@@ -75,14 +75,10 @@ const ReviewListItem = ({ item, answerList, fullquery }) => {
       });
   }
 
-  
-
   return (
     <div className="individual-reviewitem">
-      <div
-        
-      >
-        
+      <div>
+        <div
           style={{
             display: "flex",
             flexDirection: "column",
@@ -113,7 +109,7 @@ const ReviewListItem = ({ item, answerList, fullquery }) => {
             readOnly
           />
         </div>
-       
+
         <div
           style={{
             display: "flex",
@@ -183,7 +179,6 @@ const ReviewListItem = ({ item, answerList, fullquery }) => {
               <div>
                 <Card
                   onClick={showModal}
-                  
                   bordered={false}
                   style={{ width: 240 }}
                   cover={
@@ -252,6 +247,4 @@ const ReviewListItem = ({ item, answerList, fullquery }) => {
   );
 };
 
-
 export default ReviewListItem;
-

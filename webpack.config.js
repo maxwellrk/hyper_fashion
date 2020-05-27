@@ -1,4 +1,5 @@
 const path = require('path');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 const config = {
   entry: './client/index.jsx',
@@ -21,6 +22,9 @@ const config = {
   },
   resolve: {
     extensions: ['.js', '.jsx'],
+  },
+  optimization: {
+    minimizer: [new UglifyJsPlugin()],
   },
 };
 

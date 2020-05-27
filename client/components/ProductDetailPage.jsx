@@ -1,31 +1,24 @@
-import React, {useEffect, Children} from "react";
-import RatingsandReviews from "./ReviewComponents/RatingsandReviews";
-import QnA from "../containers/QnAContainers/QnAContainer";
-import RelatedItemAndOutfit from "./RelatedItemsAndOutfit/RelatedItemsAndOutfit";
-import Overview from "../containers/OverviewContainers/OverviewContainer";
-import axios from "axios";
+import React, { useEffect, Children } from 'react';
+import RatingsandReviews from './ReviewComponents/RatingsandReviews';
+import QnA from '../containers/QnAContainers/QnAContainer';
+import RelatedItemAndOutfit from './RelatedItemsAndOutfit/RelatedItemsAndOutfit';
+import Overview from '../containers/OverviewContainers/OverviewContainer';
+import axios from 'axios';
 
-export const AddClickTracking = (Component) => {
+export const AddClickTracking = (Component, compName) => {
   return (props) => {
     return (
       <div
         onClick={(e, props) => {
-          console.log(
-            e.target,
-            new Date(),
-            (<Component />).type.name || Component.WrappedComponent.name
-          );
           let url = `http://18.224.200.47/interactions/`;
           let interactionsModel = {
-            element: e.target.toString(),
-            widget:
-              (<Component />).type.name ||
-              Component.WrappedComponent.name.toString(),
+            element: e.target.className || e.target.toString(),
+            widget: compName,
             time: new Date(),
           };
-          // return axios.post(url, interactionsModel).then((results) => {
-          //   console.log("tracking results", results);
-          // });
+          return axios.post(url, interactionsModel).then((resp) => {
+            console.log(resp);
+          });
         }}
       >
         <Component {...props} />
@@ -34,10 +27,16 @@ export const AddClickTracking = (Component) => {
   };
 };
 
-const TrackedOverview = AddClickTracking(Overview);
-const TrackedRelatedItemAndOutfit = AddClickTracking(RelatedItemAndOutfit);
-const TrackedQnA = AddClickTracking(QnA);
-const TrackedRatingsandReviews = AddClickTracking(RatingsandReviews);
+const TrackedOverview = AddClickTracking(Overview, 'Overview');
+const TrackedRelatedItemAndOutfit = AddClickTracking(
+  RelatedItemAndOutfit,
+  'RelatedItemAndOutfit'
+);
+const TrackedQnA = AddClickTracking(QnA, 'QnA');
+const TrackedRatingsandReviews = AddClickTracking(
+  RatingsandReviews,
+  'RatingsandReviews'
+);
 
 const ProductDetailPage = (props) => {
   useEffect(() => {

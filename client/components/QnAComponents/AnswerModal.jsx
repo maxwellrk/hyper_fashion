@@ -1,6 +1,6 @@
 /* eslint-disable */
 import React, { useState } from 'react';
-import { Modal, Button } from 'antd';
+import { Modal } from 'antd';
 import axios from 'axios';
 
 const AnswerModal = ({

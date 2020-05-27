@@ -1,33 +1,33 @@
-/* eslint-disable */
-import React, { useEffect, useState } from 'react';
+/* eslint-disable camelcase */
+import React, { useState } from 'react';
 import axios from 'axios';
 import Helpful from './Helpful';
 
-const Answer = ({ info }) => {
+const Answer = ({ answerer_name, helpfulness, answer_id, newDate, body }) => {
   const [reportedStatus, changeReportedStatus] = useState(true);
 
   return (
     <div>
-      {info ? (
+      {answerer_name ? (
         <div>
           <p className="answer">
             <span className="bold" style={{ fontSize: '18px' }}>
               A:{' '}
             </span>
-            {info.body || ''}
+            {body || ''}
           </p>
 
           <p className="text14">
             by{' '}
-            {info.answerer_name === 'Seller' ? (
-              <span className="text14 bold">{info.answerer_name}</span>
+            {answerer_name === 'Seller' ? (
+              <span className="text14 bold">{answerer_name}</span>
             ) : (
-              <span>{info.answerer_name}</span>
+              <span>{answerer_name}</span>
             )}
-            , {info.newDate} |{' '}
+            , {newDate} |{' '}
             <Helpful
-              idBeingUsed={info.id}
-              helpfulness={info.helpfulness}
+              idBeingUsed={answer_id}
+              helpfulness={helpfulness}
               typeOfStored="answerId"
             />{' '}
             |{' '}
@@ -35,7 +35,7 @@ const Answer = ({ info }) => {
               <a
                 onClick={() => {
                   axios
-                    .put(`http://18.224.200.47/qa/answer/${info.id}/report`)
+                    .put(`http://18.224.200.47/qa/answer/${answer_id}/report`)
                     .then((resp) => {
                       changeReportedStatus(false);
                     });
@@ -44,12 +44,12 @@ const Answer = ({ info }) => {
                 Report
               </a>
             ) : (
-              <a>Reported</a>
+              <span>Reported</span>
             )}
           </p>
         </div>
       ) : (
-        <p></p>
+        <p />
       )}
     </div>
   );
