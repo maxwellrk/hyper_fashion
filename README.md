@@ -5,7 +5,7 @@
 This project is an interactive front-end shopping site built using React and Redux. It pulls from an exisiting API to generate a single page application, which can be navigated using React Router/ Hash Routes.
 
 ## Demo
-![Video Demo](imgur.com/oY2sIuW.gif)
+[Video Demo](https://vimeo.com/428809622)
 
 ### Prerequisites
 
